@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     jeefuse开发平台基础框架ANT构建脚本
+	 author:yonclv  2012-03-10 
+     ====================================================================== -->
+<project name="jeefuse-core" default="jar">
+    <description>
+    	jeefuse开发平台基础框架ANT构建脚本
+    </description>
+    <property file="build.properties" />
+    <property name="version" value="1.3.0" />
+    <property name="year" value="2012" />
+
+	<!--环境变量-->
+    <property environment="env"/>  
+    <property name="java.home" value="${env.JAVA_HOME}"/>  
+    <property name="ant.home"  value="${env.ANT_HOME}"/>  
+
+    <!--源码-->
+	<property name="project.home" value="." />  
+
+	<!--发布工程名-->
+    <property name="project.name" value="${ant.project.name}" />
+
+	<!--发布目录-->
+	<property name="dist.home" value="${project.home}/dist" />  
+    <!--编译目录-->
+    <property name="build.home" value="${project.home}/build" />  
+    <property name="build.classes" value="${build.home}/classes" />  
+	<property name="build.source" value="${build.home}/source" />  
+	<property name="build.lib.dir" value="lib" />
+    <tstamp>
+        <format property="NOW" pattern="yyyy-MM-dd_HH-mm-ss" locale="cn" />
+    </tstamp>
+	
+    <!--javadoc文件路径 -->
+    <property name="build.javadocs" value="${project.name}/doc" /> 
+
+    <!--初始化清理-->
+    <target name="init" depends="clean" description="初始化并创建目录">  
+        <echo message="-----------开始构建 ${project.name} ${version} [${year}] ------------" /> 
+        <echo>初始化并创建目录</echo>  
+        <mkdir dir="${build.home}" />  
+        <mkdir dir="${build.classes}" />  
+    	<mkdir dir="${dist.home}"/>  
+    </target>  
+
+    <target name="clean" description="删除所有目录与文件">  
+        <echo>清理目录与文件</echo>  
+        <delete dir="${build.home}" />  
+        <delete dir="${dist.home}" />  
+    </target>  
+	
+    <path id="compile.classpath">  
+        <fileset dir="lib">  
+            <include name="*.jar" />  
+        </fileset>  
+        <pathelement path="${java.home}/lib/tools.jar"/>  
+    </path>  
+	
+    <!--编译-->
+    <target name="compile" depends="init" description="编译JAVA文件">  
+        <echo>编译JAVA文件</echo>  
+        <javac  destdir="${build.classes}" debug="true" deprecation="false" encoding="UTF-8">  
+		    <src path="${project.home}/src/main/java" />
+            <classpath refid="compile.classpath" />  
+        </javac>  
+		<copy todir="${build.classes}">  
+            <fileset dir="${project.home}/src/main/resources" />  
+        </copy> 
+		<copy todir="${build.classes}">  
+            <fileset dir="${project.home}/src/main/java" >
+			  <include name="**/*.xml" />
+			</fileset>
+        </copy>
+    </target>  
+
+	 <!-- 产生javadoc api 文档-->
+	 <target name="javadoc" >
+	     <echo message="javadoc    - Generate the API HTML pages"/>  
+		 <delete dir="${build.javadocs}" />
+	     <mkdir dir="${build.javadocs}" />
+	     <javadoc  destdir="${build.javadocs}" charset="UTF-8" encoding="UTF-8" docencoding="UTF-8" author="true" version="true" use="true" linksource="no" splitindex="yes" windowtitle="${project.name} API" doctitle="${project.name} API">
+	     	<classpath refid="compile.classpath" />
+	        <packageset dir="src/main/java">  
+	        </packageset>
+	     </javadoc>
+		 <echo message=" javadoc 生成目录 ${build.javadocs}"/> 
+	  </target>
+	
+	<!--打包-->
+	<target name="jar" depends="compile">
+		<echo>生成${dist.home}/${project.name}-${version}.jar</echo>  
+		 <mkdir dir="${dist.home}" />  
+	     <jar destfile="${dist.home}/${project.name}-${version}.jar">  
+	          <fileset dir="${build.classes}">
+	          </fileset>  
+	          <manifest>  
+	          </manifest>  
+	      </jar>  
+	</target>  
+	<target name="jar.source" >
+		 <echo>生成${dist.home}/${project.name}-${version}.source.jar</echo>
+		 <delete dir="${build.source}" />
+		 <mkdir dir="${build.source}" />
+		 <copy todir="${build.source}">  
+            <fileset dir="${project.home}/src/main/java" />
+         </copy>
+		 <copy todir="${build.source}">  
+            <fileset dir="${project.home}/src/main/resources" />  
+         </copy> 
+		 <copy todir="${build.source}">  
+            <fileset dir="${project.home}/src/main/java" >
+			  <include name="**/*.xml" />
+			</fileset>
+         </copy>
+	     <jar destfile="${dist.home}/${project.name}-${version}.source.jar">  
+	          <fileset dir="${build.source}">
+	          </fileset> 
+	          <manifest>  
+	          </manifest>  
+	      </jar>
+		 <delete dir="${build.source}" />  
+	</target>  
+	
+</project>
