@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     jeefuse开发平台企业应用版ANT构建脚本
+	 author:yonclv  2012-03-10
+     ====================================================================== -->
+<project name="jeefuse-web" default="war">
+    <description>
+        jeefuse开发平台企业应用版
+    </description>
+
+	<property file="build.properties" />
+    <property name="name" value="jeefuse-web" />
+    <property name="version" value="1.3" />
+    <property name="year" value="2012" />
+
+	<!--环境变量-->
+    <property environment="env"/>  
+    <property name="java.home" value="${env.JAVA_HOME}"/>  
+    <property name="ant.home"  value="${env.ANT_HOME}"/>  
+    <property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
+
+	<!--发布工程名-->
+    <property name="project.name" value="${ant.project.name}" />
+
+    <!--源码-->
+    <property name="web.home" value="webapp" />
+	<!--发布目录-->
+	<property name="dist.home" value="dist" />  
+
+    <!--编译目录-->
+    <property name="build.home" value="build" />
+    <property name="build.classes" value="build/classes" />  
+	<property name="build.lib.dir" value="lib" />
+
+    <!--javadoc文件路径 -->
+    <property name="build.javadocs" value="doc" />
+	
+	<tstamp>
+        <format property="TODAY" pattern="yyyy-MM-dd" locale="cn" />
+    </tstamp>
+    <tstamp>
+        <format property="NOW" pattern="yyyy-MM-dd_HH-mm-ss" locale="cn" />
+    </tstamp>
+	
+    <path id="compile.classpath">  
+        <fileset dir="webapp/WEB-INF/lib">  
+            <include name="*.jar" />  
+        </fileset>  
+        <pathelement path="${java.home}/lib/tools.jar"/>  
+    </path>  
+
+	<path id="tomcat.classpath">
+	     <fileset dir="${tomcat.home}/lib">  
+            <include name="*.jar" />  
+        </fileset>
+	</path>
+
+    <!--初始化清理-->
+    <target name="init" depends="clean" description="初始化并创建目录">  
+        <echo message="----------- ${name} ${version} [${year}] ------------" /> 
+        <echo>初始化并创建目录</echo>
+        <mkdir dir="${build.home}" />  
+        <mkdir dir="${build.classes}" />  
+    </target>  
+
+    <target name="clean" description="删除所有目录与文件">  
+        <echo>清理所有目录与文件</echo>  
+        <delete dir="${build.home}" />  
+        <delete dir="${dist.home}/*" />  
+    </target>  
+
+    <!--编译-->
+    <target name="compile" depends="init" description="编译JAVA文件">  
+        <echo>编译JAVA文件</echo>  
+        <javac  destdir="${build.classes}"  debug="off" deprecation="false" encoding="utf-8">  
+		    <src path="src/main/java" />
+            <classpath refid="compile.classpath" />  
+			<classpath refid="tomcat.classpath" />
+        </javac>  
+		<copy todir="${build.classes}">  
+            <fileset dir="src/main/resources" >
+            	<exclude name="logback.xml"/>
+            	<exclude name="struts.xml"/>
+            </fileset>  
+        </copy>
+        <move file="${build.classes}/logback.product.xml" tofile="${build.classes}/logback.xml"/>
+        <move file="${build.classes}/struts.product.xml" tofile="${build.classes}/struts.xml"/>
+		<copy todir="${build.classes}">  
+            <fileset dir="src/main/java" >
+			  <include name="**/*.xml" />
+			</fileset>
+        </copy> 
+    </target>  
+
+    <!--发布-->
+    <target name="dist" depends="compile" description="构建展开目录结构-开发模式">  
+        <echo>复制JSP,XML等文件</echo>  
+    	<mkdir dir="${dist.home}" /> 
+        <copy todir="${dist.home}/${project.name}">  
+            <fileset dir="${web.home}" >
+            	<exclude name="**\\classes\\**" />
+            	<exclude name="**\\taglibs.jsp" />
+            </fileset>  
+        </copy> 
+        <echo>删除原先的${dist.home}/${project.name}/WEB-INF/classes文件</echo>  
+		<delete dir="${dist.home}/${project.name}/WEB-INF/classes" />  
+		<echo>复制${build.classes}类文件->${dist.home}/${project.name}/WEB-INF/classes</echo>
+        <copy todir="${dist.home}/${project.name}/WEB-INF/classes">  
+            <fileset dir="${build.classes}" />  
+        </copy> 
+        <copy todir="${dist.home}/${project.name}/WEB-INF/classes">  
+            <fileset dir="${build.classes}" />  
+        </copy>
+    </target> 
+	
+	<!--执行压缩js,css文件在build-yuicompressor.xml中-->
+	<target name="compressorJsCss">
+	        <echo message="执行压缩js,css文件在build-yuicompressor.xml中"/>
+			<ant antfile="build-yuicompressor.xml" target="compressorJsCss"/>
+	 </target>
+
+	<!-- 压缩 -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${plugin-contrib-path}"/>
+		</classpath>
+	</taskdef>
+	<path id="compress.dir.path">
+		<fileset dir="${dist.home}/${project.name}/resources/content">
+			<include name="**/*.js"/>
+		</fileset>
+	</path>
+	<target name="doConvert">
+		<echo>压缩${dist.home}/${project.name}/resources/content目录中js方件</echo>  
+		<foreach param="srcFilePath" target="doConvertInner">
+			<path refid="compress.dir.path"/>
+		</foreach>
+	</target>
+	<target name="doConvertInner">
+		<propertyregex override="true" property="realFileName" input="${srcFilePath}" regexp="(\w+.*\\)+(\w+.*[.]{1}\w+)" replace="\2"/>
+		<propertyregex override="true" property="realFilePath" input="${srcFilePath}" regexp="(\w+.*\\)+(\w+.*[.]{1}\w+)" replace="\1"/>
+		<echo message="${realFilePath}${realFileName}"></echo>
+		<java jar="${compress.jar}" dir="${basedir}" failonerror="false" fork="true">
+				<arg value="${srcFilePath}"/>
+				<arg value="-o"/>
+				<arg value="${realFilePath}/${realFileName}"/>
+				<arg value="--charset"/>
+				<arg value="${compress.encoding}"/>
+		</java>
+	</target>
+	
+    <!-- 打成war包  -->
+  <target name="war" depends="dist">
+    <war warfile="${dist.home}/${project.name}-${NOW}.war" webxml="${dist.home}/${project.name}/WEB-INF/web.xml">
+       <lib dir="${dist.home}/${project.name}/WEB-INF/lib"/>
+       <classes dir ="${dist.home}/${project.name}/WEB-INF/classes"/>
+       <fileset dir="${dist.home}/${project.name}">
+       		<exclude name="**\\classes\\**" />
+       		<exclude name="**\\lib\\**" />
+       </fileset>
+    </war>
+     <echo>清理临时产生目录</echo>  
+     <delete dir="${build.home}" />
+     <delete dir="${dist.home}/${project.name}" />  
+  </target> 
+
+  <!-- 打成ear包-->
+  <target name="ear" depends="clean,dist" description="构建可发布ear包">  
+        <jar destfile="${dist.home}/${project.name}.war" basedir="${dist.home}/${project.name}.war" />  
+        <ear destfile="${dist.home}/${project.name}.ear" appxml="${dist.home}/${project.name}/META-INF/application.xml">  
+            <fileset dir="${dist.home}">  
+                <include name="${project.name}.war" />  
+            </fileset>  
+        </ear>  
+        <echo>清理临时产生目录</echo>  
+        <delete dir="${dist.home}/${project.name}" />  
+   </target>  
+
+  <!-- 产生javadoc api 文档-->
+   <target name="javadoc" >
+     <echo message="javadoc    - Generate the API HTML pages"/>  
+	 <delete dir="${build.javadocs}" />
+     <mkdir dir="${build.javadocs}" />
+     <javadoc  destdir="${build.javadocs}"  encoding="UTF-8" docencoding="UTF-8" author="true" version="true" use="true" linksource="no" splitindex="yes" windowtitle="${project.name} API" doctitle="${project.name} API">
+	  <classpath>  
+	      <fileset dir="${tomcat.home}/lib">  
+            <include name="*.jar" />  
+          </fileset> 
+          <fileset dir="webapp/WEB-INF/lib">  
+            <include name="*.jar" />  
+           </fileset>  
+           <pathelement path="${java.home}/lib/tools.jar"/>  
+       </classpath>  
+        <packageset dir="src/main/java">  
+              <include name="com/jeefuse/**"/>  
+        </packageset>  
+     </javadoc>
+	 <echo message=" javadoc 生成目录 ${build.javadocs}"/> 
+   </target>
+   
+	<!--清理jeefuse MDA生成的文件-->
+	 <target name="mda.bak.clean" description="删除MDA生成的bak文件">  
+	        <echo>删除jeefuse MDA 产生的bak文件...</echo>  
+	        <delete >
+	        	 <fileset dir="." includes="**/*.bak.*"/>
+	        </delete>
+	 </target>
+   
+</project>

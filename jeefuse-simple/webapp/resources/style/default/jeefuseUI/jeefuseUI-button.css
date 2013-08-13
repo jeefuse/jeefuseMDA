@@ -1,0 +1,79 @@
+/*button */
+a.button {
+	background: transparent url('images/button/bg_button_a.gif') no-repeat scroll top right;
+	color: #444;
+	display: block;
+	float: left;
+	font: bold 13px arial, sans-serif;
+	height: 24px;
+	margin-right: 6px;
+	padding-right: 18px; /* sliding doors padding */
+	text-decoration: none;
+	margin-left: 5px;
+	outline: none;
+}
+a.button:link{color: #444}
+a.button span {
+	background: transparent url('images/button/bg_button_span.gif') no-repeat;
+	display: block;
+	line-height: 14px;
+	padding: 5px 0 5px 18px;
+}
+
+a.button:hover {
+	background-position: bottom right;
+	color: #000;
+	outline: none; /* hide dotted outline in Firefox */
+	text-decoration: none;
+}
+
+a.button:hover span {
+	background-position: bottom left;
+	padding: 6px 0 4px 18px; /* push text down 1px */
+}
+a.l-btn-disabled{
+	color:#ccc;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	cursor:default;
+}
+/*green*/
+a.button-green {
+	margin-left: 20px;
+	float: left;
+	display: block;
+	text-decoration: none;
+	height: 24px;
+	color: #444;
+	cursor: pointer;
+	background: url(images/button/green.png) no-repeat top right;
+	font: bold 13px/ 22px "Arial", Helvetica, sans-serif;
+}
+
+a.button-green span {
+	display: block;
+	margin: 0 10px 0 -10px;
+	line-height: 14px;
+	height: 14px;
+	padding: 5px 3px 5px 8px;
+	position: relative; /*To fix IE6 problem (not displaying)*/
+	float: left;
+	background: url(images/button/green.png) no-repeat top left;
+}
+
+a.button-green:hover {
+	color: red;
+	text-decoration: none;
+	background: url(images/button/blue.png) no-repeat top right;
+}
+
+a.button-green:hover span {
+	padding: 5px 3px 5px 8px;
+	background: url(images/button/blue.png) no-repeat top left;
+}
+.gradientBtns a{float:left;color:#ED6F00; padding:0px 15px; display:block; height: 33px;overflow: hidden;margin-left: 5px;margin-top:5px; line-height: 33px;font-family: simsun;font-size: 14px;font-weight: bold;text-align:center
+	background: -moz-linear-gradient(center top , #FFFFFF, #F1F1F1) repeat scroll 0 0 transparent;
+	filter:alpha(opacity = 100 finishopacity = 100 style = 1 startx = 0,starty = 0,finishx = 0,finishy = 30) progid:DXImageTransform.Microsoft.gradient(startcolorstr = #ffffffff,endcolorstr = #F1F1F1,gradientType = 0); 
+	border: 1px solid #CCCCCC;height: 33px;-moz-border-radius: 5px 5px 5px 5px;
+}
+.gradientBtns a:hover{text-decoration: none;color: #FF7700}

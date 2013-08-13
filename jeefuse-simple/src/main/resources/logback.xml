@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- 定义日志文件路径变量 -->
+	<property name="log.base" value="../logs/jeefuse-simple" />
+		
+    <!-- stdout appender定义 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+	
+    <!-- 日志文件  appender定义 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<!-- <File>${log.base}.log</File> -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}.%d{yyyy-MM-dd}.log</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+	
+	<!-- 整体默认为INFO级别  -->
+	<root>
+		<level value="debug" />
+		<appender-ref ref="stdout" />
+	</root>
+	<!-- 业务信息默认为DEBUG级别  -->
+	<logger name="org.springframework">
+		<level value="info" />
+	</logger>
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" /> 
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="DEBUG" /> 
+    <logger name="org.hibernate.SQL" level="DEBUG" /> 
+    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" /> 
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" /> 
+</configuration>
+

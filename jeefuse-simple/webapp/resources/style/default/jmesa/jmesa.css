@@ -1,0 +1,42 @@
+/*jmesa table style*/
+.jmesa {margin:2px auto;padding:0;width:100%;}
+.jmesa .toolbar{padding:0px;}
+.jmesa .toolbar table{margin-top:1px;margin-bottom: 2px;}
+.jmesa .toolbar td {line-height: 12px;padding:0px 2px;}
+.jmesa .toolbar .pageNumber {font-weight:bold;color:#c4634d;padding:2px 1px;}
+.jmesa .toolbar .pageNumber a {font-weight:bold;color:blue;}
+.jmesa .toolbar img {border:0px;}
+.jmesa .toolbar select {border: solid 1px #c4c3c2;}
+
+.jmesa .grid{margin:0px auto;padding:0px;border: 1px solid silver;overflow: auto;}
+.jmesa .grid table{border:0px solid #aacccc;border-spacing:0px;border-collapse:0px}
+
+.jmesa .filter{padding:0px}
+.jmesa .filter .dynFilter { position: relative;padding: 0px;margin:0;border: 0px solid #c0c0c0; background-color: #FAFFF0; height: 16px;white-space: nowrap; cursor: pointer;}
+.jmesa .filter #dynFilterDiv {padding: 0;margin: 0;height:16px;background-color:#FAFFF0}
+.jmesa .filter #dynFilterInput {padding: 0;margin: 0;height:16px;border-style: none;background-color:#FFFAFA;}
+.jmesa .filter #dynFilterDroplistDiv { padding: 0; margin: 0; background-color: #e1ebf4; }
+.jmesa .filter #dynFilterDroplist { padding: 0; margin: 0;background-color: #e1ebf4;}
+
+.jmesa tr.header{border:#aaaacc solid 0px;background:#eff7ce url(table/thearder-bg.gif) repeat-x;height: 24px;font-weight: normal;color: #333;font-size: 13px;}
+.jmesa tr.header td {white-space: nowrap;border:#aacccc solid 0px ;border-right:#aacccc  solid 1px ;height: 21px;padding-left: 2px;text-align: }
+.jmesa tr.header td input{}
+
+.jmesa .tbody  tr td{border-bottom:#aacccc solid 1px ;padding:2px 3px;}
+.jmesa .tbody  input {padding: 0; margin: 0;}
+.jmesa .tbody  a { color:blue;}
+.jmesa .tbody  a:HOVER{color:red;TEXT-DECORATION:underline;}
+.jmesa .tbody  a:ACTIVE{ color:#FF7F50;}
+.jmesa .tbody  tr.odd{background-color: white;}
+.jmesa .tbody  tr.even{background-color:white;}
+.jmesa .tbody  tr.highlight {background-color:#FFFFCD}
+
+.jmesa .statusBar td { border-top: 0px solid silver;  background-color: white;}
+
+.jmesa .dropShadow {padding: 10px 14px 14px 10px;}
+
+.jmesa .wsColumn {position: relative;padding: 0;margin: 0; border: 1px solid #ie90ff;height: 15px; white-space: nowrap; cursor: pointer;}
+.jmesa .wsColumnError { position: relative; font-style: italic; padding: 0;margin: 0;color: #ec4646;border-bottom: 1px dashed #ec4646;height: 15px;white-space: nowrap; cursor: pointer;}
+.jmesa .wsColumnChange {position: relative;font-style: italic;padding: 0; margin: 0; color: #005e8f; border-bottom: 1px dashed #005e8f; height: 15px;white-space: nowrap; cursor: pointer;}
+.jmesa #wsColumnDiv {position: absolute;top: -2px; left: -2px;padding: 0;margin: 0; height: 17px;border: 1px solid #c0c0c0; background-color: #ededed;}
+.jmesa #wsColumnInput {padding: 0;  margin: 0;border-style: none;background-color: #ededed;}

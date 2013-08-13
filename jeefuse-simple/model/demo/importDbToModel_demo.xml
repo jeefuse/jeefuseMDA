@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DbToModel>
+    <!-- mysql数据库连接配置 -->
+    <jdbc>
+        <param name="driver">com.mysql.jdbc.Driver</param>
+   		<param name="url">jdbc:mysql://localhost/demo?useUnicode=true&amp;characterEncoding=utf-8</param>
+        <param name="username">root</param>
+		<param name="password">admin</param>
+        <param name="schema"></param>
+    </jdbc>
+
+	<!--oracle数据库连接配制
+    <jdbc>
+        <param name="driver">oracle.jdbc.driver.OracleDriver</param>
+   		<param name="url">jdbc:oracle:thin:@localhost:demo</param>
+        <param name="username">root</param>
+        <param name="password">admin</param>
+        <param name="schema"></param>
+    </jdbc>
+	-->
+
+    <!-- 导入数据配置 
+		 packageName：指定生成的包名.
+		 match-name:指定导入匹配的表名.    
+      -->
+    <import packageName="com.company.demo">
+    	<table-filter match-name="demo"/>
+    </import>
+    
+</DbToModel>

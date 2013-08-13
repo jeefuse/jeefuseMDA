@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="false"/>
+    
+	<!-- 默认设置 -->
+	<package name="default" extends="struts-default">
+		<global-results>
+           <result name="login">/WEB-INF/content/system/login.jsp</result>
+           <result name="error">/common/500.jsp</result>
+           <result name="exception">/common/500.jsp</result>
+        </global-results>
+        
+	    <global-exception-mappings>
+           <exception-mapping result="exception" exception="java.lang.Exception"/>
+        </global-exception-mappings>    
+	</package>
+
+	<!-- 加载com 包下 struts-开头的文件 -->
+	<include file="com/**/struts-*.xml" />
+</struts>

@@ -1,0 +1,17 @@
+/* form field */
+.v-field-trigger {width: 17px;height: 23px;border: 0;background: transparent url(images/form/trigger.gif) no-repeat 0 0;border-bottom: 1px solid #B5B8C8;cursor: pointer;line-height:23px;display: inline-block;opacity: 0.6;overflow: hidden;}
+.x-field-date-trigger {background-image: url(images/form/date-trigger.gif);cursor: pointer;}
+.v-field-clear-trigger {background-image: url(images/form/clear-trigger.gif);cursor: pointer;}
+.v-field-search-trigger {background-image: url(images/form/search-trigger.gif);cursor: pointer;}
+.v-field-trigger-over {background-position: -17px 0;}
+.v-field-trigger-click {background-position: -34px 0;}
+.v-field-trigger-disabled {background-position: 0 0 !important;border-bottom: 1px solid #B5B8C8;}
+/* combotree*/
+.v-combo-Wrap {display: inline-block;}
+.v-combo-Wrap input{float: left;}
+.v-combo-Wrap span.v-field-trigger{float: left;}
+.v_combo_text {cursor: pointer;}
+.v-combo-content {border: 1px solid #B5B8C8;background-color: #fff;}
+/* form */
+.v-form input.text,.v-form input.title,.v-form select,.v-form textarea{background: #fff url(images/form/text-bg.gif) repeat-x 0 0;}
+.v-form input.disabled{background: #fafafa}

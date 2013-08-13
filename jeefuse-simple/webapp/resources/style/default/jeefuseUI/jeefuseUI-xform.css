@@ -1,0 +1,43 @@
+/*****x-form*********/
+.x-form {font-size: 108%;}
+.x-form legend {padding-left: 0;}
+.x-form fieldset {border: none;border-top: 1px solid #C9DCA6;background-color: #F8FDEF;}
+.x-form fieldset fieldset {background: none;padding: 5px 10px 7px;/*background: url(images/form/x-form-divider.gif) left bottom repeat-x;*/}
+.x-form li.field{ border: 1px solid white;/*height: 45px;*/padding: 8px 13px 4px;overflow: hidden;}
+.x-form div.field{ height: 38px;padding: 8px 13px 4px;}
+/*label*/
+.x-form label{color: #404040;font-size: 14px;height: 16px;padding: 2px 3px 2px 3px;}
+.x-form label.fLabel{padding: 6px 5px 6px 2px;width:130px;font-size: 14px;height:16px; color: #404040;text-align: right;float: left}
+.x-form label.error {color: red;/*font-style: italic;*/font-weight: normal;margin-left:130px;padding:2px 2px 3px 22px;height:16px; color:red;display: block;background: transparent url(images/form/validate/min-warn.png) no-repeat 5px 3px;}
+.x-form label.checked {background: transparent url(images/form/validate/checked.gif) no-repeat scroll 3px 2px;}
+.x-form span.req,.x-form label span.req{color: red; font-family: 'simsun';font-style: normal;line-height: 16px;}
+.x-form .info{margin-left:130px; background: #FFF6BF; color: green;border: solid 1px  #FFD324;padding: 3px;}
+/*input*/
+.x-form .fText{float: left;   padding: 6px 5px 6px 2px;}
+.x-form input.text,.x-form input.title,.x-form select,.x-form textarea {background-color:#fff; font-size:108%;border: 1px solid #B5B8C8;padding: 2px;font: 13px/ 22px "Arial", Helvetica, sans-serif;font-size: 108%;}
+.x-form input.text,.x-form input.title,.x-form select,.x-form textarea{background: #fff url(images/form/text-bg.gif) repeat-x 0 0;}
+.x-form input.text,.x-form select{width: 230px;height: 22px;}
+.x-form input.title,.x-form input.email{width: 360px;}
+.x-form input.chk {border: none;width: 13px;height: 13px;outline: none;padding: 0px;}
+.x-form input.radio{height: 13px;margin-left: 3px;outline: none;}
+.x-form input.num {height: 18px;width:80px;font-size: 12px;}
+.x-form input.shortNum{height: 18px;width: 25px;font-size: 12px;}
+.x-form input.time{width: 60px}
+.x-form input.code{width: 50px;}
+.x-form textarea{width: 360px;}
+/*input focus*/
+.x-form input.text:focus,.x-form input.title:focus,.x-form textarea:focus,.x-form select:focus,.v-form .text-focus {border:1px solid rgb(0, 153, 255)/*#FF8080*/;}
+/*button*/
+.x-form .button-wrap{padding-left: 149px;margin-top: 10px;overflow: hidden;}
+.x-form .button-wrap a.link{float: left;margin-left: 10px;padding-top: 4px;}
+.x-form input.button{height: 28px}
+/*readonly*/
+.x-form input.readonly,.x-form  select.readonly,.x-form  textarea.readonly,.x-form button.readonly {background:transparent #FBFBEF;border:1px solid #aaaacc;color: gray}
+/*error*/
+.x-form input.error,.x-form select.error,.x-form textarea.error{border: 1px solid red;background-color:#FFFFD5;margin: 0px;color:red;display: block;}
+/*tips*/
+.x-form .tip{color:#999999;margin-left: 139px; font-size: 13px;padding: 2px 2px;}
+/*img*/
+.x-form img{ vertical-align: middle;}
+.x-form img.codeImg{border: 1px solid #eaeaea;}
+

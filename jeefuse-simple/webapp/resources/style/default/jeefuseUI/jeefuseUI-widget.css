@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+.widget{
+	margin-bottom: 5px;
+}
+.widget .head {
+	LINE-HEIGHT: 27px;
+	BACKGROUND: url(images/widget/bgW.gif) #ccc repeat-x 0px -764px;
+	HEIGHT: 27px;
+	COLOR: #505050;
+	font-weight: bold;
+}
+.widget .head SPAN.bgL {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	float:left;
+	PADDING-LEFT: 8px;
+	BACKGROUND-POSITION: 0px -710px;
+}
+.widget .head .bgR {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	BACKGROUND-POSITION: right -737px;
+	HEIGHT: 27px
+}
+.widget .head .more {
+	float:right;
+	font-weight:normal;
+	padding-right:10px;
+	text-align:right;
+	width:50px;
+}
+.widget .content {
+	border-color: #A3D0F1 #A3D0F1;
+	border-right:1px solid #A3D0F1;
+	border-style:none solid solid;
+	border-width:0 1px 1px;
+	padding:5px 10px 2px;
+}
+
+.v-widget-tc {
+	LINE-HEIGHT: 27px;
+	BACKGROUND: url(images/widget/bgW.gif) #333 repeat-x 0px -764px;
+	HEIGHT: 27px;
+	COLOR: #333
+}
+.v-widget-tl {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	PADDING-LEFT: 16px;
+	BACKGROUND-POSITION: 0px -710px;
+}
+.v-widget-tr {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	BACKGROUND-POSITION: right -737px;
+	padding-right: 16px;
+	HEIGHT: 27px
+}
+/**primary*/
+.widget-pri .head {
+	background:url("images/widget/bgW.gif") repeat-x scroll 0 -1124px #FFEC9F;
+	COLOR: #505050;
+	font-weight: bold;
+	height:27px;
+	line-height:27px;
+}
+.widget-pri .head SPAN.bgL {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	float:left;
+	background-position:0 -1070px;
+	padding-left:8px;
+}
+.widget-pri .head .bgR {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	background-position:right -1097px;
+	height:27px;
+}
+.widget-pri .content {
+	border-color:#F4E290 #F4E290;
+	border-right:1px solid #F4E290;
+	border-style:none solid solid;
+	border-width:0 1px 1px;
+}
+/**secondary*/
+.widget-sec .head {
+	background:url("images/widget/bgW.gif") repeat-x scroll 0 -494px #FFEC9F;
+	COLOR: #505050;
+	font-weight: bold;
+	height:27px;
+	line-height:27px;
+}
+.widget-sec .head SPAN.bgL {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	float:left;
+	background-position:0 -440px;
+	padding-left:8px;
+}
+.widget-sec .head .bgR {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	background-position:right -467px;
+	height:27px;
+}
+.widget-sec .content {
+	border-color:#FFD700 #FFD700;
+	border-right:1px solid #FFD700;
+	border-style:none solid solid;
+	border-width:0 1px 1px;
+}
+
+/*widget guid*/
+.widget-guide H2 {
+	background:url("images/widget/bgW.gif") repeat-x scroll 0 -944px #FFEC9F;
+	color:#005CA0;
+	height:27px;
+	line-height:27px;
+}
+.widget-guide H2 SPAN.bgL {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	float:left;
+	background-position:0 -890px;
+	padding-left:16px;
+}
+.widget-guide .bgR {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	background-position:right -917px;
+	height:27px;
+}
+/*widget guide sub*/
+.widget-guide-sub H2 {
+	background:url("images/widget/bgW.gif") repeat-x scroll 0 -1034px #FFEC9F;
+	color:#333333;
+	height:27px;
+	line-height:27px;
+}
+.widget-guide-sub H2 SPAN.bgL {
+	background:url("images/widget/bgW.gif") no-repeat scroll left 0 transparent;
+	float:left;
+	background-position:0 -980px;
+	padding-left:16px;
+
+}
+.widget-guide-sub .bgR {
+	background:url("images/widget/bgW.gif") no-repeat scroll right 0 transparent;
+	background-position:right -1007px;
+	height:27px;
+}
+/*widget-plain*/
+.widget-plain{border: 1px solid #ccc;margin-bottom: 5px;}
+.widget-plain .head{background: #F6F6F6;overflow: hidden;padding: 5px;height: 20px;line-height: 20px;border-bottom: 1px solid #ccc}
+.widget-plain .head .title{font-weight: bold;color: green;float: left;}
+.widget-plain .head .more {float:right;font-weight:normal;padding-right:5px;text-align:right;width:50px;}
+.widget-plain .v-gradient-silver{
+	background: -moz-linear-gradient(center top , #FFFFFF, #F1F1F1) repeat scroll 0 0 transparent;
+	filter:alpha(opacity = 100 finishopacity = 100 style = 1 startx = 0,starty = 0,finishx = 0,finishy = 30) progid:DXImageTransform.Microsoft.gradient(startcolorstr = #ffffffff,endcolorstr = #F1F1F1,gradientType = 0); 
+}

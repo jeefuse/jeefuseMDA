@@ -1,0 +1,74 @@
+.icon-add{
+	padding-left:18px;background:url('icons/edit_add.png') no-repeat;
+}
+.icon-edit{
+	padding-left:18px;background:url('icons/pencil.png') no-repeat;
+}
+.icon-remove{
+	padding-left:18px;background:url('icons/edit_remove.png') no-repeat;
+}
+.icon-save{
+	padding-left:18px;background:url('icons/filesave.png') no-repeat;
+}
+.icon-cut{
+	padding-left:18px;background:url('icons/cut.png') no-repeat;
+}
+.icon-ok{
+	padding-left:18px;background:url('icons/ok.png') no-repeat;
+}
+.icon-no{
+	padding-left:18px;background:url('icons/no.png') no-repeat;
+}
+.icon-cancel{
+	padding-left:18px;background:url('icons/cancel.png') no-repeat;
+}
+.icon-completed{
+	padding-left:18px;background:url('icons/accept.png') no-repeat;
+}
+.icon-reload{
+	padding-left:18px;background:url('icons/reload.png') no-repeat;
+}
+.icon-search{
+	padding-left:18px;background:url('icons/search.png') no-repeat;
+}
+.icon-print{
+	padding-left:18px;background:url('icons/print.png') no-repeat;
+}
+.icon-help{
+	padding-left:18px;background:url('icons/help.png') no-repeat;
+}
+.icon-undo{
+	padding-left:18px;background:url('icons/undo.png') no-repeat;
+}
+.icon-redo{
+	padding-left:18px;background:url('icons/redo.png') no-repeat;
+}
+.icon-back{
+	padding-left:18px;background:url('icons/back.png') no-repeat;
+}
+.icon-excel-imp{
+	padding-left:18px;background:url("icons/xls.png") no-repeat transparent;height: 21px
+}
+.icon-app{padding-left:18px;background:url("icons/application_go.png") no-repeat transparent;height: 21px}
+.icon-view{padding-left:18px;background:url("icons/application.png") no-repeat transparent;height: 21px}
+.icon-process{padding-left:18px;background:url("icons/application_go.png") no-repeat transparent;height: 21px}
+.icon-delivery{padding-left:18px;background:url("icons/car.png") no-repeat transparent;height: 21px}
+.icon-excel{padding-left:18px;background:url("icons/xls.png") no-repeat transparent;height: 21px}
+.icon-excel-exp{padding-left:18px;background:url("icons/xls.png") no-repeat transparent;height: 21px}
+.icon-excel-imp{padding-left:18px;background:url("icons/xls.png") no-repeat transparent;height: 21px}
+.icon-pdf{padding-left:18px;background:url("icons/pdf.png") no-repeat transparent;height: 21px}
+.icon-add{padding-left:18px;background:url('icons/add.png') no-repeat transparent;height: 21px}
+.icon-refresh{padding-left:18px;background:url("icons/reload.png") no-repeat transparent;height: 21px}
+.icon-select{padding-left:18px;background:url('icons/accept.png') no-repeat transparent;height: 21px}
+.icon-new{padding-left:18px;background:url('icons/add.png') no-repeat transparent;height: 21px}
+.icon-gallary{padding-left:18px;background:url('icons/photo.png') no-repeat transparent;height: 21px}
+.icon-images{padding-left:18px;background:url('icons/images.png') no-repeat transparent;height: 21px}
+.icon-picture{padding-left:18px;background:url('icons/picture.png') no-repeat transparent;height: 21px}
+.icon-form-edit{padding-left:18px;background:url('icons/application_edit.png') no-repeat transparent;height: 21px}
+.icon-del{padding-left:18px;background:url('icons/delete.png') no-repeat transparent;height: 21px}
+.icon-reset{padding-left:18px;background:url('icons/arrow_redo.png') no-repeat transparent;height: 21px}
+.icon-rel{padding-left:18px;background:url('icons/table_relationship.png') no-repeat transparent;height: 21px}
+.icon-image-add{padding-left:18px;background:url('icons/image_add.png') no-repeat transparent;height: 21px}
+.icon-image-edit{padding-left:18px;background:url('icons/image_edit.png') no-repeat transparent;height: 21px}
+.icon-image-del{padding-left:18px;background:url('icons/image_delete.png') no-repeat transparent;height: 21px}
+

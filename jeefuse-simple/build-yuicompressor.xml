@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Compress JavaScript、CSS
+     ====================================================================== -->
+<project name="jeefuse-web-compressor" default="compressorJsCss" basedir=".">
+	<property file="build.properties" />
+	<property name="compress.destdir" value="${basedir}/target/compressor/dest"/>
+	<property name="compress.srcdir" value="${basedir}/webapp"/>
+	<property name="charset" value="utf-8"/>
+	<path id="build.path"></path>
+	<!--外部任务-->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${plugin-contrib-path}"/>
+		</classpath>
+	</taskdef>
+	<!--验证-->
+	<target name="init.check">
+		<condition property="init.check.run">
+			<and>
+				<available file="${compress.jar}"/>
+				<available file="${plugin-contrib-path}"/>
+				<available file="${compress.destdir}"/>
+				<available file="${compress.srcdir}"/>
+			</and>
+		</condition>
+	</target>
+	
+	<!--初始化-->
+	<target name="init" depends="init.check" if="init.check.run">
+		<echo message="init..."></echo>
+		<echo>清理目录${compress.destdir}</echo> 
+		<delete dir="${compress.destdir}"/>
+	</target>
+	
+	<!--遍例并压缩文件-->
+	<target name="doConvert">
+		<echo>复制${compress.srcdir}下的js,css文件至${compress.destdir}</echo>  
+		<copy todir="${compress.destdir}">  
+			<fileset dir="${compress.srcdir}">
+				<include name="**\\content\\**\*.js" />
+				<include name="**\\js\\**\*.js"/>
+				<include name="**\\style\\**\*.css"/>
+			</fileset>
+        </copy> 
+		<foreach param="srcFilePath" target="doConvertInner">
+			<fileset dir="${compress.destdir}">
+				<include name="**/*.js"/>
+				<include name="**/*.css"/>
+			</fileset>
+		</foreach>
+	</target>
+	<target name="doConvertInner">
+		<propertyregex override="true" property="realFileName" input="${srcFilePath}" regexp="(\w+.*\\)+(\w+.*[.]{1}\w+)" replace="\2"/>
+		<propertyregex override="true" property="realFilePath" input="${srcFilePath}" regexp="(\w+.*\\)+(\w+.*[.]{1}\w+)" replace="\1"/>
+		<echo message="${realFileName}"></echo>
+		<echo message="${realFilePath}"></echo>
+		<java jar="${compress.jar}" dir="${compress.srcdir}" failonerror="false" fork="true">
+				<arg value="${srcFilePath}"/>
+				<arg value="-o"/>
+				<arg value="${realFilePath}/${realFileName}"/>
+				<arg value="--charset"/>
+				<arg value="${compress.encoding}"/>
+				<classpath refid="build.path"></classpath>
+		</java>
+	</target>
+	
+	<!--压缩js,css文件调用-->
+	<target name="compressorJsCss" depends="init,doConvert">
+		<echo message="convert compressor Finished"></echo>
+	</target>
+	
+	<!-- 合并为goolov_comon_form_tabsNav_bgiframe_validate.js -->
+	<target name="gl_common_concat" depends="init">
+	        <concat destfile="${compress.destdir}/goolov_comon_form_tabsNav_bgiframe_validate.js" encoding="${charset}" outputencoding="${charset}">
+	            <path path="${basedir}/webapp/resources/js/goolov.common.js" />
+	            <path path="${basedir}/webapp/resources/js/form/jquery.form.js" />
+	            <path path="${basedir}/webapp/resources/js/jquery/jquery.tabsNav.js" />
+	            <path path="${basedir}/webapp/resources/js/bgiframe/jquery.bgiframe.js" />
+	            <path path="${basedir}/webapp/resources/js/validate/jquery.validate.js" />
+	            <path path="${basedir}/webapp/resources/js/validate/custom.validate.js" />
+	            <path path="${basedir}/webapp/resources/js/validate/messages_cn.js" />
+	        </concat>
+	</target>
+	<!-- 压缩成goolov_comon_form_tabsNav_bgiframe_validate.js -->
+	<target name="gl_common_compress" depends="gl_common_concat">
+	        <echo message="开始压缩${compress.destdir}/goolov_comon_form_tabsNav_bgiframe_validate.js" />
+	        <java jar="${compress.jar}" fork="true" failonerror="false">
+	            <arg line="--type js --charset ${charset} --nomunge ${compress.destdir}/goolov_comon_form_tabsNav_bgiframe_validate.js -o ${compress.destdir}/goolov_comon_form_tabsNav_bgiframe_validate.pack.js" />
+	        </java>
+	        <echo message="成功压缩为${compress.destdir}/goolov_comon_form_tabsNav_bgiframe_validate.pack.js" />
+	</target>
+
+</project>
