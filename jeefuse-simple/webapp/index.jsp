@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath()+"/config-browser/index.vhtml"); %>
+<% response.sendRedirect(request.getContextPath()+"/system/index.vhtml"); %>
