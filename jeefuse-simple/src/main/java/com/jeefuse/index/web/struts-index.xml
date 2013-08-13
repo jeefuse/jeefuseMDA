@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    
+	<package name="system_index" extends="system"  namespace="/system">
+       <default-class-ref class="com.jeefuse.index.web.action.IndexAction"/>
+        
+       <!--首页-->
+       <action name="index" method="index">
+       		<result name="success">/WEB-INF/content/index.jsp</result>
+       </action>
+       
+	</package>
+	
+</struts>
