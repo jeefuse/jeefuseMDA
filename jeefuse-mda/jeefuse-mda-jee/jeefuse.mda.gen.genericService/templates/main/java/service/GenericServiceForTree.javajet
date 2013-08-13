@@ -1,0 +1,220 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* java.util.List net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceForTree" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+String modelUncapName=clazzWrap.getUncapName();
+String modelUrlNamespace=clazzWrap.getNamespace();
+
+//rel generic service
+ClassNameDefineCommon serviceGenericDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericPackageName=serviceGenericDefine.getPackageQualifiedName();
+String modelServiceGenericClassName=serviceGenericDefine.getClassCapName();
+
+%><%@ include file="../../../Header.jetinc"%>
+package <%=modelServiceGenericPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+importManager.addImport(Config.base_ServiceGenericQualifiedName);
+String baseServiceGenericClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+String modelEntityUncapName=entityDefine.getClassUncapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldName=entityFieldDefine.getClassName();
+String modelFieldUncapName=entityFieldDefine.getClassUncapName();
+importManager.addImport(modelFieldQualifiedName);
+
+//model propertyValueGet 
+ClassNameDefineCommon propertyValueGetDefine=clazzWrap.getNameDefineEntityPropertyValueGet();
+String propertyValueGetQualifiedName=propertyValueGetDefine.getClassQualifiedName();
+String propertyValueGetName=propertyValueGetDefine.getClassName();
+importManager.addImport(propertyValueGetQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+String modelRTOName=rtoDefine.getClassCapName();
+importManager.addImport(modelRTOQualifiedName);
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> Entity CRUD service.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public interface <%=modelServiceGenericClassName%> extends <%=baseServiceGenericClassName%><<%=modelEntityName%>, <%=EntityHelper.getIDPropertyImportType(uml2Class)%>> {
+
+<%importManager.addImport("com.jeefuse.base.exception.ValidateViolationException");%>
+	/**
+	 * 验证并保存对象.
+	 * 
+	 * @generated
+	 */
+	public <%=modelEntityName%> save(<%=modelRTOName%> rto) throws ValidateViolationException;
+
+	/**
+	 * 验证并更新对象.
+	 * 
+	 * @generated
+	 */
+	public <%=modelEntityName%> update(<%=modelRTOName%> rto) throws ValidateViolationException ;
+	
+	/**
+	 * 根据属性值查找对象.
+	 * 
+	 * @generated
+	 */
+	public List<<%=modelEntityName%>> findByProperty(<%=modelFieldName%> <%=modelFieldUncapName%>, Object value);
+
+	/**
+	 * 判断属性的值是否唯一.
+	 *
+	 * @generated
+	 */
+	public boolean isPropertyUnique(<%=modelFieldName%> <%=modelFieldUncapName%>, Object newValue);
+	
+	/**
+	 * 根据请求参数查询.
+	 * 
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> find(Page<<%=modelEntityName%>> page, <%=modelRTOName%> rto, Order[] orders);
+
+<%importManager.addImport("com.jeefuse.base.web.result.ResultMsg");%>	
+	/**
+	 * 导入数据.
+ 	 * @generated
+	 */
+	public ResultMsg<<%=modelEntityName%>> <%=MethodNamedRuleKind.importDatas.getRuleNamed(uml2Class)%>(List<<%=modelEntityName%>> importList) throws Exception;
+	
+	/*****************************************************************
+	 * 树形操作
+	 ******************************************************************/
+
+	/**
+	 * 查询所有后代对象.
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findDescendant(Page<<%=modelEntityName%>> page, <%=modelRTOName%> rto, Order[] orders);
+
+	/**
+	 * 根据ID检查对象是否有子节点.
+	 * @generated
+	 */
+	public boolean hasChildren(String[] ids);
+
+	/**
+	 * 删除当前对象,同时删除下级对象.
+	 * @generated
+	 */
+	public int deleteDescendant(String[] delIds);
+
+	/**
+	 * 获取所有<%=modelEntityName%>用于构造树形结构,只获取id,parentId,displayName属性.
+	 * @generated
+	 */
+	public List<TreeViewItem> getAllForTreeview(OrderSet orderSet);
+<%importManager.addImport("com.jeefuse.base.modules.condition.order.OrderSet");%>		
+<%importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>		
+
+<%	if(KeyLabelStereotypeHelper.isApply(uml2Class)){%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		String classGetAllForKeyLabel=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.getAllForKeyLabel);%>			
+	/**
+	 * 获取所有<%=modelCommentName%>对象用于构造keyLabel,只获取key,label属性.
+	 * @generated
+	 */
+	public List<KeyLabel> <%=classGetAllForKeyLabel%>();
+<%	}%>
+<%/********process tree end********/%>
+<%/********process M2OProperty start********/%>
+<%List<Property> M2OPropertyList=EntityHelper.getAllManyToOnePropertiesAndApplyManageByProperty(uml2Class,false);%>
+<%for (Iterator<Property> iter=M2OPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<% 		//String propertyComment=TypeHelper.getDocumentationOrName(property);%>
+<%		//String propertyGet=ClassHelper.getGetAccessor(property);%>
+<% 		String propertyUncapName=NameHelper.uncapSafeName(property);%>
+<% 		String propertyName=NameHelper.getCapName(property);%>
+<%		UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(property);%>
+<%		String byPropertyValueCamelName=named.getValueName();%>
+<%		//String byPropertyValueGetAccessor=named.getValueGetAccessor();%>
+
+	/*****************************************************************
+	 * manage by <%=named.getComment()%>(<%=propertyUncapName%>)
+	 *****************************************************************/
+
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,Page<<%=modelEntityName%>> page, <%=modelRTOName%> rto, Order[] orders);
+
+
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 */
+	public List<<%=modelEntityName%>> findBy<%=propertyName%>(String <%=byPropertyValueCamelName%>);
+
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)",根据层次代码获取所有后代对象,
+	 * 
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findDescendantBy<%=propertyName%>(String <%=byPropertyValueCamelName%>, Page<<%=modelEntityName%>> page,<%=modelRTOName%> rto, Order[] orders);
+
+	/**
+	 * 保存"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	public <%=modelEntityName%> saveBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,<%=modelRTOName%> rto);
+
+	/**
+	 * 更新"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	public <%=modelEntityName%> updateBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,<%=modelRTOName%> rto);
+	
+	/**
+	 * 删除所有"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	public int deleteAllBy<%=propertyName%>(String <%=byPropertyValueCamelName%>);
+	
+	/**
+	 * 获取所有"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的<%=modelEntityName%>用于构造树形结构,只获取id,parentId,displayName属性.
+	 * 
+	 * @generated
+	 */
+	public List<<%=modelEntityName%>> getAllForTreeviewBy<%=propertyName%>(String <%=byPropertyValueCamelName%>);
+	
+	
+<%}%>
+<%/********process M2OProperty end********/%>
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,725 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service.impl" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* java.util.List net.taylor.mda.generator.parse.page.* net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceImplForTree" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+Property uml2ClassIdProperty=EntityHelper.getIDProperty(uml2Class);
+String uml2ClassIdPropertyUncapSafeName=NameHelper.uncapSafeName(uml2ClassIdProperty);
+
+//generic service impl
+ClassNameDefineCommon serviceGenericImplDefine=clazzWrap.getNameDefineServiceGenericImpl();
+String serviceGenericImplClassName=serviceGenericImplDefine.getClassCapName();
+String serviceGenericImplUncapClassName=serviceGenericImplDefine.getClassUncapName();
+String serviceGenericImplPackageName=serviceGenericImplDefine.getPackageQualifiedName();
+
+%><%@ include file="../../../../Header.jetinc"%>
+package <%=serviceGenericImplPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("org.springframework.beans.factory.annotation.Autowired");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+importManager.addImport("com.jeefuse.base.modules.condition.criteria.Condition");
+importManager.addImport("com.jeefuse.base.modules.condition.order.OrderSet");
+importManager.addImport("com.jeefuse.base.exception.AppAssert");
+importManager.addImport("org.springframework.util.Assert");
+importManager.addImport("java.util.Set");
+importManager.addImport("java.util.HashSet");
+//importManager.addImport("org.springframework.util.Assert");
+importManager.addImport(Config.base_ServiceGenericImplQualifiedName);
+String baseServiceGenericImplClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericImplQualifiedName);
+
+//base
+String baseHibernateDaoName=ImportHelper.getImportedName(Config.base_HibernateDao);
+String baseHibernateDaoUncapName=NameHelper.uncapName(baseHibernateDaoName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+String modelRTOName=rtoDefine.getClassCapName();
+importManager.addImport(modelRTOQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+String modelEntityUncapName=entityDefine.getClassUncapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldName=entityFieldDefine.getClassName();
+String modelFieldUncapName=entityFieldDefine.getClassUncapName();
+importManager.addImport(modelFieldQualifiedName);
+
+// generic service
+ClassNameDefineCommon serviceGenericDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericQualifiedName=serviceGenericDefine.getClassQualifiedName();
+String modelServiceGenericClassName=serviceGenericDefine.getClassCapName();
+importManager.addImport(modelServiceGenericQualifiedName);
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> Entity CRUD service impl.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+@<%=ImportHelper.getImportedName("org.springframework.stereotype.Service")%>(value="<%=serviceGenericImplUncapClassName%>")
+public class <%=serviceGenericImplClassName%> extends <%=baseServiceGenericImplClassName%><<%=modelEntityName%>, <%=EntityHelper.getIDPropertyImportType(uml2Class)%>> implements <%=modelServiceGenericClassName%>{
+<%	importManager.addImport("com.jeefuse.base.utils.tree.TreeLayerCodeUtil");%>
+	public final static String SERVICE_ID = "<%=serviceGenericImplUncapClassName%>";
+	private final static int LAYER_MAX_DEEP = TreeLayerCodeUtil.defaultLayerLen;
+	private static final OrderSet DEFAULT_ORDERSET = OrderSet.create(<%=modelFieldName%>.<%=OrderByHelper.getOrderField(uml2Class)%>.getFieldName(), OrderMode.<%=OrderByHelper.getOrderMode(uml2Class).toUpperCase()%>);
+
+	/** 
+	 * <%=serviceGenericImplClassName%> constructor with set <%=modelEntityName%> entity Class.
+	 * @generated 
+	 */
+	@Autowired
+	public <%=serviceGenericImplClassName%>(<%=baseHibernateDaoName%> <%=baseHibernateDaoUncapName%>) {
+		super(<%=baseHibernateDaoUncapName%>, <%=modelEntityName%>.class);
+	}
+<%//importManager.addImport("com.jeefuse.base.exception.ValidateViolationException");%>
+<%importManager.addImport("org.springframework.transaction.annotation.Transactional");%>	
+<%importManager.addImport("com.jeefuse.base.exception.DataNoExistException");%>
+<%importManager.addImport("com.jeefuse.base.exception.InvalidDataException");%>
+
+	/** @generated*/
+	@Transactional
+	@Override
+	public void save(<%=modelEntityName%> entity) {
+		if (StringUtils.isNotBlank(entity.getParentId())) {
+			<%=modelEntityName%> parent = get(entity.getParentId());
+			if (null == parent)
+				throw new DataNoExistException("上级节点不存在!");
+			if (getDeep(parent.getId()) >= LAYER_MAX_DEEP - 1)
+				throw new InvalidDataException("最大不能超过" + LAYER_MAX_DEEP + "级层次!");
+			entity.setParent(parent);
+		}
+		hibernateDao.save(entity);
+	}
+
+	/**
+	 * 保存对象.
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	public <%=modelEntityName%> save(<%=modelRTOName%> rto) {
+		<%=modelEntityName%> newModel = rto.getNewModel();
+		save(newModel);
+		return newModel;
+	}
+
+	/**
+	 * 更新对象.
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	public <%=modelEntityName%> update(<%=modelRTOName%> rto) {
+		<%=modelEntityName%> oldModel = get(rto.getId());
+		AppAssert.notNull(oldModel, "您更新的对象不存在!");
+		<%=modelEntityName%> newModel = rto.getModifiedModel(oldModel);
+		if (StringUtils.isNotBlank(newModel.getParentId())) {
+			<%=modelEntityName%> parent = get(newModel.getParentId());
+			if (null == parent)
+				throw new DataNoExistException("上级节点不存在!");
+			if (getDeep(parent.getId()) >= LAYER_MAX_DEEP - 1)
+				throw new InvalidDataException("最大不能超过" + LAYER_MAX_DEEP + "级层次!");
+		}
+		// hibernateDao.update(newModel);//in session hibernate will auto update it.
+		return newModel;
+	}
+	
+	/** @generated*/
+	@Override
+	public List<<%=modelEntityName%>> getAll(Order... orders) {
+		return super.getAll(buildOrderSet(orders).toOrderArray());
+	}
+
+<%importManager.addImport("com.jeefuse.base.modules.condition.order.OrderSet");%>
+<%importManager.addImport("com.jeefuse.base.modules.condition.order.OrderMode");%>
+	/** @generated */
+	private OrderSet buildOrderSet(Order... orders) {
+		OrderSet orderSet = null;
+		if (null == orders) {
+			orderSet = DEFAULT_ORDERSET;
+		} else {
+			orderSet = OrderSet.create(orders);
+		}
+		return orderSet;
+	}
+	
+	/** @generated*/
+	public List<<%=modelEntityName%>> findByProperty(<%=modelFieldName%> <%=modelFieldUncapName%>, Object value){
+		return findByProperty(<%=modelFieldUncapName%>.getFieldName(), value);
+	}
+
+	/** @generated*/
+	public boolean isPropertyUnique(<%=modelFieldName%> <%=modelFieldUncapName%>, Object newValue){
+		Object m = findUniqueByProperty(<%=modelFieldUncapName%>.getFieldName(), newValue);
+		return (m == null);
+	}
+	
+	/** @generated*/
+	public Page<<%=modelEntityName%>> find(Page<<%=modelEntityName%>> page, <%=modelRTOName%> rto, Order[] orders) {
+		Condition condition = Condition.and();
+<%List<Property> searchList=ViewSearchHelper.getSearchTextFieldPropertiesFromSimple(uml2Class);%>
+		if (null != rto) {
+<%if(null!=searchList&&searchList.size()>0){%>
+<%	int countNum=1;%>
+<%	for(Property searchProperty:searchList){%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(searchProperty);%>
+<%		String propertyCommentName=TypeHelper.getDocumentationOrName(searchProperty);%>
+<%/********process date property********/%>
+<%		if(TypeHelper.isDate(searchProperty)&&ViewSearchHelper.isBetweenOperator(searchProperty)){%>
+<%			//String operatorStr=ViewSearchHelper.getSearchOperator(searchProperty);%>
+<%			String searchFieldName=ViewSearchHelper.getSearchFieldName(searchProperty);%>
+<%			String searchFieldCapName=NameHelper.getCapName(searchFieldName);%>
+<%			String searchFieldTwoName=ViewSearchHelper.getSearchFieldTwoName(searchProperty);%>
+<%			String searchFieldTwoCapName=NameHelper.getCapName(searchFieldTwoName);%>
+		if (StringUtils.isNotBlank(rto.get<%=searchFieldCapName%>())) {//<%=countNum++%> <%=propertyCommentName%>
+<%		importManager.addImport("java.util.Date");%>		
+<%		importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+<%		importManager.addImport("org.apache.commons.lang.xwork.StringUtils");%>	
+			Date <%=searchFieldName%> = DateUtil.getDayStart(DateUtil.parseDate(rto.get<%=searchFieldCapName%>()));
+			condition.addGe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldName%>);
+		}
+		if (StringUtils.isNotBlank(rto.get<%=searchFieldTwoCapName%>())) {
+			Date <%=searchFieldTwoName%> = DateUtil.getDayEnd(DateUtil.parseDate(rto.get<%=searchFieldTwoCapName%>()));
+			condition.addLe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldTwoName%>);
+		}
+<%		}%>
+<%/********process common property********/%>
+<%		else{%>
+		condition.<%=ViewSearchHelper.getSearchFieldRtoCondition(searchProperty, modelFieldName, "rto")%>;//<%=countNum++%> <%=propertyCommentName%>
+<%		}%>
+<% }%>
+		}
+		return hibernateDao.find(entityClass, page, condition, orders);
+<%}else{%>
+		return hibernateDao.find(entityClass, page, condition, orders);
+<%}%>
+	}
+	
+<%importManager.addImport("com.jeefuse.base.web.result.ResultMsg");%>
+<%importManager.addImport("java.lang.StringBuilder");%>
+<%importManager.addImport("java.util.ArrayList");%>
+<%importManager.addImport("org.apache.commons.lang.xwork.StringUtils");%>
+	/** @generated */
+	@Transactional
+	public ResultMsg<<%=modelEntityName%>> <%=MethodNamedRuleKind.importDatas.getRuleNamed(uml2Class)%>(List<<%=modelEntityName%>> importList)throws Exception {
+		ResultMsg<<%=modelEntityName%>> result = new ResultMsg<<%=modelEntityName%>>();
+		if(null==importList||importList.isEmpty()){
+			result.setMessage("无记录导入");
+			return result;
+		}
+		List<<%=modelEntityName%>> addList = new ArrayList<<%=modelEntityName%>>();
+		List<<%=modelEntityName%>> updateList = new ArrayList<<%=modelEntityName%>>();
+		for (<%=modelEntityName%> <%=modelEntityUncapName%> : importList) {
+			if (StringUtils.isBlank(<%=modelEntityUncapName%>.getId())) {
+				<%=modelEntityUncapName%> .setId(null);
+				addList.add(<%=modelEntityUncapName%> );
+			} else {
+				<%=modelEntityName%> oldModel = get(<%=modelEntityUncapName%>.getId());
+				if (null == oldModel) {
+					addList.add(<%=modelEntityUncapName%>);
+				} else {
+					PropertyUtils.copyProperties(oldModel, <%=modelEntityUncapName%>);
+					updateList.add(oldModel);
+				}
+			}
+		}
+		StringBuilder msgSb = new StringBuilder("");
+		int addCount = 0;
+		if (!addList.isEmpty()) {
+			hibernateDao.save(addList);
+			addCount = addList.size();
+		}
+		int updateCount = 0;
+		if (!updateList.isEmpty()) {
+			hibernateDao.update(updateList);
+			updateCount = updateList.size();
+		}
+		msgSb.append("共成功导入" + (addCount+updateCount) + "项记录!");
+		if(addCount!=0){
+			msgSb.append(" 新增:"+addCount+"项.");
+		}
+		if(updateCount!=0){
+			msgSb.append(" 更新:"+updateCount+"项.");
+		}
+		result.setMessage(msgSb.toString());
+		return result;
+	}
+	
+	/*****************************************************************
+	 * 树形操作
+	/*****************************************************************/
+
+	/**
+	 * 根据层次代码获取所有后代对象,
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findDescendant(Page<<%=modelEntityName%>> page, <%=modelRTOQualifiedName%> rto, Order[] orders) {
+		Condition condition = Condition.and();
+		if (null != rto) {
+<%if(null!=searchList&&searchList.size()>0){%>
+<%	int countNum=1;%>
+<%	for(Property searchProperty:searchList){%>
+<%		if(TreeStereotypeHelper.isParentIdProperty(searchProperty)){%>
+<%			continue;%>
+<%		}%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(searchProperty);%>
+<%		String propertyCommentName=TypeHelper.getDocumentationOrName(searchProperty);%>
+<%/********process date property********/%>
+<%		if(TypeHelper.isDate(searchProperty)&&ViewSearchHelper.isBetweenOperator(searchProperty)){%>
+<%			//String operatorStr=ViewSearchHelper.getSearchOperator(searchProperty);%>
+<%			String searchFieldName=ViewSearchHelper.getSearchFieldName(searchProperty);%>
+<%			String searchFieldCapName=NameHelper.getCapName(searchFieldName);%>
+<%			String searchFieldTwoName=ViewSearchHelper.getSearchFieldTwoName(searchProperty);%>
+<%			String searchFieldTwoCapName=NameHelper.getCapName(searchFieldTwoName);%>
+			if (StringUtils.isNotBlank(rto.get<%=searchFieldCapName%>())) {//<%=countNum++%> <%=propertyCommentName%>
+<%			importManager.addImport("java.util.Date");%>		
+<%			importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+<%			importManager.addImport("org.apache.commons.lang.xwork.StringUtils");%>	
+				Date <%=searchFieldName%> = DateUtil.getDayStart(DateUtil.parseDate(rto.get<%=searchFieldCapName%>()));
+				condition.addGe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldName%>);
+			}
+			if (StringUtils.isNotBlank(rto.get<%=searchFieldTwoCapName%>())) {
+				Date <%=searchFieldTwoName%> = DateUtil.getDayEnd(DateUtil.parseDate(rto.get<%=searchFieldTwoCapName%>()));
+				condition.addLe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldTwoName%>);
+			}
+<%		}%>
+<%/********process common property********/%>
+<%		else{%>
+			condition.<%=ViewSearchHelper.getSearchFieldRtoCondition(searchProperty, modelFieldName, "rto")%>;//<%=countNum++%> <%=propertyCommentName%>
+<%		}%>
+<% }%>
+<%}%>
+			if (StringUtils.isNotBlank(rto.getParentId())) {
+				Set<String> idSet = getDescendantIds(rto.getParentId());
+				idSet.add(rto.getParentId());
+				condition.addin(<%=modelFieldName%>.<%=uml2ClassIdPropertyUncapSafeName%>.getFieldName(), idSet);
+			}
+		}
+		return hibernateDao.find(entityClass, page, condition, orders);
+	}
+	
+	/**
+	 * 设置<%=modelEntityUncapName%>的子节点的父节点为<%=modelEntityUncapName%>的父节点.
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	private void updateChildrenParentNode(<%=modelEntityName%> <%=modelEntityUncapName%>) {
+		List<<%=modelEntityName%>> updateList = getChildren(<%=modelEntityUncapName%>.getId());
+		if (null != updateList && !updateList.isEmpty()) {
+			for (<%=modelEntityName%> item : updateList) {
+				item.setParent(<%=modelEntityUncapName%>.getParent());
+			}
+			// hibernateDao.update(updateList);in session don't need update
+		}
+	}
+	
+	/**
+	 * 获取所有后代对象.没有后代对象则返回空
+	 * 
+	 * @param parentId
+	 *            父节点,不能为空
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public List<<%=modelEntityName%>> getDescendant(String parentId) {
+		Assert.hasText(parentId);
+		Set<String> descendantIdsList = getDescendantIds(parentId);
+		if(null!=descendantIdsList&&!descendantIdsList.isEmpty()){
+			final String hql="from <%=modelEntityName%> m where m.<%=uml2ClassIdPropertyUncapSafeName%> in(:idList)";
+			return hibernateDao.createQuery(hql).setParameterList("idList", descendantIdsList).list();
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取所有子对象.没有则返回空
+	 * 
+	 * @param parentId
+	 *            父节点,不能为空
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public List<<%=modelEntityName%>> getChildren(String parentId) {
+		Assert.hasText(parentId);
+		final String hql = "from <%=modelEntityName%> m where m.parent.id=?";
+		return hibernateDao.find(hql, parentId);
+	}
+	
+	/** @generated */
+	public boolean hasChildren(String[] ids) {
+		for (String id : ids) {
+			Condition condition = Condition.and();
+			condition.addEqIfNotBlank(<%=modelFieldName%>.parentId.getFieldName(), id);
+			long count = hibernateDao.countFind(entityClass, condition);
+			if (count > 0)
+				return true;
+		}
+		return false;
+	}
+
+
+	/** @generated */
+	@Transactional
+	@Override
+	public int delete(String... ids) {
+		int count = 0;
+		for (String id : ids) {
+			<%=modelEntityName%> model = get(id);
+			updateChildrenParentNode(model);
+			hibernateDao.delete(model);
+			count++;
+		}
+		return count;
+	}
+	
+	/** @generated */
+	@Transactional
+	public int deleteDescendant(String[] ids) {
+		Set<String> idSet = new HashSet<String>();
+		for (String id : ids) {
+			idSet.add(id);
+			Set<String> descendantIdsList = getDescendantIds(id);
+			idSet.addAll(descendantIdsList);
+		}
+		final String hql = "delete from <%=modelEntityName%> m where  m.<%=uml2ClassIdPropertyUncapSafeName%> in(:idList)";
+		int count =  hibernateDao.createQuery(hql).setParameterList("idList", idSet).executeUpdate();
+		return count;
+	}
+
+	/** @generated */
+	@SuppressWarnings("unchecked")
+	public Set<String> getDescendantIds(String parentId) {
+		Set<String> result = new HashSet<String>();
+		if(StringUtils.isBlank(parentId)){
+			final String hql = "select m.id from <%=modelEntityName%> m where m.parent.id is null";
+			List<String> idList = hibernateDao.find(hql.toString());
+			if (null != idList && !idList.isEmpty()) {
+				result.addAll(idList);
+				getDescendantIds(idList, result);
+			}
+		} else {
+			final String hql = "select m.id from <%=modelEntityName%> m where m.parent.id = ?";
+			List<String> idList = hibernateDao.find(hql.toString(), parentId);
+			if (null != idList && !idList.isEmpty()) {
+				result.addAll(idList);
+				getDescendantIds(idList, result);
+			}
+		}
+		return result;
+	}
+
+	/** @generated */
+	@SuppressWarnings("unchecked")
+	private void getDescendantIds(List<String> idList, Set<String> result) {
+		if (null != idList && !idList.isEmpty()) {
+			final String hql="select m.id from <%=modelEntityName%> m where m.parent.id in(:idList)";
+			List<String> ids=hibernateDao.createQuery(hql).setParameterList("idList", idList).list();
+			if (null != ids && !ids.isEmpty()) {
+				result.addAll(ids);
+				getDescendantIds(ids, result);
+			}
+		}
+	}
+
+	/** @generated */
+	public Set<String> getAncestorIds(String id) {
+		Assert.hasText(id, "ID不能为空");
+		Set<String> result = new HashSet<String>();
+		final String hql = "select m.parent.id from <%=modelEntityName%> m where m.id=?";
+		String parentId = (String) hibernateDao.findUnique(hql, id);
+		if (StringUtils.isNotBlank(parentId)) {
+			result.add(parentId);
+			getAncestorIds(parentId, result);
+		}
+		return result;
+	}
+
+	/** @generated */
+	private void getAncestorIds(String id, Set<String> result) {
+		Assert.hasText(id, "ID不能为空");
+		final String hql = "select m.parent.id from <%=modelEntityName%> m where m.id=?";
+		String parentId = (String) hibernateDao.findUnique(hql, id);
+		if (StringUtils.isNotBlank(parentId)) {
+			result.add(parentId);
+			getAncestorIds(parentId, result);
+		}
+	}
+
+	/**
+	 * 获取层次深度,id不能为空.
+	 * @generated
+	 */
+	public int getDeep(String id) {
+		Assert.hasText(id, "ID不能为空");
+		Set<String> ancestorIdList = getAncestorIds(id);
+		return ancestorIdList.size();
+	}
+
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+<%		Property keyProperty=TreeStereotypeHelper.getProperty_id(uml2Class);%>	
+<%		String keyPropertyName=NameHelper.uncapSafeName(keyProperty);%>
+<%		/********keyProperty accessor ********/%>
+<%		//String keyPropertyGetAccessorName=ClassHelper.getGetAccessor(keyProperty);%>	
+<%		//String keyPropertySetAccessorName="set"+ClassHelper.getAccessorName(keyProperty);%>	
+<%		Property listLabelProperty=TreeStereotypeHelper.getProperty_listLabel(uml2Class);%>			
+<%		String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>
+<%		//String listLabelPropertyGetAccessorName=ClassHelper.getGetAccessor(listLabelProperty);%>	
+<%		//Property layerCodeProperty=TreeStereotypeHelper.getProperty_layerCode(uml2Class);%>			
+<%		//String layerCodePropertyName=NameHelper.uncapSafeName(layerCodeProperty);%>
+<%		//Property parentIdProperty=TreeStereotypeHelper.getProperty_parentId(uml2Class);%>			
+<%		//String parentIdPropertyName=NameHelper.uncapSafeName(parentIdProperty);%>
+	/** @generated */
+	@SuppressWarnings("unchecked")
+	public List<TreeViewItem> getAllForTreeview(OrderSet orderSet) {
+		final String hql = "select new <%=modelEntityName%>(m.<%=keyPropertyName%>,m.<%=listLabelPropertyName%>,m.parent.<%=keyPropertyName%>) from <%=modelEntityName%> m";
+		StringBuilder selectHqlsb = new StringBuilder(hql);
+		if (null != orderSet) {
+			selectHqlsb.append(orderSet.toOrderBySql());
+		} else {
+			selectHqlsb.append(buildOrderSet().toOrderBySql());
+		}
+		return hibernateDao.createQuery(selectHqlsb.toString()).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<TreeViewItem> getChildrenForTreeview(String parentId) {
+		final String hql = "select new <%=modelEntityName%>(m.<%=keyPropertyName%>,m.<%=listLabelPropertyName%>,m.parent.<%=keyPropertyName%>) from <%=modelEntityName%> m";
+		StringBuilder hqlSb = new StringBuilder(hql);
+		if (StringUtils.isBlank(parentId)) {
+			hqlSb.append(" where m.parent is null");
+			hqlSb.append(buildOrderSet().toOrderBySql());
+			return hibernateDao.find(hqlSb.toString());
+		} else {
+			hqlSb.append(" where m.parent = ?");
+			hqlSb.append(buildOrderSet().toOrderBySql());
+			return hibernateDao.find(hqlSb.toString(), parentId);
+		}
+	}
+	
+<%	if(KeyLabelStereotypeHelper.isApply(uml2Class)){%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		String classGetAllForKeyLabel=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.getAllForKeyLabel);%>			
+<%		Property keyLable_listKeyProperty=KeyLabelStereotypeHelper.getProperty_liskKey(uml2Class);%>			
+<%		String keyLable_listKeyPropertyName=NameHelper.uncapSafeName(keyLable_listKeyProperty);%>
+<%		//String keyLable_listKeyPropertyGetAccessorName=ClassHelper.getGetAccessor(keyLable_listKeyProperty);%>	
+<%		//String keyLable_listKeyPropertySetAccessorName="set"+ClassHelper.getAccessorName(keyLable_listKeyProperty);%>	
+<%		Property keyLable_listLabelProperty=KeyLabelStereotypeHelper.getProperty_listLabel(uml2Class);%>	
+<%		String keyLable_listLabelPropertyName=NameHelper.uncapSafeName(keyLable_listLabelProperty);%>
+<%		//String keyLable_listLabelPropertyGetAccessorName=ClassHelper.getGetAccessor(keyLable_listLabelProperty);%>	
+<%		//String keyLable_listLabelPropertySetAccessorName="set"+ClassHelper.getAccessorName(keyLable_listLabelProperty);%>	
+	/**
+	 * 获取所有<%=modelCommentName%>对象用于构造keyLabel,只获取key,label属性.
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public List<KeyLabel> <%=classGetAllForKeyLabel%>(){
+		final String hql = "select new <%=modelEntityName%>(m.<%=keyLable_listKeyPropertyName%>,m.<%=keyLable_listLabelPropertyName%>) from <%=modelEntityName%> m";
+		return hibernateDao.createQuery(hql).list();
+	}
+<%	}%>
+<%/********process M2OPropertyList start********/%>	
+<%List<Property> M2OPropertyList=EntityHelper.getAllManyToOnePropertiesAndApplyManageByProperty(uml2Class,false);%>
+<%for (Iterator<Property> iter=M2OPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<% 		//String propertyComment=TypeHelper.getDocumentationOrName(property);%>
+<%		//String propertyGet=ClassHelper.getGetAccessor(property);%>
+<% 		String propertyUncapName=NameHelper.uncapSafeName(property);%>
+<% 		String propertyName=NameHelper.getCapName(property);%>
+<%		UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(property);%>
+<%		String byPropertyValue=named.getValueName();%>
+<%		String byPropertyValueCamelName=named.getValueName();%>
+<%		//String byPropertyValueGetAccessor=named.getValueGetAccessor();%>
+	
+	/*****************************************************************
+	 * manage by <%=named.getComment()%>(<%=propertyUncapName%>)
+	 *****************************************************************/
+
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,Page<<%=modelEntityName%>> page, <%=modelRTOName%> rto, Order[] orders) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		Condition condition = Condition.and();
+		condition.addEq("<%=byPropertyValue%>", <%=byPropertyValueCamelName%>);
+<%List<Property> O2MSearchList=ViewSearchHelper.getSearchTextFieldPropertiesFromSimple(uml2Class);%>
+<%if(null!=O2MSearchList&&O2MSearchList.size()>0){%>
+<%	int countNum=1;%>
+<%	for(Property searchProperty:O2MSearchList){%>
+<%		if(property.getName().equals(searchProperty.getName()))continue;%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(searchProperty);%>
+<%		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%/********process date property********/%>
+<%		if(TypeHelper.isDate(searchProperty)&&ViewSearchHelper.isBetweenOperator(searchProperty)){%>
+<%			//String operatorStr=ViewSearchHelper.getSearchOperator(searchProperty);%>
+<%			String searchFieldName=ViewSearchHelper.getSearchFieldName(searchProperty);%>
+<%			String searchFieldCapName=NameHelper.getCapName(searchFieldName);%>
+<%			String searchFieldTwoName=ViewSearchHelper.getSearchFieldTwoName(searchProperty);%>
+<%			String searchFieldTwoCapName=NameHelper.getCapName(searchFieldTwoName);%>
+		if (StringUtils.isNotBlank(rto.get<%=searchFieldCapName%>())) {//<%=countNum++%> <%=propertyCommentName%>
+<%		importManager.addImport("java.util.Date");%>		
+<%		importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+<%		importManager.addImport("org.apache.commons.lang.xwork.StringUtils");%>	
+			Date <%=searchFieldName%> = DateUtil.getDayStart(DateUtil.parseDate(rto.get<%=searchFieldCapName%>()));
+			condition.addGe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldName%>);
+		}
+		if (StringUtils.isNotBlank(rto.get<%=searchFieldTwoCapName%>())) {
+			Date <%=searchFieldTwoName%> = DateUtil.getDayEnd(DateUtil.parseDate(rto.get<%=searchFieldTwoCapName%>()));
+			condition.addLe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldTwoName%>);
+		}
+<%		}%>
+<%/********process common property********/%>
+<%		else{%>
+		condition.<%=ViewSearchHelper.getSearchFieldRtoCondition(searchProperty, modelFieldName, "rto")%>;//<%=countNum++%> <%=propertyCommentName%>
+<%		}%>
+<% }%>
+		return hibernateDao.find(entityClass, page, condition, orders);
+<%}else{%>
+		return hibernateDao.find(entityClass, page, condition, orders);
+<%}%>
+	}
+	
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 */
+	public List<<%=modelEntityName%>> findBy<%=propertyName%>(String <%=byPropertyValueCamelName%>) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		Condition condition = Condition.and();
+		condition.addEq("<%=byPropertyValue%>", <%=byPropertyValueCamelName%>);
+		return hibernateDao.find(entityClass, condition);
+	}
+
+	/**
+	 * 查询"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)",根据层次代码获取所有后代对象,
+	 * 
+	 * @generated
+	 */
+	public Page<<%=modelEntityName%>> findDescendantBy<%=propertyName%>(String <%=byPropertyValueCamelName%>, Page<<%=modelEntityName%>> page,<%=modelRTOName%> rto, Order[] orders) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		Condition condition = Condition.and();
+		condition.addEq("<%=byPropertyValue%>", <%=byPropertyValueCamelName%>);
+		if (null != rto) {
+<%if(null!=searchList&&searchList.size()>0){%>
+<%	int countNum=1;%>
+<%	for(Property searchProperty:searchList){%>
+<%		if(TreeStereotypeHelper.isParentIdProperty(searchProperty)){%>
+<%			continue;%>
+<%		}%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(searchProperty);%>
+<%		String propertyCommentName=TypeHelper.getDocumentationOrName(searchProperty);%>
+<%/********process date property********/%>
+<%		if(TypeHelper.isDate(searchProperty)&&ViewSearchHelper.isBetweenOperator(searchProperty)){%>
+<%			//String operatorStr=ViewSearchHelper.getSearchOperator(searchProperty);%>
+<%			String searchFieldName=ViewSearchHelper.getSearchFieldName(searchProperty);%>
+<%			String searchFieldCapName=NameHelper.getCapName(searchFieldName);%>
+<%			String searchFieldTwoName=ViewSearchHelper.getSearchFieldTwoName(searchProperty);%>
+<%			String searchFieldTwoCapName=NameHelper.getCapName(searchFieldTwoName);%>
+			if (StringUtils.isNotBlank(rto.get<%=searchFieldCapName%>())) {//<%=countNum++%> <%=propertyCommentName%>
+<%			importManager.addImport("java.util.Date");%>		
+<%			importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+<%			importManager.addImport("org.apache.commons.lang.xwork.StringUtils");%>	
+				Date <%=searchFieldName%> = DateUtil.getDayStart(DateUtil.parseDate(rto.get<%=searchFieldCapName%>()));
+				condition.addGe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldName%>);
+			}
+			if (StringUtils.isNotBlank(rto.get<%=searchFieldTwoCapName%>())) {
+				Date <%=searchFieldTwoName%> = DateUtil.getDayEnd(DateUtil.parseDate(rto.get<%=searchFieldTwoCapName%>()));
+				condition.addLe(<%=modelFieldName%>.<%=propertyUncapSafeName%>.getFieldName(), <%=searchFieldTwoName%>);
+			}
+<%		}%>
+<%/********process common property********/%>
+<%		else{%>
+			condition.<%=ViewSearchHelper.getSearchFieldRtoCondition(searchProperty, modelFieldName, "rto")%>;//<%=countNum++%> <%=propertyCommentName%>
+<%		}%>
+<% }%>
+<%}%>
+			if (StringUtils.isNotBlank(rto.getParentId())) {
+				Set<String> idSet = getDescendantIds(rto.getParentId());
+				condition.addin(<%=modelFieldName%>.<%=uml2ClassIdPropertyUncapSafeName%>.getFieldName(), idSet);
+			}
+		}
+		return hibernateDao.find(entityClass, page, condition, orders);
+	}
+
+	/**
+	 * 保存"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	public <%=modelEntityName%> saveBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,<%=modelRTOName%> rto) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		<%=modelEntityName%> newModel=rto.getNewModel();
+		newModel.<%=named.getSetValueMethod()%>(<%=byPropertyValueCamelName%>);
+		save(newModel);
+		return newModel;
+	}
+
+	/**
+	 * 更新"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	public <%=modelEntityName%> updateBy<%=propertyName%>(String <%=byPropertyValueCamelName%>,<%=modelRTOName%> rto) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		<%=modelEntityName%> oldModel = get(rto.getId());
+		AppAssert.notNull(oldModel, "您更新的记录不存在!");
+		<%=modelEntityName%> newModel = rto.getModifiedModel(oldModel);
+		newModel.<%=named.getSetValueMethod()%>(<%=byPropertyValueCamelName%>);
+		if (StringUtils.isNotBlank(newModel.getParentId())) {
+			<%=modelEntityName%> parent = get(newModel.getParentId());
+			if (null == parent)
+				throw new DataNoExistException("上级节点不存在!");
+			if (getDeep(parent.getId()) >= LAYER_MAX_DEEP - 1)
+				throw new InvalidDataException("最大不能超过" + LAYER_MAX_DEEP + "级层次!");
+		}
+		// hibernateDao.update(newModel);//in session hibernate will auto update it.
+		return newModel;
+	}
+	
+	/**
+	 * 删除所有"<%=named.getComment()%>(<%=propertyUncapName%>)"关联的"<%=modelCommentName%>(<%=modelEntityName%>)".
+	 * 
+	 * @generated
+	 */
+	@Transactional
+	public int deleteAllBy<%=propertyName%>(String <%=byPropertyValueCamelName%>) {
+		AppAssert.notNull(<%=byPropertyValueCamelName%>, "未指定<%=named.getComment()%>!");
+		final String hql = "delete from " + entityClass.getName() + " m where m.<%=byPropertyValue%>=?";
+		return hibernateDao.executeUpdate(hql, <%=byPropertyValueCamelName%>);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<<%=modelEntityName%>> getAllForTreeviewBy<%=propertyName%>(String <%=byPropertyValueCamelName%>) {
+		final String hql = "select new <%=modelEntityName%>(m.id,m.name,m.parent.id) from <%=modelEntityName%> m where m.<%=byPropertyValue%>=?";
+		return hibernateDao.find(hql, <%=byPropertyValueCamelName%>);
+	}
+	
+<%}%>
+<%/********process M2OPropertyList end********/%>	
+	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

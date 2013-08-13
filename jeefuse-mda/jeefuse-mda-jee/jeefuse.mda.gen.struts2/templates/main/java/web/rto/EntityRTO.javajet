@@ -1,0 +1,519 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.rto" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.page.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List net.taylor.mda.generator.parse.entity.* org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityRTO" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOPackageName=rtoDefine.getPackageQualifiedName();
+String modelRTOClassName=rtoDefine.getClassCapName();
+%>
+<%@ include file="../../../../Header.jetinc"%>
+package <%=modelRTOPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//add imports
+importManager.addImport(Config.base_GenericRTO);
+importManager.addImport("java.io.Serializable");
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> Entity RTO(Request transfer object).
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=modelRTOClassName%> implements GenericRTO<<%=modelEntityName%>>, Serializable{
+	/** @generated */
+	private static final long serialVersionUID = 1L;
+<%
+Property idProperty=EntityHelper.getIDProperty(uml2Class);
+List<Property> listProperty=EntityHelper.getAllPropertyExcluedIdProperty(uml2Class);
+%>
+	/**
+	 * ------------------------------------------------------------------------
+	 * <%=TypeHelper.getDocumentationOrName(idProperty)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	public <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=ClassHelper.getGetAccessor(idProperty)%>() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+
+	/** @generated */
+	public void set<%=ClassHelper.getAccessorName(idProperty)%>(final <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=NameHelper.uncapSafeName(idProperty)%>) {
+		this.<%=NameHelper.uncapSafeName(idProperty)%> = <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+	
+	/** @generated */
+	private <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=NameHelper.uncapSafeName(idProperty)%> = <%=TypeHelper.getDefaultValue(idProperty)%>;
+<%if(!idProperty.getName().equals("id")){%>
+
+	/** @generated */
+	public String getId() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+	
+	/** @generated */
+	public void setId(final String id) {
+		this.<%=NameHelper.uncapSafeName(idProperty)%> = id;
+	}
+<%}%>	
+<%for (Iterator<Property> i=listProperty.iterator(); i.hasNext();) { Property property = (Property)i.next();%>
+<%if (property.getType() !=null) {%>
+
+	/**
+	 * ------------------------------------------------------------------------
+	 * <%=TypeHelper.getDocumentationOrName(property)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	public <%=MdaHelper.getImportedFeatureType(property)%> <%=ClassHelper.getGetAccessor(property)%>() {
+<%	if (property.getAssociation() != null && property.isMultivalued()) {%>
+		if (this.<%=NameHelper.uncapSafeName(property)%> == null) {
+<%			if (property.getOpposite() == null || property.getOpposite().isMultivalued()) {%>
+<%			importManager.addImport("java.util.HashSet");%>
+			this.<%=NameHelper.uncapSafeName(property)%> = new HashSet<<%=MdaHelper.getImportedType(property.getType())%>>();
+<%			} else {%>
+<%				importManager.addImport("java.util.ArrayList");%>
+			this.<%=NameHelper.uncapSafeName(property)%> = new ArrayList<<%=MdaHelper.getImportedType(property.getType())%>>();
+<%			}%>
+		}
+<%	}%>
+<%	else if (ClassHelper.isComposite(property)||ClassHelper.isOneToOne(property)||ClassHelper.isManyToOne(property)) {%>
+		if (this.<%=NameHelper.uncapSafeName(property)%> == null) {
+			this.<%=NameHelper.uncapSafeName(property)%> = new <%=MdaHelper.getImportedType(property.getType())%>();        
+		}
+<%	}%>
+		return <%=NameHelper.uncapSafeName(property)%>;
+	}
+
+	/** @generated */
+	public void set<%=ClassHelper.getAccessorName(property)%>(final <%=MdaHelper.getImportedFeatureType(property)%> <%=NameHelper.uncapSafeName(property)%>) {
+		this.<%=NameHelper.uncapSafeName(property)%> = <%=NameHelper.uncapSafeName(property)%>;
+	}
+	
+	/** @generated */
+	private <%=MdaHelper.getImportedFeatureType(property)%> <%=NameHelper.uncapSafeName(property)%> = <%=TypeHelper.getDefaultValue(property)%>;
+<%/**********************************************************
+   process date
+<%*********************************************************/%>
+<%	if(TypeHelper.isDate(property)){%>
+<%		//String propertyName=NameHelper.uncapSafeName(property);%>
+<%		String propertyToDateTimeCapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleCapNamed(property);%>
+<%		String propertyToDateTimeUncapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleUnCapNamed(property);%>
+<%		//importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+	
+	/**
+	 * convert to date string for <%=TypeHelper.getDocumentationOrName(property)%>
+	 * @generated
+	 */
+	public String get<%=propertyToDateTimeCapName%>() {
+		return <%=propertyToDateTimeUncapName%>;
+	}
+	
+	/** @generated */
+	public void set<%=propertyToDateTimeCapName%>(final String <%=propertyToDateTimeUncapName%>) {
+		this.<%=propertyToDateTimeUncapName%> = <%=propertyToDateTimeUncapName%>;
+	}
+	
+	/** @generated */
+	private String <%=propertyToDateTimeUncapName%>;
+<%	}%>
+	
+<%//process search%>
+<%	if(ViewSearchHelper.isSearch(property)){%>
+<%		String searchName=ViewSearchHelper.getSearchFieldName(property);%>
+<%		String searchCapName=NameHelper.getCapName(searchName);%>
+<%	if(!ViewSearchHelper.isSearchFieldMatchPropertyName(property)){%>
+<%		String SearchFieldLabel=ViewSearchHelper.getSearchFieldLabel(property);%>
+
+	/**
+	 * search <%=SearchFieldLabel%> for <%=TypeHelper.getDocumentationOrName(property)%>
+	 * @generated
+	 */
+	public String get<%=searchCapName%>() {
+		return <%=searchName%>;
+	}
+	
+	/** @generated */
+	public void set<%=searchCapName%>(final String <%=searchName%>) {
+		this.<%=searchName%> = <%=searchName%>;
+	}
+	
+	/** @generated */
+	private String <%=searchName%> = null;
+<%	}%>	
+<%	if(ViewSearchHelper.hasSearchFieldTwoName(property)){%>
+<%		String searchTwoName=ViewSearchHelper.getSearchFieldTwoName(property);%>
+<%		String searchTwoCapName=NameHelper.getCapName(searchTwoName);%>
+	
+	/**
+	 * search field two for <%=TypeHelper.getDocumentationOrName(property)%>
+	 * @generated
+	 */
+	public String get<%=searchTwoCapName%>() {
+		return <%=searchTwoName%>;
+	}
+	
+	/** @generated */
+	public void set<%=searchTwoCapName%>(final String <%=searchTwoName%>) {
+		this.<%=searchTwoName%> = <%=searchTwoName%>;
+	}
+	
+	/** @generated */
+	private String <%=searchTwoName%> = null;
+<%	}%>
+<%	}%>
+<%}%>
+<%}%>
+
+
+	// ------------------------------------------------------------------------
+	// RTO <==> model convert 
+	// ------------------------------------------------------------------------
+	
+	/**
+	 * 从请求中构造要更新的实体对象.
+	 * @generated
+	 */
+	public <%=modelEntityName%> getModifiedModel(<%=modelEntityName%> oldModel) {
+<%int codifiedModelCount=1;%>
+<%/********process simple property start********/%>	
+<%List<Property> simpleList=ViewInputHelper.getViewInputPropertiesForSimple(uml2Class);%>
+<%for (Iterator<Property> i=simpleList.iterator(); i.hasNext();) { %>
+<%	Property property = (Property)i.next();%>
+<%	String propertyName=NameHelper.uncapSafeName(property);%>
+<%	//String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%	boolean isComment=false;%>
+<%	if(!ViewInputHelper.isViewInput(property)||ViewInputHelper.isViewInput_readonly(property)){%>
+<%		isComment=true;%>
+<%	}%>
+<%	//process id%>
+<%	if(EntityHelper.isIDProperty(property)){%>
+<%		if(EntityHelper.isIDUUID(property)){%>
+		//oldModel.setId(this.<%=propertyName%>);//<%=propertyName%> <%=codifiedModelCount++%>
+<%		}else if(EntityHelper.isIDAssign(idProperty)){%>
+		oldModel.setId(this.<%=propertyName%>);//<%=propertyName%> <%=codifiedModelCount++%>
+<%		}else{%>
+		<%if(isComment){%>//<%}%>oldModel.set<%=ClassHelper.getAccessorName(idProperty)%>(this.<%=propertyName%>);//<%=propertyName%> <%=codifiedModelCount++%>
+<%		}%>
+<%	}else if(property.getType() !=null) {%>
+<%		String name = property.getName();%>
+<%		if (name.equalsIgnoreCase("createTime")||name.equalsIgnoreCase("createDate")){%>
+		//oldModel.set<%=ClassHelper.getAccessorName(property)%>(new <%=ImportHelper.getImportedName("java.util.Date")%>());//<%=codifiedModelCount++%> <%=TypeHelper.getDocumentationOrName(property)%>
+<%		}else if (name.equalsIgnoreCase("updateTime")||name.equalsIgnoreCase("updateDate")){%>
+		oldModel.set<%=ClassHelper.getAccessorName(property)%>(new <%=ImportHelper.getImportedName("java.util.Date")%>());//<%=codifiedModelCount++%> <%=TypeHelper.getDocumentationOrName(property)%>
+<%		}else{%>
+		<%if(isComment){%>//<%}%>oldModel.set<%=ClassHelper.getAccessorName(property)%>(this.<%=propertyName%>);//<%=codifiedModelCount++%> <%=TypeHelper.getDocumentationOrName(property)%>
+<%		}%>
+<% 	}%>
+<%}%>
+<%/********process simple property end********/%>	
+<%/********process o2oPropertyList start********/%>
+<%List<Property> o2oPropertyList=EntityHelper.getAllOneToOneProperties(uml2Class,false);%>
+<%for (Iterator<Property> iter=o2oPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<%		//String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(!ViewInputHelper.isViewInput(property)||ViewInputHelper.isApplyO2OSelect(property)||ViewInputHelper.isApplyO2OSelectPage(property)){%>
+<%			if(ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%><%if(!ViewInputHelper.isViewInput(property)){%>//<%}%>oldModel.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=codifiedModelCount++%> //rel oto <%=relTargetClassCommentName%>
+<%}%>
+<%/********process o2oPropertyList end********/%>
+<%/********process m2oPropertyList start********/%>
+<%List<Property> m2oPropertyList=EntityHelper.getAllManyToOneProperties(uml2Class,false);%>
+<%for (Iterator<Property> iter=m2oPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String relPropertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)||ViewInputHelper.isApplyM2OSelect(property)||ViewInputHelper.isApplyM2OSelectPage(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>oldModel.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=codifiedModelCount++%> rel m2o <%=relTargetClassCommentName%>
+<%}%>
+<%/********process m2oPropertyList end********/%>
+<%/********process otmProperties start********/%>
+<%List<Property> otmProperties=EntityHelper.getAllOneToManyProperties(uml2Class,false);%>
+<%for (Iterator<Property> iter=otmProperties.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String relPropertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>oldModel.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=codifiedModelCount++%> rel otm <%=relTargetClassCommentName%>
+<%}%>
+<%/********process otmProperties end********/%>
+<%/********process mtmProperties start********/%>
+<%List<Property> mtmProperties=EntityHelper.getAllManyToManyProperties(uml2Class,false);%>
+<%for (Iterator<Property> iter=mtmProperties.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String relPropertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>oldModel.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=codifiedModelCount++%> rel mtm <%=relTargetClassCommentName%>
+<%}%>
+<%/********process mtmProperties end********/%>
+		return oldModel;
+	}
+
+	/**
+	 *从请求中构造要保存的实体对象.
+	 * @generated
+	 */
+	public <%=modelEntityName%> getNewModel() {
+		<%=modelEntityName%> new<%=modelEntityName%>=new <%=modelEntityName%>();
+<%int newModelCount=1;%>
+<%/********process simple property start********/%>	
+<%for (Iterator<Property> i=simpleList.iterator(); i.hasNext();) { %>
+<%	Property property = (Property)i.next();%>
+<%	String name = property.getName();%>
+<%	String propertyName=NameHelper.uncapSafeName(property);%>
+<%	String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<% 	String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%	boolean isComment=false;%>
+<%	if(!ViewInputHelper.isViewInput(property)||ViewInputHelper.isViewInput_readonly(property)){%>
+<%		isComment=true;%>
+<%	}%>
+<%	//process id%>
+<%	if(EntityHelper.isIDProperty(property)){%>
+<%		if(EntityHelper.isIDUUID(property)){%>
+		//new<%=modelEntityName%>.setId(this.<%=propertyName%>);//id auto generated <%=newModelCount++%>
+<%		}else if(EntityHelper.isIDAssign(idProperty)){%>
+		new<%=modelEntityName%>.setId(this.<%=propertyName%>);//id <%=newModelCount++%>
+<%		}else{%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=ClassHelper.getAccessorName(idProperty)%>(this.<%=propertyName%>);//id <%=newModelCount++%>
+<%		}%>
+<%	}else if(property.getType() !=null) {%>
+<%		if (name.equalsIgnoreCase("createTime") ||name.equalsIgnoreCase("createDate")){%>
+		new<%=modelEntityName%>.set<%=propertyAccessorName%>(new <%=ImportHelper.getImportedName("java.util.Date")%>());//<%=newModelCount++%> <%=propertyCommentName%>
+<%		}else if(name.equalsIgnoreCase("updateTime") || name.equalsIgnoreCase("updateDate")){%>
+		new<%=modelEntityName%>.set<%=propertyAccessorName%>(new <%=ImportHelper.getImportedName("java.util.Date")%>());//<%=newModelCount++%> <%=propertyCommentName%>
+<%		}else{%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=newModelCount++%> <%=propertyCommentName%>
+<%		}%>
+<% 	}%>
+<%}%>
+<%/********process o2oPropertyList start********/%>
+<%for (Iterator<Property> iter=o2oPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(!ViewInputHelper.isViewInput(property)||ViewInputHelper.isApplyO2OSelect(property)||ViewInputHelper.isApplyO2OSelectPage(property)){%>
+<%			if(ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=newModelCount++%> rel oto <%=relTargetClassCommentName%>
+<%}%>
+<%/********process o2oPropertyList end********/%>
+<%/********process m2oPropertyList start********/%>
+<%for (Iterator<Property> iter=m2oPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)||ViewInputHelper.isApplyM2OSelect(property)||ViewInputHelper.isApplyM2OSelectPage(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=newModelCount++%> rel m2o <%=relTargetClassCommentName%>
+<%}%>
+<%/********process m2oPropertyList end********/%>
+<%/********process otmProperties start********/%>
+<%for (Iterator<Property> iter=otmProperties.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<% 		//String relPropertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=newModelCount++%> rel otm <%=relTargetClassCommentName%>
+<%}%>
+<%/********process otmProperties end********/%>
+<%/********process mtmProperties start********/%>
+<%for (Iterator<Property> iter=mtmProperties.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%		String propertyAccessorName=ClassHelper.getAccessorName(property);%>
+<% 		//String relPropertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String relPropertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type relPropertyType=property.getType();%>
+<%		Class relTargetClass=(Class)relPropertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);%>
+<%		//String relTargetClassEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);%>
+<%		//String relTargetClassEntityUncapName=NameHelper.uncapName(modelEntityName);%>
+<%		//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		//model get Accessor%>
+<%		//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		boolean isComment=true;%>
+<%		if(ViewInputHelper.isViewInput(property)){%>
+<%			if(!ViewInputHelper.isViewInput_readonly(property)){%>
+<%					isComment=false;%>
+<%			}%>
+<%		}%>
+		<%if(isComment){%>//<%}%>new<%=modelEntityName%>.set<%=propertyAccessorName%>(this.<%=propertyName%>);//<%=newModelCount++%> rel mtm <%=relTargetClassCommentName%>
+<%}%>
+<%/********process mtmProperties end********/%>
+		return new<%=modelEntityName%>;
+	}
+
+	/**
+	 * 用实体对象填充数据.
+	 * @generated
+	 */
+	public void setModel(<%=modelEntityName%> model) {
+<%int setModelCount=1;%>
+		this.setId(model.<%=ClassHelper.getGetAccessor(idProperty)%>());//id <%=setModelCount++%>
+<%for(Iterator<Property> i=listProperty.iterator(); i.hasNext();) { %>
+<%	Property property = (Property)i.next();%>
+<%	if (property.getType() !=null) {%>
+		this.set<%=ClassHelper.getAccessorName(property)%>(model.<%=ClassHelper.getGetAccessor(property)%>());//<%=setModelCount++%> <%=TypeHelper.getDocumentationOrName(property)%>
+<%	}%>
+<%}%>
+	}
+	
+	// ------------------------------------------------------------------------
+	// Utils
+	// ------------------------------------------------------------------------
+<%
+	//@Override
+	//public String toString() {
+	//	return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	//}
+%>
+
+<%importManager.addImport("org.apache.commons.lang.builder.ToStringBuilder");%>
+<%importManager.addImport("org.apache.commons.lang.builder.ToStringStyle");%>
+	/** @generated */
+	@Override
+	public String toString() {
+		return <%=GenHelper.genEntityToStringBuilder(uml2Class)%>;
+	}
+
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

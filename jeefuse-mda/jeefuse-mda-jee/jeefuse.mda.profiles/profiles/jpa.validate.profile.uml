@@ -1,0 +1,1524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_T46YUGPlEd-bgM56_OkSyg" name="jpa.validate.profile.uml" metaclassReference="_T_xOQGPlEd-bgM56_OkSyg _T_6YM2PlEd-bgM56_OkSyg _T_6YN2PlEd-bgM56_OkSyg _UAzwZmPlEd-bgM56_OkSyg _UA9hEWPlEd-bgM56_OkSyg">
+  <eAnnotations xmi:id="_UBjW8GPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_UBjW8WPlEd-bgM56_OkSyg" name="jpavalidateprofileuml" nsURI="http:///schemas/jpavalidateprofileuml/_UBZl8GPlEd-bgM56_OkSyg/0" nsPrefix="jpavalidateprofileuml">
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_UBjW8mPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsPattern$Flag">
+        <eAnnotations xmi:id="_UBjW82PlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T5XEQGPlEd-bgM56_OkSyg"/>
+        <eLiterals xmi:id="_UBjW9GPlEd-bgM56_OkSyg" name="UNIX_LINES"/>
+        <eLiterals xmi:id="_UBjW9WPlEd-bgM56_OkSyg" name="CASE_INSENSITIVE" value="1"/>
+        <eLiterals xmi:id="_UBjW9mPlEd-bgM56_OkSyg" name="COMMENTS" value="2"/>
+        <eLiterals xmi:id="_UBjW92PlEd-bgM56_OkSyg" name="MULTILINE" value="3"/>
+        <eLiterals xmi:id="_UBjW-GPlEd-bgM56_OkSyg" name="DOTALL" value="4"/>
+        <eLiterals xmi:id="_UBjW-WPlEd-bgM56_OkSyg" name="UNICODE_CASE" value="5"/>
+        <eLiterals xmi:id="_UBjW-mPlEd-bgM56_OkSyg" name="CANON_EQ" value="6"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_UBjW-2PlEd-bgM56_OkSyg" name="javaxvalidationmetadataScope">
+        <eAnnotations xmi:id="_UBjW_GPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T5p_MGPlEd-bgM56_OkSyg"/>
+        <eLiterals xmi:id="_UBjW_WPlEd-bgM56_OkSyg" name="LOCAL_ELEMENT"/>
+        <eLiterals xmi:id="_UBjW_mPlEd-bgM56_OkSyg" name="HIERARCHY" value="1"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjW_2PlEd-bgM56_OkSyg" name="javaxvalidationConstraint">
+        <eAnnotations xmi:id="_UBjXAGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T5zwMGPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXAWPlEd-bgM56_OkSyg" name="validatedBy" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXA2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsAssertFalse$List">
+        <eAnnotations xmi:id="_UBjXBGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T8MV0GPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXBWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXB2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXCWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXC2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXDWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsAssertFalse">
+        <eAnnotations xmi:id="_UBjXDmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T_6YO2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXD2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXEWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXE2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXFWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXF2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXGWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXG2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsAssertTrue$List">
+        <eAnnotations xmi:id="_UBjXHGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T_6YTmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXHWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXH2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXIWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXI2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXJWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsAssertTrue">
+        <eAnnotations xmi:id="_UBjXJmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_T_6YW2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXJ2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXKWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXK2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXLWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXL2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXMWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXM2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDecimalMax$List">
+        <eAnnotations xmi:id="_UBjXNGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAEJMGPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXNWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXN2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXOWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXO2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXPWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDecimalMax">
+        <eAnnotations xmi:id="_UBjXPmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAEJPWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXP2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXQWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXQ2PlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXRWPlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXR2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXSWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXS2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXTWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDecimalMin$List">
+        <eAnnotations xmi:id="_UBjXTmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAEJU2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXT2PlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXUWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXU2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXVWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXV2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDecimalMin">
+        <eAnnotations xmi:id="_UBjXWGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAEJYGPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXWWPlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXW2PlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXXWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXX2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXYWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXY2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXZWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXZ2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDigits$List">
+        <eAnnotations xmi:id="_UBjXaGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAEJdmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXaWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXa2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXbWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXb2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXcWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsDigits">
+        <eAnnotations xmi:id="_UBjXcmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UANTI2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXc2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXdWPlEd-bgM56_OkSyg" name="fraction" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXd2PlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXeWPlEd-bgM56_OkSyg" name="integer" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXe2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXfWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXf2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXgWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXg2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsFuture$List">
+        <eAnnotations xmi:id="_UBjXhGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UANTPWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXhWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXh2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXiWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXi2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXjWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsFuture">
+        <eAnnotations xmi:id="_UBjXjmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UANTSmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXj2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXkWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXk2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXlWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXl2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXmWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXm2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsMax$List">
+        <eAnnotations xmi:id="_UBjXnGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UANTXWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXnWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXn2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXoWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXo2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXpWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsMax">
+        <eAnnotations xmi:id="_UBjXpmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAXEI2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXp2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXqWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXq2PlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXrWPlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXr2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXsWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXs2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXtWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsMin$List">
+        <eAnnotations xmi:id="_UBjXtmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAg1MmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXt2PlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXuWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXu2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXvWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXv2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsMin">
+        <eAnnotations xmi:id="_UBjXwGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAg1P2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXwWPlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXw2PlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXxWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjXx2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXyWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXy2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjXzWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjXz2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsNotNull$List">
+        <eAnnotations xmi:id="_UBjX0GPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_GWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX0WPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX02PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX1WPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX12PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjX2WPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsNotNull">
+        <eAnnotations xmi:id="_UBjX2mPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_JmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX22PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX3WPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX32PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX4WPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX42PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX5WPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjX52PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsNull$List">
+        <eAnnotations xmi:id="_UBjX6GPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_OWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX6WPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX62PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX7WPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX72PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjX8WPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsNull">
+        <eAnnotations xmi:id="_UBjX8mPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_RmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX82PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX9WPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjX92PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX-WPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX-2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjX_WPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjX_2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsPast$List">
+        <eAnnotations xmi:id="_UBjYAGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_WWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYAWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYA2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYBWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYB2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYCWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsPast">
+        <eAnnotations xmi:id="_UBjYCmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAp_ZmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYC2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYDWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYD2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYEWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYE2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYFWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYF2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsPattern$List">
+        <eAnnotations xmi:id="_UBjYGGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAzwFmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYGWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYG2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYHWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYH2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYIWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsPattern">
+        <eAnnotations xmi:id="_UBjYImPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAzwI2PlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYI2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYJWPlEd-bgM56_OkSyg" name="flags" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYJ2PlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYKWPlEd-bgM56_OkSyg" name="regexp" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYK2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYLWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYL2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYMWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYM2PlEd-bgM56_OkSyg" name="javaxvalidationconstraintsSize$List">
+        <eAnnotations xmi:id="_UBjYNGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAzwPGPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYNWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYN2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYOWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYO2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYPWPlEd-bgM56_OkSyg" name="javaxvalidationconstraintsSize">
+        <eAnnotations xmi:id="_UBjYPmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAzwSWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYP2PlEd-bgM56_OkSyg" name="groups" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYQWPlEd-bgM56_OkSyg" name="min" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYQ2PlEd-bgM56_OkSyg" name="max" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYRWPlEd-bgM56_OkSyg" name="message" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYR2PlEd-bgM56_OkSyg" name="payload" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYSWPlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYS2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYTWPlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYT2PlEd-bgM56_OkSyg" name="javaxvalidationGroupSequence">
+        <eAnnotations xmi:id="_UBjYUGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UAzwYmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYUWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYU2PlEd-bgM56_OkSyg" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYVWPlEd-bgM56_OkSyg" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYV2PlEd-bgM56_OkSyg" name="javaxvalidationOverridesAttribute$List">
+        <eAnnotations xmi:id="_UBjYWGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UA9hFWPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYWWPlEd-bgM56_OkSyg" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYW2PlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYXWPlEd-bgM56_OkSyg" name="javaxvalidationOverridesAttribute">
+        <eAnnotations xmi:id="_UBjYXmPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UA9hHGPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYX2PlEd-bgM56_OkSyg" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYYWPlEd-bgM56_OkSyg" name="constraint" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBjYY2PlEd-bgM56_OkSyg" name="constraintIndex" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYZWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYZ2PlEd-bgM56_OkSyg" name="javaxvalidationReportAsSingleViolation">
+        <eAnnotations xmi:id="_UBjYaGPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UA9hKWPlEd-bgM56_OkSyg"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBjYaWPlEd-bgM56_OkSyg" name="javaxvalidationValid">
+        <eAnnotations xmi:id="_UBjYamPlEd-bgM56_OkSyg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UA9hKmPlEd-bgM56_OkSyg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYa2PlEd-bgM56_OkSyg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYbWPlEd-bgM56_OkSyg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBjYb2PlEd-bgM56_OkSyg" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_T7cIJGPlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_T_xOQGPlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_T_6YM2PlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+  </elementImport>
+  <elementImport xmi:id="_T_6YN2PlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+  </elementImport>
+  <elementImport xmi:id="_UANTJ2PlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_UAzwZmPlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_UA9hEWPlEd-bgM56_OkSyg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_T5XEQGPlEd-bgM56_OkSyg" name="javax.validation.constraints.Pattern$Flag">
+    <ownedLiteral xmi:id="_T5gOMGPlEd-bgM56_OkSyg" name="UNIX_LINES"/>
+    <ownedLiteral xmi:id="_T5gOMWPlEd-bgM56_OkSyg" name="CASE_INSENSITIVE"/>
+    <ownedLiteral xmi:id="_T5gOMmPlEd-bgM56_OkSyg" name="COMMENTS"/>
+    <ownedLiteral xmi:id="_T5gOM2PlEd-bgM56_OkSyg" name="MULTILINE"/>
+    <ownedLiteral xmi:id="_T5gONGPlEd-bgM56_OkSyg" name="DOTALL"/>
+    <ownedLiteral xmi:id="_T5gONWPlEd-bgM56_OkSyg" name="UNICODE_CASE"/>
+    <ownedLiteral xmi:id="_T5gONmPlEd-bgM56_OkSyg" name="CANON_EQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_T5p_MGPlEd-bgM56_OkSyg" name="javax.validation.metadata.Scope">
+    <ownedLiteral xmi:id="_T5p_MWPlEd-bgM56_OkSyg" name="LOCAL_ELEMENT"/>
+    <ownedLiteral xmi:id="_T5p_MmPlEd-bgM56_OkSyg" name="HIERARCHY"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_T5zwMGPlEd-bgM56_OkSyg" name="javax.validation.Constraint">
+    <ownedAttribute xmi:id="_T74z0GPlEd-bgM56_OkSyg" name="validatedBy">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T74z0mPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T74z0WPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_T8MV0GPlEd-bgM56_OkSyg" name="javax.validation.constraints.AssertFalse$List">
+    <ownedAttribute xmi:id="_T8MV0WPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T8MV02PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T8MV0mPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YMmPlEd-bgM56_OkSyg" name="base_Property" association="_T_6YMGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YNmPlEd-bgM56_OkSyg" name="base_Operation" association="_T_6YNGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YOmPlEd-bgM56_OkSyg" name="base_Parameter" association="_T_6YOGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YMGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.AssertFalse$List" memberEnd="_T_6YMWPlEd-bgM56_OkSyg _T_6YMmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YMWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse$List" type="_T8MV0GPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YMGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YNGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.AssertFalse$List" memberEnd="_T_6YNWPlEd-bgM56_OkSyg _T_6YNmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YNWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse$List" type="_T8MV0GPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YNGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YOGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.AssertFalse$List" memberEnd="_T_6YOWPlEd-bgM56_OkSyg _T_6YOmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YOWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse$List" type="_T8MV0GPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YOGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_T_6YO2PlEd-bgM56_OkSyg" name="javax.validation.constraints.AssertFalse">
+    <ownedAttribute xmi:id="_T_6YPGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YPmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YPWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YP2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YQWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YQGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YQmPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YRGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YQ2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YR2PlEd-bgM56_OkSyg" name="base_Property" association="_T_6YRWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YSmPlEd-bgM56_OkSyg" name="base_Operation" association="_T_6YSGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YTWPlEd-bgM56_OkSyg" name="base_Parameter" association="_T_6YS2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YRWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.AssertFalse" memberEnd="_T_6YRmPlEd-bgM56_OkSyg _T_6YR2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YRmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse" type="_T_6YO2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YRWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YSGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.AssertFalse" memberEnd="_T_6YSWPlEd-bgM56_OkSyg _T_6YSmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YSWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse" type="_T_6YO2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YSGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YS2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.AssertFalse" memberEnd="_T_6YTGPlEd-bgM56_OkSyg _T_6YTWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YTGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertFalse" type="_T_6YO2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YS2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_T_6YTmPlEd-bgM56_OkSyg" name="javax.validation.constraints.AssertTrue$List">
+    <ownedAttribute xmi:id="_T_6YT2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YUWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YUGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YVGPlEd-bgM56_OkSyg" name="base_Property" association="_T_6YUmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YV2PlEd-bgM56_OkSyg" name="base_Operation" association="_T_6YVWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YWmPlEd-bgM56_OkSyg" name="base_Parameter" association="_T_6YWGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YUmPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.AssertTrue$List" memberEnd="_T_6YU2PlEd-bgM56_OkSyg _T_6YVGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YU2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue$List" type="_T_6YTmPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YUmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YVWPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.AssertTrue$List" memberEnd="_T_6YVmPlEd-bgM56_OkSyg _T_6YV2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YVmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue$List" type="_T_6YTmPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YVWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YWGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.AssertTrue$List" memberEnd="_T_6YWWPlEd-bgM56_OkSyg _T_6YWmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YWWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue$List" type="_T_6YTmPlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YWGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_T_6YW2PlEd-bgM56_OkSyg" name="javax.validation.constraints.AssertTrue">
+    <ownedAttribute xmi:id="_T_6YXGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YXmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YXWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YX2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YYWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YYGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YYmPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T_6YZGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T_6YY2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YZ2PlEd-bgM56_OkSyg" name="base_Property" association="_T_6YZWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YamPlEd-bgM56_OkSyg" name="base_Operation" association="_T_6YaGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_T_6YbWPlEd-bgM56_OkSyg" name="base_Parameter" association="_T_6Ya2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YZWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.AssertTrue" memberEnd="_T_6YZmPlEd-bgM56_OkSyg _T_6YZ2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YZmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue" type="_T_6YW2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YZWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6YaGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.AssertTrue" memberEnd="_T_6YaWPlEd-bgM56_OkSyg _T_6YamPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YaWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue" type="_T_6YW2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6YaGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T_6Ya2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.AssertTrue" memberEnd="_T_6YbGPlEd-bgM56_OkSyg _T_6YbWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T_6YbGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.AssertTrue" type="_T_6YW2PlEd-bgM56_OkSyg" aggregation="composite" association="_T_6Ya2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAEJMGPlEd-bgM56_OkSyg" name="javax.validation.constraints.DecimalMax$List">
+    <ownedAttribute xmi:id="_UAEJMWPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJM2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJMmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJNmPlEd-bgM56_OkSyg" name="base_Property" association="_UAEJNGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJOWPlEd-bgM56_OkSyg" name="base_Operation" association="_UAEJN2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJPGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAEJOmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJNGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.DecimalMax$List" memberEnd="_UAEJNWPlEd-bgM56_OkSyg _UAEJNmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJNWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax$List" type="_UAEJMGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJNGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJN2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.DecimalMax$List" memberEnd="_UAEJOGPlEd-bgM56_OkSyg _UAEJOWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJOGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax$List" type="_UAEJMGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJN2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJOmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.DecimalMax$List" memberEnd="_UAEJO2PlEd-bgM56_OkSyg _UAEJPGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJO2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax$List" type="_UAEJMGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJOmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAEJPWPlEd-bgM56_OkSyg" name="javax.validation.constraints.DecimalMax">
+    <ownedAttribute xmi:id="_UAEJPmPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJQGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJP2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJQWPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJQ2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJQmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJRGPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJRmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJRWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJR2PlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJSWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJSGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJTGPlEd-bgM56_OkSyg" name="base_Property" association="_UAEJSmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJT2PlEd-bgM56_OkSyg" name="base_Operation" association="_UAEJTWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJUmPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAEJUGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJSmPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.DecimalMax" memberEnd="_UAEJS2PlEd-bgM56_OkSyg _UAEJTGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJS2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax" type="_UAEJPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJSmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJTWPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.DecimalMax" memberEnd="_UAEJTmPlEd-bgM56_OkSyg _UAEJT2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJTmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax" type="_UAEJPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJTWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJUGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.DecimalMax" memberEnd="_UAEJUWPlEd-bgM56_OkSyg _UAEJUmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJUWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMax" type="_UAEJPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJUGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAEJU2PlEd-bgM56_OkSyg" name="javax.validation.constraints.DecimalMin$List">
+    <ownedAttribute xmi:id="_UAEJVGPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJVmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJVWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJWWPlEd-bgM56_OkSyg" name="base_Property" association="_UAEJV2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJXGPlEd-bgM56_OkSyg" name="base_Operation" association="_UAEJWmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJX2PlEd-bgM56_OkSyg" name="base_Parameter" association="_UAEJXWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJV2PlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.DecimalMin$List" memberEnd="_UAEJWGPlEd-bgM56_OkSyg _UAEJWWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJWGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin$List" type="_UAEJU2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJV2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJWmPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.DecimalMin$List" memberEnd="_UAEJW2PlEd-bgM56_OkSyg _UAEJXGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJW2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin$List" type="_UAEJU2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJWmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJXWPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.DecimalMin$List" memberEnd="_UAEJXmPlEd-bgM56_OkSyg _UAEJX2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJXmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin$List" type="_UAEJU2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJXWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAEJYGPlEd-bgM56_OkSyg" name="javax.validation.constraints.DecimalMin">
+    <ownedAttribute xmi:id="_UAEJYWPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJY2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJYmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJZGPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJZmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJZWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJZ2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJaWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJaGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJamPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJbGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJa2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJb2PlEd-bgM56_OkSyg" name="base_Property" association="_UAEJbWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJcmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAEJcGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJdWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAEJc2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJbWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.DecimalMin" memberEnd="_UAEJbmPlEd-bgM56_OkSyg _UAEJb2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJbmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin" type="_UAEJYGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJbWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJcGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.DecimalMin" memberEnd="_UAEJcWPlEd-bgM56_OkSyg _UAEJcmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJcWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin" type="_UAEJYGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJcGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJc2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.DecimalMin" memberEnd="_UAEJdGPlEd-bgM56_OkSyg _UAEJdWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJdGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.DecimalMin" type="_UAEJYGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJc2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAEJdmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Digits$List">
+    <ownedAttribute xmi:id="_UAEJd2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAEJeWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAEJeGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJfGPlEd-bgM56_OkSyg" name="base_Property" association="_UAEJemPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAEJf2PlEd-bgM56_OkSyg" name="base_Operation" association="_UAEJfWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTImPlEd-bgM56_OkSyg" name="base_Parameter" association="_UANTIGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJemPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Digits$List" memberEnd="_UAEJe2PlEd-bgM56_OkSyg _UAEJfGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJe2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits$List" type="_UAEJdmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJemPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAEJfWPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Digits$List" memberEnd="_UAEJfmPlEd-bgM56_OkSyg _UAEJf2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAEJfmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits$List" type="_UAEJdmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAEJfWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTIGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Digits$List" memberEnd="_UANTIWPlEd-bgM56_OkSyg _UANTImPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTIWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits$List" type="_UAEJdmPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTIGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UANTI2PlEd-bgM56_OkSyg" name="javax.validation.constraints.Digits">
+    <ownedAttribute xmi:id="_UANTJGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTJmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTJWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTKGPlEd-bgM56_OkSyg" name="fraction">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTKmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTKWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTK2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTLWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTLGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTLmPlEd-bgM56_OkSyg" name="integer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTMGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTL2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTMWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTM2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTMmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTNmPlEd-bgM56_OkSyg" name="base_Property" association="_UANTNGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTOWPlEd-bgM56_OkSyg" name="base_Operation" association="_UANTN2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTPGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UANTOmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTNGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Digits" memberEnd="_UANTNWPlEd-bgM56_OkSyg _UANTNmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTNWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits" type="_UANTI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UANTNGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTN2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Digits" memberEnd="_UANTOGPlEd-bgM56_OkSyg _UANTOWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTOGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits" type="_UANTI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UANTN2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTOmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Digits" memberEnd="_UANTO2PlEd-bgM56_OkSyg _UANTPGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTO2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Digits" type="_UANTI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UANTOmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UANTPWPlEd-bgM56_OkSyg" name="javax.validation.constraints.Future$List">
+    <ownedAttribute xmi:id="_UANTPmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTQGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTP2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTQ2PlEd-bgM56_OkSyg" name="base_Property" association="_UANTQWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTRmPlEd-bgM56_OkSyg" name="base_Operation" association="_UANTRGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTSWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UANTR2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTQWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Future$List" memberEnd="_UANTQmPlEd-bgM56_OkSyg _UANTQ2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTQmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future$List" type="_UANTPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTQWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTRGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Future$List" memberEnd="_UANTRWPlEd-bgM56_OkSyg _UANTRmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTRWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future$List" type="_UANTPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTRGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTR2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Future$List" memberEnd="_UANTSGPlEd-bgM56_OkSyg _UANTSWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTSGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future$List" type="_UANTPWPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTR2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UANTSmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Future">
+    <ownedAttribute xmi:id="_UANTS2PlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTTWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTTGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTTmPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTUGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTT2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTUWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTU2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTUmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTVmPlEd-bgM56_OkSyg" name="base_Property" association="_UANTVGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTWWPlEd-bgM56_OkSyg" name="base_Operation" association="_UANTV2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTXGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UANTWmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTVGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Future" memberEnd="_UANTVWPlEd-bgM56_OkSyg _UANTVmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTVWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future" type="_UANTSmPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTVGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTV2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Future" memberEnd="_UANTWGPlEd-bgM56_OkSyg _UANTWWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTWGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future" type="_UANTSmPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTV2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTWmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Future" memberEnd="_UANTW2PlEd-bgM56_OkSyg _UANTXGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTW2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Future" type="_UANTSmPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTWmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UANTXWPlEd-bgM56_OkSyg" name="javax.validation.constraints.Max$List">
+    <ownedAttribute xmi:id="_UANTXmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UANTYGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UANTX2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTY2PlEd-bgM56_OkSyg" name="base_Property" association="_UANTYWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UANTZmPlEd-bgM56_OkSyg" name="base_Operation" association="_UANTZGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAXEImPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAXEIGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTYWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Max$List" memberEnd="_UANTYmPlEd-bgM56_OkSyg _UANTY2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTYmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max$List" type="_UANTXWPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTYWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UANTZGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Max$List" memberEnd="_UANTZWPlEd-bgM56_OkSyg _UANTZmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UANTZWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max$List" type="_UANTXWPlEd-bgM56_OkSyg" aggregation="composite" association="_UANTZGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAXEIGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Max$List" memberEnd="_UAXEIWPlEd-bgM56_OkSyg _UAXEImPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAXEIWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max$List" type="_UANTXWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAXEIGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAXEI2PlEd-bgM56_OkSyg" name="javax.validation.constraints.Max">
+    <ownedAttribute xmi:id="_UAXEJGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAXEJmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAXEJWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1IGPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1ImPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1IWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1I2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1JWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1JGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1JmPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1KGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1J2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1K2PlEd-bgM56_OkSyg" name="base_Property" association="_UAg1KWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1LmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAg1LGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1MWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAg1L2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1KWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Max" memberEnd="_UAg1KmPlEd-bgM56_OkSyg _UAg1K2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1KmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max" type="_UAXEI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1KWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1LGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Max" memberEnd="_UAg1LWPlEd-bgM56_OkSyg _UAg1LmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1LWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max" type="_UAXEI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1LGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1L2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Max" memberEnd="_UAg1MGPlEd-bgM56_OkSyg _UAg1MWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1MGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Max" type="_UAXEI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1L2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAg1MmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Min$List">
+    <ownedAttribute xmi:id="_UAg1M2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1NWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1NGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1OGPlEd-bgM56_OkSyg" name="base_Property" association="_UAg1NmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1O2PlEd-bgM56_OkSyg" name="base_Operation" association="_UAg1OWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1PmPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAg1PGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1NmPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Min$List" memberEnd="_UAg1N2PlEd-bgM56_OkSyg _UAg1OGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1N2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min$List" type="_UAg1MmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1NmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1OWPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Min$List" memberEnd="_UAg1OmPlEd-bgM56_OkSyg _UAg1O2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1OmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min$List" type="_UAg1MmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1OWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAg1PGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Min$List" memberEnd="_UAg1PWPlEd-bgM56_OkSyg _UAg1PmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAg1PWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min$List" type="_UAg1MmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAg1PGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAg1P2PlEd-bgM56_OkSyg" name="javax.validation.constraints.Min">
+    <ownedAttribute xmi:id="_UAg1QGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1QmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1QWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1Q2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1RWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1RGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1RmPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1SGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1R2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAg1SWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAg1S2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAg1SmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_EmPlEd-bgM56_OkSyg" name="base_Property" association="_UAp_EGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_FWPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_E2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_GGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_FmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_EGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Min" memberEnd="_UAp_EWPlEd-bgM56_OkSyg _UAp_EmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_EWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min" type="_UAg1P2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_EGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_E2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Min" memberEnd="_UAp_FGPlEd-bgM56_OkSyg _UAp_FWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_FGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min" type="_UAg1P2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_E2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_FmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Min" memberEnd="_UAp_F2PlEd-bgM56_OkSyg _UAp_GGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_F2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Min" type="_UAg1P2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_FmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_GWPlEd-bgM56_OkSyg" name="javax.validation.constraints.NotNull$List">
+    <ownedAttribute xmi:id="_UAp_GmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_HGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_G2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_H2PlEd-bgM56_OkSyg" name="base_Property" association="_UAp_HWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_ImPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_IGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_JWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_I2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_HWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.NotNull$List" memberEnd="_UAp_HmPlEd-bgM56_OkSyg _UAp_H2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_HmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull$List" type="_UAp_GWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_HWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_IGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.NotNull$List" memberEnd="_UAp_IWPlEd-bgM56_OkSyg _UAp_ImPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_IWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull$List" type="_UAp_GWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_IGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_I2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.NotNull$List" memberEnd="_UAp_JGPlEd-bgM56_OkSyg _UAp_JWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_JGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull$List" type="_UAp_GWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_I2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_JmPlEd-bgM56_OkSyg" name="javax.validation.constraints.NotNull">
+    <ownedAttribute xmi:id="_UAp_J2PlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_KWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_KGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_KmPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_LGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_K2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_LWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_L2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_LmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_MmPlEd-bgM56_OkSyg" name="base_Property" association="_UAp_MGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_NWPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_M2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_OGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_NmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_MGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.NotNull" memberEnd="_UAp_MWPlEd-bgM56_OkSyg _UAp_MmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_MWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull" type="_UAp_JmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_MGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_M2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.NotNull" memberEnd="_UAp_NGPlEd-bgM56_OkSyg _UAp_NWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_NGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull" type="_UAp_JmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_M2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_NmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.NotNull" memberEnd="_UAp_N2PlEd-bgM56_OkSyg _UAp_OGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_N2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.NotNull" type="_UAp_JmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_NmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_OWPlEd-bgM56_OkSyg" name="javax.validation.constraints.Null$List">
+    <ownedAttribute xmi:id="_UAp_OmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_PGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_O2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_P2PlEd-bgM56_OkSyg" name="base_Property" association="_UAp_PWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_QmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_QGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_RWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_Q2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_PWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Null$List" memberEnd="_UAp_PmPlEd-bgM56_OkSyg _UAp_P2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_PmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null$List" type="_UAp_OWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_PWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_QGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Null$List" memberEnd="_UAp_QWPlEd-bgM56_OkSyg _UAp_QmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_QWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null$List" type="_UAp_OWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_QGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_Q2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Null$List" memberEnd="_UAp_RGPlEd-bgM56_OkSyg _UAp_RWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_RGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null$List" type="_UAp_OWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_Q2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_RmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Null">
+    <ownedAttribute xmi:id="_UAp_R2PlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_SWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_SGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_SmPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_TGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_S2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_TWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_T2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_TmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_UmPlEd-bgM56_OkSyg" name="base_Property" association="_UAp_UGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_VWPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_U2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_WGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_VmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_UGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Null" memberEnd="_UAp_UWPlEd-bgM56_OkSyg _UAp_UmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_UWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null" type="_UAp_RmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_UGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_U2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Null" memberEnd="_UAp_VGPlEd-bgM56_OkSyg _UAp_VWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_VGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null" type="_UAp_RmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_U2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_VmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Null" memberEnd="_UAp_V2PlEd-bgM56_OkSyg _UAp_WGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_V2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Null" type="_UAp_RmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_VmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_WWPlEd-bgM56_OkSyg" name="javax.validation.constraints.Past$List">
+    <ownedAttribute xmi:id="_UAp_WmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_XGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_W2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_X2PlEd-bgM56_OkSyg" name="base_Property" association="_UAp_XWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_YmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAp_YGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_ZWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAp_Y2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_XWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Past$List" memberEnd="_UAp_XmPlEd-bgM56_OkSyg _UAp_X2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_XmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past$List" type="_UAp_WWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_XWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_YGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Past$List" memberEnd="_UAp_YWPlEd-bgM56_OkSyg _UAp_YmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_YWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past$List" type="_UAp_WWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_YGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_Y2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Past$List" memberEnd="_UAp_ZGPlEd-bgM56_OkSyg _UAp_ZWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_ZGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past$List" type="_UAp_WWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_Y2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAp_ZmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Past">
+    <ownedAttribute xmi:id="_UAp_Z2PlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_aWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_aGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_amPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_bGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_a2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_bWPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAp_b2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAp_bmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAp_cmPlEd-bgM56_OkSyg" name="base_Property" association="_UAp_cGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwEmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAzwEGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwFWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAzwE2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAp_cGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Past" memberEnd="_UAp_cWPlEd-bgM56_OkSyg _UAp_cmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAp_cWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past" type="_UAp_ZmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAp_cGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwEGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Past" memberEnd="_UAzwEWPlEd-bgM56_OkSyg _UAzwEmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwEWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past" type="_UAp_ZmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwEGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwE2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Past" memberEnd="_UAzwFGPlEd-bgM56_OkSyg _UAzwFWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwFGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Past" type="_UAp_ZmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwE2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAzwFmPlEd-bgM56_OkSyg" name="javax.validation.constraints.Pattern$List">
+    <ownedAttribute xmi:id="_UAzwF2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwGWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwGGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwHGPlEd-bgM56_OkSyg" name="base_Property" association="_UAzwGmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwH2PlEd-bgM56_OkSyg" name="base_Operation" association="_UAzwHWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwImPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAzwIGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwGmPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Pattern$List" memberEnd="_UAzwG2PlEd-bgM56_OkSyg _UAzwHGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwG2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern$List" type="_UAzwFmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwGmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwHWPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Pattern$List" memberEnd="_UAzwHmPlEd-bgM56_OkSyg _UAzwH2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwHmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern$List" type="_UAzwFmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwHWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwIGPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Pattern$List" memberEnd="_UAzwIWPlEd-bgM56_OkSyg _UAzwImPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwIWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern$List" type="_UAzwFmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwIGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAzwI2PlEd-bgM56_OkSyg" name="javax.validation.constraints.Pattern">
+    <ownedAttribute xmi:id="_UAzwJGPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwJmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwJWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwJ2PlEd-bgM56_OkSyg" name="flags">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwKWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwKGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwKmPlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwLGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwK2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwLWPlEd-bgM56_OkSyg" name="regexp">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwL2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwLmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwMGPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwMmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwMWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwNWPlEd-bgM56_OkSyg" name="base_Property" association="_UAzwM2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwOGPlEd-bgM56_OkSyg" name="base_Operation" association="_UAzwNmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwO2PlEd-bgM56_OkSyg" name="base_Parameter" association="_UAzwOWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwM2PlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Pattern" memberEnd="_UAzwNGPlEd-bgM56_OkSyg _UAzwNWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwNGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern" type="_UAzwI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwM2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwNmPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Pattern" memberEnd="_UAzwN2PlEd-bgM56_OkSyg _UAzwOGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwN2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern" type="_UAzwI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwNmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwOWPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Pattern" memberEnd="_UAzwOmPlEd-bgM56_OkSyg _UAzwO2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwOmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Pattern" type="_UAzwI2PlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwOWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAzwPGPlEd-bgM56_OkSyg" name="javax.validation.constraints.Size$List">
+    <ownedAttribute xmi:id="_UAzwPWPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwP2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwPmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwQmPlEd-bgM56_OkSyg" name="base_Property" association="_UAzwQGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwRWPlEd-bgM56_OkSyg" name="base_Operation" association="_UAzwQ2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwSGPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAzwRmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwQGPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Size$List" memberEnd="_UAzwQWPlEd-bgM56_OkSyg _UAzwQmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwQWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size$List" type="_UAzwPGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwQGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwQ2PlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Size$List" memberEnd="_UAzwRGPlEd-bgM56_OkSyg _UAzwRWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwRGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size$List" type="_UAzwPGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwQ2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwRmPlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Size$List" memberEnd="_UAzwR2PlEd-bgM56_OkSyg _UAzwSGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwR2PlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size$List" type="_UAzwPGPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwRmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAzwSWPlEd-bgM56_OkSyg" name="javax.validation.constraints.Size">
+    <ownedAttribute xmi:id="_UAzwSmPlEd-bgM56_OkSyg" name="groups">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwTGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwS2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwTWPlEd-bgM56_OkSyg" name="min">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwT2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwTmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwUGPlEd-bgM56_OkSyg" name="max">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwUmPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwUWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwU2PlEd-bgM56_OkSyg" name="message">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwVWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwVGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwVmPlEd-bgM56_OkSyg" name="payload">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwWGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwV2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwW2PlEd-bgM56_OkSyg" name="base_Property" association="_UAzwWWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwXmPlEd-bgM56_OkSyg" name="base_Operation" association="_UAzwXGPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UAzwYWPlEd-bgM56_OkSyg" name="base_Parameter" association="_UAzwX2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwWWPlEd-bgM56_OkSyg" name="Property_javax.validation.constraints.Size" memberEnd="_UAzwWmPlEd-bgM56_OkSyg _UAzwW2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwWmPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size" type="_UAzwSWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwWWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwXGPlEd-bgM56_OkSyg" name="Operation_javax.validation.constraints.Size" memberEnd="_UAzwXWPlEd-bgM56_OkSyg _UAzwXmPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwXWPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size" type="_UAzwSWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwXGPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwX2PlEd-bgM56_OkSyg" name="Parameter_javax.validation.constraints.Size" memberEnd="_UAzwYGPlEd-bgM56_OkSyg _UAzwYWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwYGPlEd-bgM56_OkSyg" name="extension_javax.validation.constraints.Size" type="_UAzwSWPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwX2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UAzwYmPlEd-bgM56_OkSyg" name="javax.validation.GroupSequence">
+    <ownedAttribute xmi:id="_UAzwY2PlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAzwZWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAzwZGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hEGPlEd-bgM56_OkSyg" name="base_Class" association="_UAzwZ2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hFGPlEd-bgM56_OkSyg" name="base_Interface" association="_UA9hEmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UAzwZ2PlEd-bgM56_OkSyg" name="Class_javax.validation.GroupSequence" memberEnd="_UAzwaGPlEd-bgM56_OkSyg _UA9hEGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UAzwaGPlEd-bgM56_OkSyg" name="extension_javax.validation.GroupSequence" type="_UAzwYmPlEd-bgM56_OkSyg" aggregation="composite" association="_UAzwZ2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hEmPlEd-bgM56_OkSyg" name="Interface_javax.validation.GroupSequence" memberEnd="_UA9hE2PlEd-bgM56_OkSyg _UA9hFGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hE2PlEd-bgM56_OkSyg" name="extension_javax.validation.GroupSequence" type="_UAzwYmPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hEmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UA9hFWPlEd-bgM56_OkSyg" name="javax.validation.OverridesAttribute$List">
+    <ownedAttribute xmi:id="_UA9hFmPlEd-bgM56_OkSyg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UA9hGGPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UA9hF2PlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hG2PlEd-bgM56_OkSyg" name="base_Operation" association="_UA9hGWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hGWPlEd-bgM56_OkSyg" name="Operation_javax.validation.OverridesAttribute$List" memberEnd="_UA9hGmPlEd-bgM56_OkSyg _UA9hG2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hGmPlEd-bgM56_OkSyg" name="extension_javax.validation.OverridesAttribute$List" type="_UA9hFWPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hGWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UA9hHGPlEd-bgM56_OkSyg" name="javax.validation.OverridesAttribute">
+    <ownedAttribute xmi:id="_UA9hHWPlEd-bgM56_OkSyg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UA9hH2PlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UA9hHmPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hIGPlEd-bgM56_OkSyg" name="constraint">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UA9hImPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UA9hIWPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hI2PlEd-bgM56_OkSyg" name="constraintIndex">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UA9hJWPlEd-bgM56_OkSyg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UA9hJGPlEd-bgM56_OkSyg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hKGPlEd-bgM56_OkSyg" name="base_Operation" association="_UA9hJmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hJmPlEd-bgM56_OkSyg" name="Operation_javax.validation.OverridesAttribute" memberEnd="_UA9hJ2PlEd-bgM56_OkSyg _UA9hKGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hJ2PlEd-bgM56_OkSyg" name="extension_javax.validation.OverridesAttribute" type="_UA9hHGPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hJmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UA9hKWPlEd-bgM56_OkSyg" name="javax.validation.ReportAsSingleViolation"/>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_UA9hKmPlEd-bgM56_OkSyg" name="javax.validation.Valid">
+    <ownedAttribute xmi:id="_UA9hLWPlEd-bgM56_OkSyg" name="base_Property" association="_UA9hK2PlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hMGPlEd-bgM56_OkSyg" name="base_Operation" association="_UA9hLmPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UA9hM2PlEd-bgM56_OkSyg" name="base_Parameter" association="_UA9hMWPlEd-bgM56_OkSyg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hK2PlEd-bgM56_OkSyg" name="Property_javax.validation.Valid" memberEnd="_UA9hLGPlEd-bgM56_OkSyg _UA9hLWPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hLGPlEd-bgM56_OkSyg" name="extension_javax.validation.Valid" type="_UA9hKmPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hK2PlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hLmPlEd-bgM56_OkSyg" name="Operation_javax.validation.Valid" memberEnd="_UA9hL2PlEd-bgM56_OkSyg _UA9hMGPlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hL2PlEd-bgM56_OkSyg" name="extension_javax.validation.Valid" type="_UA9hKmPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hLmPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_UA9hMWPlEd-bgM56_OkSyg" name="Parameter_javax.validation.Valid" memberEnd="_UA9hMmPlEd-bgM56_OkSyg _UA9hM2PlEd-bgM56_OkSyg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UA9hMmPlEd-bgM56_OkSyg" name="extension_javax.validation.Valid" type="_UA9hKmPlEd-bgM56_OkSyg" aggregation="composite" association="_UA9hMWPlEd-bgM56_OkSyg"/>
+  </packagedElement>
+</uml:Profile>

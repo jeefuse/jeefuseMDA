@@ -1,0 +1,255 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service.impl" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* java.util.List net.taylor.mda.generator.parse.page.* net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceImplForM2M" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+
+//generic service impl
+ClassNameDefineCommon serviceGenericImplDefine=clazzWrap.getNameDefineServiceGenericImpl();
+String serviceGenericImplClassName=serviceGenericImplDefine.getClassCapName();
+String serviceGenericImplUncapClassName=serviceGenericImplDefine.getClassUncapName();
+String serviceGenericImplPackageName=serviceGenericImplDefine.getPackageQualifiedName();
+
+%><%@ include file="../../../../Header.jetinc"%>
+package <%=serviceGenericImplPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("org.springframework.beans.factory.annotation.Autowired");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+importManager.addImport("com.jeefuse.base.modules.condition.criteria.Condition");
+importManager.addImport("org.springframework.util.Assert");
+importManager.addImport(Config.base_ServiceGenericImplQualifiedName);
+String baseServiceGenericImplClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericImplQualifiedName);
+
+//base
+importManager.addImport(Config.base_HibernateDao);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+importManager.addImport(modelRTOQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+String modelEntityUncapName=entityDefine.getClassUncapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldName=entityFieldDefine.getClassName();
+String modelFieldUncapName=entityFieldDefine.getClassUncapName();
+importManager.addImport(modelFieldQualifiedName);
+
+// generic service
+ClassNameDefineCommon serviceGenericDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericQualifiedName=serviceGenericDefine.getClassQualifiedName();
+String modelServiceGenericClassName=serviceGenericDefine.getClassCapName();
+importManager.addImport(modelServiceGenericQualifiedName);
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> service impl.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+@<%=ImportHelper.getImportedName("org.springframework.stereotype.Service")%>(value="<%=serviceGenericImplUncapClassName%>")
+public class <%=serviceGenericImplClassName%> extends <%=baseServiceGenericImplClassName%><<%=modelEntityName%>, <%=EntityHelper.getIDPropertyImportType(uml2Class)%>> implements <%=modelServiceGenericClassName%>{
+
+<%/********rel first entity********/%>
+<%List<Property> propertyList=EntityHelper.getAllOneToManyProperties(uml2Class,false);%>
+<%Property firstProperty=propertyList.get(0);%>
+<%Class firstPropertyClass=(Class)firstProperty.getType();%>
+<%String firstPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);%>
+<%String firstPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);%>
+<%String firstPropertyModelCommentName=TypeHelper.getDocumentationOrName(firstPropertyClass);%>
+<%String firstPropertyEntityQualifiedName=MdaHelper.getEntityQualifiedName(firstPropertyClass);%>
+<%importManager.addImport(firstPropertyEntityQualifiedName);%>
+<%/********rel second entity********/%>
+<%Property secondProperty=propertyList.get(1);%>
+<%Class  secondPropertyClass=(Class)secondProperty.getType();%>
+<%String secondPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);%>
+<%String secondPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);%>
+<%String secondPropertyModelCommentName=TypeHelper.getDocumentationOrName(secondPropertyClass);%>
+<%String secondPropertyEntityQualifiedName=MdaHelper.getEntityQualifiedName(secondPropertyClass);%>
+<%importManager.addImport(secondPropertyEntityQualifiedName);%>
+	
+	/*****************************************************************
+	 * <%=firstPropertyModelCommentName%> rel <%=secondPropertyModelCommentName%>
+	 *****************************************************************/
+<%//ower%>
+<%String owerClassCapName=firstPropertyModelCapName;%>
+<%String owerClassUncapName=firstPropertyModelUncapName;%>
+<%String owerClassCommentName=firstPropertyModelCommentName;%>
+<%String owerClassId=owerClassCapName+"Id";%>
+<%//rel%>
+<%String relClassCapName=secondPropertyModelCapName;%>
+<%String relClassUncapName=secondPropertyModelUncapName;%>
+<%String relClassIds=secondPropertyModelCapName+"Ids";%>
+<%String relClassId=relClassCapName+"Id";%>
+<%String relClassCommentName=secondPropertyModelCommentName;%>
+	
+	/**
+	 * 判断<%=firstPropertyModelCommentName%> 是否有<%=secondPropertyModelCommentName%>.
+ 	 * @generated
+	 */
+	public boolean is<%=owerClassCapName%>HasRel<%=relClassCapName%>(String <%=owerClassId%>, String <%=relClassId%>){
+		Assert.notNull(<%=owerClassId%>, "<%=owerClassCommentName%>标识不能为空!");
+		Assert.notNull(<%=relClassId%>, "<%=relClassCommentName%>标识不能为空!");
+		final String hql = "select count(m) from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id=? and m.<%=relClassUncapName%>.id=?";
+		int count = hibernateDao.findInt(hql, <%=owerClassId%>, <%=relClassId%>);
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 获取<%=firstPropertyModelCommentName%>关联的<%=secondPropertyModelCommentName%>Id例表.
+ 	 * @generated
+	 */
+	public List<String> getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(String <%=owerClassId%>){
+		Assert.notNull(<%=owerClassId%>, "<%=owerClassCommentName%>标识不能为空");
+		final String hql = "select m.<%=relClassUncapName%>.id from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id=?";
+		return hibernateDao.find(hql, <%=owerClassId%>);
+	}
+
+	/**
+	 * 删除<%=owerClassCommentName%>所有关联<%=relClassCommentName%>,并保存新的关联<%=relClassCommentName%>.
+	 * @generated
+	 */
+	@Transactional
+	public void check<%=owerClassCapName%>Rel<%=relClassCapName%>(final <%=owerClassCapName%> <%=owerClassUncapName%>, String... <%=relClassIds%>){
+		Assert.notNull(<%=owerClassUncapName%>, "<%=owerClassCommentName%>不能为空!");
+		Assert.notNull(<%=owerClassUncapName%>.getId(), "<%=owerClassCommentName%>标识不能为空!");
+		List<String> relIds = getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(<%=owerClassUncapName%>.getId());
+		if (null == <%=relClassIds%>) {
+			if (null != relIds && relIds.size() > 0) {
+				final String hql = "delete from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id =?";
+				hibernateDao.delete(hql, <%=owerClassUncapName%>.getId());
+			}
+			return;
+		}
+		List<String> checkIds = Arrays.asList(<%=relClassIds%>);
+		// 需要添加的对象
+		List<String> deleteIds = ChangeUtil.exclude(relIds, checkIds);
+		// 需要删除的对象
+		List<String> addIds = ChangeUtil.exclude(checkIds, relIds);
+		if (null != deleteIds && !deleteIds.isEmpty()) {
+			final String hql = "delete from <%=modelEntityName%> m where m.<%=owerClassCapName%>.id =:<%=owerClassId%> and m.<%=relClassUncapName%>.id in (:deleteIds)";
+			hibernateDao.createQuery(hql).setString("<%=owerClassId%>", <%=owerClassUncapName%>.getId())
+					.setParameterList("deleteIds", deleteIds)
+					.executeUpdate();
+		}
+		if (null != addIds && !addIds.isEmpty()) {
+			// GsysRole gsysRole = new GsysRole();
+			// gsysRole.setId(roleId);
+			List<<%=modelEntityName%>> modelList = new ArrayList<<%=modelEntityName%>>();
+			for (String <%=relClassId%> : addIds) {
+				<%=modelEntityName%> <%=modelEntityUncapName%> = new <%=modelEntityName%>();
+				// rel <%=relClassCapName%>
+				<%=relClassCapName%> <%=relClassUncapName%> = new <%=relClassCapName%>();
+				<%=relClassUncapName%>.setId(<%=relClassId%>);
+				<%=modelEntityUncapName%>.set<%=relClassCapName%>(<%=relClassUncapName%>);
+				// rel <%=owerClassCapName%>
+				<%=modelEntityUncapName%>.set<%=owerClassCapName%>(<%=owerClassUncapName%>);
+				modelList.add(<%=modelEntityUncapName%>);
+			}
+			hibernateDao.save(modelList);
+		}
+	}
+
+
+	/*****************************************************************
+	 * <%=secondPropertyModelCommentName%> rel <%=firstPropertyModelCommentName%>
+	 *****************************************************************/
+<%//ower%>
+<%owerClassCapName=secondPropertyModelCapName;%>
+<%owerClassUncapName=secondPropertyModelUncapName;%>
+<%owerClassCommentName=secondPropertyModelCommentName;%>
+<%owerClassId=owerClassCapName+"Id";%>
+<%//rel%>
+<%relClassCapName=firstPropertyModelCapName;%>
+<%relClassUncapName=firstPropertyModelUncapName;%>
+<%relClassCommentName=firstPropertyModelCommentName;%>
+<%relClassId=relClassCapName+"Id";%>
+<%relClassIds=firstPropertyModelCapName+"Ids";%>
+	
+	/**
+	 * 判断<%=firstPropertyModelCommentName%> 是否有<%=secondPropertyModelCommentName%>.
+ 	 * @generated
+	 */
+	public boolean is<%=owerClassCapName%>HasRel<%=relClassCapName%>(String <%=owerClassId%>, String <%=relClassId%>){
+		Assert.notNull(<%=owerClassId%>, "<%=owerClassCommentName%>标识不能为空!");
+		Assert.notNull(<%=relClassId%>, "<%=relClassCommentName%>标识不能为空!");
+		final String hql = "select count(m) from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id=? and m.<%=relClassUncapName%>.id=?";
+		int count = hibernateDao.findInt(hql, <%=owerClassId%>, <%=relClassId%>);
+		return count > 0 ? true : false;
+	}
+
+	/**
+	 * 获取<%=firstPropertyModelCommentName%>关联的<%=secondPropertyModelCommentName%>Id例表.
+ 	 * @generated
+	 */
+	public List<String> getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(String <%=owerClassId%>){
+		Assert.notNull(<%=owerClassId%>, "<%=owerClassCommentName%>标识不能为空");
+		final String hql = "select m.<%=relClassUncapName%>.id from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id=?";
+		return hibernateDao.find(hql, <%=owerClassId%>);
+	}
+
+	/**
+	 * 删除<%=owerClassCommentName%>所有关联<%=relClassCommentName%>,并保存新的关联<%=relClassCommentName%>.
+	 * @generated
+	 */
+	@Transactional
+	public void check<%=owerClassCapName%>Rel<%=relClassCapName%>(final <%=owerClassCapName%> <%=owerClassUncapName%>, String... <%=relClassIds%>){
+		Assert.notNull(<%=owerClassUncapName%>, "<%=owerClassCommentName%>不能为空!");
+		Assert.notNull(<%=owerClassUncapName%>.getId(), "<%=owerClassCommentName%>标识不能为空!");
+		List<String> relIds = getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(<%=owerClassUncapName%>.getId());
+		if (null == <%=relClassIds%>) {
+			if (null != relIds && relIds.size() > 0) {
+				final String hql = "delete from <%=modelEntityName%> m where m.<%=owerClassUncapName%>.id =?";
+				hibernateDao.delete(hql, <%=owerClassUncapName%>.getId());
+			}
+			return;
+		}
+		List<String> checkIds = Arrays.asList(<%=relClassIds%>);
+		// 需要添加的对象
+		List<String> deleteIds = ChangeUtil.exclude(relIds, checkIds);
+		// 需要删除的对象
+		List<String> addIds = ChangeUtil.exclude(checkIds, relIds);
+		if (null != deleteIds && !deleteIds.isEmpty()) {
+			final String hql = "delete from <%=modelEntityName%> m where m.<%=owerClassCapName%>.id =:<%=owerClassId%> and m.<%=relClassUncapName%>.id in (:deleteIds)";
+			hibernateDao.createQuery(hql).setString("<%=owerClassId%>", <%=owerClassUncapName%>.getId())
+					.setParameterList("deleteIds", deleteIds)
+					.executeUpdate();
+		}
+		if (null != addIds && !addIds.isEmpty()) {
+			// GsysRole gsysRole = new GsysRole();
+			// gsysRole.setId(roleId);
+			List<<%=modelEntityName%>> modelList = new ArrayList<<%=modelEntityName%>>();
+			for (String <%=relClassId%> : addIds) {
+				<%=modelEntityName%> <%=modelEntityUncapName%> = new <%=modelEntityName%>();
+				// rel <%=relClassCapName%>
+				<%=relClassCapName%> <%=relClassUncapName%> = new <%=relClassCapName%>();
+				<%=relClassUncapName%>.setId(<%=relClassId%>);
+				<%=modelEntityUncapName%>.set<%=relClassCapName%>(<%=relClassUncapName%>);
+				// rel <%=owerClassCapName%>
+				<%=modelEntityUncapName%>.set<%=owerClassCapName%>(<%=owerClassUncapName%>);
+				modelList.add(<%=modelEntityUncapName%>);
+			}
+			hibernateDao.save(modelList);
+		}
+	}
+	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,15 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service.impl" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* java.util.List net.taylor.mda.generator.parse.page.* net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceImplProxy" %>
+<%Class uml2Class_proxy = (Class) argument;%>
+<%//Package uml2Package_proxy = uml2Class_proxy.getPackage();%>
+<%//@ include file="../../../../Header.jetinc"%>
+<%if(ModelStereoTypeHelper.isApplyModel_M2mWithId(uml2Class_proxy)){//应用了M2MWithId%>
+<%@ include file="GenericServiceImplForM2M.javajet"%>
+<%}else if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class_proxy)){//应用了tree%>
+<%	if(null!=TreeStereotypeHelper.getProperty_layerCode(uml2Class_proxy)){%>
+<%@ include file="GenericServiceImplForTreeWithLayerCode.javajet"%>
+<%	}else{%>
+<%@ include file="GenericServiceImplForTree.javajet"%>
+<%	}%>
+<%}else{//只应用了Entity%>
+<%@ include file="GenericServiceImpl.javajet"%>
+<%}%>

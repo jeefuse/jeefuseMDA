@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_imh3UOjzEdqKLuVqE-P4sg" name="Bpm" metaclassReference="_ZxPdoGxFEdunY9SeGPF40Q _kNHmoGxFEdunY9SeGPF40Q _mDui8GxFEdunY9SeGPF40Q">
+  <eAnnotations xmi:id="_5N8eMOj1EdqKLuVqE-P4sg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_lcBmUfPZEd2ZheMjN3MDrw" name="Bpm" nsURI="http:///schemas/Bpm/_lcBmUPPZEd2ZheMjN3MDrw/4" nsPrefix="Bpm">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lcBmUvPZEd2ZheMjN3MDrw" name="Task">
+        <eAnnotations xmi:id="_lcBmU_PZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mFvwMOjzEdqKLuVqE-P4sg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmVPPZEd2ZheMjN3MDrw" name="description" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmVvPZEd2ZheMjN3MDrw" name="priority" ordered="false" lowerBound="1" eType="_lcBmcvPZEd2ZheMjN3MDrw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmWPPZEd2ZheMjN3MDrw" name="userId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmWvPZEd2ZheMjN3MDrw" name="role" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmXPPZEd2ZheMjN3MDrw" name="group2" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmXvPZEd2ZheMjN3MDrw" name="group3" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmYPPZEd2ZheMjN3MDrw" name="escalationRole" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmYvPZEd2ZheMjN3MDrw" name="viewId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmZPPZEd2ZheMjN3MDrw" name="dueDateExpression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmZvPZEd2ZheMjN3MDrw" name="dueDateAmount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmaPPZEd2ZheMjN3MDrw" name="dueDateUnit" ordered="false" lowerBound="1" eType="_lcBmefPZEd2ZheMjN3MDrw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmavPZEd2ZheMjN3MDrw" name="reminderExpression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmbPPZEd2ZheMjN3MDrw" name="reminderAmount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmbvPZEd2ZheMjN3MDrw" name="reminderUnit" ordered="false" lowerBound="1" eType="_lcBmefPZEd2ZheMjN3MDrw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmcPPZEd2ZheMjN3MDrw" name="base_CallBehaviorAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallBehaviorAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_lcBmcvPZEd2ZheMjN3MDrw" name="Priority">
+        <eAnnotations xmi:id="_lcBmc_PZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wgmwEOj0EdqKLuVqE-P4sg"/>
+        <eLiterals xmi:id="_lcBmdPPZEd2ZheMjN3MDrw" name="NORMAL"/>
+        <eLiterals xmi:id="_lcBmdfPZEd2ZheMjN3MDrw" name="HIGH" value="1"/>
+        <eLiterals xmi:id="_lcBmdvPZEd2ZheMjN3MDrw" name="HIGHEST" value="2"/>
+        <eLiterals xmi:id="_lcBmd_PZEd2ZheMjN3MDrw" name="LOW" value="3"/>
+        <eLiterals xmi:id="_lcBmePPZEd2ZheMjN3MDrw" name="LOWEST" value="4"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_lcBmefPZEd2ZheMjN3MDrw" name="Unit">
+        <eAnnotations xmi:id="_lcBmevPZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Wc3_UGxEEdunY9SeGPF40Q"/>
+        <eLiterals xmi:id="_lcBme_PZEd2ZheMjN3MDrw" name="Seconds"/>
+        <eLiterals xmi:id="_lcBmfPPZEd2ZheMjN3MDrw" name="Minutes" value="1"/>
+        <eLiterals xmi:id="_lcBmffPZEd2ZheMjN3MDrw" name="Hours" value="2"/>
+        <eLiterals xmi:id="_lcBmfvPZEd2ZheMjN3MDrw" name="Days" value="3"/>
+        <eLiterals xmi:id="_lcBmf_PZEd2ZheMjN3MDrw" name="Weeks" value="4"/>
+        <eLiterals xmi:id="_lcBmgPPZEd2ZheMjN3MDrw" name="Months" value="5"/>
+        <eLiterals xmi:id="_lcBmgfPZEd2ZheMjN3MDrw" name="Years" value="6"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lcBmgvPZEd2ZheMjN3MDrw" name="Timer">
+        <eAnnotations xmi:id="_lcBmg_PZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GxRpIGxEEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmhPPZEd2ZheMjN3MDrw" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmhvPZEd2ZheMjN3MDrw" name="field" ordered="false" lowerBound="1" eType="_lcBmefPZEd2ZheMjN3MDrw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmiPPZEd2ZheMjN3MDrw" name="amount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmivPZEd2ZheMjN3MDrw" name="expression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lcBmjPPZEd2ZheMjN3MDrw" name="Scheduled">
+        <eAnnotations xmi:id="_lcBmjfPZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_QB0K8HudEd28-tqxt2fXaQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmjvPZEd2ZheMjN3MDrw" name="cron" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmkPPZEd2ZheMjN3MDrw" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lcBmkvPZEd2ZheMjN3MDrw" name="Invoke">
+        <eAnnotations xmi:id="_lcBmk_PZEd2ZheMjN3MDrw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wrX3EGxFEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_lcBmlPPZEd2ZheMjN3MDrw" name="arguments" ordered="false" lowerBound="1" upperBound="-1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lcBmlvPZEd2ZheMjN3MDrw" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_jYGqMHudEd28-tqxt2fXaQ" name="Bpm" nsURI="http:///schemas/Bpm/_jX9gQHudEd28-tqxt2fXaQ/3" nsPrefix="Bpm">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_jYGqMXudEd28-tqxt2fXaQ" name="Task">
+        <eAnnotations xmi:id="_jYGqMnudEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mFvwMOjzEdqKLuVqE-P4sg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqM3udEd28-tqxt2fXaQ" name="description" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqNXudEd28-tqxt2fXaQ" name="priority" ordered="false" lowerBound="1" eType="_jYGqR3udEd28-tqxt2fXaQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqN3udEd28-tqxt2fXaQ" name="userId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqOXudEd28-tqxt2fXaQ" name="role" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqO3udEd28-tqxt2fXaQ" name="url" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqPXudEd28-tqxt2fXaQ" name="base_CallBehaviorAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallBehaviorAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqP3udEd28-tqxt2fXaQ" name="dueDateField" ordered="false" lowerBound="1" eType="_jYGqTnudEd28-tqxt2fXaQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqQXudEd28-tqxt2fXaQ" name="dueDateAmount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqQ3udEd28-tqxt2fXaQ" name="dueDateExpression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqRXudEd28-tqxt2fXaQ" name="escalationRole" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_jYGqR3udEd28-tqxt2fXaQ" name="Priority">
+        <eAnnotations xmi:id="_jYGqSHudEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wgmwEOj0EdqKLuVqE-P4sg"/>
+        <eLiterals xmi:id="_jYGqSXudEd28-tqxt2fXaQ" name="NORMAL"/>
+        <eLiterals xmi:id="_jYGqSnudEd28-tqxt2fXaQ" name="HIGH" value="1"/>
+        <eLiterals xmi:id="_jYGqS3udEd28-tqxt2fXaQ" name="HIGHEST" value="2"/>
+        <eLiterals xmi:id="_jYGqTHudEd28-tqxt2fXaQ" name="LOW" value="3"/>
+        <eLiterals xmi:id="_jYGqTXudEd28-tqxt2fXaQ" name="LOWEST" value="4"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_jYGqTnudEd28-tqxt2fXaQ" name="CalendarField">
+        <eAnnotations xmi:id="_jYGqT3udEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Wc3_UGxEEdunY9SeGPF40Q"/>
+        <eLiterals xmi:id="_jYGqUHudEd28-tqxt2fXaQ" name="SECOND"/>
+        <eLiterals xmi:id="_jYGqUXudEd28-tqxt2fXaQ" name="HOUR" value="1"/>
+        <eLiterals xmi:id="_jYGqUnudEd28-tqxt2fXaQ" name="DAY" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_jYGqU3udEd28-tqxt2fXaQ" name="Timer">
+        <eAnnotations xmi:id="_jYGqVHudEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GxRpIGxEEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqVXudEd28-tqxt2fXaQ" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqV3udEd28-tqxt2fXaQ" name="field" ordered="false" lowerBound="1" eType="_jYGqTnudEd28-tqxt2fXaQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqWXudEd28-tqxt2fXaQ" name="amount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqW3udEd28-tqxt2fXaQ" name="expression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_jYGqXXudEd28-tqxt2fXaQ" name="Scheduled">
+        <eAnnotations xmi:id="_jYGqXnudEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_QB0K8HudEd28-tqxt2fXaQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqX3udEd28-tqxt2fXaQ" name="cron" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqYXudEd28-tqxt2fXaQ" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_jYGqY3udEd28-tqxt2fXaQ" name="Invoke">
+        <eAnnotations xmi:id="_jYGqZHudEd28-tqxt2fXaQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wrX3EGxFEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_jYGqZXudEd28-tqxt2fXaQ" name="arguments" ordered="false" lowerBound="1" upperBound="-1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_jYGqZ3udEd28-tqxt2fXaQ" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_iak2Qa8eEdyqsaDFqw2rUA" name="Bpm" nsURI="http:///schemas/Bpm/_iak2QK8eEdyqsaDFqw2rUA/2" nsPrefix="Bpm">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_iak2Qq8eEdyqsaDFqw2rUA" name="Task">
+        <eAnnotations xmi:id="_iak2Q68eEdyqsaDFqw2rUA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mFvwMOjzEdqKLuVqE-P4sg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2RK8eEdyqsaDFqw2rUA" name="description" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2Rq8eEdyqsaDFqw2rUA" name="priority" ordered="false" lowerBound="1" eType="_iak2WK8eEdyqsaDFqw2rUA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2SK8eEdyqsaDFqw2rUA" name="userId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iak2Sq8eEdyqsaDFqw2rUA" name="role" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2TK8eEdyqsaDFqw2rUA" name="url" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iak2Tq8eEdyqsaDFqw2rUA" name="base_CallBehaviorAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallBehaviorAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2UK8eEdyqsaDFqw2rUA" name="dueDateField" ordered="false" lowerBound="1" eType="_iak2X68eEdyqsaDFqw2rUA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2Uq8eEdyqsaDFqw2rUA" name="dueDateAmount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2VK8eEdyqsaDFqw2rUA" name="dueDateExpression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iak2Vq8eEdyqsaDFqw2rUA" name="escalationRole" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_iak2WK8eEdyqsaDFqw2rUA" name="Priority">
+        <eAnnotations xmi:id="_iak2Wa8eEdyqsaDFqw2rUA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wgmwEOj0EdqKLuVqE-P4sg"/>
+        <eLiterals xmi:id="_iak2Wq8eEdyqsaDFqw2rUA" name="NORMAL"/>
+        <eLiterals xmi:id="_iak2W68eEdyqsaDFqw2rUA" name="HIGH" value="1"/>
+        <eLiterals xmi:id="_iak2XK8eEdyqsaDFqw2rUA" name="HIGHEST" value="2"/>
+        <eLiterals xmi:id="_iak2Xa8eEdyqsaDFqw2rUA" name="LOW" value="3"/>
+        <eLiterals xmi:id="_iak2Xq8eEdyqsaDFqw2rUA" name="LOWEST" value="4"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_iak2X68eEdyqsaDFqw2rUA" name="CalendarField">
+        <eAnnotations xmi:id="_iak2YK8eEdyqsaDFqw2rUA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Wc3_UGxEEdunY9SeGPF40Q"/>
+        <eLiterals xmi:id="_iak2Ya8eEdyqsaDFqw2rUA" name="SECOND"/>
+        <eLiterals xmi:id="_iak2Yq8eEdyqsaDFqw2rUA" name="HOUR" value="1"/>
+        <eLiterals xmi:id="_iak2Y68eEdyqsaDFqw2rUA" name="DAY" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_iak2ZK8eEdyqsaDFqw2rUA" name="Timer">
+        <eAnnotations xmi:id="_iak2Za8eEdyqsaDFqw2rUA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GxRpIGxEEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iak2Zq8eEdyqsaDFqw2rUA" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2aK8eEdyqsaDFqw2rUA" name="field" ordered="false" lowerBound="1" eType="_iak2X68eEdyqsaDFqw2rUA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2aq8eEdyqsaDFqw2rUA" name="amount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2bK8eEdyqsaDFqw2rUA" name="expression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_iak2bq8eEdyqsaDFqw2rUA" name="Invoke">
+        <eAnnotations xmi:id="_iak2b68eEdyqsaDFqw2rUA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wrX3EGxFEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iak2cK8eEdyqsaDFqw2rUA" name="arguments" ordered="false" lowerBound="1" upperBound="-1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iak2cq8eEdyqsaDFqw2rUA" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_r30BYG0JEduEl_l9Ks1ieg" name="Bpm" nsURI="http:///schemas/Bpm/1" nsPrefix="Bpm">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_r30BYW0JEduEl_l9Ks1ieg" name="Task">
+        <eAnnotations xmi:id="_r30BYm0JEduEl_l9Ks1ieg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mFvwMOjzEdqKLuVqE-P4sg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BY20JEduEl_l9Ks1ieg" name="description" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BZG0JEduEl_l9Ks1ieg" name="priority" ordered="false" lowerBound="1" eType="_r30BbG0JEduEl_l9Ks1ieg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BZW0JEduEl_l9Ks1ieg" name="userId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_r30BZm0JEduEl_l9Ks1ieg" name="role" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BZ20JEduEl_l9Ks1ieg" name="url" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_r30BaG0JEduEl_l9Ks1ieg" name="base_CallBehaviorAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallBehaviorAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BaW0JEduEl_l9Ks1ieg" name="dueDateField" ordered="false" lowerBound="1" eType="_r30Bc20JEduEl_l9Ks1ieg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30Bam0JEduEl_l9Ks1ieg" name="dueDateAmount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30Ba20JEduEl_l9Ks1ieg" name="dueDateExpression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_r30BbG0JEduEl_l9Ks1ieg" name="Priority">
+        <eAnnotations xmi:id="_r30BbW0JEduEl_l9Ks1ieg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wgmwEOj0EdqKLuVqE-P4sg"/>
+        <eLiterals xmi:id="_r30Bbm0JEduEl_l9Ks1ieg" name="NORMAL"/>
+        <eLiterals xmi:id="_r30Bb20JEduEl_l9Ks1ieg" name="HIGH" value="1"/>
+        <eLiterals xmi:id="_r30BcG0JEduEl_l9Ks1ieg" name="HIGHEST" value="2"/>
+        <eLiterals xmi:id="_r30BcW0JEduEl_l9Ks1ieg" name="LOW" value="3"/>
+        <eLiterals xmi:id="_r30Bcm0JEduEl_l9Ks1ieg" name="LOWEST" value="4"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_r30Bc20JEduEl_l9Ks1ieg" name="CalendarField">
+        <eAnnotations xmi:id="_r30BdG0JEduEl_l9Ks1ieg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Wc3_UGxEEdunY9SeGPF40Q"/>
+        <eLiterals xmi:id="_r30BdW0JEduEl_l9Ks1ieg" name="SECOND"/>
+        <eLiterals xmi:id="_r30Bdm0JEduEl_l9Ks1ieg" name="HOUR" value="1"/>
+        <eLiterals xmi:id="_r30Bd20JEduEl_l9Ks1ieg" name="DAY" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_r30BeG0JEduEl_l9Ks1ieg" name="Timer">
+        <eAnnotations xmi:id="_r30BeW0JEduEl_l9Ks1ieg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GxRpIGxEEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_r30Bem0JEduEl_l9Ks1ieg" name="base_AcceptEventAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//AcceptEventAction"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30Be20JEduEl_l9Ks1ieg" name="field" ordered="false" lowerBound="1" eType="_r30Bc20JEduEl_l9Ks1ieg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BfG0JEduEl_l9Ks1ieg" name="amount" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BfW0JEduEl_l9Ks1ieg" name="expression" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_r30Bfm0JEduEl_l9Ks1ieg" name="Invoke">
+        <eAnnotations xmi:id="_r30Bf20JEduEl_l9Ks1ieg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wrX3EGxFEdunY9SeGPF40Q"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_r30BgG0JEduEl_l9Ks1ieg" name="arguments" ordered="false" lowerBound="1" upperBound="-1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_r30BgW0JEduEl_l9Ks1ieg" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_6Xp3oPfwEdqR9fEfcTppmQ" name="Bpm" nsURI="http:///schemas/Bpm/0" nsPrefix="Bpm">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_6Xp3offwEdqR9fEfcTppmQ" name="Task">
+        <eAnnotations xmi:id="_6Xp3ovfwEdqR9fEfcTppmQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mFvwMOjzEdqKLuVqE-P4sg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6Xp3o_fwEdqR9fEfcTppmQ" name="description" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6Xp3pPfwEdqR9fEfcTppmQ" name="priority" ordered="false" lowerBound="1" eType="_6Xp3qvfwEdqR9fEfcTppmQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6Xp3pffwEdqR9fEfcTppmQ" name="dueDate" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6Xp3pvfwEdqR9fEfcTppmQ" name="userId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_6Xp3p_fwEdqR9fEfcTppmQ" name="role" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6Xp3qPfwEdqR9fEfcTppmQ" name="url" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_6Xp3qffwEdqR9fEfcTppmQ" name="base_StructuredActivityNode" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//StructuredActivityNode"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_6Xp3qvfwEdqR9fEfcTppmQ" name="Priority">
+        <eAnnotations xmi:id="_6Xp3q_fwEdqR9fEfcTppmQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wgmwEOj0EdqKLuVqE-P4sg"/>
+        <eLiterals xmi:id="_6Xp3rPfwEdqR9fEfcTppmQ" name="NORMAL"/>
+        <eLiterals xmi:id="_6Xp3rffwEdqR9fEfcTppmQ" name="HIGH" value="1"/>
+        <eLiterals xmi:id="_6Xp3rvfwEdqR9fEfcTppmQ" name="HIGHEST" value="2"/>
+        <eLiterals xmi:id="_6Xp3r_fwEdqR9fEfcTppmQ" name="LOW" value="3"/>
+        <eLiterals xmi:id="_6Xp3sPfwEdqR9fEfcTppmQ" name="LOWEST" value="4"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_yUp9EOjzEdqKLuVqE-P4sg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_ZxPdoGxFEdunY9SeGPF40Q">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#AcceptEventAction"/>
+  </elementImport>
+  <elementImport xmi:id="_kNHmoGxFEdunY9SeGPF40Q">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallBehaviorAction"/>
+  </elementImport>
+  <elementImport xmi:id="_mDui8GxFEdunY9SeGPF40Q">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallOperationAction"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_mFvwMOjzEdqKLuVqE-P4sg" name="Task">
+    <ownedAttribute xmi:id="_5ojogOjzEdqKLuVqE-P4sg" name="description">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_BU5CEOj0EdqKLuVqE-P4sg" name="priority" type="_wgmwEOj0EdqKLuVqE-P4sg"/>
+    <ownedAttribute xmi:id="_5_p54OjzEdqKLuVqE-P4sg" name="userId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Bf6mUOj0EdqKLuVqE-P4sg" name="role">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Actor"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ZVzcoNXjEd2i-8lUUB05Ug" name="group2">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_dH8RgNXjEd2i-8lUUB05Ug" name="group3">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_P6b4sK8aEdyqsaDFqw2rUA" name="escalationRole">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Actor"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_BsIdYOj0EdqKLuVqE-P4sg" name="viewId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_IeenMm0HEduEl_l9Ks1ieg" name="dueDateExpression">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_IeenMW0HEduEl_l9Ks1ieg" name="dueDateAmount">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_IeenMG0HEduEl_l9Ks1ieg" name="dueDateUnit" type="_Wc3_UGxEEdunY9SeGPF40Q"/>
+    <ownedAttribute xmi:id="_4M-aktXiEd2i-8lUUB05Ug" name="reminderExpression">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4M-akdXiEd2i-8lUUB05Ug" name="reminderAmount">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4M-akNXiEd2i-8lUUB05Ug" name="reminderUnit" type="_Wc3_UGxEEdunY9SeGPF40Q"/>
+    <ownedAttribute xmi:id="_rqsygmxFEdunY9SeGPF40Q" name="base_CallBehaviorAction" association="_rqsygGxFEdunY9SeGPF40Q">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallBehaviorAction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_wgmwEOj0EdqKLuVqE-P4sg" name="Priority">
+    <ownedLiteral xmi:id="_13VkMOj0EdqKLuVqE-P4sg" name="NORMAL"/>
+    <ownedLiteral xmi:id="_1Cu3cOj0EdqKLuVqE-P4sg" name="HIGH"/>
+    <ownedLiteral xmi:id="_1R7xEOj0EdqKLuVqE-P4sg" name="HIGHEST"/>
+    <ownedLiteral xmi:id="_1cXfcOj0EdqKLuVqE-P4sg" name="LOW"/>
+    <ownedLiteral xmi:id="_1tzNsOj0EdqKLuVqE-P4sg" name="LOWEST"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_rqsygGxFEdunY9SeGPF40Q" name="CallBehaviorAction_Task" memberEnd="_rqsygWxFEdunY9SeGPF40Q _rqsygmxFEdunY9SeGPF40Q">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_rqsygWxFEdunY9SeGPF40Q" name="extension_Task" type="_mFvwMOjzEdqKLuVqE-P4sg" aggregation="composite" association="_rqsygGxFEdunY9SeGPF40Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_GxRpIGxEEdunY9SeGPF40Q" name="Timer">
+    <ownedAttribute xmi:id="_ccKLwmxFEdunY9SeGPF40Q" name="base_AcceptEventAction" association="_ccKLwGxFEdunY9SeGPF40Q">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#AcceptEventAction"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_AU7tMG0HEduEl_l9Ks1ieg" name="field" type="_Wc3_UGxEEdunY9SeGPF40Q"/>
+    <ownedAttribute xmi:id="_AU7tMW0HEduEl_l9Ks1ieg" name="amount">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_AU7tMm0HEduEl_l9Ks1ieg" name="expression">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ccKLwGxFEdunY9SeGPF40Q" name="AcceptEventAction_Timer" memberEnd="_ccKLwWxFEdunY9SeGPF40Q _ccKLwmxFEdunY9SeGPF40Q">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ccKLwWxFEdunY9SeGPF40Q" name="extension_Timer" type="_GxRpIGxEEdunY9SeGPF40Q" aggregation="composite" association="_ccKLwGxFEdunY9SeGPF40Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_Wc3_UGxEEdunY9SeGPF40Q" name="Unit">
+    <ownedLiteral xmi:id="_ZcpjIGxEEdunY9SeGPF40Q" name="Seconds"/>
+    <ownedLiteral xmi:id="_RB2CYNXjEd2i-8lUUB05Ug" name="Minutes"/>
+    <ownedLiteral xmi:id="_fzJyMGxEEdunY9SeGPF40Q" name="Hours"/>
+    <ownedLiteral xmi:id="_gZmHIGxEEdunY9SeGPF40Q" name="Days"/>
+    <ownedLiteral xmi:id="_OyM7ANXjEd2i-8lUUB05Ug" name="Weeks"/>
+    <ownedLiteral xmi:id="_PqrbINXjEd2i-8lUUB05Ug" name="Months"/>
+    <ownedLiteral xmi:id="_QWoiMNXjEd2i-8lUUB05Ug" name="Years"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_QB0K8HudEd28-tqxt2fXaQ" name="Scheduled">
+    <ownedAttribute xmi:id="_UuFFwHudEd28-tqxt2fXaQ" name="cron">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ZfjQsXudEd28-tqxt2fXaQ" name="base_AcceptEventAction" association="_ZfGkwHudEd28-tqxt2fXaQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#AcceptEventAction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ZfGkwHudEd28-tqxt2fXaQ" name="AcceptEventAction_Scheduled" memberEnd="_ZfjQsHudEd28-tqxt2fXaQ _ZfjQsXudEd28-tqxt2fXaQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ZfjQsHudEd28-tqxt2fXaQ" name="extension_Scheduled" type="_QB0K8HudEd28-tqxt2fXaQ" aggregation="composite" association="_ZfGkwHudEd28-tqxt2fXaQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_wrX3EGxFEdunY9SeGPF40Q" name="Invoke">
+    <ownedAttribute xmi:id="_4B9DEGxFEdunY9SeGPF40Q" name="arguments">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7YFRYGxFEdunY9SeGPF40Q" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_BAr4omxGEdunY9SeGPF40Q" name="base_CallOperationAction" association="_BAr4oGxGEdunY9SeGPF40Q">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallOperationAction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_BAr4oGxGEdunY9SeGPF40Q" name="CallOperationAction_Invoke" memberEnd="_BAr4oWxGEdunY9SeGPF40Q _BAr4omxGEdunY9SeGPF40Q">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_BAr4oWxGEdunY9SeGPF40Q" name="extension_Mapping" type="_wrX3EGxFEdunY9SeGPF40Q" aggregation="composite" association="_BAr4oGxGEdunY9SeGPF40Q"/>
+  </packagedElement>
+</uml:Profile>

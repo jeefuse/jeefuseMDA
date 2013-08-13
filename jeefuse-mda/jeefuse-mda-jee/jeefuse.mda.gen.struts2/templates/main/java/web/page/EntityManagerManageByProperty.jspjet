@@ -1,0 +1,301 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.jsp" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntitManagerJSPManageByProperty" %>
+<%Property curProperty = (Property) argument;Package O2MManagePropertyPackage = curProperty.getNearestPackage();%>
+<%Class ownerClass=(Class)curProperty.getOwner();%>
+<%//String ownerClassCapName=NameHelper.getCapName(ownerClass);%>
+<%//String ownerClassUncapName=NameHelper.getUncapName(ownerClass);%>
+<%String ownerClassCommentName=TypeHelper.getDocumentationOrName(ownerClass);%>
+<%//Property ownerClassIdProperty=EntityHelper.getIDProperty(ownerClass);%>
+<%//String ownerClassIdPropertyName=NameHelper.uncapSafeName(ownerClassIdProperty);%>
+<%//String ownerClassIdPropertyGetter=ClassHelper.getGetAccessor(ownerClassIdProperty);%>
+<%UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(curProperty);%>
+<%Class relClass=ownerClass;%>
+<%String jspScriptStart="<%@";
+String jspScriptEnd="%"+">";
+String jspScriptAssign="<%=";
+%><%=jspScriptStart%> page contentType="text/html;charset=UTF-8" <%=jspScriptEnd%>
+<%=jspScriptStart%> include file="/common/taglibs.jsp" <%=jspScriptEnd%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=ownerClassCommentName%>管理</title>
+<%=jspScriptStart%> include file="/common/meta.jsp" <%=jspScriptEnd%>
+<script src="<%=Config.web_resources_js_include%>" type="text/javascript"></script>
+<script>
+	var ctx = '${ctx}';
+	var theme = '${theme}';
+<%List<Property> codeKindPropertiesList=EnumKindHelper.getPropertiesAppliedEnumKind(relClass);%>
+<%if(null!=codeKindPropertiesList&&codeKindPropertiesList.size()>0){%>
+<%	for(Property property:codeKindPropertiesList){%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%			String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+<%			String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+	var <%=modelEnumJsoncapName%>=<%=jspScriptAssign%><%=modelEnumQualifiedName%>.toHtmlJSON<%=jspScriptEnd%>;
+<%		}%>
+<%	}%>
+<%}%>
+<%List<Property> datePickerList=ViewInputHelper.getViewInputDatePicker(ownerClass);%>
+	importCssFile('sys|ui|flexiGrid|contextmenu<%if(!datePickerList.isEmpty()){%>|datePicker<%}%>', ctx, theme);
+	importJsFile('jquery|blockUI|common|ui|flexiGrid|validate|contextmenu<%if(!datePickerList.isEmpty()){%>|datePicker<%}%>', ctx);
+	importJsFile('<%=named.getWebPath(NameRuledWebPathKind.js_manager)%>', ctx);
+</script>
+
+</head>
+<body id="container" class="v-container">
+	<div id="header" region="north" split="false" border="false"  class="v-header"><!-- header start -->
+		<div id="first-title" class="v-title">
+			
+		</div>
+		
+		<div id="first-toolbar" class="v-toolbar"><!-- v-toolbar start -->
+			<a href="javascript:newData();" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-add">新增</span></span>
+			</a>
+			<a href="javascript:editData()" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-form-edit">编辑</span></span>
+			</a>
+			<a href="javascript:delData();" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-remove">删除</span></span>
+			</a>
+			<a href="javascript:delAllData();" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-remove">删除所有</span></span>
+			</a>
+			<a href="javascript:refresh()" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-reload">刷新</span></span>
+			</a>
+			<a href="javascript:clear()" class=" l-btn l-btn-plain" >
+				<span class="l-btn-left"><span  class="l-btn-text icon-reset">重置</span></span>
+			</a>
+		</div><!-- v-toolbar end -->
+		
+		<div id="first-search" class="v-search"><!-- first-search -->
+<%//process search properties
+List<Property> searchPropertyList=ViewSearchHelper.getSearchTextFieldPropertiesFromSimple(relClass);
+List<Property> radioPropertyList=ViewSearchHelper.getSearchRadioFieldPropertiesFromSimple(relClass);
+List<Property> checkboxPropertyList=ViewSearchHelper.getSearchCheckboxFieldPropertiesFromSimple(relClass);
+if((null!=searchPropertyList&&searchPropertyList.size()>0)||radioPropertyList.size()>0||checkboxPropertyList.size()>0){
+int trIncludeTd=8;
+int tdCount=0;
+int needTd=2;
+%>
+		   <form id="firstSearchForm">
+				<table>
+<%
+/*****************************************************************
+ * process Property category
+/*****************************************************************/
+%>
+<%if(PropertyStereotypeHelper.hasProperty_Category(relClass)){%>
+<%	Property property=PropertyStereotypeHelper.getProperty_Category(relClass);%>	
+<%	Class propertyType = (Class) property.getType();%>
+<%	//String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<%	String propertyTypeCapName = NameHelper.getCapName(propertyType);%>
+<%	//String propertyTypeUncapName = NameHelper.getUncapName(propertyType);%>
+<% 	Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 	String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+			<input type="hidden" id="<%=propertyTypeCapName%>_<%=propertyTypeIdPropertyUncapSafeName%>" name="<%=propertyTypeCapName%>.<%=propertyTypeIdPropertyUncapSafeName%>"/>
+<%}%>	
+
+<%
+/*****************************************************************
+ * process radio property search 
+/*****************************************************************/
+%>				
+<%for (int i=0;i<radioPropertyList.size();i++){%>
+<%	Property property=radioPropertyList.get(i);%>
+<% 	String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 	//String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%	//String propertySearchRadios=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.searchRadios);%>
+<%	needTd=8;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+						<td>
+							 <label><%=propertyCommentName%>:</label>	
+						</td>
+						<td colspan="<%=needTd-1%>">
+							 ${propertySearchRadios}
+						</td>
+<%			tdCount+=needTd;%>	
+<%			if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%			}%>						
+<%}%>
+<%
+/*****************************************************************
+ * process checkboxPropertyList search 
+/*****************************************************************/
+%>	
+<%for (int i=0;i<checkboxPropertyList.size();i++){%>
+<%	Property property=checkboxPropertyList.get(i);%>
+<% 	String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 	//String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%	//String propertySearchCheckboxs=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.searchCheckboxs);%>
+<%	needTd=8;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+						<td>
+							 <label><%=propertyCommentName%>:</label>	
+						</td>
+						<td colspan="<%=needTd-1%>">
+							 ${propertySearchCheckboxs}
+						</td>
+<%			tdCount+=needTd;%>
+<%			if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%			}%>						
+<%}%>
+<%
+/*****************************************************************
+ * process searchPropertyList search 
+/*****************************************************************/
+%>	
+<%for (int i=0;i<searchPropertyList.size();i++){%>
+<%	Property property=searchPropertyList.get(i);%>
+<%	if(property.getName().equals(curProperty.getName())){%>
+<%		continue;%>
+<%	}%>
+<% 	String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 	String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%	if(EnumKindHelper.isAppliedEnumKind(property)){//process enumKind%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%			//String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			//String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumSelectHtml=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.selectHtml);%>
+<%			if(ViewInputHelper.isViewInputSelect(property)){//process select%>
+<%			needTd=2;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				<select  id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" class="text">
+							     <option value="" >所有</option>
+							     <s:property value="<%=modelEnumSelectHtml%>" escape="false"/>
+							 </select>
+		      			</td>
+<%			tdCount+=needTd;%>
+<%			}%>
+<%			if(ViewInputHelper.isViewInputRadio(property)){//process radio%>
+<%				radioPropertyList.add(property);%>
+<%			}%>
+<%			if(ViewInputHelper.isViewInputCheckbox(property)){//process radio%>
+<%				checkboxPropertyList.add(property);%>
+<%			}%>
+<%		}%>
+<%	}else if(ViewInputHelper.isViewInputDatePicker(property)){//process datePicker%>
+<%		String dateSearchStartName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchStartName);%>
+<% 		String dateSearchStartUncapSafeName=NameHelper.uncapName(dateSearchStartName);%>
+<%		String dateSearchEndName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchEndName);%>
+<% 		String dateSearchEndNameUncapSafeName=NameHelper.uncapName(dateSearchEndName);%>
+<%			needTd=4;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+		      			<td class="label">
+		      				<label>开始<%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field">
+		      				<input type="text" id="<%=dateSearchStartUncapSafeName%>" name="<%=dateSearchStartUncapSafeName%>" value="${param.<%=dateSearchStartUncapSafeName%>}"   class="dateCN"/>
+		      			</td>
+
+		      			<td class="label">
+		      				<label>结束<%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-3%>">
+		      				<input type="text" id="<%=dateSearchEndNameUncapSafeName%>" name="<%=dateSearchEndNameUncapSafeName%>" value="${param.<%=dateSearchEndNameUncapSafeName%>}"   class="dateCN"/>
+		      			</td>
+<%			tdCount+=needTd;%>
+<%	}else{//process text%>
+<%			needTd=2;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${param.<%=propertyUncapSafeName%>}"  class="text" />
+		      			</td>
+<%			tdCount+=needTd;%>
+<%	}%>
+<%			if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%			}%>						
+<%}%>
+<%
+/*****************************************************************
+ * process  search button 
+/*****************************************************************/
+%>	
+<%	needTd=1;%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+						<td>
+							<div class="v-buttons">
+								<a href="javascript:firstSearch();" class="easyui-linkbutton" icon="icon-search" > 查 询</a>
+							</div>
+						</td>
+<%			tdCount+=needTd;%>
+<%	if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%	}%>
+<%	if (tdCount%trIncludeTd!=0){%>	
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+<%	}%>	
+				</table>
+			</form>
+<%}%>
+		</div><!-- first-search End-->
+	</div><!-- header end -->
+			
+	<div id="center" region="center"  border="true">
+   		<div id="first-content">
+			<div id="dataGrid"  style="display:none;"></div>
+		</div>
+	</div><!-- center end -->						
+</body>
+</html>

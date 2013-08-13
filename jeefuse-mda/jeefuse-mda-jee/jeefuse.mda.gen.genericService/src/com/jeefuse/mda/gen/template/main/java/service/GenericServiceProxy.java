@@ -1,0 +1,890 @@
+package com.jeefuse.mda.gen.template.main.java.service;
+
+import net.taylor.mda.generator.parse.NameRuled.nameRuled.*;
+import net.taylor.mda.generator.parse.NameRuled.className.*;
+import net.taylor.mda.generator.parse.NameRuled.*;
+import java.util.List;
+import net.taylor.mda.generator.parse.stereotype.*;
+import net.taylor.mda.generator.parse.*;
+import java.util.Iterator;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.*;
+import net.taylor.mda.generator.util.*;
+import net.taylor.mda.generator.parse.entity.*;
+import org.eclipse.emf.codegen.util.*;
+
+public class GenericServiceProxy
+{
+  protected static String nl;
+  public static synchronized GenericServiceProxy create(String lineSeparator)
+  {
+    nl = lineSeparator;
+    GenericServiceProxy result = new GenericServiceProxy();
+    nl = null;
+    return result;
+  }
+
+  public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+  protected final String TEXT_1 = "/*" + NL + " * Copyright (c) 2009-2013 jeefuse.com, Licensed under GPL (the \"License\")" + NL + " * PROPRIETARY/CONFIDENTIAL. Use is subject to license terms." + NL + " * email:yonclv@gmail.com" + NL + " */" + NL + "package ";
+  protected final String TEXT_2 = ";";
+  protected final String TEXT_3 = NL;
+  protected final String TEXT_4 = NL + NL + "/**" + NL + " * ";
+  protected final String TEXT_5 = " service." + NL + " *" + NL + " * @author ";
+  protected final String TEXT_6 = NL + " * @generated" + NL + " */" + NL + "public interface ";
+  protected final String TEXT_7 = " extends ";
+  protected final String TEXT_8 = "<";
+  protected final String TEXT_9 = ", ";
+  protected final String TEXT_10 = "> {" + NL;
+  protected final String TEXT_11 = NL + "\t" + NL + "\t/*****************************************************************" + NL + "\t * ";
+  protected final String TEXT_12 = " rel ";
+  protected final String TEXT_13 = NL + "\t *****************************************************************/" + NL + "\t" + NL + "\t/**" + NL + "\t * 判断";
+  protected final String TEXT_14 = " 是否有";
+  protected final String TEXT_15 = "." + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic boolean is";
+  protected final String TEXT_16 = "HasRel";
+  protected final String TEXT_17 = "(String ";
+  protected final String TEXT_18 = "Id, String ";
+  protected final String TEXT_19 = "Id);" + NL + "" + NL + "\t/**" + NL + "\t * 删除";
+  protected final String TEXT_20 = "所有关联";
+  protected final String TEXT_21 = ",并保存新的关联";
+  protected final String TEXT_22 = "." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic void check";
+  protected final String TEXT_23 = "Rel";
+  protected final String TEXT_24 = "(final ";
+  protected final String TEXT_25 = " ";
+  protected final String TEXT_26 = ", String... ";
+  protected final String TEXT_27 = "Ids);" + NL + "" + NL + "\t/**" + NL + "\t * 获取";
+  protected final String TEXT_28 = "关联的";
+  protected final String TEXT_29 = "Id例表." + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic List<String> getRel";
+  protected final String TEXT_30 = "IdsBy";
+  protected final String TEXT_31 = "Id(String ";
+  protected final String TEXT_32 = "Id);" + NL + "" + NL + "\t/*****************************************************************" + NL + "\t * ";
+  protected final String TEXT_33 = " rel ";
+  protected final String TEXT_34 = " /" + NL + "\t *****************************************************************/" + NL + "\t" + NL + "\t/**" + NL + "\t * 判断";
+  protected final String TEXT_35 = " 是否有";
+  protected final String TEXT_36 = "." + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic boolean is";
+  protected final String TEXT_37 = "HasRel";
+  protected final String TEXT_38 = "(String ";
+  protected final String TEXT_39 = "Id, String ";
+  protected final String TEXT_40 = "Id);" + NL + "" + NL + "\t/**" + NL + "\t * 删除";
+  protected final String TEXT_41 = "所有关联";
+  protected final String TEXT_42 = ",并保存新的关联";
+  protected final String TEXT_43 = "." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic void check";
+  protected final String TEXT_44 = "Rel";
+  protected final String TEXT_45 = "(final ";
+  protected final String TEXT_46 = " ";
+  protected final String TEXT_47 = ", String... ";
+  protected final String TEXT_48 = "Ids);" + NL + "" + NL + "\t/**" + NL + "\t * 获取";
+  protected final String TEXT_49 = "关联的";
+  protected final String TEXT_50 = "Id例表." + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic List<String> getRel";
+  protected final String TEXT_51 = "IdsBy";
+  protected final String TEXT_52 = "Id(String ";
+  protected final String TEXT_53 = "Id);" + NL + "\t" + NL + "}";
+  protected final String TEXT_54 = "/*" + NL + " * Copyright (c) 2009-2013 jeefuse.com, Licensed under GPL (the \"License\")" + NL + " * PROPRIETARY/CONFIDENTIAL. Use is subject to license terms." + NL + " * email:yonclv@gmail.com" + NL + " */" + NL + "package ";
+  protected final String TEXT_55 = ";";
+  protected final String TEXT_56 = NL;
+  protected final String TEXT_57 = NL + NL + "/**" + NL + " * ";
+  protected final String TEXT_58 = " Entity CRUD service." + NL + " *" + NL + " * @author ";
+  protected final String TEXT_59 = NL + " * @generated" + NL + " */" + NL + "public interface ";
+  protected final String TEXT_60 = " extends ";
+  protected final String TEXT_61 = "<";
+  protected final String TEXT_62 = ", ";
+  protected final String TEXT_63 = "> {" + NL;
+  protected final String TEXT_64 = NL + "\t/**" + NL + "\t * 验证并保存对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_65 = " save(";
+  protected final String TEXT_66 = " rto) throws ValidateViolationException;" + NL + "" + NL + "\t/**" + NL + "\t * 验证并更新对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_67 = " update(";
+  protected final String TEXT_68 = " rto) throws ValidateViolationException ;" + NL + "\t" + NL + "\t/**" + NL + "\t * 根据属性值查找对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_69 = "> findByProperty(";
+  protected final String TEXT_70 = " ";
+  protected final String TEXT_71 = ", Object value);" + NL + "" + NL + "\t/**" + NL + "\t * 判断属性的值是否唯一." + NL + "\t *" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic boolean isPropertyUnique(";
+  protected final String TEXT_72 = " ";
+  protected final String TEXT_73 = ", Object newValue);" + NL + "\t" + NL + "\t/**" + NL + "\t * 根据请求参数查询." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_74 = "> find(Page<";
+  protected final String TEXT_75 = "> page, ";
+  protected final String TEXT_76 = " rto, Order[] orders);" + NL;
+  protected final String TEXT_77 = "\t" + NL + "\t/**" + NL + "\t * 导入数据." + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic ResultMsg<";
+  protected final String TEXT_78 = "> ";
+  protected final String TEXT_79 = "(List<";
+  protected final String TEXT_80 = "> importList) throws Exception;" + NL + "\t" + NL + "\t/*****************************************************************" + NL + "\t * 树形操作" + NL + "\t ******************************************************************/" + NL + "" + NL + "\t/**" + NL + "\t * 查询所有后代对象." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_81 = "> findDescendant(Page<";
+  protected final String TEXT_82 = "> page, ";
+  protected final String TEXT_83 = " rto, Order[] orders);" + NL + "" + NL + "\t/**" + NL + "\t * 根据ID检查对象是否有子节点." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic boolean hasChildren(String[] ids);" + NL + "" + NL + "\t/**" + NL + "\t * 删除当前对象,同时删除下级对象." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic int deleteDescendant(String[] delIds);" + NL + "" + NL + "\t/**" + NL + "\t * 获取所有";
+  protected final String TEXT_84 = "用于构造树形结构,只获取id,parentId,displayName属性." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<TreeViewItem> getAllForTreeview(OrderSet orderSet);";
+  protected final String TEXT_85 = "\t\t";
+  protected final String TEXT_86 = "\t\t" + NL;
+  protected final String TEXT_87 = "\t\t\t" + NL + "\t/**" + NL + "\t * 获取所有";
+  protected final String TEXT_88 = "对象用于构造keyLabel,只获取key,label属性." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<KeyLabel> ";
+  protected final String TEXT_89 = "();";
+  protected final String TEXT_90 = NL + NL + "\t/*****************************************************************" + NL + "\t * manage by ";
+  protected final String TEXT_91 = "(";
+  protected final String TEXT_92 = ")" + NL + "\t *****************************************************************/" + NL + "" + NL + "\t/**" + NL + "\t * 查询\"";
+  protected final String TEXT_93 = "(";
+  protected final String TEXT_94 = ")\"关联的\"";
+  protected final String TEXT_95 = "(";
+  protected final String TEXT_96 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_97 = "> findBy";
+  protected final String TEXT_98 = "(String ";
+  protected final String TEXT_99 = ",Page<";
+  protected final String TEXT_100 = "> page, ";
+  protected final String TEXT_101 = " rto, Order[] orders);" + NL + "" + NL + "" + NL + "\t/**" + NL + "\t * 查询\"";
+  protected final String TEXT_102 = "(";
+  protected final String TEXT_103 = ")\"关联的\"";
+  protected final String TEXT_104 = "(";
+  protected final String TEXT_105 = ")\"." + NL + "\t * " + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_106 = "> findBy";
+  protected final String TEXT_107 = "(String ";
+  protected final String TEXT_108 = ");" + NL + "" + NL + "\t/**" + NL + "\t * 查询\"";
+  protected final String TEXT_109 = "(";
+  protected final String TEXT_110 = ")\"关联的\"";
+  protected final String TEXT_111 = "(";
+  protected final String TEXT_112 = ")\",根据层次代码获取所有后代对象," + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_113 = "> findDescendantBy";
+  protected final String TEXT_114 = "(String ";
+  protected final String TEXT_115 = ", Page<";
+  protected final String TEXT_116 = "> page,";
+  protected final String TEXT_117 = " rto, Order[] orders);" + NL + "" + NL + "\t/**" + NL + "\t * 保存\"";
+  protected final String TEXT_118 = "(";
+  protected final String TEXT_119 = ")\"关联的\"";
+  protected final String TEXT_120 = "(";
+  protected final String TEXT_121 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_122 = " saveBy";
+  protected final String TEXT_123 = "(String ";
+  protected final String TEXT_124 = ",";
+  protected final String TEXT_125 = " rto);" + NL + "" + NL + "\t/**" + NL + "\t * 更新\"";
+  protected final String TEXT_126 = "(";
+  protected final String TEXT_127 = ")\"关联的\"";
+  protected final String TEXT_128 = "(";
+  protected final String TEXT_129 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_130 = " updateBy";
+  protected final String TEXT_131 = "(String ";
+  protected final String TEXT_132 = ",";
+  protected final String TEXT_133 = " rto);" + NL + "\t" + NL + "\t/**" + NL + "\t * 删除所有\"";
+  protected final String TEXT_134 = "(";
+  protected final String TEXT_135 = ")\"关联的\"";
+  protected final String TEXT_136 = "(";
+  protected final String TEXT_137 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic int deleteAllBy";
+  protected final String TEXT_138 = "(String ";
+  protected final String TEXT_139 = ");" + NL + "\t" + NL + "\t/**" + NL + "\t * 获取所有\"";
+  protected final String TEXT_140 = "(";
+  protected final String TEXT_141 = ")\"关联的";
+  protected final String TEXT_142 = "用于构造树形结构,只获取id,parentId,displayName属性." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_143 = "> getAllForTreeviewBy";
+  protected final String TEXT_144 = "(String ";
+  protected final String TEXT_145 = ");" + NL + "\t" + NL + "\t";
+  protected final String TEXT_146 = NL + NL + "}";
+  protected final String TEXT_147 = "/*" + NL + " * Copyright (c) 2009-2013 jeefuse.com, Licensed under GPL (the \"License\")" + NL + " * PROPRIETARY/CONFIDENTIAL. Use is subject to license terms." + NL + " * email:yonclv@gmail.com" + NL + " */" + NL + "package ";
+  protected final String TEXT_148 = ";";
+  protected final String TEXT_149 = NL + NL + "/**" + NL + " * ";
+  protected final String TEXT_150 = " Entity CRUD service." + NL + " *" + NL + " * @author ";
+  protected final String TEXT_151 = NL + " * @generated" + NL + " */" + NL + "public interface ";
+  protected final String TEXT_152 = " extends ";
+  protected final String TEXT_153 = "<";
+  protected final String TEXT_154 = ", ";
+  protected final String TEXT_155 = "> {" + NL;
+  protected final String TEXT_156 = NL + "\t/**" + NL + "\t * 验证并保存对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_157 = " save(";
+  protected final String TEXT_158 = " rto) throws ValidateViolationException;" + NL + "" + NL + "\t/**" + NL + "\t * 验证并更新对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_159 = " update(";
+  protected final String TEXT_160 = " rto) throws ValidateViolationException ;" + NL + "\t" + NL + "\t/**" + NL + "\t * 根据属性值查找对象." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_161 = "> findByProperty(";
+  protected final String TEXT_162 = " ";
+  protected final String TEXT_163 = ", Object value);" + NL + "" + NL + "\t/**" + NL + "\t * 判断属性的值是否唯一." + NL + "\t *" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic boolean isPropertyUnique(";
+  protected final String TEXT_164 = " ";
+  protected final String TEXT_165 = ", Object newValue);" + NL + "\t" + NL + "\t/**" + NL + "\t * 根据请求参数查询." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_166 = "> find(Page<";
+  protected final String TEXT_167 = "> page, ";
+  protected final String TEXT_168 = " rto, Order[] orders);" + NL;
+  protected final String TEXT_169 = "\t" + NL + "\t/**" + NL + "\t * 导入数据." + NL + "\t * " + NL + " \t * @generated" + NL + "\t */" + NL + "\tpublic ResultMsg<";
+  protected final String TEXT_170 = "> ";
+  protected final String TEXT_171 = "(List<";
+  protected final String TEXT_172 = "> importList)throws Exception;" + NL;
+  protected final String TEXT_173 = "\t";
+  protected final String TEXT_174 = NL + "\t/**" + NL + "\t * 获取所有";
+  protected final String TEXT_175 = "对象用于构造keyLabel,只获取key,label属性." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<KeyLabel> getAllForKeyLabel();";
+  protected final String TEXT_176 = NL + NL + "\t/*****************************************************************" + NL + "\t * manage by ";
+  protected final String TEXT_177 = "(";
+  protected final String TEXT_178 = ")" + NL + "\t *****************************************************************/" + NL + "" + NL + "\t/**" + NL + "\t * 查询\"";
+  protected final String TEXT_179 = "(";
+  protected final String TEXT_180 = ")\"关联的\"";
+  protected final String TEXT_181 = "(";
+  protected final String TEXT_182 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic Page<";
+  protected final String TEXT_183 = "> findBy";
+  protected final String TEXT_184 = "(String ";
+  protected final String TEXT_185 = ",Page<";
+  protected final String TEXT_186 = "> page, ";
+  protected final String TEXT_187 = " rto, Order[] orders);" + NL + "" + NL + "\t/**" + NL + "\t * 查询\"";
+  protected final String TEXT_188 = "(";
+  protected final String TEXT_189 = ")\"关联的\"";
+  protected final String TEXT_190 = "(";
+  protected final String TEXT_191 = ")\"." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_192 = "> findBy";
+  protected final String TEXT_193 = "(String ";
+  protected final String TEXT_194 = ");" + NL + "\t" + NL + "\t/**" + NL + "\t * 保存\"";
+  protected final String TEXT_195 = "(";
+  protected final String TEXT_196 = ")\"关联的\"";
+  protected final String TEXT_197 = "(";
+  protected final String TEXT_198 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_199 = " saveBy";
+  protected final String TEXT_200 = "(String ";
+  protected final String TEXT_201 = ",";
+  protected final String TEXT_202 = " rto);" + NL + "" + NL + "\t/**" + NL + "\t * 更新\"";
+  protected final String TEXT_203 = "(";
+  protected final String TEXT_204 = ")\"关联的\"";
+  protected final String TEXT_205 = "(";
+  protected final String TEXT_206 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic ";
+  protected final String TEXT_207 = " updateBy";
+  protected final String TEXT_208 = "(String ";
+  protected final String TEXT_209 = ",";
+  protected final String TEXT_210 = " rto);" + NL + "" + NL + "\t/**" + NL + "\t * 删除所有\"";
+  protected final String TEXT_211 = "(";
+  protected final String TEXT_212 = ")\"关联的\"";
+  protected final String TEXT_213 = "(";
+  protected final String TEXT_214 = ")\"." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic int deleteAllBy";
+  protected final String TEXT_215 = "(String ";
+  protected final String TEXT_216 = ");" + NL + "\t" + NL + "\t";
+  protected final String TEXT_217 = "\t";
+  protected final String TEXT_218 = NL + "\t/**" + NL + "\t * 根据";
+  protected final String TEXT_219 = "获取所有";
+  protected final String TEXT_220 = "对象用于构造keyLabel,只获取key,label属性." + NL + "\t * " + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic List<KeyLabel> getAllForKeyLabelBy";
+  protected final String TEXT_221 = "();";
+  protected final String TEXT_222 = NL + NL + "}";
+  protected final String TEXT_223 = NL;
+
+  public String generate(Object argument)
+  {
+    final StringBuffer stringBuffer = new StringBuffer();
+    Class uml2Class_proxy = (Class) argument;Package uml2Package_proxy = uml2Class_proxy.getPackage();
+    if(ModelStereoTypeHelper.isApplyModel_M2mWithId(uml2Class_proxy)){//应用了M2MWithId
+    Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();
+    
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+
+//rel generic service
+ClassNameDefineCommon serviceDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericPackageName=serviceDefine.getPackageQualifiedName();
+String modelServiceGenericClassName=serviceDefine.getClassCapName();
+
+
+    stringBuffer.append(TEXT_1);
+    stringBuffer.append(modelServiceGenericPackageName);
+    stringBuffer.append(TEXT_2);
+    ImportManager importManager = ImportHelper.makeImportManager("");
+    
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+importManager.addImport(Config.base_ServiceGenericQualifiedName);
+String baseServiceGenericClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+importManager.addImport(modelFieldQualifiedName);
+
+//model propertyValueGet 
+ClassNameDefineCommon propertyValueGetDefine=clazzWrap.getNameDefineEntityPropertyValueGet();
+String propertyValueGetQualifiedName=propertyValueGetDefine.getClassQualifiedName();
+importManager.addImport(propertyValueGetQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+importManager.addImport(modelRTOQualifiedName);
+
+    stringBuffer.append(TEXT_3);
+    
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+
+    stringBuffer.append(TEXT_4);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_5);
+    stringBuffer.append(System.getProperty("user.name"));
+    stringBuffer.append(TEXT_6);
+    stringBuffer.append(modelServiceGenericClassName);
+    stringBuffer.append(TEXT_7);
+    stringBuffer.append(baseServiceGenericClassName);
+    stringBuffer.append(TEXT_8);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_9);
+    stringBuffer.append(EntityHelper.getIDPropertyImportType(uml2Class));
+    stringBuffer.append(TEXT_10);
+    /********rel first entity********/
+    List<Property> propertyList=EntityHelper.getAllOneToManyProperties(uml2Class,false);
+    Property firstProperty=propertyList.get(0);
+    Class firstPropertyClass=(Class)firstProperty.getType();
+    String firstPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);
+    String firstPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);
+    String firstPropertyModelCommentName=TypeHelper.getDocumentationOrName(firstPropertyClass);
+    String firstPropertyEntityQualifiedName=MdaHelper.getEntityQualifiedName(firstPropertyClass);
+    importManager.addImport(firstPropertyEntityQualifiedName);
+    /********rel second entity********/
+    Property secondProperty=propertyList.get(1);
+    Class  secondPropertyClass=(Class)secondProperty.getType();
+    String secondPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);
+    String secondPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);
+    String secondPropertyModelCommentName=TypeHelper.getDocumentationOrName(secondPropertyClass);
+    String secondPropertyEntityQualifiedName=MdaHelper.getEntityQualifiedName(secondPropertyClass);
+    importManager.addImport(secondPropertyEntityQualifiedName);
+    stringBuffer.append(TEXT_11);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_12);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_13);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_14);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_15);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_16);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_17);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_18);
+    stringBuffer.append(secondPropertyModelUncapName);
+    stringBuffer.append(TEXT_19);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_20);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_21);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_22);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_23);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_24);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_25);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_26);
+    stringBuffer.append(secondPropertyModelUncapName);
+    stringBuffer.append(TEXT_27);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_28);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_29);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_30);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_31);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_32);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_33);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_34);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_35);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_36);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_37);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_38);
+    stringBuffer.append(secondPropertyModelUncapName);
+    stringBuffer.append(TEXT_39);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_40);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_41);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_42);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_43);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_44);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_45);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_46);
+    stringBuffer.append(secondPropertyModelUncapName);
+    stringBuffer.append(TEXT_47);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_48);
+    stringBuffer.append(secondPropertyModelCommentName);
+    stringBuffer.append(TEXT_49);
+    stringBuffer.append(firstPropertyModelCommentName);
+    stringBuffer.append(TEXT_50);
+    stringBuffer.append(secondPropertyModelCapName);
+    stringBuffer.append(TEXT_51);
+    stringBuffer.append(firstPropertyModelCapName);
+    stringBuffer.append(TEXT_52);
+    stringBuffer.append(firstPropertyModelUncapName);
+    stringBuffer.append(TEXT_53);
+    importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());
+    }else if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class_proxy)){//应用了tree
+    Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();
+    
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+String modelUncapName=clazzWrap.getUncapName();
+String modelUrlNamespace=clazzWrap.getNamespace();
+
+//rel generic service
+ClassNameDefineCommon serviceGenericDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericPackageName=serviceGenericDefine.getPackageQualifiedName();
+String modelServiceGenericClassName=serviceGenericDefine.getClassCapName();
+
+
+    stringBuffer.append(TEXT_54);
+    stringBuffer.append(modelServiceGenericPackageName);
+    stringBuffer.append(TEXT_55);
+    ImportManager importManager = ImportHelper.makeImportManager("");
+    
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+importManager.addImport(Config.base_ServiceGenericQualifiedName);
+String baseServiceGenericClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+String modelEntityUncapName=entityDefine.getClassUncapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldName=entityFieldDefine.getClassName();
+String modelFieldUncapName=entityFieldDefine.getClassUncapName();
+importManager.addImport(modelFieldQualifiedName);
+
+//model propertyValueGet 
+ClassNameDefineCommon propertyValueGetDefine=clazzWrap.getNameDefineEntityPropertyValueGet();
+String propertyValueGetQualifiedName=propertyValueGetDefine.getClassQualifiedName();
+String propertyValueGetName=propertyValueGetDefine.getClassName();
+importManager.addImport(propertyValueGetQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+String modelRTOName=rtoDefine.getClassCapName();
+importManager.addImport(modelRTOQualifiedName);
+
+    stringBuffer.append(TEXT_56);
+    
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+
+    stringBuffer.append(TEXT_57);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_58);
+    stringBuffer.append(System.getProperty("user.name"));
+    stringBuffer.append(TEXT_59);
+    stringBuffer.append(modelServiceGenericClassName);
+    stringBuffer.append(TEXT_60);
+    stringBuffer.append(baseServiceGenericClassName);
+    stringBuffer.append(TEXT_61);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_62);
+    stringBuffer.append(EntityHelper.getIDPropertyImportType(uml2Class));
+    stringBuffer.append(TEXT_63);
+    importManager.addImport("com.jeefuse.base.exception.ValidateViolationException");
+    stringBuffer.append(TEXT_64);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_65);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_66);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_67);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_68);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_69);
+    stringBuffer.append(modelFieldName);
+    stringBuffer.append(TEXT_70);
+    stringBuffer.append(modelFieldUncapName);
+    stringBuffer.append(TEXT_71);
+    stringBuffer.append(modelFieldName);
+    stringBuffer.append(TEXT_72);
+    stringBuffer.append(modelFieldUncapName);
+    stringBuffer.append(TEXT_73);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_74);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_75);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_76);
+    importManager.addImport("com.jeefuse.base.web.result.ResultMsg");
+    stringBuffer.append(TEXT_77);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_78);
+    stringBuffer.append(MethodNamedRuleKind.importDatas.getRuleNamed(uml2Class));
+    stringBuffer.append(TEXT_79);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_80);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_81);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_82);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_83);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_84);
+    importManager.addImport("com.jeefuse.base.modules.condition.order.OrderSet");
+    stringBuffer.append(TEXT_85);
+    importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");
+    stringBuffer.append(TEXT_86);
+    	if(KeyLabelStereotypeHelper.isApply(uml2Class)){
+    		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");
+    		String classGetAllForKeyLabel=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.getAllForKeyLabel);
+    stringBuffer.append(TEXT_87);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_88);
+    stringBuffer.append(classGetAllForKeyLabel);
+    stringBuffer.append(TEXT_89);
+    	}
+    /********process tree end********/
+    /********process M2OProperty start********/
+    List<Property> M2OPropertyList=EntityHelper.getAllManyToOnePropertiesAndApplyManageByProperty(uml2Class,false);
+    for (Iterator<Property> iter=M2OPropertyList.iterator();iter.hasNext();){
+    		Property property=iter.next();
+     		//String propertyComment=TypeHelper.getDocumentationOrName(property);
+    		//String propertyGet=ClassHelper.getGetAccessor(property);
+     		String propertyUncapName=NameHelper.uncapSafeName(property);
+     		String propertyName=NameHelper.getCapName(property);
+    		UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(property);
+    		String byPropertyValueCamelName=named.getValueName();
+    		//String byPropertyValueGetAccessor=named.getValueGetAccessor();
+    stringBuffer.append(TEXT_90);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_91);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_92);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_93);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_94);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_95);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_96);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_97);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_98);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_99);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_100);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_101);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_102);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_103);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_104);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_105);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_106);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_107);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_108);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_109);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_110);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_111);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_112);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_113);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_114);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_115);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_116);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_117);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_118);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_119);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_120);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_121);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_122);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_123);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_124);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_125);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_126);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_127);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_128);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_129);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_130);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_131);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_132);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_133);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_134);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_135);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_136);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_137);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_138);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_139);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_140);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_141);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_142);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_143);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_144);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_145);
+    }
+    /********process M2OProperty end********/
+    stringBuffer.append(TEXT_146);
+    importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());
+    }else{//只应用了Entity
+    Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();
+    
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+//generic service
+ClassNameDefineCommon serviceGenericDefine=clazzWrap.getNameDefineServiceGeneric();
+String modelServiceGenericPackageName=serviceGenericDefine.getPackageQualifiedName();
+String modelServiceGenericClassName=serviceGenericDefine.getClassCapName();
+
+    stringBuffer.append(TEXT_147);
+    stringBuffer.append(modelServiceGenericPackageName);
+    stringBuffer.append(TEXT_148);
+    ImportManager importManager = ImportHelper.makeImportManager("");
+    
+// add imports
+importManager.addImport("java.util.List");
+importManager.addImport("com.jeefuse.base.modules.condition.order.Order");
+importManager.addImport("com.jeefuse.base.utils.page.Page");
+String baseServiceGenericClassName=MdaHelper.getBriefClassName(Config.base_ServiceGenericQualifiedName);
+importManager.addImport(Config.base_ServiceGenericQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldName=entityFieldDefine.getClassName();
+String modelFieldUncapName=entityFieldDefine.getClassUncapName();
+importManager.addImport(modelFieldQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+String modelRTOName=rtoDefine.getClassCapName();
+importManager.addImport(modelRTOQualifiedName);
+
+    
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+
+    stringBuffer.append(TEXT_149);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_150);
+    stringBuffer.append(System.getProperty("user.name"));
+    stringBuffer.append(TEXT_151);
+    stringBuffer.append(modelServiceGenericClassName);
+    stringBuffer.append(TEXT_152);
+    stringBuffer.append(baseServiceGenericClassName);
+    stringBuffer.append(TEXT_153);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_154);
+    stringBuffer.append(EntityHelper.getIDPropertyImportType(uml2Class));
+    stringBuffer.append(TEXT_155);
+    importManager.addImport("com.jeefuse.base.exception.ValidateViolationException");
+    stringBuffer.append(TEXT_156);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_157);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_158);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_159);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_160);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_161);
+    stringBuffer.append(modelFieldName);
+    stringBuffer.append(TEXT_162);
+    stringBuffer.append(modelFieldUncapName);
+    stringBuffer.append(TEXT_163);
+    stringBuffer.append(modelFieldName);
+    stringBuffer.append(TEXT_164);
+    stringBuffer.append(modelFieldUncapName);
+    stringBuffer.append(TEXT_165);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_166);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_167);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_168);
+    importManager.addImport("com.jeefuse.base.web.result.ResultMsg");
+    stringBuffer.append(TEXT_169);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_170);
+    stringBuffer.append(MethodNamedRuleKind.importDatas.getRuleNamed(uml2Class));
+    stringBuffer.append(TEXT_171);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_172);
+    /********process keyLabel********/
+    stringBuffer.append(TEXT_173);
+    	if(KeyLabelStereotypeHelper.isApply(uml2Class)){
+    		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");
+    stringBuffer.append(TEXT_174);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_175);
+    	}
+    /********process M2OProperty start********/
+    List<Property> M2OPropertyList=EntityHelper.getAllManyToOnePropertiesAndApplyManageByProperty(uml2Class,false);
+    for (Iterator<Property> iter=M2OPropertyList.iterator();iter.hasNext();){
+    		Property property=iter.next();
+    		UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(property);
+     		String propertyName=NameHelper.getCapName(property);
+     		String propertyUncapName=NameHelper.uncapSafeName(property);
+    		String byPropertyValueCamelName=named.getClassByPropetyCapName();
+    		//String byPropertyValueGetAccessor=named.getValueGetAccessor();
+    stringBuffer.append(TEXT_176);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_177);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_178);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_179);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_180);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_181);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_182);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_183);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_184);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_185);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_186);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_187);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_188);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_189);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_190);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_191);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_192);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_193);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_194);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_195);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_196);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_197);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_198);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_199);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_200);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_201);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_202);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_203);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_204);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_205);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_206);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_207);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_208);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_209);
+    stringBuffer.append(modelRTOName);
+    stringBuffer.append(TEXT_210);
+    stringBuffer.append(named.getComment());
+    stringBuffer.append(TEXT_211);
+    stringBuffer.append(propertyUncapName);
+    stringBuffer.append(TEXT_212);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_213);
+    stringBuffer.append(modelEntityName);
+    stringBuffer.append(TEXT_214);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_215);
+    stringBuffer.append(byPropertyValueCamelName);
+    stringBuffer.append(TEXT_216);
+    /********process keyLabel********/
+    stringBuffer.append(TEXT_217);
+    	if(KeyLabelStereotypeHelper.isApply(uml2Class)){
+    		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");
+    stringBuffer.append(TEXT_218);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_219);
+    stringBuffer.append(modelCommentName);
+    stringBuffer.append(TEXT_220);
+    stringBuffer.append(propertyName);
+    stringBuffer.append(TEXT_221);
+    	}
+    }
+    /********process M2OProperty end********/
+    stringBuffer.append(TEXT_222);
+    importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());
+    }
+    stringBuffer.append(TEXT_223);
+    return stringBuffer.toString();
+  }
+}

@@ -1,0 +1,689 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.action" imports="net.taylor.mda.generator.parse.stereotype.*  net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.page.* java.util.List java.util.ArrayList net.taylor.mda.generator.parse.* net.taylor.mda.generator.parse.entity.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityStrutsActionForTree" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCapName=clazzWrap.getCapName();
+String modelCommentName=clazzWrap.getCommentName();
+//action define
+ClassNameDefineCommon actionDefine=clazzWrap.getNameDefineAction();
+String modelActionQualifiedName=actionDefine.getClassQualifiedName();
+//String modelActionPackageName=actionDefine.getPackageQualifiedName();
+String modelActionName=actionDefine.getClassCapName();
+%><%@ include file="../../../../Header.jetinc"%>
+package <%=modelActionQualifiedName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%importManager.addImport("org.apache.commons.lang.StringUtils");%>
+<%importManager.addImport("org.springframework.beans.factory.annotation.Autowired");%>
+<%importManager.addImport("org.springframework.util.Assert");%>
+<%importManager.addImport("com.opensymphony.xwork2.ModelDriven");%>
+<%importManager.addImport("com.jeefuse.base.exception.ApplicationException");%>
+<%importManager.addImport("com.jeefuse.base.utils.page.Page");%>
+<%importManager.addImport("com.jeefuse.base.web.action.BaseAction");%>
+<%importManager.addImport("com.jeefuse.base.web.utils.RenderUtil");%>
+<%importManager.addImport("com.jeefuse.base.web.utils.RequestUtil");%>
+<%importManager.addImport("com.jeefuse.base.modules.condition.order.Order");%>
+<%importManager.addImport("com.jeefuse.base.exception.AppAssert");%>
+<%importManager.addImport("java.util.List");%>
+<%importManager.addImport("java.io.File");%>
+<%importManager.addImport("java.io.IOException");%>
+<%
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+//String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model service define
+ClassNameDefineCommon serviceDefine=clazzWrap.getNameDefineService();
+String modelServiceQualifiedName=serviceDefine.getClassQualifiedName();
+String modelServiceName=serviceDefine.getClassCapName();
+String modelServiceUnCapName=serviceDefine.getClassUncapName();
+importManager.addImport(modelServiceQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+String modelRTOName=rtoDefine.getClassCapName();
+importManager.addImport(modelRTOQualifiedName);
+
+// model RenderUtil define
+ClassNameDefineCommon renderUtilDefine=clazzWrap.getNameDefineRenderUtil();
+String modelRenderUtilQualifiedName=renderUtilDefine.getClassQualifiedName();
+String modelRenderUtilName=renderUtilDefine.getClassCapName();
+importManager.addImport(modelRenderUtilQualifiedName);
+
+//serviceFacotry define
+//UmlPackageWrap umlPackageWrap=new UmlPackageWrap(uml2Package);
+//String packageServiceFactoryClassName=umlPackageWrap.getServiceFactoryClassName();
+//String packageServiceFactoryClassQualifiedName=umlPackageWrap.getServiceFactoryClassQualifiedName();
+//importManager.addImport(packageServiceFactoryClassQualifiedName);
+%>
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+<%/****** Page access attributes List   *****/%>
+<%List<String> pageAccessAttrList=new ArrayList<String>();%>
+
+/**
+ * <%=modelCommentName%> Entity CRUD action.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=modelActionName%> extends BaseAction implements ModelDriven<<%=modelRTOName%>> {
+	/** @generated */
+	private static final long serialVersionUID = 1L;
+	
+	
+<%//importManager.addImport("org.springframework.beans.factory.annotation.Autowired");%>
+	/**
+	 * <%=modelCommentName%> Entity CRUD service.
+	 * @generated
+	 */
+	@Autowired
+	private <%=modelServiceName%> <%=modelServiceUnCapName%>;
+	
+	/*****************************************************************
+	 * property define
+	/*****************************************************************/
+
+	/** @generated */
+	private Page<<%=modelCapName%>> page=null;
+	/** @generated */
+	private <%=modelCapName%> mo=null;
+	/** @generated */
+	private <%=modelRTOName%> rto=null;
+
+	/** @generated */
+	public Page<<%=modelCapName%>> getPage() {
+		if(null==page)
+			page=new Page<<%=modelCapName%>>();
+		return page;
+	}
+
+	/** @generated */
+	public <%=modelRTOName%> getModel() {
+		if(null==rto)
+			rto = new <%=modelRTOName%>();
+		return rto;
+	}
+	
+	/** @generated */
+	public <%=modelCapName%> getMo() {
+		if (null == mo) {
+			mo = new <%=modelCapName%>();
+		}
+		return mo;
+	}
+		
+	/************************************************************************
+	 * request function invoke
+	 ************************************************************************/
+
+<%if(FunctionStereotypeUtil.isApplied_manage(uml2Class)){%>
+	/**
+	 * 转向管理页面.
+	 */
+	public String manage() {
+		return SUCCESS;
+	}
+<%}%>
+
+<%if(FunctionStereotypeUtil.isApplied_listOutJson(uml2Class)){%>		
+	/**
+	 * 获取Entity列表.返回json格式.
+	 * @generated
+	 */
+	public void listOutJson() {
+		try {
+			Order[] orders = RequestUtil.buildOrders(getRequest());
+			page = <%=modelServiceUnCapName%>.findDescendant(page, rto, orders);
+			<%=modelRenderUtilName%>.jsonFlexiGrid(getPage());
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%}%>
+
+<%if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class)){%>
+	public void listTreeOutJson() {
+		try {
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+			List<TreeViewItem> list = <%=modelServiceUnCapName%>.getAllForTreeview(null);
+<%			//<\%modelRenderUtilName%\>.jsonTreeview(list);%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.TreeRenderUtil");%>
+			TreeRenderUtil.jsonTreeview(list,"所有<%=modelCommentName%>");
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%	}%>
+
+<%if(FunctionStereotypeUtil.isApplied_getOutJson(uml2Class)){%>
+	/**
+	 * 根据ID获取Entity对象,返回json格式.
+	 * @generated
+	 */
+	public void getOutJson() {
+		try {
+			AppAssert.notNull(getModel().getId());
+			mo = <%=modelServiceUnCapName%>.get(getModel().getId());
+			<%=modelRenderUtilName%>.jsonResultMsg(true, mo, null);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%}%>
+	
+	private String htmlSelectTree;// 构造Html select 树
+<%		pageAccessAttrList.add("htmlSelectTree");%>
+	
+
+<%/********process rel M2MCheckboxs ,M2MCheckboxsTab Property ********/%>
+<%List<Property> needM2MCheckboxsList=new ArrayList<Property>();%>
+<%List<Property> M2MCheckboxsPropertyList=ViewInputHelper.getApplyM2MCheckboxs(uml2Class);%>
+<%if(null!=M2MCheckboxsPropertyList){//M2MCheckboxs %>
+<%	needM2MCheckboxsList.addAll(M2MCheckboxsPropertyList);%>
+<%}%>
+<%List<Property> M2MCheckboxsTabPropertyList=ViewInputHelper.getApplyM2MCheckboxsTab(uml2Class);%>
+<%if(null!=M2MCheckboxsTabPropertyList){//M2MCheckboxsTab %>
+<%	needM2MCheckboxsList.addAll(M2MCheckboxsTabPropertyList);%>
+<%}%>
+<%if(null!=needM2MCheckboxsList&&needM2MCheckboxsList.size()>0){%>
+<%	for(Property property:needM2MCheckboxsList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		String relPropertyCheckboxs=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxs);%>
+<%		String relPropertyCheckboxsDomId=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxsDomId);%>
+	private static final String <%=relPropertyCheckboxsDomId%> = "<%=relPropertyCheckboxs%>";//rel <%=relTargetClassCommentName%> for checkboxs
+	private String <%=relPropertyCheckboxs%>;
+<%		pageAccessAttrList.add(relPropertyCheckboxs);%>
+<%	}%>
+<%}%>
+<%/********process rel M2MCheckboxsTree M2MCheckboxsTreeTab Property********/%>
+<%List<Property> needM2MCheckboxsTreeList=new ArrayList<Property>();%>
+<%List<Property> M2MCheckboxsTreePropertyList=ViewInputHelper.getApplyM2MCheckboxsTree(uml2Class);%>
+<%if(null!=M2MCheckboxsTreePropertyList){//M2MCheckboxsTree %>
+<%	needM2MCheckboxsTreeList.addAll(M2MCheckboxsTreePropertyList);%>
+<%}%>
+<%List<Property> M2MCheckboxsTreeTabPropertyList=ViewInputHelper.getApplyM2MCheckboxsTreeTab(uml2Class);%>
+<%if(null!=M2MCheckboxsTreeTabPropertyList){//M2MCheckboxsTreeTab %>
+<%	needM2MCheckboxsTreeList.addAll(M2MCheckboxsTreeTabPropertyList);%>
+<%}%>
+<%if(null!=needM2MCheckboxsTreeList&&needM2MCheckboxsTreeList.size()>0){%>
+<%	for(Property property:needM2MCheckboxsTreeList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		String relPropertyShowCheckTreeJson=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relShowCheckTreeJson);%>
+	private String <%=relPropertyShowCheckTreeJson%>;// rel <%=relTargetClassCommentName%> for Treeview
+<%		pageAccessAttrList.add(relPropertyShowCheckTreeJson);%>
+<%	}%>
+<%}%>
+
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)||FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+	/**根据主键获取Entity,并转向修改页面.
+	 * 
+	 * @generated
+	 */
+	public String edit() {
+		try {
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+			List<TreeViewItem> list = <%=modelServiceUnCapName%>.getAllForTreeview(null);
+			String parentId = null;
+			if (StringUtils.isBlank(getModel().getId())) {
+				if (StringUtils.isNotBlank(getModel().getParentId())) {
+					parentId = rto.getParentId();
+				}
+<%/********process rel M2MCheckboxs process********/%>				
+<%if(null!=M2MCheckboxsPropertyList&&M2MCheckboxsPropertyList.size()>0){%>
+<%	for(Property property:M2MCheckboxsPropertyList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//relTargetClassPackageServiceFacotry define%>
+<%		String relTargetClassPackageServiceFactoryPackageName=MdaHelper.getPackageQualifiedName(relTargetClass.getNearestPackage(),PKGSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryClassName=MdaHelper.getPackageClassName(relTargetClass.getNearestPackage(),ModelNameSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryQualifiedName=relTargetClassPackageServiceFactoryPackageName+"."+relTargetClassPackageServiceFactoryClassName;%>
+<%		importManager.addImport(relTargetClassPackageServiceFactoryQualifiedName);%>
+<%		//model service%>
+<%		String relTargetClassServiceQualifiedName=MdaHelper.getModelQualifiedName(relTargetClass,PKGSuffix.service,ModelNameSuffix.Service);%>
+<%		String relTargetClassServiceName=ImportHelper.getImportedName(relTargetClassServiceQualifiedName);%>
+<%		String relTargetClassServiceUnCapName=NameHelper.uncapName(relTargetClassServiceName);	%>	
+<%		//relTargetClassCheckboxs%>		
+<%		String relTargetClassCheckboxs=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxs);%>
+<%		String relTargetClassCheckboxsDomId=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxsDomId);%>
+<%		String relTargetClassAllKeyLabelList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.allKeyLabelList);%>
+<%		String relTargetClassGetAllForKeyLabel=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getAllForKeyLabel);%>			
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabelRenderUtil");%>
+				// rel <%=relTargetClassCommentName%> for checkboxs
+				List<KeyLabel> <%=relTargetClassAllKeyLabelList%> = <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetAllForKeyLabel%>();
+				<%=relTargetClassCheckboxs%> = KeyLabelRenderUtil.renderHtmlCheckboxs(<%=relTargetClassAllKeyLabelList%>, null,<%=relTargetClassCheckboxsDomId%> );
+<%	}%>
+<%}%>
+<%/********process rel M2MCheckboxsTree process********/%>
+<%if(null!=needM2MCheckboxsTreeList&&needM2MCheckboxsTreeList.size()>0){%>
+<%	for(Property property:needM2MCheckboxsTreeList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		//String relTargetClassCapName=NameHelper.getCapName(relTargetClass);%>
+<%		//String relTargetClassUncapName=NameHelper.getUncapName(relTargetClass);%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//relTargetClassPackageServiceFacotry define%>
+<%		String relTargetClassPackageServiceFactoryPackageName=MdaHelper.getPackageQualifiedName(relTargetClass.getNearestPackage(),PKGSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryClassName=MdaHelper.getPackageClassName(relTargetClass.getNearestPackage(),ModelNameSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryQualifiedName=relTargetClassPackageServiceFactoryPackageName+"."+relTargetClassPackageServiceFactoryClassName;%>
+<%		importManager.addImport(relTargetClassPackageServiceFactoryQualifiedName);%>
+<%		//model service%>
+<%		String relTargetClassServiceQualifiedName=MdaHelper.getModelQualifiedName(relTargetClass,PKGSuffix.service,ModelNameSuffix.Service);%>
+<%		String relTargetClassServiceName=ImportHelper.getImportedName(relTargetClassServiceQualifiedName);%>
+<%		String relTargetClassServiceUnCapName=NameHelper.uncapName(relTargetClassServiceName);	%>	
+<%		//relPropertyShowCheckTree%>
+<%		String relTargetClassShowCheckTreeJson=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relShowCheckTreeJson);%>
+<%		String relTargetClassAllTreeviewList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.allTreeviewList);%>
+<%		String relTargetClassGetAllForTreeviewList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getAllForTreeviewList);%>		
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.TreeRenderUtil");%>
+				// rel <%=relTargetClassCommentName%> for Treeview
+				List<TreeViewItem> <%=relTargetClassAllTreeviewList%> = <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetAllForTreeviewList%>();
+				<%=relTargetClassShowCheckTreeJson%> =TreeRenderUtil.jsonTreeviewShowCheckString(<%=relTargetClassAllTreeviewList%>, null);
+<%	}%>
+<%}%>
+			} else {
+				mo = <%=modelServiceUnCapName%>.get(rto.getId());
+<%		importManager.addImport("com.jeefuse.base.utils.common.ChangeUtil");%>
+				ChangeUtil.excludeTreeIds(list, mo.getId());
+				parentId = mo.getParentId();
+<%/********process rel M2MCheckboxs process********/%>				
+<%if(null!=M2MCheckboxsPropertyList&&M2MCheckboxsPropertyList.size()>0){%>
+<%	for(Property property:M2MCheckboxsPropertyList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//relTargetClassPackageServiceFacotry define%>
+<%		String relTargetClassPackageServiceFactoryPackageName=MdaHelper.getPackageQualifiedName(relTargetClass.getNearestPackage(),PKGSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryClassName=MdaHelper.getPackageClassName(relTargetClass.getNearestPackage(),ModelNameSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryQualifiedName=relTargetClassPackageServiceFactoryPackageName+"."+relTargetClassPackageServiceFactoryClassName;%>
+<%		importManager.addImport(relTargetClassPackageServiceFactoryQualifiedName);%>
+<%		//model service%>
+<%		String relTargetClassServiceQualifiedName=MdaHelper.getModelQualifiedName(relTargetClass,PKGSuffix.service,ModelNameSuffix.Service);%>
+<%		String relTargetClassServiceName=ImportHelper.getImportedName(relTargetClassServiceQualifiedName);%>
+<%		String relTargetClassServiceUnCapName=NameHelper.uncapName(relTargetClassServiceName);	%>	
+<%		//relPropertyCheckboxs%>		
+<%		String relTargetClassCheckboxs=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxs);%>
+<%		String relTargetClassCheckboxsDomId=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxsDomId);%>
+<%		String relTargetClassAllKeyLabelList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.allKeyLabelList);%>
+<%		String relTargetClassGetAllForKeyLabel=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getAllForKeyLabel);%>	
+<%		String relTargetClassIdsList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relIdsList);%>	
+<%		String relTargetClassGetRelIdsMethodName=ModelHelper.getRelIdsMethodName(relTargetClass,uml2Class);%>		
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabelRenderUtil");%>
+				// rel <%=relTargetClassCommentName%> for checkboxs
+				List<KeyLabel> <%=relTargetClassAllKeyLabelList%> = <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetAllForKeyLabel%>();
+				List<String> <%=relTargetClassIdsList%> =  <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetRelIdsMethodName%>(mo.getId());
+				<%=relTargetClassCheckboxs%> = KeyLabelRenderUtil.renderHtmlCheckboxs(<%=relTargetClassAllKeyLabelList%>,<%=relTargetClassIdsList%>, <%=relTargetClassCheckboxsDomId%>);
+<%	}%>
+<%}%>				
+<%/********process rel M2MCheckboxsTree process********/%>
+<%if(null!=needM2MCheckboxsTreeList&&needM2MCheckboxsTreeList.size()>0){%>
+<%	for(Property property:needM2MCheckboxsTreeList){%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		//String relTargetClassCapName=NameHelper.getCapName(relTargetClass);%>
+<%		//String relTargetClassUncapName=NameHelper.getUncapName(relTargetClass);%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//relTargetClassPackageServiceFacotry define%>
+<%		String relTargetClassPackageServiceFactoryPackageName=MdaHelper.getPackageQualifiedName(relTargetClass.getNearestPackage(),PKGSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryClassName=MdaHelper.getPackageClassName(relTargetClass.getNearestPackage(),ModelNameSuffix.serviceFactory);%>
+<%		String relTargetClassPackageServiceFactoryQualifiedName=relTargetClassPackageServiceFactoryPackageName+"."+relTargetClassPackageServiceFactoryClassName;%>
+<%		importManager.addImport(relTargetClassPackageServiceFactoryQualifiedName);%>
+<%		//model service%>
+<%		String relTargetClassServiceQualifiedName=MdaHelper.getModelQualifiedName(relTargetClass,PKGSuffix.service,ModelNameSuffix.Service);%>
+<%		String relTargetClassServiceName=ImportHelper.getImportedName(relTargetClassServiceQualifiedName);%>
+<%		String relTargetClassServiceUnCapName=NameHelper.uncapName(relTargetClassServiceName);	%>	
+<%		//relPropertyShowCheckTree%>
+<%		String relTargetClassShowCheckTreeJson=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relShowCheckTreeJson);%>
+<%		String relTargetClassAllTreeviewList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.allTreeviewList);%>
+<%		String relTargetClassGetAllForTreeviewList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getAllForTreeviewList);%>		
+<%		String relTargetClassIdsList=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relIdsList);%>	
+<%		String relTargetClassGetRelIdsMethodName=ModelHelper.getRelIdsMethodName(relTargetClass,uml2Class);%>		
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.TreeRenderUtil");%>
+				// rel <%=relTargetClassCommentName%> for Treeview
+				List<TreeViewItem> <%=relTargetClassAllTreeviewList%> = <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetAllForTreeviewList%>();
+				List<String> <%=relTargetClassIdsList%> = <%=relTargetClassPackageServiceFactoryClassName%>.get<%=relTargetClassServiceUnCapName%>().<%=relTargetClassGetRelIdsMethodName%>(mo.getId());
+				<%=relTargetClassShowCheckTreeJson%> =TreeRenderUtil.jsonTreeviewShowCheckString(<%=relTargetClassAllTreeviewList%>, <%=relTargetClassIdsList%>);
+<%	}%>
+<%}%>
+			}
+<%		importManager.addImport("com.jeefuse.base.modules.tree.TreeRenderUtil");%>
+			htmlSelectTree = TreeRenderUtil.renderHtmlTreeSelect(list, parentId);
+			return SUCCESS;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return ERROR;
+		}
+	}
+<%}%>
+
+<%	if(FunctionStereotypeUtil.isApplied_saveOutJson(uml2Class)){%>	
+	/**
+	 * 保存或更新Entity,返回json格式.
+	 * @generated
+	 */
+	public void saveOutJson() {
+		try {
+<%importManager.addImport("org.hibernate.validator.InvalidStateException");%>		
+			Assert.notNull(getModel());
+<%/********process rel M2MCheckIdsList ********/%>
+<%List<Property> M2MCheckIdsList=new ArrayList<Property>();%>
+<%if(null!=M2MCheckboxsPropertyList){//M2MCheckboxs %>
+<%	M2MCheckIdsList.addAll(M2MCheckboxsPropertyList);%>
+<%}%>
+<%if(null!=M2MCheckboxsTabPropertyList){//M2MCheckboxsTab %>
+<%	M2MCheckIdsList.addAll(M2MCheckboxsTabPropertyList);%>
+<%}%>
+<%if(null!=M2MCheckboxsTreePropertyList){//M2MCheckboxsTree %>
+<%	M2MCheckIdsList.addAll(M2MCheckboxsTreePropertyList);%>
+<%}%>
+<%if(null!=M2MCheckboxsTreeTabPropertyList){//M2MCheckboxsTreeTab %>
+<%	M2MCheckIdsList.addAll(M2MCheckboxsTreeTabPropertyList);%>
+<%}%>
+<%StringBuilder saveCheckIdsSb=new StringBuilder();%>
+<%if(null!=M2MCheckIdsList&&M2MCheckIdsList.size()>0){%>
+<%	saveCheckIdsSb.append(",");%>
+<%	for(Iterator<Property> it=M2MCheckIdsList.iterator();it.hasNext();){%>
+<%		Type propertyType=it.next().getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCheckIds=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckIds);%>	
+<%		String relTargetClassGetRelCheckIdsMethod=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getRelCheckIdsMethod);%>	
+			String[] <%=relTargetClassCheckIds%> = ChangeUtil.stringToArray(getModel().<%=relTargetClassGetRelCheckIdsMethod%>(), true);
+<%		saveCheckIdsSb.append(relTargetClassCheckIds);%>			
+<%		if(it.hasNext())saveCheckIdsSb.append(",");%>
+<%	}%>
+<%}%>
+			mo = <%=modelServiceUnCapName%>.save(getModel()<%=saveCheckIdsSb.toString()%>);
+			<%=modelRenderUtilName%>.jsonResultMsg(true, mo, "保存成功!");
+			return;
+		} catch (InvalidStateException e) {
+<%
+//model validate
+String modelQualifiedForValidate=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.Validate,ModelNameSuffix.Validate);
+String modelClassNameForValidate=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Validate);
+importManager.addImport(modelQualifiedForValidate);
+%>
+			String invalidateMsg = <%=modelClassNameForValidate%>.getValidateMessageWithHtmlBR(e.getInvalidValues());
+			logger.error(invalidateMsg, e);
+			RenderUtil.renderJsonResultMsgError(invalidateMsg);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+
+	/**
+	 * 更新Entity,返回json格式.
+	 * 
+	 * @generated
+	 */
+	public void updateOutJson() {
+		try {
+<%importManager.addImport("com.jeefuse.base.exception.AppAssert");%>
+			AppAssert.notNull(getModel().getId(), "未指定更新记录!");
+<%StringBuilder updateCheckIdsSb=new StringBuilder();%>
+<%if(null!=M2MCheckIdsList&&M2MCheckIdsList.size()>0){%>
+<%	updateCheckIdsSb.append(",");%>
+<%	for(Iterator<Property> it=M2MCheckIdsList.iterator();it.hasNext();){%>
+<%		Type propertyType=it.next().getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCheckIds=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckIds);%>	
+<%		String relTargetClassGetRelCheckIdsMethod=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.getRelCheckIdsMethod);%>	
+			String[] <%=relTargetClassCheckIds%> = ChangeUtil.stringToArray(getModel().<%=relTargetClassGetRelCheckIdsMethod%>(), true);
+<%		updateCheckIdsSb.append(relTargetClassCheckIds);%>			
+<%		if(it.hasNext())updateCheckIdsSb.append(",");%>
+<%	}%>
+<%}%>
+			mo = <%=modelServiceUnCapName%>.update(getModel()<%=saveCheckIdsSb.toString()%>);
+			<%=modelRenderUtilName%>.jsonResultMsg(true, mo, "更新成功!");
+			return; 
+		} catch (InvalidStateException e) {
+			String invalidateMsg = <%=modelClassNameForValidate%>.getValidateMessageWithHtmlBR(e.getInvalidValues());
+			logger.error(invalidateMsg, e);
+			RenderUtil.renderJsonResultMsgError(invalidateMsg);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%	}%>
+
+<%	if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+	/**
+	 * 删除Entity,返回json格式.
+	 * @generated
+	 */
+	public void deleteOutJson() {
+		try {
+			AppAssert.notNull(getModel().getId(), "未指定删除的对象!");
+			final String[] delIds = StringUtils.split(getModel().getId(), ",");
+			int delCount = <%=modelServiceUnCapName%>.delete(delIds);
+			String msg = delCount == 0?"无记录删除!":"删除成功" + delCount + "项记录!";
+			RenderUtil.renderJsonResultMsgSuccess(msg);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+
+	/**
+	 * 删除当前对象及后代对象.
+	 */
+	public void deleteDescendantOutJson() {
+		try {
+			AppAssert.notNull(getModel().getId(), "未指定删除的对象!");
+			final String[] delIds = StringUtils.split(getModel().getId(), ",");
+			int delCount = <%=modelServiceUnCapName%>.deleteDescendant(delIds);
+			String msg = delCount == 0 ? "无记录删除!" : "删除成功" + delCount + "项记录!";
+			RenderUtil.renderJsonResultMsgSuccess(msg);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%	}%>
+
+<%	if(FunctionStereotypeUtil.isApplied_deleteAllOutJson(uml2Class)){%>
+	/**
+	 * 删除所有Entity,返回json格式.
+	 * @generated
+	 */
+	public void deleteAllOutJson() {
+		try {
+			int delCount = <%=modelServiceUnCapName%>.deleteAll();
+			String msg = delCount == 0?"无记录删除!":"删除成功" + delCount + "项记录!";
+			RenderUtil.renderJsonResultMsgSuccess(msg);
+		} catch (ApplicationException e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			RenderUtil.renderJsonResultMsgError();
+		}
+	}
+<%	}%>
+
+<%	if(ServiceStereotypeUtil.isApplied_expExcel(uml2Class)){//isApplied exportExcelFile%>
+<%
+//model exportFactory 
+String modelExportFactoryQualifiedName=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.exportFactory,ModelNameSuffix.exportFactory);
+//String modelExportFactoryPackageName=MdaHelper.getPackageQualifiedName(uml2Class,PKGSuffix.exportFactory);
+String modelExportFactoryClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.exportFactory);
+importManager.addImport(modelExportFactoryQualifiedName);
+
+//model excel export file name
+//String ExcelExportTemplateFileCapName=PropertyNamedRuleKind.ExcelExportTemplateFileName.getRuleCapNamed(uml2Class);
+//String ExcelExportTemplateFileUncapName=PropertyNamedRuleKind.ExcelExportTemplateFileName.getRuleUnCapNamed(uml2Class);
+
+%>
+	/**
+	 * 导出 Excel 文件.
+     * @generated
+	 */
+	public void exportExcelFile() {
+		try {
+			Order[] orders = RequestUtil.buildOrders(getRequest());
+			page = <%=modelServiceUnCapName%>.find(getPage(), getModel(), orders);
+			<%=modelExportFactoryClassName%>.excelExportAllField(getResponse(), getPage().getResult());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+<%	}//isApplied exportExcelFile end%>
+<%	if(ServiceStereotypeUtil.isApplied_impExcel(uml2Class)){%>
+<%
+//model importFactory
+String modelImportFactoryQualifiedName=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.importFactory,ModelNameSuffix.importFactory);
+//String modelImportFactoryPackageName=MdaHelper.getPackageQualifiedName(uml2Class,PKGSuffix.importFactory);
+String modelImportFactoryClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.importFactory);;
+importManager.addImport(modelImportFactoryQualifiedName);
+
+//model excelImport 
+//String modelExcelImportQualifiedName=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.importExcel,ModelNameSuffix.importExcel);
+//String modelExcelImportClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.importExcel);
+//importManager.addImport(modelExcelImportQualifiedName);
+
+//webFileUtil
+importManager.addImport("com.jeefuse.base.web.uploadFile.StrutsWebFileUtil");
+%>
+<%		importManager.addImport("java.io.File");%>
+<%		importManager.addImport("java.io.IOException");%>
+<%		importManager.addImport("java.util.List");%>
+
+	/**
+	 * 导入excel 文件处理.
+	 * @generated
+	 */
+	public void <%=WebUrlName.importExcelFileProcess.getValue()%>() {
+		try {
+			List<File> fileList = StrutsWebFileUtil.getUploadFile(getRequest());
+			if (!fileList.isEmpty()) {
+				List<<%=modelCapName%>> importModelList = <%=modelImportFactoryClassName%>.excelToModel(fileList.get(0));
+<%importManager.addImport("com.jeefuse.base.web.result.ResultMsg");%>	
+				ResultMsg<<%=modelCapName%>> resultMsg =<%=modelServiceUnCapName%>.<%=MethodNamedRuleKind.importDatas.getRuleNamed(uml2Class)%>(importModelList);
+				RenderUtil.renderHtml(resultMsg.getMessage());
+				return;
+			}
+			RenderUtil.renderHtml("请上传需要导入的excel文件!");
+		} catch (ApplicationException e) {
+			RenderUtil.renderHtml(e.getMessage());
+			logger.error(e.getMessage(), e);
+		} catch (IOException e) {
+			RenderUtil.renderHtml("导入失败!文件加载错误!");
+			logger.error(e.getMessage(), e);
+		} catch (Exception e) {
+			RenderUtil.renderHtml("导入失败!");
+			logger.error(e.getMessage(), e);
+		}
+	}
+<%	}%>	
+
+	<%//code kind define%>
+<%List<Property> codeKindPropertiesList=EnumKindHelper.getPropertiesAppliedEnumKind(uml2Class);%>
+<%if(null!=codeKindPropertiesList&&codeKindPropertiesList.size()>0){%>
+<%	//importManager.addImport("java.util.Map");%>
+<%	for(Property property:codeKindPropertiesList){%>
+<%		String propertyGetAccessorName=ClassHelper.getGetAccessor(property);%>	
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%			String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumSelectHtml=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.selectHtml);%>
+<%			importManager.addImport(modelEnumQualifiedName);%>
+
+	/** @generated */
+	public String get<%=modelEnumSelectHtml%>() {
+		return <%=modelEnumName%>.toHtmlSelect(null == mo ? null : mo.<%=propertyGetAccessorName%>());
+	}
+<%			String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+	/** @generated */
+	public String get<%=modelEnumJsoncapName%>() {
+		return <%=modelEnumName%>.toHtmlJSON;
+	}
+<%		}%>
+<%	}%>
+<%}%>
+	
+<%if(null!=pageAccessAttrList){%>
+<% for(String str:pageAccessAttrList){%>	
+	public String get<%=NameHelper.getCapName(str)%>() {
+	<%if(str.endsWith("Json")){%>
+		if (null == <%=str%>)
+			return "{}";
+	<%}%>
+		return <%=str%>;
+	}
+<%	}%>	
+<%}%>	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

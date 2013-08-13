@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ 
+   <extension  
+         point="net.taylor.mda.generator.templates">
+         
+      <!-- EntityStrutsAction-->     
+      <template 
+             id="EntityStrutsAction"
+             path="/main/java/web/action/EntityStrutsAction-Proxy.javajet"
+             outputPattern="/src/main/java/{0}/web/action/{1}Action.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+
+	  <!-- EntityStruts Xml config-->
+      <template 
+             id="EntityStrutsXml"
+             path="/main/java/web/action/EntityStruts.xmljet"
+             outputPattern="/src/main/java/{0}/web/struts-{1}.xml"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+ 
+ 	   <!-- Function Xml config
+       <template 
+             id="EntityFunctionXml"
+             path="/main/java/web/function/Function.xmljet"
+             outputPattern="/src/main/java/{0}/function/function-struts-{1}.xml"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+  	  -->
+   	  <!-- EntityRTO
+      <template 
+             id="EntityRTO"
+             path="/main/java/web/rto/EntityRTO.javajet"
+             outputPattern="/src/main/java/{0}/web/rto/{1}RTO.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      --> 
+      <!-- EntityInputJs--> 
+      <template 
+             id="EntityInputJs"
+             path="/main/java/web/js/EntityInput-Proxy.jsjet"
+             outputPattern="/webapp/resources/content/{9}/{12}/{12}-input.js"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+ 
+      <!-- EntityListForSelectjs  
+      <template 
+             id="EntityListForSelectJs"
+             path="/main/java/web/js/EntityListForSelect.jsjet"
+             outputPattern="/webapp/resources/content/{9}/{14}/{13}-listForSelect.js"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.model.ListForSelect"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+	  -->
+	  
+	  <!-- EntityManagerJs --> 
+      <template 
+             id="EntityManagerJs"
+             path="/main/java/web/js/EntityManager-Proxy.jsjet"
+             outputPattern="/webapp/resources/content/{9}/{12}/{12}-manager.js"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+
+	<!-- EntityInputJsp  --> 
+      <template 
+             id="EntityInputJsp"
+             path="/main/java/web/page/EntityInput-Proxy.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{12}/{12}-input.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      
+      <!-- EntityListForSelectjsp 
+      <template 
+             id="EntityListForSelectJsp"
+             path="/main/java/web/page/EntityListForSelect.jspjet"
+             outputPattern="/webapp/resources/content/{9}/{12}/{12}-listForSelect.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.model.ListForSelect"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      --> 
+	 <!-- EntityManagerJsp--> 
+      <template 
+             id="EntityManagerJsp"
+             path="/main/java/web/page/EntityManager-Proxy.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{12}/{12}-manager.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+            
+      <!-- EntityUploadFileJsp--> 
+      <template 
+             id="EntityUploadFileJsp"
+             path="/main/java/web/page/EntityUploadFile.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{12}/{12}-uploadFile.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.model.File"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      
+      <!-- EntityUploadImageJsp--> 
+      <template 
+             id="EntityUploadImageJsp"
+             path="/main/java/web/page/EntityUploadFile.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{12}/{12}-uploadImage.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.model.Image"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      
+      <!-- EntityExportFactory --> 
+      <template 
+             id="EntityExportFactory"
+             path="/main/java/web/exports/EntityExportFactory.javajet"
+             outputPattern="/src/main/java/{0}/web/exports/{1}ExportFactory.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.service.ExpExcel"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+      <!-- EntityImportExcel--> 
+      <template 
+             id="EntityImportExcel"
+             path="/main/java/web/page/EntityImportExcel.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{12}/{12}-importExcel.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.service.ImpExcel"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      
+      <!-- EntityImportFactory --> 
+      <template 
+             id="EntityImportFactory"
+             path="/main/java/web/imports/EntityImportFactory.javajet"
+             outputPattern="/src/main/java/{0}/web/imports/{1}ImportFactory.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.service.ImpExcel"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+      <!-- EntityExcelImport --> 
+      <template 
+             id="EntityExcelImport"
+             path="/main/java/web/imports/EntityExcelImport.javajet"
+             outputPattern="/src/main/java/{0}/web/imports/excel/{1}ExcelImport.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.service.ImpExcel"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+	  
+	  <!-- EntityFlexiGridJsonWriter --> 
+      <template 
+             id="EntityFlexiGridJsonWriter"
+             path="/main/java/web/render/EntityFlexiGridJsonWriter.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{1}FlexiGridJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+      <!-- EntityResultMsgJsonWriter -->
+      <template 
+             id="EntityResultMsgJsonWriter"
+             path="/main/java/web/render/EntityResultMsgJsonWriter.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{1}ResultMsgJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+	  <!-- EntityTreeGridJsonWriter --> 
+      <template 
+             id="EntityTreeGridJsonWriter"
+             path="/main/java/web/render/EntityTreeGridJsonWriter.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{1}TreeGridJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,net.jeefuse.mda.annotations.model.Tree"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+       
+      <!-- EntityRenderUtil -->
+      <template 
+             id="EntityRenderUtil"
+             path="/main/java/web/render/EntityRenderUtil.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{1}RenderUtil.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+ 
+	  <!-- EntityUploadFileRule -->
+	 <template 
+             id="EntityUploadFileRule"
+             path="/main/java/web/UploadFile/EntityUploadFileRule.javajet"
+             outputPattern="/src/main/java/{0}/web/uploadFiles/{1}UploadFile.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.model.File|net.jeefuse.mda.annotations.model.Image"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+	        
+      <!--*************************************************
+      		manage By Property
+      *****************************************************-->
+       <!-- EntityStrutsAction manage By Property -->     
+      <template 
+             id="EntityStrutsActionManageByProperty-Proxy"
+             path="/main/java/web/action/EntityStrutsActionManageByProperty-Proxy.javajet"
+             outputPattern="/src/main/java/{0}/web/action/{13}Action.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      <!-- EntityStruts Xml config manage By Property-->
+      <template 
+             id="EntityStrutsManageByPropertyXml"
+             path="/main/java/web/action/EntityStrutsManageByProperty.xmljet"
+             outputPattern="/src/main/java/{0}/web/struts-{13}.xml"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      <!-- EntityInputJs manage By Property--> 
+      <template 
+             id="EntityInputManageByProperty-ProxyJs"
+             path="/main/java/web/js/EntityInputManageByProperty-Proxy.jsjet"
+             outputPattern="/webapp/resources/content/{9}/{15}/{16}-input.js"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template> 
+      <!-- EntityInputJsp manage By Property --> 
+      <template 
+             id="EntityInputManageByProperty-Proxyjsp"
+             path="/main/java/web/page/EntityInputManageByProperty-Proxy.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{15}/{16}-input.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template> 
+     <!-- EntityManagerJs manage By Property --> 
+      <template 
+             id="EntityManagerManageByProperty-ProxyJs"
+             path="/main/java/web/js/EntityManagerManageByProperty-Proxy.jsjet"
+             outputPattern="/webapp/resources/content/{9}/{15}/{16}-manager.js"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      <!-- EntityManagerJsp manage By Property --> 
+      <template 
+             id="EntityManagerManageByProperty-ProxyJsp"
+             path="/main/java/web/page/EntityManagerManageByProperty-Proxy.jspjet"
+             outputPattern="/webapp/WEB-INF/content/{9}/{15}/{16}-manager.jsp"
+             ifExists="backup"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template> 
+      <!-- EntityFlexiGridJsonWriter manage By Property--> 
+      <template 
+             id="EntityFlexiGridJsonWriterManageByProperty"
+             path="/main/java/web/render/EntityFlexiGridJsonWriterManageByProperty.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{13}FlexiGridJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      <!-- EntityResultMsgJsonWriter manage By Property-->
+      <template 
+             id="EntityResultMsgJsonWriterManageByProperty"
+             path="/main/java/web/render/EntityResultMsgJsonWriterManageByProperty.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{13}ResultMsgJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      
+	  <!-- EntityTreeGridJsonWriter manage By Property--> 
+      <template 
+             id="EntityTreeGridJsonWriterManageByProperty"
+             path="/main/java/web/render/EntityTreeGridJsonWriterManageByProperty.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{13}TreeGridJsonWriter.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty,net.jeefuse.mda.annotations.model.Tree"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+       
+      <!-- EntityRenderUtil manage By Property-->
+      <template 
+             id="EntityRenderUtilManageByProperty"
+             path="/main/java/web/render/EntityRenderUtilManageByProperty.javajet"
+             outputPattern="/src/main/java/{0}/web/render/{13}RenderUtil.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2"
+             hasStereotype="net.jeefuse.mda.annotations.property.ManageByProperty"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PropertyImpl">
+      </template>
+      
+   </extension>
+
+</plugin>

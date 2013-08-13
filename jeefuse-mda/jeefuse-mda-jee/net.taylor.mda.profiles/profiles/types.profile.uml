@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_BsfWkMUBEdqL1f35w3GLLw" name="types">
+  <eAnnotations xmi:id="_F-4t8MUDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_IGLtsLQGEdyD5fIBh14Avw" name="types" nsURI="http:///schemas/types/_IDpXELQGEdyD5fIBh14Avw/3" nsPrefix="types">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtsbQGEdyD5fIBh14Avw" name="String" instanceClassName="String">
+        <eAnnotations xmi:id="_IGLtsrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IOec4MUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLts7QGEdyD5fIBh14Avw" name="Text" instanceClassName="Text">
+        <eAnnotations xmi:id="_IGLttLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_oJuxQORWEduBeY_OwL2h0Q"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLttbQGEdyD5fIBh14Avw" name="Date" instanceClassName="Date">
+        <eAnnotations xmi:id="_IGLttrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nTB6EMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtt7QGEdyD5fIBh14Avw" name="Time" instanceClassName="Time">
+        <eAnnotations xmi:id="_IGLtuLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_gi2k4PS8EduW05No-VR_VA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtubQGEdyD5fIBh14Avw" name="Boolean" instanceClassName="Boolean">
+        <eAnnotations xmi:id="_IGLturQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nucqwMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtu7QGEdyD5fIBh14Avw" name="Integer" instanceClassName="Integer">
+        <eAnnotations xmi:id="_IGLtvLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sDd9kORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtvbQGEdyD5fIBh14Avw" name="Decimal" instanceClassName="Decimal">
+        <eAnnotations xmi:id="_IGLtvrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rr7nUORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtv7QGEdyD5fIBh14Avw" name="Currency" instanceClassName="Currency">
+        <eAnnotations xmi:id="_IGLtwLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hBxxwORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtwbQGEdyD5fIBh14Avw" name="Percentage" instanceClassName="Percentage">
+        <eAnnotations xmi:id="_IGLtwrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jd8SMORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtw7QGEdyD5fIBh14Avw" name="Byte" instanceClassName="Byte">
+        <eAnnotations xmi:id="_IGLtxLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sJkyQMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtxbQGEdyD5fIBh14Avw" name="Image" instanceClassName="Image">
+        <eAnnotations xmi:id="_IGLtxrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ukDPEOSzEduTNZ-fJI2jJw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtx7QGEdyD5fIBh14Avw" name="Link" instanceClassName="Link">
+        <eAnnotations xmi:id="_IGLtyLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FXdUsPLGEdu9vLl2OQOlyQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtybQGEdyD5fIBh14Avw" name="Double" instanceClassName="Double">
+        <eAnnotations xmi:id="_IGLtyrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r9DZMMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLty7QGEdyD5fIBh14Avw" name="Long" instanceClassName="Long">
+        <eAnnotations xmi:id="_IGLtzLQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n8AloMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_IGLtzbQGEdyD5fIBh14Avw" name="Timestamp" instanceClassName="Timestamp">
+        <eAnnotations xmi:id="_IGLtzrQGEdyD5fIBh14Avw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DOuPgLQGEdyD5fIBh14Avw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_pMFlMCf5EdyLQ4Biv6jBIg" name="types" nsURI="http:///schemas/types/_pJs_kCf5EdyLQ4Biv6jBIg/2" nsPrefix="types">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlMSf5EdyLQ4Biv6jBIg" name="String" instanceClassName="String">
+        <eAnnotations xmi:id="_pMFlMif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IOec4MUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlMyf5EdyLQ4Biv6jBIg" name="Text" instanceClassName="Text">
+        <eAnnotations xmi:id="_pMFlNCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_oJuxQORWEduBeY_OwL2h0Q"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlNSf5EdyLQ4Biv6jBIg" name="Date" instanceClassName="Date">
+        <eAnnotations xmi:id="_pMFlNif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nTB6EMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlNyf5EdyLQ4Biv6jBIg" name="Time" instanceClassName="Time">
+        <eAnnotations xmi:id="_pMFlOCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_gi2k4PS8EduW05No-VR_VA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlOSf5EdyLQ4Biv6jBIg" name="Boolean" instanceClassName="Boolean">
+        <eAnnotations xmi:id="_pMFlOif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nucqwMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlOyf5EdyLQ4Biv6jBIg" name="Integer" instanceClassName="Integer">
+        <eAnnotations xmi:id="_pMFlPCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sDd9kORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlPSf5EdyLQ4Biv6jBIg" name="Decimal" instanceClassName="Decimal">
+        <eAnnotations xmi:id="_pMFlPif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rr7nUORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlPyf5EdyLQ4Biv6jBIg" name="Currency" instanceClassName="Currency">
+        <eAnnotations xmi:id="_pMFlQCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hBxxwORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlQSf5EdyLQ4Biv6jBIg" name="Percentage" instanceClassName="Percentage">
+        <eAnnotations xmi:id="_pMFlQif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jd8SMORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlQyf5EdyLQ4Biv6jBIg" name="Byte" instanceClassName="Byte">
+        <eAnnotations xmi:id="_pMFlRCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sJkyQMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlRSf5EdyLQ4Biv6jBIg" name="Image" instanceClassName="Image">
+        <eAnnotations xmi:id="_pMFlRif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ukDPEOSzEduTNZ-fJI2jJw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlRyf5EdyLQ4Biv6jBIg" name="Link" instanceClassName="Link">
+        <eAnnotations xmi:id="_pMFlSCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FXdUsPLGEdu9vLl2OQOlyQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlSSf5EdyLQ4Biv6jBIg" name="Double" instanceClassName="Double">
+        <eAnnotations xmi:id="_pMFlSif5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r9DZMMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_pMFlSyf5EdyLQ4Biv6jBIg" name="Long" instanceClassName="Long">
+        <eAnnotations xmi:id="_pMFlTCf5EdyLQ4Biv6jBIg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n8AloMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_Qn_i4fLIEdu9vLl2OQOlyQ" name="types" nsURI="http:///schemas/types/_Qn_i4PLIEdu9vLl2OQOlyQ/1" nsPrefix="types">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i4vLIEdu9vLl2OQOlyQ" name="String" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i4_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IOec4MUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i5PLIEdu9vLl2OQOlyQ" name="Date" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i5fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nTB6EMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i5vLIEdu9vLl2OQOlyQ" name="Boolean" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i5_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nucqwMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i6PLIEdu9vLl2OQOlyQ" name="Long" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i6fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n8AloMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i6vLIEdu9vLl2OQOlyQ" name="Double" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i6_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r9DZMMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i7PLIEdu9vLl2OQOlyQ" name="Byte" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i7fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sJkyQMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i7vLIEdu9vLl2OQOlyQ" name="Currency" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i7_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hBxxwORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i8PLIEdu9vLl2OQOlyQ" name="Percentage" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i8fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_jd8SMORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i8vLIEdu9vLl2OQOlyQ" name="Decimal" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i8_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rr7nUORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i9PLIEdu9vLl2OQOlyQ" name="Integer" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i9fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sDd9kORDEdun1_O7ZMHIzQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i9vLIEdu9vLl2OQOlyQ" name="Text" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i9_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_oJuxQORWEduBeY_OwL2h0Q"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i-PLIEdu9vLl2OQOlyQ" name="Image" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i-fLIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ukDPEOSzEduTNZ-fJI2jJw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Qn_i-vLIEdu9vLl2OQOlyQ" name="Link" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_Qn_i-_LIEdu9vLl2OQOlyQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FXdUsPLGEdu9vLl2OQOlyQ"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_F-4t8cUDEdqL1f35w3GLLw" name="types" nsURI="http:///schemas/types/0" nsPrefix="types">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t8sUDEdqL1f35w3GLLw" name="String" instanceClassName="String">
+        <eAnnotations xmi:id="_F-4t88UDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IOec4MUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t9MUDEdqL1f35w3GLLw" name="Date" instanceClassName="Date">
+        <eAnnotations xmi:id="_F-4t9cUDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nTB6EMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t9sUDEdqL1f35w3GLLw" name="Boolean" instanceClassName="Boolean">
+        <eAnnotations xmi:id="_F-4t98UDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_nucqwMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t-MUDEdqL1f35w3GLLw" name="Long" instanceClassName="Long">
+        <eAnnotations xmi:id="_F-4t-cUDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n8AloMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t-sUDEdqL1f35w3GLLw" name="Double" instanceClassName="Double">
+        <eAnnotations xmi:id="_F-4t-8UDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r9DZMMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_F-4t_MUDEdqL1f35w3GLLw" name="Byte" instanceClassName="Byte">
+        <eAnnotations xmi:id="_F-4t_cUDEdqL1f35w3GLLw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_sJkyQMUBEdqL1f35w3GLLw"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_IOec4MUBEdqL1f35w3GLLw" name="String"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_oJuxQORWEduBeY_OwL2h0Q" name="Text"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_nTB6EMUBEdqL1f35w3GLLw" name="Date"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_gi2k4PS8EduW05No-VR_VA" name="Time"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_nucqwMUBEdqL1f35w3GLLw" name="Boolean"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_sDd9kORDEdun1_O7ZMHIzQ" name="Integer"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rr7nUORDEdun1_O7ZMHIzQ" name="Decimal"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_hBxxwORDEdun1_O7ZMHIzQ" name="Currency"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jd8SMORDEdun1_O7ZMHIzQ" name="Percentage"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_sJkyQMUBEdqL1f35w3GLLw" name="Byte[]"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ukDPEOSzEduTNZ-fJI2jJw" name="Image"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_FXdUsPLGEdu9vLl2OQOlyQ" name="Link"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_r9DZMMUBEdqL1f35w3GLLw" name="Double"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_n8AloMUBEdqL1f35w3GLLw" name="Long"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_DOuPgLQGEdyD5fIBh14Avw" name="Timestamp"/>
+</uml:Profile>

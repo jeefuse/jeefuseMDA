@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_nrD-4flfEdq0m870WJJuhQ" name="Jmx" metaclassReference="_IMwzgAL4EdukAeq0eHR25A _IMwzgQL4EdukAeq0eHR25A">
+  <eAnnotations xmi:id="_Uul4YPlgEdq0m870WJJuhQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_MaATMAL8EdukAeq0eHR25A" name="Jmx" nsURI="http:///schemas/Jmx/0" nsPrefix="Jmx">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_MaATMQL8EdukAeq0eHR25A" name="orgjbossannotationejbService">
+        <eAnnotations xmi:id="_MaATMgL8EdukAeq0eHR25A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tHTlIPlfEdq0m870WJJuhQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_MaATMwL8EdukAeq0eHR25A" name="name" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_MaATNAL8EdukAeq0eHR25A" name="objectName" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_MaATNQL8EdukAeq0eHR25A" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_MaATNgL8EdukAeq0eHR25A" name="orgjbossannotationejbManagement">
+        <eAnnotations xmi:id="_MaATNwL8EdukAeq0eHR25A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_47PxQQL3EdukAeq0eHR25A"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_MaATOAL8EdukAeq0eHR25A" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_MaATOQL8EdukAeq0eHR25A" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_MaATOgL8EdukAeq0eHR25A" name="orgjbossannotationejbDepends">
+        <eAnnotations xmi:id="_MaATOwL8EdukAeq0eHR25A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8TdqQAL3EdukAeq0eHR25A"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_MaATPAL8EdukAeq0eHR25A" name="base_Dependency" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Dependency"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_MaATPQL8EdukAeq0eHR25A" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_4E230PlfEdq0m870WJJuhQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_IMwzgAL4EdukAeq0eHR25A">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+  </elementImport>
+  <elementImport xmi:id="_IMwzgQL4EdukAeq0eHR25A">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_tHTlIPlfEdq0m870WJJuhQ" name="org.jboss.annotation.ejb.Service">
+    <ownedAttribute xmi:id="_wMJ2MPlfEdq0m870WJJuhQ" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_-zWJEPlfEdq0m870WJJuhQ" name="objectName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Kb0FAgL4EdukAeq0eHR25A" name="base_Interface" association="_Kb0FAAL4EdukAeq0eHR25A">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_47PxQQL3EdukAeq0eHR25A" name="org.jboss.annotation.ejb.Management">
+    <ownedAttribute xmi:id="_LzlwQgL4EdukAeq0eHR25A" name="base_Interface" association="_LzlwQAL4EdukAeq0eHR25A">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_yenIMAL7EdukAeq0eHR25A" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_8TdqQAL3EdukAeq0eHR25A" name="org.jboss.annotation.ejb.Depends">
+    <ownedAttribute xmi:id="_NIhi4gL4EdukAeq0eHR25A" name="base_Dependency" association="_NIhi4AL4EdukAeq0eHR25A">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_qWHXEAL7EdukAeq0eHR25A" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Kb0FAAL4EdukAeq0eHR25A" name="Interface_org.jboss.annotation.ejb.Service" memberEnd="_Kb0FAQL4EdukAeq0eHR25A _Kb0FAgL4EdukAeq0eHR25A">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Kb0FAQL4EdukAeq0eHR25A" name="extension_org.jboss.annotation.ejb.Service" type="_tHTlIPlfEdq0m870WJJuhQ" aggregation="composite" association="_Kb0FAAL4EdukAeq0eHR25A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_LzlwQAL4EdukAeq0eHR25A" name="Interface_org.jboss.annotation.ejb.Management" memberEnd="_LzlwQQL4EdukAeq0eHR25A _LzlwQgL4EdukAeq0eHR25A">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_LzlwQQL4EdukAeq0eHR25A" name="extension_org.jboss.annotation.ejb.Management" type="_47PxQQL3EdukAeq0eHR25A" aggregation="composite" association="_LzlwQAL4EdukAeq0eHR25A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_NIhi4AL4EdukAeq0eHR25A" name="Dependency_org.jboss.annotation.ejb.Depends" memberEnd="_NIhi4QL4EdukAeq0eHR25A _NIhi4gL4EdukAeq0eHR25A">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NIhi4QL4EdukAeq0eHR25A" name="extension_org.jboss.annotation.ejb.Depends" type="_8TdqQAL3EdukAeq0eHR25A" aggregation="composite" association="_NIhi4AL4EdukAeq0eHR25A"/>
+  </packagedElement>
+</uml:Profile>

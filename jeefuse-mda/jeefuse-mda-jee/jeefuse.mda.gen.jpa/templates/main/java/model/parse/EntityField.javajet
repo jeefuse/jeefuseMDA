@@ -1,0 +1,222 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.entity.parse" imports="net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* java.util.ArrayList net.taylor.mda.generator.parse.page.*  net.taylor.mda.generator.parse.stereotype.KeyLabelStereotypeHelper net.taylor.mda.generator.parse.* java.util.Iterator java.util.List net.taylor.mda.generator.parse.entity.* org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityField" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldClassName=entityFieldDefine.getClassName();
+String modelFieldClassUncapName=entityFieldDefine.getClassUncapName();
+String modelFieldPackageName=entityFieldDefine.getPackageQualifiedName();
+%>
+<%@ include file="../../../../Header.jetinc"%>
+package <%=modelFieldPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+
+//base field 
+String baseFieldClassName=MdaHelper.getBriefClassName(Config.base_FieldQualifiedName);
+importManager.addImport(Config.base_FieldQualifiedName);
+
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> Entity Field constants.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public enum <%=modelFieldClassName%> implements <%=baseFieldClassName%><<%=modelEntityName%>>{
+<%List<Property> resultPropertyList=new ArrayList<Property>();%>
+<%List<Property> simplePropertyList=ClassHelper.getAllSimplePropertiesList(uml2Class,new ArrayList<Property>());%>
+<%List<Property> m2oPropertyList=EntityHelper.getAllManyToOneProperties(uml2Class,false);%>
+<%List<Property> o2oPropertyList=EntityHelper.getAllOneToOneProperties(uml2Class,false);%>
+<%resultPropertyList.addAll(simplePropertyList);%>
+<%resultPropertyList.addAll(m2oPropertyList);%>
+<%resultPropertyList.addAll(o2oPropertyList);%>
+<%int propertyCount=1;%>
+<%for (Iterator<Property> iter=resultPropertyList.iterator(); iter.hasNext();) { %>
+<%	Property property = (Property)iter.next();%>
+<%	if (property.getType() !=null) {%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%/********process simple property********/%>
+<%		if(ClassHelper.isSimple(property)){%>
+	/**
+	 * <%=propertyCommentName%>.
+	 * @generated
+	 */
+	<%=NameHelper.uncapSafeName(property)%>("<%=propertyUncapSafeName%>", "<%=propertyCommentName%>",<%=PageHelper.getMaxLength(property)%>,<%=!PageHelper.isRequired(property)%>)<%if(iter.hasNext()){%>,<%}%>//<%=propertyCount++%> 
+<%		}%>
+<%/********process ontToOne property********/%>
+<%		else if(ClassHelper.isOneToOne(property)){%>
+<%			Type propertyType=property.getType();%>
+<%			Class relTargetClass=(Class)propertyType;%>
+<%			//String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%			//model entity%>
+<%			//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(relTargetClass);%>
+<%			//String relTargetClassEntityName=MdaHelper.getModelClassName(relTargetClass,ModelNameSuffix.Entity);%>
+<%			//String relTargetClassEntityUncapName=NameHelper.uncapName(relTargetClassEntityName);%>
+<%			//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%			//model get Accessor%>
+<%			//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%			//rel list label%>
+<% 			Property listLabelProperty=ViewListHelper.getProperty_listLabel(property);%>
+<% 			String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 			String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%			//String listLabelPropertyGetAccessorName=ViewListHelper.getViewListLabelRelPropertyGetAccessorName(property);%>
+<%			/******** property type id property ********/%>
+<% 			Property propertyTypeIdProperty=EntityHelper.getIDProperty(relTargetClass);%>
+<% 			String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<%			//String propertyTypeIdPropertyGetAccessorName=ClassHelper.getGetAccessor(propertyTypeIdProperty);%>	
+<%			//String propertyTypeIdPropertySetAccessorName="set"+ClassHelper.getAccessorName(propertyTypeIdProperty);%>	
+<% 			String propertyTypeIdPropertyComment=TypeHelper.getDocumentationOrName(propertyTypeIdProperty);%>
+<%			boolean isViewList=ViewListHelper.isApplyViewList(property);%>
+	/**
+	 * <%=propertyCommentName%>.
+	 * @generated
+	 */
+	<%if(isViewList){%>//<%}%><%=NameHelper.uncapSafeName(property)%>_<%=propertyTypeIdPropertyUncapSafeName%>("<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>", "<%=propertyTypeIdPropertyComment%>",<%=PageHelper.getMaxLength(propertyTypeIdProperty)%>,<%=!PageHelper.isRequired(propertyTypeIdProperty)%>),//<%=propertyCount++%>
+	/**
+	 * <%=propertyCommentName%>.
+	 * @generated
+	 */
+	<%if(isViewList){%>//<%}%><%=NameHelper.uncapSafeName(property)%>_<%=listLabelPropertyUncapSafeName%>("<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>", "<%=listLabelPropertyComment%>",<%=PageHelper.getMaxLength(listLabelProperty)%>,<%=!PageHelper.isRequired(listLabelProperty)%>)<%if(iter.hasNext()){%>,<%}%>// <%=propertyCount++%>
+<%		}%>
+<%/********process manyToOne property********/%>
+<%		else if(ClassHelper.isManyToOne(property)){%>
+<%			Type propertyType=property.getType();%>
+<%			Class relTargetClass=(Class)propertyType;%>
+<%			//String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%			//model entity%>
+<%			//String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(relTargetClass);%>
+<%			//String relTargetClassEntityName=MdaHelper.getModelClassName(relTargetClass,ModelNameSuffix.Entity);%>
+<%			//String relTargetClassEntityUncapName=NameHelper.uncapName(relTargetClassEntityName);%>
+<%			//importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%			//model get Accessor%>
+<%			//String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%			//rel list label%>
+<% 			Property listLabelProperty=ViewListHelper.getProperty_listLabel(property);%>
+<% 			String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 			String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%			//String listLabelPropertyGetAccessorName=ViewListHelper.getViewListLabelRelPropertyGetAccessorName(property);%>
+<%			/******** property type id property ********/%>
+<% 			Property propertyTypeIdProperty=EntityHelper.getIDProperty(relTargetClass);%>
+<% 			String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<%			//String propertyTypeIdPropertyGetAccessorName=ClassHelper.getGetAccessor(propertyTypeIdProperty);%>	
+<%			//String propertyTypeIdPropertySetAccessorName="set"+ClassHelper.getAccessorName(propertyTypeIdProperty);%>	
+<% 			String propertyTypeIdPropertyComment=TypeHelper.getDocumentationOrName(propertyTypeIdProperty);%>
+<%			boolean isViewList=ViewListHelper.isApplyViewList(property);%>
+	/**
+	 * <%=propertyCommentName%>.
+	 * @generated
+	 */
+	<%if(isViewList){%>//<%}%><%=NameHelper.uncapSafeName(property)%>_<%=propertyTypeIdPropertyUncapSafeName%>("<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>", "<%=propertyTypeIdPropertyComment%>",<%=PageHelper.getMaxLength(propertyTypeIdProperty)%>,<%=!PageHelper.isRequired(propertyTypeIdProperty)%>),//<%=propertyCount++%> 
+	/**
+	 * <%=propertyCommentName%>.
+	 * @generated
+	 */
+	<%if(isViewList){%>//<%}%><%=NameHelper.uncapSafeName(property)%>_<%=listLabelPropertyUncapSafeName%>("<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>", "<%=listLabelPropertyComment%>",<%=PageHelper.getMaxLength(listLabelProperty)%>,<%=!PageHelper.isRequired(listLabelProperty)%>)<%if(iter.hasNext()){%>,<%}%>// <%=propertyCount++%>
+<%		}%>
+<%	}%>
+<%}%>
+	;
+
+	/** @generated */
+	private String fieldName;
+	/** @generated */
+	private String fieldLabel;
+	/** @generated */
+	private int length;
+	/** @generated */
+	private boolean nullable;
+	
+	/** @generated */
+	private <%=modelFieldClassName%>(String fieldName, String fieldLabel, int length, boolean nullable) {
+		this.fieldName = fieldName;
+		this.fieldLabel = fieldLabel;
+		this.length = length;
+		this.nullable = nullable;
+	}
+	
+	/** @generated */
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	/** @generated */
+	public String getFieldLabel() {
+		return fieldLabel;
+	}
+	
+	/** @generated */
+	public String getFieldLabelByName(String paramfieldName) {
+		<%=modelFieldClassName%> <%=modelFieldClassUncapName%> = valueOfFieldName(paramfieldName);
+		if (<%=modelFieldClassUncapName%> != null)
+			return <%=modelFieldClassUncapName%>.getFieldName();
+		return null;
+	}
+	
+	/**
+	 * 字段长度.不限为零.
+	 * 
+	 * @generated
+	 */
+	public int getLength() {
+		return length;
+	}
+
+	/** @generated */
+	public boolean isNullable() {
+		return nullable;
+	}
+
+	/**
+	 * 根据fieldName查找对象,若没有找到则返回null.
+	 * 
+	 * @param fieldName
+	 * @generated
+	 */
+	static public <%=modelFieldClassName%> valueOfFieldName(String fieldName) {
+		if (null == fieldName)
+			return null;
+		<%=modelFieldClassName%>[] <%=modelFieldClassUncapName%>s = values();
+		for (<%=modelFieldClassName%> <%=modelFieldClassUncapName%> : <%=modelFieldClassUncapName%>s) {
+			if (<%=modelFieldClassUncapName%>.getFieldName().equals(fieldName))
+				return <%=modelFieldClassUncapName%>;
+		}
+		return null;
+	}
+
+	/**
+	 * 根据fieldLabel查找对象,若没有找到则返回null.
+	 * 
+	 * @param fieldComment
+	 * @generated
+	 */
+	static public <%=modelFieldClassName%> valueOfFieldLabel(String fieldLabel) {
+		if (null == fieldLabel)
+			return null;
+		<%=modelFieldClassName%>[] <%=modelFieldClassUncapName%>s = values();
+		for (<%=modelFieldClassName%> <%=modelFieldClassUncapName%> : <%=modelFieldClassUncapName%>s) {
+			if (<%=modelFieldClassUncapName%>.getFieldLabel().equals(fieldLabel))
+				return <%=modelFieldClassUncapName%>;
+		}
+		return null;
+	}
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,66 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service" imports="net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.* java.util.List java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceFactory" %>
+<%Package uml2Package = (Package) argument;%>
+<%
+String packageName=NameHelper.getQualifiedName(uml2Package);
+String modelCommentName=TypeHelper.getDocumentation(uml2Package);
+if(Config.defaultDocumentComments.equals(modelCommentName)){
+	modelCommentName=MdaHelper.getBriefClassName(packageName);
+}
+//packageServiceFacotry define
+UmlPackageWrap umlPackageWrap=new UmlPackageWrap(uml2Package);
+String packageServiceFactoryPackageName=umlPackageWrap.getServiceFactoryPackageName();
+String packageServiceFactoryClassName=umlPackageWrap.getServiceFactoryClassName();
+//String packageServiceFactoryClassQualifiedName=umlPackageWrap.getServiceFactoryClassQualifiedName();
+
+//add springContextUtils 
+String base_SpringContextUtils=Config.base_SpringContextUtils;
+String springContextUtilsClassName=MdaHelper.getBriefClassName(base_SpringContextUtils);
+
+%>
+<%@ include file="../../../Header.jetinc"%>
+package <%=packageServiceFactoryPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+// add imports
+//importManager.addImport("java.util.Collection");
+//add custom imports
+importManager.addImport(base_SpringContextUtils);
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%>服务工厂.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public abstract class <%=packageServiceFactoryClassName%>{
+
+<%List<org.eclipse.uml2.uml.Class> uml2ClassList=PackageHelper.getJoinServiceFactoryClass(uml2Package);%>
+<%for(org.eclipse.uml2.uml.Class uml2Class:uml2ClassList){%>
+<%
+String modelServiceGenericClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.serviceGeneric);
+String modelServiceGenericImplClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.serviceGenericImpl);
+String modelServiceGenericImplQualifiedClassName=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.serviceGenericImpl,ModelNameSuffix.serviceGenericImpl);
+//String modelServiceGenericImplUncapClassName=NameHelper.uncapName(modelServiceGenericImplClassName);
+String uml2ClassCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+importManager.addImport(modelServiceGenericImplQualifiedClassName);
+%>
+	/**
+	 * 获取<%=uml2ClassCommentName%> CRUD 服务.
+	 * 
+	 * @generated
+	 */
+	public final static <%=modelServiceGenericClassName%> get<%=modelServiceGenericClassName%>() {
+		return (<%=modelServiceGenericClassName%>) <%=springContextUtilsClassName%>.getBean(<%=modelServiceGenericImplClassName%>.SERVICE_ID);
+	}
+
+<%}%>
+	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

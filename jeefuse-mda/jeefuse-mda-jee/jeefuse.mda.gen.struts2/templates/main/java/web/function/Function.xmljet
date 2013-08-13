@@ -1,0 +1,143 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.action" imports="net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="EntityFunctionXml" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+String packageWithUnderlineFilterNamespacePrefix=MdaHelper.getPackageWithUnderlineFilterNamespacePrefix(uml2Package);
+String packageComment=TypeHelper.getDocumentationOrName(uml2Package);
+String modelCapName=NameHelper.getCapName(uml2Class);
+String modelUncapName=NameHelper.getUncapName(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+String modelActionQualifiedName=MdaHelper.getModelQualifiedName(uml2Class,PKGSuffix.action,ModelNameSuffix.Action);
+String urlModelNamespace=MdaHelper.getModelUrlNamespace(uml2Class);
+int packageNum=1;
+int menuNum=1;
+int orderNum=1;
+%>
+<?xml version="1.0" encoding="UTF-8"?>
+<functions xmlns="http://www.goolov.org/schema/function" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.goolov.org/schema/function goolov.mda.function.xsd">
+<%WebUrlName manage=WebUrlName.manage;%>
+	<function>
+		<id>P_<%=MdaHelper.getPackageUrlNamespaceWithUnderline(uml2Package)%></id>
+		<name><%=packageComment%>管理</name>
+		<descript><%=packageComment%>管理</descript>
+		<type>menu</type>
+		<orderNum><%=packageNum++%></orderNum>
+	</function>
+	<function>
+		<packageId>P_<%=MdaHelper.getPackageUrlNamespaceWithUnderline(uml2Package)%></packageId>
+		<id>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></id>
+		<name><%=modelCommentName%>管理</name>
+		<descript><%=modelCommentName%>管理</descript>
+		<type>menu</type>
+		<orderNum><%=menuNum++%></orderNum>
+	</function>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,manage)%></id>
+		<name><%=modelCommentName%> manage</name>
+		<descript><%=modelCommentName%> manage</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,manage)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName input=WebUrlName.input;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,input)%></id>
+		<name><%=modelCommentName%> input</name>
+		<descript><%=modelCommentName%> input</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,input)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName edit=WebUrlName.edit;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,edit)%></id>
+		<name><%=modelCommentName%> edit</name>
+		<descript><%=modelCommentName%> edit</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,edit)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName getOutJson=WebUrlName.getOutJson;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,getOutJson)%></id>
+		<name><%=modelCommentName%> getOutJson</name>
+		<descript><%=modelCommentName%> getOutJson</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,getOutJson)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName listOutJson=WebUrlName.listOutJson;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,listOutJson)%></id>
+		<name><%=modelCommentName%> listOutJson</name>
+		<descript><%=modelCommentName%> listOutJson</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,listOutJson)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName saveOutJson=WebUrlName.saveOutJson;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,saveOutJson)%></id>
+		<name><%=modelCommentName%> saveOutJson</name>
+		<descript><%=modelCommentName%> saveOutJson</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,saveOutJson)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName deleteOutJson=WebUrlName.deleteOutJson;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,deleteOutJson)%></id>
+		<name><%=modelCommentName%> deleteOutJson</name>
+		<descript><%=modelCommentName%> deleteOutJson</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,deleteOutJson)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName deleteAllOutJson=WebUrlName.deleteAllOutJson;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,deleteAllOutJson)%></id>
+		<name><%=modelCommentName%> deleteAllOutJson</name>
+		<descript><%=modelCommentName%> deleteAllOutJson</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,deleteAllOutJson)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+	<function>
+<%WebUrlName exportFile=WebUrlName.deleteAllOutJson;%>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,exportFile)%></id>
+		<name><%=modelCommentName%> exportFile</name>
+		<descript><%=modelCommentName%> exportFile</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,exportFile)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+<%WebUrlName importExcelFile=WebUrlName.importExcelFile;%>
+	<function>
+		<packageId>P_<%=MdaHelper.getModelUrlNamespaceWithUnderline(uml2Class)%></packageId>
+		<id>F_<%=MdaHelper.getModelUrlWithUnderline(uml2Class,importExcelFile)%></id>
+		<name><%=modelCommentName%> importExcelFile</name>
+		<descript><%=modelCommentName%> importExcelFile</descript>
+		<url><%=MdaHelper.getModelUrl(uml2Class,importExcelFile)%></url>
+		<type>action</type>
+		<orderNum><%=orderNum++%></orderNum>
+		<qualifyName><%=MdaHelper.getEntityQualifiedName(uml2Class)%></qualifyName>
+	</function>
+	
+</functions>

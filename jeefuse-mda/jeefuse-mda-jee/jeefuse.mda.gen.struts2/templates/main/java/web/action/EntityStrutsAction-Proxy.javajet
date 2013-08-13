@@ -1,0 +1,9 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.action" imports="  net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.page.* java.util.List java.util.ArrayList net.taylor.mda.generator.parse.* net.taylor.mda.generator.parse.entity.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityStrutsActionProxy" %>
+<%Class uml2Class_proxy = (Class) argument;%>
+<%if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class_proxy)){//应用了tree%>
+<%@ include file="EntityStrutsActionForTree.javajet"%>
+<%}else if(FileStereotypeHelper.isClass_file(uml2Class_proxy)||FileStereotypeHelper.isClass_Image(uml2Class_proxy)){//应用了File or Image%>
+<%@ include file="EntityStrutsActionForFile.javajet"%>
+<%}else{//只应用了Entity%>
+<%@ include file="EntityStrutsAction.javajet"%>
+<%}%>

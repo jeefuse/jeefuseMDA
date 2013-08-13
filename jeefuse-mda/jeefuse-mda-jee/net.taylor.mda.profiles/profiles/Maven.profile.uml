@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="_nrD-4flfEdq0m870WJJuhQ" name="Maven" metaclassReference="_E7P7cPlgEdq0m870WJJuhQ">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uul4YPlgEdq0m870WJJuhQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_Uul4YflgEdq0m870WJJuhQ" name="Maven" nsURI="http:///schemas/Maven/0" nsPrefix="Maven">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Uul4YvlgEdq0m870WJJuhQ" name="pom">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uul4Y_lgEdq0m870WJJuhQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tHTlIPlfEdq0m870WJJuhQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Uul4ZPlgEdq0m870WJJuhQ" name="groupId" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Uul4ZflgEdq0m870WJJuhQ" name="version" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Uul4ZvlgEdq0m870WJJuhQ" name="base_Model" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Model"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_4E230PlfEdq0m870WJJuhQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_E7P7cPlgEdq0m870WJJuhQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_tHTlIPlfEdq0m870WJJuhQ" name="pom">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wMJ2MPlfEdq0m870WJJuhQ" name="groupId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-zWJEPlfEdq0m870WJJuhQ" name="version">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_GQyLAvlgEdq0m870WJJuhQ" name="base_Model" association="_GQyLAPlgEdq0m870WJJuhQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_GQyLAPlgEdq0m870WJJuhQ" name="Model_pom" memberEnd="_GQyLAflgEdq0m870WJJuhQ _GQyLAvlgEdq0m870WJJuhQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_GQyLAflgEdq0m870WJJuhQ" name="extension_pom" type="_tHTlIPlfEdq0m870WJJuhQ" aggregation="composite" association="_GQyLAPlgEdq0m870WJJuhQ"/>
+  </packagedElement>
+</uml:Profile>

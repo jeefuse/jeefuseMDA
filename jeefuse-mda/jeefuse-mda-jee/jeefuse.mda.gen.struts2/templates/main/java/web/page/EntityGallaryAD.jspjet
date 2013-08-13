@@ -1,0 +1,101 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.jsp" imports="net.taylor.mda.generator.parse.stereotype.* java.util.ArrayList net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityGallaryADJSP" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+String modelCapName=NameHelper.getCapName(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+String jspScriptStart="<%@";
+String jspScriptEnd="%"+">";
+int tabindex=0;
+%>
+<%	Property propertyFileSavePath=FileStereotypeHelper.getProperty_FileSavePath(uml2Class);%>
+<%	String propertyFileSavePathUncapSafeName=NameHelper.uncapSafeName(propertyFileSavePath);%>
+<%	Property propertyTitle=PropertyStereotypeHelper.getProperty_Title(uml2Class);%>
+<%	String propertyTitleUncapSafeName=NameHelper.uncapSafeName(propertyTitle);%>
+<%	Property propertyIntro=PropertyStereotypeHelper.getProperty_Intro(uml2Class);%>
+<%	String propertyIntroUncapSafeName=NameHelper.uncapSafeName(propertyIntro);%>
+<%=jspScriptStart%> page contentType="text/html;charset=UTF-8" <%=jspScriptEnd%>
+<%=jspScriptStart%> include file="/common/taglibs.jsp" <%=jspScriptEnd%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=modelCommentName%> Input</title>
+<%=jspScriptStart%> include file="/common/meta.jsp" <%=jspScriptEnd%>
+<script src="<%=Config.web_resources_js_include%>" type="text/javascript"></script>
+<script>
+	var ctx = '${ctx}';
+	var theme = '${theme}';
+	importCssFile('sys|ui|adgallery', ctx, theme);
+	importJsFile('jquery|ui|common|adgallery', ctx);
+</script>
+</head>
+<body class="easyui-layout v-container">
+ 	<div region="center" border="false" ><!-- center start -->
+ 		<div id="gallery" class="ad-gallery">
+		  <div class="ad-image-wrapper">
+		  </div>
+		  <div class="ad-controls">
+		  </div>
+		  <div class="ad-nav">
+		    <div class="ad-thumbs">
+		      <ul class="ad-thumb-list">
+		      <s:iterator value="<%=modelCapName%>List" var="item">
+				  <li>
+		             <a href="${ctx}/${item.path}">
+		               	<img src="${ctx}/${item.<%=propertyFileSavePathUncapSafeName%>}"<%if(null!=propertyTitleUncapSafeName){%> title="${item.<%=propertyTitleUncapSafeName%>}"<%}%><%if(null!=propertyIntroUncapSafeName){%> longdesc="${item.<%=propertyIntroUncapSafeName%>}" alt="${item.<%=propertyIntroUncapSafeName%>}"<%}%> width="90px" height="60px" class="thumbnail"/>
+		             </a>
+		          </li>
+		      </s:iterator>
+		      </ul>
+		    </div>
+		  </div>
+		</div>
+ 	</div><!-- center end -->
+<script type="text/javascript">
+$(document).ready(function() {
+    var galleries = $('.ad-gallery').adGallery({
+    	  //loader_image: 'loader.gif',
+    	  //width: 600, // Width of the image, set to false and it will read the CSS width
+    	//  height: 400, // Height of the image, set to false and it will read the CSS height
+    	  thumb_opacity: 0.6, // Opacity that the thumbs fades to/from, (1 removes fade effect)
+    	                      // Note that this effect combined with other effects might be resource intensive
+    	                      // and make animations lag
+    	  start_at_index: 0, // Which image should be displayed at first? 0 is the first image
+    	  //description_wrapper: $('#descriptions'), // Either false or a jQuery object, if you want the image descriptions
+    	                                           // to be placed somewhere else than on top of the image
+    	  animate_first_image: false, // Should first image just be displayed, or animated in?
+    	  animation_speed: 400, // Which ever effect is used to switch images, how long should it take?
+    	  display_next_and_prev: true, // Can you navigate by clicking on the left/right on the image?
+    	  display_back_and_forward: true, // Are you allowed to scroll the thumb list?
+    	  scroll_jump: 0, // If 0, it jumps the width of the container
+    	  slideshow: {
+    	    enable: true,
+    	    autostart: true,
+    	    speed: 3000,
+    	    start_label: 'Start',
+    	    stop_label: 'Stop',
+    	    stop_on_scroll: true, // Should the slideshow stop if the user scrolls the thumb list?
+    	    countdown_prefix: '(', // Wrap around the countdown
+    	    countdown_sufix: ')',
+    	    onStart: function() {// Do something wild when the slideshow starts
+    	    },
+    	    onStop: function() {// Do something wild when the slideshow stops
+    	    }
+    	  },
+    	  enable_keyboard_move: true, // Move to next/previous image with keyboard arrows?
+    	  cycle: false // If set to false, you can't go from the last image to the first, and vice versa
+    	  // All callbacks has the AdGallery objects as 'this' reference
+    	});
+
+    	// Change effect on the fly
+    	galleries[0].settings.effect = 'fade';
+
+//    $('#switch-effect').change(
+//      function() {
+//        galleries[0].settings.effect = $(this).val();
+//        return false;
+//      }
+//    );
+});
+</script>
+</body>
+</html>

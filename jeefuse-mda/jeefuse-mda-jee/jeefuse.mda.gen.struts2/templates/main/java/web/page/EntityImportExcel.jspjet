@@ -1,0 +1,87 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.jsp" imports="net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.NameRuled.nameRuled.NameRuledWebPathKind net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityImportExcelJsp" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String packageName=NameHelper.getQualifiedName(uml2Package);
+String modelCapName=NameHelper.getCapName(uml2Class);
+String modelUncapName=NameHelper.getUncapName(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+String modelInputJsPath=clazzWrap.getWebPath(NameRuledWebPathKind.js_input);
+String jspScriptStart="<%@";
+String jspScriptEnd="%"+">";
+int tabindex=0;
+%>
+<%=jspScriptStart%> page contentType="text/html;charset=UTF-8" <%=jspScriptEnd%>
+<%=jspScriptStart%> include file="/common/taglibs.jsp" <%=jspScriptEnd%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=modelCommentName%> Input</title>
+<%=jspScriptStart%> include file="/common/meta.jsp" <%=jspScriptEnd%>
+<script src="<%=Config.web_resources_js_include%>" type="text/javascript"></script>
+<script>
+	var ctx = '${ctx}';
+	var theme = '${theme}';
+	importCssFile('sys|ui', ctx, theme);
+	importJsFile('jquery|blockUI|ui|common|form|validate', ctx);
+</script>
+</head>
+<body class="easyui-layout">
+ 	<div id="first-box" class="v-box" region="center" border="false">
+ 		<!--<div id="inputInfo" class="v-state-info"></div>-->
+ 		<div class="v-form">
+ 			<form id="inputForm" method="post">
+		      	<table>
+		      		<tr>
+		      			<td class="label">
+		      				<label><%=modelCommentName%>数据Excel导入文件:</label>
+		      			</td>
+		      		</tr>
+		      		<tr>
+		      			<td class="label">
+		      				<input type="file" id="file" name="file" size="50" class="required" onchange="goolov.validete.file(this,'xls');"/>
+		      			</td>
+		      		</tr>
+				</table>
+			</form>
+			<div class="v-buttons">
+					<a href="javascript:void(0)" onclick="importProcess();"  class="easyui-linkbutton" icon="icon-save" >执行导入</a>
+				   	<a href="javascript:closeAndRefresh();" class="easyui-linkbutton" >关闭并刷新</a>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+              var validator=$("#inputForm").validate();
+			  $('#inputForm').submit(function() { 
+			  	        $(this).ajaxSubmit({
+							 type : 'post',
+							 dataType:'html', 
+							 url:ctx+'<%=clazzWrap.getUrl(WebUrlName.importExcelFileProcess)%>',
+							 beforeSubmit:function(formData, jqForm, options) {
+								    if(validator.numberOfInvalids()>0){
+									    return false;
+								    }
+								    $.growl.waiting('导入数据中...');
+							 },
+						     success:function(result, statusText, xhr, $form) {
+						     		$.growl.unwaiting();
+									goolov.msgbox.info('友情提示',result);
+							 },
+							 error:function(request,status,errorThrown) {
+							 	$.growl.unwaiting();
+								$.msgbox.error();
+							}
+						}); 
+				        return false; 
+			    }); 
+	});
+	function importProcess(){
+		$("#inputForm").submit();
+	}
+	function closeAndRefresh(){
+		window.parent.importExcelWinCloseAndRefresh();
+	}
+</script>
+</body>
+</html>

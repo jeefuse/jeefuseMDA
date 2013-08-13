@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_RtE0EGnuEduotdtx5H1JvQ" name="JBoss" metaclassReference="_T5xfsGnvEduotdtx5H1JvQ">
+  <eAnnotations xmi:id="_SA5H8GnuEduotdtx5H1JvQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_vTRk4Rf4Ed-7PeHm33xE_w" name="JBoss" nsURI="http:///schemas/JBoss/_vTRk4Bf4Ed-7PeHm33xE_w/1" nsPrefix="JBoss">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vTRk4hf4Ed-7PeHm33xE_w" name="orgjbosswsfspiannotationWebContext">
+        <eAnnotations xmi:id="_vTRk4xf4Ed-7PeHm33xE_w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_R-9OV2nuEduotdtx5H1JvQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk5Bf4Ed-7PeHm33xE_w" name="contextRoot" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk5hf4Ed-7PeHm33xE_w" name="urlPattern" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk6Bf4Ed-7PeHm33xE_w" name="authMethod" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk6hf4Ed-7PeHm33xE_w" name="transportGuarantee" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk7Bf4Ed-7PeHm33xE_w" name="secureWSDLAccess" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vTRk7hf4Ed-7PeHm33xE_w" name="virtualHosts" ordered="false" upperBound="-1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vTRk8Bf4Ed-7PeHm33xE_w" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="__yWB8WnvEduFY77tdHAWhQ" name="JBoss" nsURI="http:///schemas/JBoss/0" nsPrefix="JBoss">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="__yWB8mnvEduFY77tdHAWhQ" name="orgjbosswsannotationPortComponent">
+        <eAnnotations xmi:id="__yWB82nvEduFY77tdHAWhQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_R-9OV2nuEduotdtx5H1JvQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__yWB9GnvEduFY77tdHAWhQ" name="contextRoot" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__yWB9WnvEduFY77tdHAWhQ" name="urlPattern" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__yWB9mnvEduFY77tdHAWhQ" name="authMethod" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__yWB92nvEduFY77tdHAWhQ" name="transportGuarantee" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="__yWB-GnvEduFY77tdHAWhQ" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_R4GYUGnuEduotdtx5H1JvQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_T5xfsGnvEduotdtx5H1JvQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_R-9OV2nuEduotdtx5H1JvQ" name="org.jboss.wsf.spi.annotation.WebContext">
+    <ownedAttribute xmi:id="_R-9OWGnuEduotdtx5H1JvQ" name="contextRoot">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-9OWmnuEduotdtx5H1JvQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-9OWWnuEduotdtx5H1JvQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_R-9OW2nuEduotdtx5H1JvQ" name="urlPattern">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-9OXWnuEduotdtx5H1JvQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-9OXGnuEduotdtx5H1JvQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_R-9OXmnuEduotdtx5H1JvQ" name="authMethod">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-9OYGnuEduotdtx5H1JvQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-9OX2nuEduotdtx5H1JvQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_R-9OYWnuEduotdtx5H1JvQ" name="transportGuarantee">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-9OY2nuEduotdtx5H1JvQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-9OYmnuEduotdtx5H1JvQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ASKZ0Bf3Ed-7PeHm33xE_w" name="secureWSDLAccess">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ASKZ0Rf3Ed-7PeHm33xE_w" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ASKZ0hf3Ed-7PeHm33xE_w"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_GFzMYBf3Ed-7PeHm33xE_w" name="virtualHosts">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GFzMYRf3Ed-7PeHm33xE_w" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GFzMYhf3Ed-7PeHm33xE_w"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WFGHwmnvEduotdtx5H1JvQ" name="base_Interface" association="_WFGHwGnvEduotdtx5H1JvQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_WFGHwGnvEduotdtx5H1JvQ" name="Interface_org.jboss.wsf.spi.annotation.WebContext" memberEnd="_WFGHwWnvEduotdtx5H1JvQ _WFGHwmnvEduotdtx5H1JvQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_WFGHwWnvEduotdtx5H1JvQ" name="extension_org.jboss.wsf.spi.annotation.WebContext" type="_R-9OV2nuEduotdtx5H1JvQ" aggregation="composite" association="_WFGHwGnvEduotdtx5H1JvQ"/>
+  </packagedElement>
+</uml:Profile>

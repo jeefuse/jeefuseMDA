@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="templates" name="net.taylor.mda.generator.templates" schema="schema/templates.exsd"/>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerActionBinding
+            viewerId="net.taylor.mda.ModelNavigator">
+         <includes>
+             <actionExtension pattern="net.taylor.mda.generator.actions.*" />
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension  
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider 
+      	      id="net.taylor.mda.generator.actions.UML2ModelActionExtension"
+            class="net.taylor.mda.generator.actions.UML2ModelActionExtension">
+			         <enablement>
+				            <or>
+					               <adapt type="org.eclipse.uml2.uml.Element" /> 	
+				            </or>
+			         </enablement>
+      </actionProvider> 
+   </extension>
+
+<!--
+-->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Taylor Generator"
+            class="net.taylor.mda.generator.preferences.PreferencePage"
+            id="net.taylor.mda.generator.preferences.PreferencePage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="net.taylor.mda.generator.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

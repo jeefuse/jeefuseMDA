@@ -1,0 +1,7 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.jsp" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntitManagerJSPProxyManageByProperty" %>
+<%Property uml2Property_proxy = (Property) argument;%>
+<%Class uml2Class_proxy = (Class) uml2Property_proxy.getOwner();%>
+<%if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class_proxy)){/*应用了tree*/%>
+<%@ include file="EntityManagerManageByPropertyForTree.jspjet"%>
+<%}else{/*只应用了Entity*/%>
+<%@ include file="EntityManagerManageByProperty.jspjet"%><%}%>

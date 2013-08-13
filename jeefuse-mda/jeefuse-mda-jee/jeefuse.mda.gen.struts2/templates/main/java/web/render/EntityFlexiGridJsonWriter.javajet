@@ -1,0 +1,149 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.render" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* java.util.List net.taylor.mda.generator.parse.* net.taylor.mda.generator.parse.page.* net.taylor.mda.generator.parse.entity.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityFlexiGridJsonWriter" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+
+//model FlexiGridJsonWrite define
+ClassNameDefineCommon flexiGridJsonWriteDefine=clazzWrap.getNameDefineFlexiGridJsonWrite();
+String flexiGridJsonWritePackage=flexiGridJsonWriteDefine.getPackageQualifiedName();
+String flexiGridJsonWriteClassName=flexiGridJsonWriteDefine.getClassCapName();
+%>
+<%@ include file="../../../../Header.jetinc"%>
+package <%=flexiGridJsonWritePackage%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%importManager.addImport("java.io.IOException");%>
+<%importManager.addImport("java.util.List");%>
+<%importManager.addImport("org.codehaus.jackson.JsonGenerator");%>
+<%importManager.addImport("org.codehaus.jackson.JsonProcessingException");%>
+<%importManager.addImport("com.jeefuse.base.modules.json.FlexidGridJsonWriter");%>
+<%importManager.addImport("com.jeefuse.base.utils.page.Page");%>
+<%
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldClassName=entityFieldDefine.getClassCapName();
+importManager.addImport(modelFieldQualifiedName);
+
+//model RTO define
+ClassNameDefineCommon rtoDefine=clazzWrap.getNameDefineRTO();
+String modelRTOQualifiedName=rtoDefine.getClassQualifiedName();
+importManager.addImport(modelRTOQualifiedName);
+
+%>
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * 输出<%=modelEntityName%>  FlexiGrid json格式数据.
+ * 
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=flexiGridJsonWriteClassName%> extends FlexidGridJsonWriter<<%=modelEntityName%>> {
+
+	/** @generated */
+	public <%=flexiGridJsonWriteClassName%>(Page<<%=modelEntityName%>> page) {
+			super(page);
+	}
+
+	/** @generated */
+	public <%=flexiGridJsonWriteClassName%>(int pageNo, long total, List<<%=modelEntityName%>> items) {
+		super(pageNo, total, items);
+	}
+
+	/** @generated */
+	@Override
+	protected void writeJsonModel(JsonGenerator g, <%=modelEntityName%> model) throws JsonProcessingException, IOException {
+<%List<Property> propertyList=EntityHelper.getAllSimpleProperties(uml2Class);%>
+<%int count=1;%>
+<%for(Property property:propertyList){%>
+<%	String propertyName=NameHelper.uncapSafeName(property);%>
+<%	//String propertyImportFeatureType=MdaHelper.getImportedFeatureType(property);%>
+<%	//String propertyGetMethod=ClassHelper.getGetAccessor(property);%>
+<%	String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%	if(TypeHelper.isDate(property)){%>
+<%		String propertyToDateTimeCapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleCapNamed(property);%>
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%>g.writeStringField(<%=modelFieldClassName%>.<%=propertyName%>.getFieldName(), model.get<%=propertyToDateTimeCapName%>());//<%=count++%> <%=propertyCommentName%>
+<%	}else{%>
+<%		String propertyJacksonWriteMethod=JsonRenderHelper.getJacksonWriteRender(property,uml2Class);%>
+		<%if(!ViewListHelper.isApplyViewList(property)&&!EntityHelper.isIDProperty(property)){%>//<%}%>g.<%=propertyJacksonWriteMethod%>;//<%=count++%> <%=propertyCommentName%>
+<%	}%>
+<%}%>
+<%/********process all M2OProperty start********/%>
+<%Iterator<Property> m2oPropertyList=EntityHelper.getAllManyToOneProperties(uml2Class,false).iterator();%>
+<%for (;m2oPropertyList.hasNext();){//process m2oPropertyList%>
+<%		Property property=m2oPropertyList.next();%>
+<% 		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		//String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(relTargetClass);%>
+<%		String relTargetClassEntityName=MdaHelper.getModelClassName(relTargetClass,ModelNameSuffix.Entity);%>
+<%		String relTargetClassEntityUncapName=NameHelper.uncapName(relTargetClassEntityName);%>
+<%		//model get Accessor%>
+<%		String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		//String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%		String listLabelPropertyGetAccessorName=ViewListHelper.getViewListLabelRelPropertyGetAccessorName(property);%>
+<%		boolean isViewList=ViewListHelper.isApplyViewList(property);%>
+<%		if(isViewList){%>
+<%		importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		}%>
+		// 关联<%=relTargetClassCommentName%>
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%><%=relTargetClassEntityName%> <%=relTargetClassEntityUncapName%> = model.<%=relTargetClassGetAccessor%>();
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%>g.writeObjectFieldStart("<%=relTargetClassEntityUncapName%>");
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%>g.writeStringField("<%=listLabelPropertyUncapSafeName%>", null == <%=relTargetClassEntityUncapName%> ? null : <%=relTargetClassEntityUncapName%>.<%=listLabelPropertyGetAccessorName%>());//<%=count++%> <%=propertyCommentName%>
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%>g.writeEndObject();
+<%/*%>
+		<%if(!ViewListHelper.isApplyViewList(property)){%>//<%}%>g.<%=JsonRenderHelper.getJacksonWriteMethod(relTargetClass)%>("<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>", null == <%=relTargetClassEntityUncapName%> ? null : <%=relTargetClassEntityUncapName%>.<%=listLabelPropertyGetAccessorName%>());//<%=count++%> <%=propertyCommentName%>
+<%*/%>
+<%}%>
+<%/********process all M2OProperty end********/%>
+<%/********process all O2OProperty start********/%>
+<%Iterator<Property> o2oPropertyList=EntityHelper.getAllOneToOneProperties(uml2Class,false).iterator();%>
+<%for (;o2oPropertyList.hasNext();){//process o2oPropertyList%>
+<%		Property property=o2oPropertyList.next();%>
+<% 		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		//model entity%>
+<%		String relTargetClassEntityQualifiedName=MdaHelper.getEntityQualifiedName(relTargetClass);%>
+<%		String relTargetClassEntityName=MdaHelper.getModelClassName(relTargetClass,ModelNameSuffix.Entity);%>
+<%		String relTargetClassEntityUncapName=NameHelper.uncapName(relTargetClassEntityName);%>
+<%		//model get Accessor%>
+<%		String relTargetClassGetAccessor=ClassHelper.getGetAccessor(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		//String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%		String listLabelPropertyGetAccessorName=ViewListHelper.getViewListLabelRelPropertyGetAccessorName(property);%>
+<%		boolean isViewList=ViewListHelper.isApplyViewList(property);%>
+<%		if(isViewList){%>
+<%		importManager.addImport(relTargetClassEntityQualifiedName);%>
+<%		}%>
+		// 关联<%=relTargetClassCommentName%>
+		<%if(!isViewList){%>//<%}%><%=relTargetClassEntityName%> <%=relTargetClassEntityUncapName%> = model.<%=relTargetClassGetAccessor%>();
+		<%if(!isViewList){%>//<%}%>g.writeObjectFieldStart("<%=relTargetClassEntityUncapName%>");
+		<%if(!isViewList){%>//<%}%>g.writeStringField("<%=listLabelPropertyUncapSafeName%>", null == <%=relTargetClassEntityUncapName%> ? null : <%=relTargetClassEntityUncapName%>.<%=listLabelPropertyGetAccessorName%>());//<%=count++%> <%=propertyCommentName%>
+		<%if(!isViewList){%>//<%}%>g.writeEndObject();
+<%/*%>
+		<%if(!isViewList){%>//<%}%>g.<%=JsonRenderHelper.getJacksonWriteMethod(relTargetClass)%>("<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>", null == <%=relTargetClassEntityUncapName%> ? null : <%=relTargetClassEntityUncapName%>.<%=listLabelPropertyGetAccessorName%>());//<%=count++%> <%=propertyCommentName%>
+<%*/%>
+<%}%>
+<%/********process all O2OProperty end********/%>
+	}
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

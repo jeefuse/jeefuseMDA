@@ -1,0 +1,253 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.js" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List java.util.ArrayList org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityInputJSManageByPropertyForFile" %>
+<%Property curProperty = (Property) argument;Package uml2Package = curProperty.getNearestPackage();%>
+<%//String curPropertyGetAccessor=ModelHelper.getGetAccessor(curProperty);%>
+<%Class ownerClass=(Class)curProperty.getOwner();%>
+<%//Property ownerClassIdProperty=EntityHelper.getIDProperty(ownerClass);%>
+<%//String ownerClassIdPropertyGetter=ClassHelper.getGetAccessor(ownerClassIdProperty);%>
+<%UmlClassByPropertyWrap named=new UmlClassByPropertyWrap(curProperty);%>
+<%Class uml2Class=ownerClass;%>
+$(document).ready(function() {
+<%List<Property> tabsList=ViewInputHelper.getTabsProperty(uml2Class);%>
+<%List<Property> contentTabPropertyList=ViewInputHelper.getViewInputContentTab(uml2Class);%>
+<%if(!tabsList.isEmpty()||!contentTabPropertyList.isEmpty()){%>
+		//定义tabs
+		$("#firstTabs").tabs({fit:true,border:false});
+<%}%>
+		validator=$("#inputForm").validate({
+			rules : {
+<%
+Property idProperty=EntityHelper.getIDProperty(uml2Class);
+String idPropertyUncapSafeName=NameHelper.uncapSafeName(idProperty);
+List<Property> propertyList=new ArrayList<Property>();
+List<Property> inputValidateList=ViewInputHelper.getInputPropertyForValidate(uml2Class);
+propertyList.addAll(inputValidateList);
+//List<Property> M2OSelectList=ViewInputHelper.getApplyM2OSelect(uml2Class);
+//List<Property> O2OSelectList=ViewInputHelper.getApplyO2OSelect(uml2Class);
+//List<Property> O2OSelectPageList=ViewInputHelper.getApplyO2OSelectPage(uml2Class);
+//List<Property> M2OSelectPageList=ViewInputHelper.getApplyM2OSelectPage(uml2Class);
+//propertyList.addAll(M2OSelectList);
+//propertyList.addAll(O2OSelectList);
+//propertyList.addAll(O2OSelectPageList);
+//propertyList.addAll(M2OSelectPageList);
+%>
+<%int count=0;%>
+<%for (int i=0;i<propertyList.size();i++){%>
+<%	Property property=propertyList.get(i);%>
+<%	if(ViewInputHelper.isViewInput_readonly(property)){%>
+<%		continue;%>
+<%	}%>
+<%	if(property.getName().equals(curProperty.getName())){%>
+<%		continue;%>
+<%	}%>
+<%	String jqueryValidate=PageHelper.getJqueryValidate(property);%>
+<%	if(null!=jqueryValidate){%>
+<% 		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%		if(!ClassHelper.isSimple(property)&&null!=jqueryValidate&&!jqueryValidate.trim().equals("")){%>
+<% 				//String propertySelectListKey=ViewInputHelper.getRelForListKey(property);%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				//String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+				<%if(count!=0){%>,<%}%>"<%=NameHelper.getUncapName(property)%>.<%=propertyTypeIdPropertyUncapSafeName%>":{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>						
+<%		}else{%>
+				<%if(i!=0){%>,<%}%><%=NameHelper.getUncapName(property)%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+<%		}%>
+<%	}%>	
+<%}%>
+		},
+		errorType: "bftip"
+	});
+		//uploadFile
+	$('#path_fileInput').uploadify({
+		'uploader'  : ctx+'/resources/js/uploadify/uploadify.swf',
+		'script'    : ctx+'<%=named.getUrl(WebUrlName.saveOutJson)%>',
+		'cancelImg' : ctx+'/resources/style/'+theme+'/images/cancel.png',
+		'auto'      : false,
+		'folder'    : '/userFiles',
+		'wmode'     : 'transparent',
+		'queueID'   : 'path_fileInput_queue',
+		'multi'     : true,
+		'fileExt'	:  goolov.file.imageExtSemicolon,
+		'fileDesc'	:  goolov.file.imageDesc,
+		'sizeLimit' : 1024*1024*2,
+		'queueSizeLimit':20,
+		'onComplete':function(event,ID,fileObj,response,data){
+			try {
+				var result=JSON.parse(response);
+				if (result&&result.success) {
+					jQuery("#path_fileInput" + ID + " .percentage").html(" - <span class='success'>上传成功!</span>");
+					window.parent.addRowData(result.data);
+					jQuery("#path_fileInput" + ID).fadeOut(2000, function() { jQuery(this).remove();});
+					return false;
+				}else if(result&&result.message){
+					//goolov.msgbox.error('"'+fileObj.name+'"上传错误!'+result.message);
+					jQuery("#path_fileInput" + ID + " .percentage").html(" - <span class='error'>上传错误:"+result.message+"</span>");
+					jQuery("#path_fileInput" + ID).addClass('uploadifyError');
+					jQuery("#path_fileInput" + ID).fadeOut(2000, function() { jQuery(this).remove();});
+					return false;
+				}else{
+					//goolov.msgbox.error('"'+fileObj.name+'"上传错误!');
+					jQuery("#path_fileInput" + ID + " .percentage").html(" - <span class='error'>上传失败!</span>");
+					jQuery("#path_fileInput" + ID).addClass('uploadifyError');
+					jQuery("#path_fileInput" + ID).fadeOut(2000, function() { jQuery(this).remove();});
+					return false;
+				}
+			} catch (e) {
+				jQuery("#path_fileInput" + ID + " .percentage").html(" - <span class='error'>解析出错!</span>");
+				jQuery("#path_fileInput" + ID).addClass('uploadifyError');
+				jQuery("#path_fileInput" + ID).fadeOut(2000, function() { jQuery(this).remove();});
+			}
+			return false;
+		},
+		'onAllComplete':function(event,data){
+			var msg='上传完成';
+			//var msg='上传完成'+data.filesUploaded+'个文件';
+			if(data.errors>0){
+				msg+='<br/>上传失败'+data.errors+'个文件';
+			}
+			msg+='<br/>平均速率'+Math.round(data.speed)+'KB/s';
+			goolov.growl.show(msg);
+		}
+	});
+});
+var validator;
+/*******reset Data******/
+function resetData(){
+	validator.resetForm();
+	$('#path_fileInput').uploadifyClearQueue();
+}
+function uploadImage(){
+	if(!$("#inputForm").valid()){
+ 		var invalideNum=validator.numberOfInvalids();
+	    if(invalideNum>0){
+	    	goolov.growl.success('有<font color=red> '+invalideNum+'</font> 个选项未填写正确!');
+		    return ;
+	    }
+	}
+	var scriptData={
+<%List<Property> fileSimpleInputPropertyList=ViewInputHelper.getFileSimpleInputProperty(uml2Class);%>
+<%boolean firstLine=true;%>
+<%for (Iterator<Property> it=fileSimpleInputPropertyList.iterator();it.hasNext();){//process simpleProperty%>
+<%		Property property=it.next();%>
+<% 		//String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		if(ClassHelper.isSimple(property)){%>
+		  		<%if(firstLine){firstLine=false;}else{%>,<%}%>'<%=propertyUncapSafeName%>':$('#<%=propertyUncapSafeName%>').val(),
+<%		}else if(ClassHelper.isOneToOne(property)||ClassHelper.isManyToOne(property)){%>
+<%			Type propertyType=property.getType();%>
+<%			Class propertyTypeClass=(Class)propertyType;%>
+<%			//String relTargetClassCapName=NameHelper.getCapName(relTargetClass);%>
+<%			//String relTargetClassUncapName=NameHelper.getUncapName(relTargetClass);%>
+<%			//String relTargetClassCommentName=TypeHelper.getDocumentationOrName(propertyTypeClass);%>
+<%			//String relM2OAndO2OSelectPage=NamedUtil.getPropertyNamedUncap(propertyTypeClass,PropertyNamedRuleKind.relM2OAndO2OSelectPage);%>
+<% 			Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyTypeClass);%>
+<% 			String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+				<%if(firstLine){firstLine=false;}else{%>,<%}%>'<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>':$('#<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>').val()
+<%		}%>
+<%}%>
+				};
+	$('#path_fileInput').uploadifySettings('scriptData',scriptData);
+	$('#path_fileInput').uploadifyUpload();
+}
+function uploadClearQueue(){
+	$('#path_fileInput').uploadifyClearQueue();
+}
+/*******updateDataWithEditWin******/
+function editWinUpdateData(){
+	var submitUrl=ctx+'<%=named.getUrl(WebUrlName.updateOutJson)%>';
+    $('#inputForm').ajaxSubmit({ 
+		 type : 'post',
+		 dataType:'json', 
+		 url:submitUrl,
+		 beforeSubmit:function(formData, jqForm, options) {
+		     	if(!$("#inputForm").valid()){
+			 		var invalideNum=validator.numberOfInvalids();
+				    if(invalideNum>0){
+				    	goolov.growl.success('有<font color=red> '+invalideNum+'</font> 个选项未填写正确!');
+					    return false;
+				    }
+				}
+				goolov.growl.waiting('新增数据中...');
+		 },
+	     success:function(result, statusText, xhr, $form) {
+	     		goolov.growl.unwaiting();
+				if (result&&result.success) {
+					goolov.growl.success(result.message);
+					window.parent.addRowData(result.data);
+				}else if(result&&result.message){
+					goolov.msgbox.error(result.message);
+				}else{
+					goolov.msgbox.error();
+				}
+		 },
+		 error:function(request,status,errorThrown) {
+		 	goolov.growl.unwaiting();
+			goolov.msgbox.error();
+		}
+	}); 
+}
+/*******close edit win******/
+function editWinClose(){
+	window.parent.editWinClose();
+}
+function editWinCloseAndRefresh(){
+	window.parent.editWinCloseAndRefresh();
+}
+<%
+/*****************************************************************
+ * rel O2OSelectPage M2OSelectPage
+/*****************************************************************/
+%>
+<%List<Property> resultPropertyList=ViewInputHelper.getApplyM2OSelectPage(uml2Class);%>
+<%List<Property> m2oPropertyList=ViewListHelper.getViewListPropertiesFromM2o(uml2Class);%>
+<%List<Property> o2oPropertyList=ViewListHelper.getViewListPropertiesFromO2o(uml2Class);%>
+<%resultPropertyList.addAll(m2oPropertyList);%>
+<%resultPropertyList.addAll(o2oPropertyList);%>
+<%if(null!=resultPropertyList&&!resultPropertyList.isEmpty()){%>
+<%	for(Iterator<Property> iter=resultPropertyList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		if(property.getName().equals(curProperty.getName())){%>
+<%			continue;%>
+<%		}%>
+<%		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		//String relTargetClassCapName=NameHelper.getCapName(relTargetClass);%>
+<%		//String relTargetClassUncapName=NameHelper.getUncapName(relTargetClass);%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		String relM2OAndO2OSelectPage=NamedUtil.getPropertyNamedUncap(relTargetClass,PropertyNamedRuleKind.relM2OAndO2OSelectPage);%>
+<% 		Property propertyTypeIdProperty=EntityHelper.getIDProperty(relTargetClass);%>
+<% 		String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		//String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+/*******rel GsysCodevalue manager**********/
+var <%=relM2OAndO2OSelectPage%>Win;
+function <%=relM2OAndO2OSelectPage%>WinInit(){
+	if(!<%=relM2OAndO2OSelectPage%>Win){
+		<%=relM2OAndO2OSelectPage%>Win=new goolov.winbox({
+			width:goolov.winWidth(750),
+			height:goolov.winHeight(450),
+			modal:true
+		});
+	}
+}
+function <%=relM2OAndO2OSelectPage%>WinOpen(settings){
+	<%=relM2OAndO2OSelectPage%>WinInit();
+	<%=relM2OAndO2OSelectPage%>Win.open(settings);
+}
+function <%=relM2OAndO2OSelectPage%>WinClose(){
+	<%=relM2OAndO2OSelectPage%>Win.close();
+}
+function <%=relM2OAndO2OSelectPage%>(id,name){
+	var title=baseTitle+'('+name+')-><%=relTargetClassCommentName%>选择';
+	var url=ctx+'<%=MdaHelper.getModelUrlByRel(uml2Class,relTargetClass,WebUrlName.relM2OAndO2OSelectPage)%>';
+	<%=relM2OAndO2OSelectPage%>WinOpen({title:title,url:url});
+}
+function <%=relM2OAndO2OSelectPage%>Process(id,name){
+	$('#<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>').val(id);
+	$('#<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>').val(name);
+	<%=relM2OAndO2OSelectPage%>WinClose();
+	validator.form();
+}
+<%	}%>
+<%}%>

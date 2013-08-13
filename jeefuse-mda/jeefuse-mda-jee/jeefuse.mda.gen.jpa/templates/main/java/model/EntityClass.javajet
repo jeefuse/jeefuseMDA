@@ -1,0 +1,473 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.entity" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List net.taylor.mda.generator.parse.entity.* org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityClass" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+String modelUncapName=clazzWrap.getUncapName();
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityPackage=entityDefine.getPackageQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+
+%>
+<%@ include file="../../../Header.jetinc"%>
+package <%=modelEntityPackage%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> Entity define.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+<%if (StereotypeHelper.hasStereotypes(uml2Class)) {%>
+<%=ModelStereoTypeHelper.getEntityStereoType(uml2Class)%>
+<%}%>
+<%if (StereotypeHelper.isStereotypeApplied(uml2Class, StereotypeHelper.ENTITY) && ClassHelper.isRoot(uml2Class)) {%>
+<%=ClassHelper.getInheritance(uml2Class)%>
+<%}%>
+public class <%=modelEntityName%><%=ExtendHelper.getImplementsIdEntityAndImplementsSerialize(uml2Class)%> {
+	/** @generated */
+	private static final long serialVersionUID = 1L;
+
+	/** @generated */
+	public <%=modelEntityName%>() {
+	}
+<%
+/*****************************************************************
+ * id property
+/*****************************************************************/
+%>
+<%		Property idProperty=TreeStereotypeHelper.getProperty_id(uml2Class);%>	
+<%		String idPropertyName=NameHelper.uncapSafeName(idProperty);%>
+<%		/********id property accessor ********/%>
+<%		//String idPropertyGetAccessorName=ClassHelper.getGetAccessor(idProperty);%>	
+<%		String idPropertySetAccessorName="set"+ClassHelper.getAccessorName(idProperty);%>	
+<%
+/*****************************************************************
+ * process implement treeView start
+/*****************************************************************/
+%>
+<%	if(TreeStereotypeHelper.isApply(uml2Class)){%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+<%		Property listLabelProperty=TreeStereotypeHelper.getProperty_listLabel(uml2Class);%>			
+<%		String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>
+<%		//Property layerCodeProperty=TreeStereotypeHelper.getProperty_layerCode(uml2Class);%>			
+<%		//String layerCodePropertyName=NameHelper.uncapSafeName(layerCodeProperty);%>
+<%		//Property parentIdProperty=TreeStereotypeHelper.getProperty_parentId(uml2Class);%>			
+<%		//String parentIdPropertyName=NameHelper.uncapSafeName(parentIdProperty);%>
+
+	/**
+	 * using for treeView.
+	 * 
+	 * @generated
+	 */
+	public <%=modelEntityName%>(String id, String listLabel, String parentId) {
+		this.<%=idPropertyName%> = id;
+		this.<%=listLabelPropertyName%> = listLabel;
+		<%=modelEntityName%> curParent = new <%=modelEntityName%>();
+		curParent.<%=idPropertySetAccessorName%>(parentId);
+		this.parent = curParent;
+	}
+<%	}%>	
+<%/********process implement treeView end********/%>
+<%/********process implement keyLabel start********/%>
+<%	if(KeyLabelStereotypeHelper.isApply(uml2Class)){%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		//String classGetAllForKeyLabel=clazzWrap.getPropertyNamedRuleKind(PropertyNamedRuleKind.getAllForKeyLabel);%>			
+<%		Property listKeyProperty=KeyLabelStereotypeHelper.getProperty_liskKey(uml2Class);%>			
+<%		String listKeyPropertyName=NameHelper.uncapSafeName(listKeyProperty);%>
+<%		//String listKeyPropertyGetAccessorName=ClassHelper.getGetAccessor(listKeyProperty);%>	
+<%		//String listKeyPropertySetAccessorName="set"+ClassHelper.getAccessorName(listKeyProperty);%>	
+<%		Property listLabelProperty=KeyLabelStereotypeHelper.getProperty_listLabel(uml2Class);%>	
+<%		String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>
+<%		//String listLabelPropertyGetAccessorName=ClassHelper.getGetAccessor(listLabelProperty);%>	
+<%		//String listLabelPropertySetAccessorName="set"+ClassHelper.getAccessorName(listLabelProperty);%>	
+
+	/**
+	 * 构造keyLabel,只获取key,label属性.
+	 */
+	public <%=modelEntityName%>(String listKey, String listLabel) {
+		this.<%=listKeyPropertyName%> = listKey;
+		this.<%=listLabelPropertyName%> = listLabel;
+	}
+<%	}%>	
+<%/********process implement keyLabel end********/%>
+<%
+/*****************************************************************
+ * process implement image 
+/*****************************************************************/
+%>
+<%if(FileStereotypeHelper.isClass_file(uml2Class)||FileStereotypeHelper.isClass_Image(uml2Class)){%>
+<%	//Property propertyFileSavePath=FileStereotypeHelper.getProperty_FileSavePath(uml2Class);%>
+<%	Property propertyFileVisitPath=FileStereotypeHelper.getProperty_visitPath(uml2Class);%>
+<%	Property propertyTitle=PropertyStereotypeHelper.getProperty_Title(uml2Class);%>
+<%	Property propertyIntro=PropertyStereotypeHelper.getProperty_Intro(uml2Class);%>
+<%	//Property propertyContent=PropertyStereotypeHelper.getProperty_Content(uml2Class);%>
+<%	String gallaryListContructArgs=FileStereotypeHelper.getGallaryListContructArgs(uml2Class);%>
+	/**
+	 * 构造gallary,只获取<%=gallaryListContructArgs%>属性.
+	 */
+	public <%=modelEntityName%>(<%=gallaryListContructArgs%>) {
+<%		if(null!=propertyFileVisitPath){%>
+<%			String propertyUncapSafeName=NameHelper.uncapSafeName(propertyFileVisitPath);%>
+			this.<%=propertyUncapSafeName%> = <%=propertyUncapSafeName%>;
+<%		}%>
+<%		if(null!=propertyTitle){%>
+<%			String propertyUncapSafeName=NameHelper.uncapSafeName(propertyTitle);%>
+			this.<%=propertyUncapSafeName%> = <%=propertyUncapSafeName%>;
+<%		}%>
+<%		if(null!=propertyIntro){%>
+<%			String propertyUncapSafeName=NameHelper.uncapSafeName(propertyIntro);%>
+			this.<%=propertyUncapSafeName%> = <%=propertyUncapSafeName%>;
+<%		}%>
+	}
+<%	}%>	
+<%/********process implement image end********/%>
+<%/********process  id propperty start****************/%>
+<%
+List<Property> listProperty=EntityHelper.getOwnAllPropertyExcluedIdProperty(uml2Class);
+if(EntityHelper.isIDUUID(idProperty)){
+%>
+
+	/**
+	 * ------------------------------------------------------------------------
+	 * <%=TypeHelper.getDocumentationOrName(idProperty)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	@<%=ImportHelper.getImportedName(StereotypeHelper.ID)%>
+	@<%=ImportHelper.getImportedName(StereotypeHelper.GENERATED_VALUE)%>(generator = "hibernate-uuid")
+	@<%=ImportHelper.getImportedName(StereotypeHelper.annotations_GenericGenerator)%>(strategy = "uuid", name = "hibernate-uuid")
+	<%=StereotypeHelper.getAnnotation(idProperty,StereotypeHelper.COLUMN)%>
+	public <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=ClassHelper.getGetAccessor(idProperty)%>() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+<%}else if(EntityHelper.isIDAssign(idProperty)){%>
+
+	/**
+	 * ------------------------------------------------------------------------
+	 * <%=TypeHelper.getDocumentationOrName(idProperty)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	@<%=ImportHelper.getImportedName(StereotypeHelper.ID)%>
+	@<%=ImportHelper.getImportedName(StereotypeHelper.GENERATED_VALUE)%>(generator = "<%=modelUncapName%>Generator")     
+	@<%=ImportHelper.getImportedName(StereotypeHelper.annotations_GenericGenerator)%>(name = "<%=modelUncapName%>Generator", strategy = "assigned")
+	<%=StereotypeHelper.getAnnotation(idProperty,StereotypeHelper.COLUMN)%>
+	public <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=ClassHelper.getGetAccessor(idProperty)%>() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+<%}else{%>
+<%	//listProperty.add(0,idProperty);%>
+
+	/** @generated */
+<%	if (StereotypeHelper.hasStereotypes(idProperty)) {%>
+	<%=ModelStereoTypeHelper.getEntityPropertyStereoType(idProperty,true)%>
+<%	}%>
+	public <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=ClassHelper.getGetAccessor(idProperty)%>() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+<%}%>
+
+	/** @generated */
+	public void set<%=ClassHelper.getAccessorName(idProperty)%>(final <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=NameHelper.uncapSafeName(idProperty)%>) {
+		this.<%=NameHelper.uncapSafeName(idProperty)%> = <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+	
+	/** @generated */
+	private <%=MdaHelper.getImportedFeatureType(idProperty)%> <%=NameHelper.uncapSafeName(idProperty)%> = <%=TypeHelper.getDefaultValue(idProperty)%>;
+<%if(!idProperty.getName().equals("id")){%>
+<%	importManager.addImport("javax.persistence.Transient");%>
+
+	/** @generated */
+	@Transient
+	public String getId() {
+		return <%=NameHelper.uncapSafeName(idProperty)%>;
+	}
+	
+	/** @generated */
+	@Transient
+	public void setId(final String id) {
+		this.<%=NameHelper.uncapSafeName(idProperty)%> = id;
+	}
+<%}%>
+<%/********process  id propperty end****************/%>
+<%
+/*****************************************************************
+ * process non id propperty start
+/*****************************************************************/
+%>
+<%for (Iterator<Property> i=listProperty.iterator(); i.hasNext();) { %>
+<%	Property property = (Property)i.next();%>
+<%	if(TreeStereotypeHelper.isParentIdProperty(property)){%>
+<%		continue;%>
+<%	}%>
+<%	if (property.getType() !=null) {%>
+<%		//String propertyCapName=NameHelper.getCapName(property);%>
+<%		//String propertyConmentName=TypeHelper.getDocumentationOrName(property);%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+
+	/**
+	 * ------------------------------------------------------------------------
+	 * <%=TypeHelper.getDocumentationOrName(property)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+<%		if (StereotypeHelper.hasStereotypes(property)) {%>
+	<%=ModelStereoTypeHelper.getEntityPropertyStereoType(property,true)%>
+<%		}%>
+	public <%=MdaHelper.getImportedFeatureType(property)%> <%=ClassHelper.getGetAccessor(property)%>() {
+<%		if (property.getAssociation() != null && property.isMultivalued()) {%>
+		if (this.<%=propertyName%> == null) {
+<%			if (property.getOpposite() == null || property.getOpposite().isMultivalued()) {%>
+<%				importManager.addImport("java.util.HashSet");%>
+			this.<%=propertyName%> = new HashSet<<%=MdaHelper.getImportedType(property.getType())%>>();
+<%			}else {%>
+<%				importManager.addImport("java.util.ArrayList");%>
+			this.<%=propertyName%> = new ArrayList<<%=MdaHelper.getImportedType(property.getType())%>>();
+<%		}%>
+		}
+<%	}%>
+<%	/*if (ClassHelper.isComposite(property)) {%>
+		if (this.<%=propertyName%> == null) {
+			this.<%=propertyName%> = new <%=MdaHelper.getImportedType(property.getType())%>();        
+		}
+<%	}*/%>
+		return <%=propertyName%>;
+	}
+
+	/** @generated */
+	public void set<%=ClassHelper.getAccessorName(property)%>(final <%=MdaHelper.getImportedFeatureType(property)%> <%=propertyName%>) {
+		this.<%=propertyName%> = <%=propertyName%>;
+	}
+<%}%>
+<%//process apply enumKind%>
+<%/*if(EnumKindHelper.isAppliedEnumKind(property)){%>
+<%	Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%	if(null!=enumeration){%>
+<%			String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			importManager.addImport(modelEnumQualifiedName);%>
+<%		for (Iterator<EnumerationLiteral> l=enumeration.getOwnedLiterals().iterator(); l.hasNext();) { %>
+<%			EnumerationLiteral enumLiteral = (EnumerationLiteral)l.next();%>
+
+	/** @generated */
+<%			if (StereotypeHelper.isStereotypeApplied(uml2Class, StereotypeHelper.ENTITY)) {%>
+<%				importManager.addImport("javax.persistence.Transient");%>
+	@Transient
+<%			}%>
+	public boolean is<%=NameHelper.getCapName(enumLiteral)%>() {
+		return <%=modelEnumName%>.<%=EnumerationHelper.getEnumLiteralID(enumLiteral)%>.equals(<%=modelEnumName%>.valueOfKey(<%=propertyName%>));
+	}
+<%		}%>
+<%	}%>
+<%}*/%>
+<%	//process date%>
+<%	if(TypeHelper.isDate(property)){%>
+<%		String propertyName=NameHelper.uncapSafeName(property);%>
+<%		String propertyToDateTimeCapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleCapNamed(property);%>
+<%		//String propertyToDateTimeUncapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleUnCapNamed(property);%>
+<%		importManager.addImport("com.jeefuse.base.utils.common.DateUtil");%>	
+<%		importManager.addImport("javax.persistence.Transient");%>
+
+	/**
+	 * ------------------------------------------------------------------------
+	 * convert to date string for <%=TypeHelper.getDocumentationOrName(property)%>
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	@Transient
+	public String get<%=propertyToDateTimeCapName%>() {
+		return DateUtil.formatDateTimeSecond(<%=propertyName%>);
+	}
+<%	}%>
+<%if (TypeHelper.isEnum(property)) {%>
+<%	Enumeration enumeration=(Enumeration)property.getType();%>
+<%	for (Iterator<EnumerationLiteral> l=enumeration.getOwnedLiterals().iterator(); l.hasNext();) {%>
+<%		EnumerationLiteral enumLiteral = (EnumerationLiteral)l.next();%>
+	/** @generated */
+<%		if (StereotypeHelper.isStereotypeApplied(uml2Class, StereotypeHelper.ENTITY)) {%>
+<%			importManager.addImport("javax.persistence.Transient");%>
+	@Transient
+<%		}%>
+	public boolean is<%=NameHelper.getCapName(enumLiteral)%>() {
+		return <%=enumeration.getName()%>.<%=EnumerationHelper.getEnumLiteralID(enumLiteral)%>.equals(<%=NameHelper.uncapSafeName(property)%>);
+	}
+<%	}%>
+<%}%>
+
+	/** @generated */
+	private <%=MdaHelper.getImportedFeatureType(property)%> <%=NameHelper.uncapSafeName(property)%> = <%=TypeHelper.getDefaultValue(property)%>;
+<%}%>
+<%/********process non id propperty end********************/%>
+<%/********process implement treeView start********/%>
+<%	if(TreeStereotypeHelper.isApply(uml2Class)){%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+<%		Property keyProperty=TreeStereotypeHelper.getProperty_id(uml2Class);%>	
+<%		//String keyPropertyName=NameHelper.uncapSafeName(keyProperty);%>
+<%		/********keyProperty accessor ********/%>
+<%		String keyPropertyGetAccessorName=ClassHelper.getGetAccessor(keyProperty);%>	
+<%		//String keyPropertySetAccessorName="set"+ClassHelper.getAccessorName(keyProperty);%>	
+<%		Property listLabelProperty=TreeStereotypeHelper.getProperty_listLabel(uml2Class);%>			
+<%		//String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>
+<%		String listLabelPropertyGetAccessorName=ClassHelper.getGetAccessor(listLabelProperty);%>	
+<%		//Property layerCodeProperty=TreeStereotypeHelper.getProperty_layerCode(uml2Class);%>			
+<%		//String layerCodePropertyName=NameHelper.uncapSafeName(layerCodeProperty);%>
+<%		//Property parentIdProperty=TreeStereotypeHelper.getProperty_parentId(uml2Class);%>			
+<%		//String parentIdPropertyName=NameHelper.uncapSafeName(parentIdProperty);%>
+<%		importManager.addImport("javax.persistence.ManyToOne");%>
+<%		importManager.addImport("javax.persistence.FetchType");%>
+<%		importManager.addImport("javax.persistence.Transient");%>
+<%		importManager.addImport("javax.persistence.JoinColumn");%>	
+	/******************************************************************
+	 * use for treeview
+	 *******************************************************************/
+		
+	/**
+	 * ------------------------------------------------------------------------
+	 * 上级 
+	 * ------------------------------------------------------------------------
+	 * @generated
+	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+<% 		String columName=TreeStereotypeHelper.getProperty_parentId_apply_column_Name(uml2Class);%>
+	@JoinColumn(name = "<%=columName%>")
+	public <%=modelEntityName%> getParent() {
+		return parent;
+	}
+
+	/** @generated */
+	public void setParent(final <%=modelEntityName%> parent) {
+		this.parent = parent;
+	}
+
+	/** @generated */
+	private <%=modelEntityName%> parent = null;
+	
+
+	/** @generated */
+	@Transient
+	public boolean getComplete() {
+		return true;
+	}
+
+	/** @generated */
+	@Transient
+	public boolean getIsexpand() {
+		return true;
+	}
+	
+	/** @generated */
+	@Transient
+	public String getValue() {
+		return this.<%=keyPropertyGetAccessorName%>();
+	}
+	
+	/** @generated */
+	@Transient
+	public String getText() {
+		return this.<%=listLabelPropertyGetAccessorName%>();
+	}
+
+	/** @generated */
+	@Transient
+	public String getParentId() {
+		if (null != this.getParent())
+			return this.getParent().<%=keyPropertyGetAccessorName%>();
+		return null;
+	}
+	
+	/** @generated */
+	@Transient
+	public void setParentId(String parentId) {
+<%importManager.addImport("org.apache.commons.lang.StringUtils");%>	
+		if(StringUtils.isNotBlank(parentId)){
+			<%=modelEntityName%> curParent = new <%=modelEntityName%>();
+			curParent.<%=idPropertySetAccessorName%>(parentId);
+			this.setParent(curParent);
+		}else{
+			this.setParent(null);
+		}
+	}
+<%}%>
+<%/********process implement treeView end********/%>
+<%/********process implement keyLabel start********/%>
+<%	if(KeyLabelStereotypeHelper.isApply(uml2Class)){%>
+<%		Property listKeyProperty=KeyLabelStereotypeHelper.getProperty_liskKey(uml2Class);%>			
+<%		//String listKeyPropertyName=NameHelper.uncapSafeName(listKeyProperty);%>
+<%		String listKeyPropertyGetAccessorName=ClassHelper.getGetAccessor(listKeyProperty);%>	
+<%		//String listKeyPropertySetAccessorName="set"+ClassHelper.getAccessorName(listKeyProperty);%>	
+<%		Property listLabelProperty=KeyLabelStereotypeHelper.getProperty_listLabel(uml2Class);%>	
+<%		//String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>
+<%		String listLabelPropertyGetAccessorName=ClassHelper.getGetAccessor(listLabelProperty);%>	
+<%		//String listLabelPropertySetAccessorName="set"+ClassHelper.getAccessorName(listLabelProperty);%>
+<%importManager.addImport("javax.persistence.Transient");%>	
+
+	/******************************************************************
+	 * use for keyLabel
+	 *******************************************************************/
+
+	/** @generated */
+	@Transient
+	public String getKey() {
+		return this.<%=listKeyPropertyGetAccessorName%>();
+	}
+	
+	/** @generated */
+	@Transient
+	public String getLabel() {
+		return this.<%=listLabelPropertyGetAccessorName%>();
+	}
+<%}%>	
+	// ------------------------------------------------------------------------
+	// Utils
+	// ------------------------------------------------------------------------
+
+<%importManager.addImport("org.apache.commons.lang.builder.ToStringBuilder");%>
+<%importManager.addImport("org.apache.commons.lang.builder.ToStringStyle");%>
+	/** @generated */
+	@Override
+	public String toString() {
+		return <%=GenHelper.genEntityToStringBuilder(uml2Class)%>;
+	}
+<%if (StereotypeHelper.isStereotypeApplied(uml2Class, StereotypeHelper.ENTITY)) {%>
+<%if (!ClassHelper.hasSuperClass(uml2Class)) {%>
+	
+	/** @generated */
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + (<%=idPropertyName%> == null? super.hashCode() : <%=idPropertyName%>.hashCode());
+		return result;
+	}
+
+	/** @generated */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof <%=modelEntityName%>))
+			return false;
+		final <%=modelEntityName%> other = (<%=modelEntityName%>) obj;
+		if (<%=idPropertyName%> == null) {
+			if (other.getId() != null)
+				return false;
+		} else if (!<%=idPropertyName%>.equals(other.getId()))
+			return false;
+		return true;
+	}	
+<%}%>
+<%}%>
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

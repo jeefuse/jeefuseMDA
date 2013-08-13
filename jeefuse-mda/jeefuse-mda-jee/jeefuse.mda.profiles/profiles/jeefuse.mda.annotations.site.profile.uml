@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_XcJmgAAoEeOS2e6PSOUXJw" name="jeefuse.mda.annotations.site.profile.uml" metaclassReference="_Xgn20AAoEeOS2e6PSOUXJw _Xgxn0AAoEeOS2e6PSOUXJw _Xgxn1AAoEeOS2e6PSOUXJw">
+  <eAnnotations xmi:id="_Xgxn4wAoEeOS2e6PSOUXJw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_Xgxn5AAoEeOS2e6PSOUXJw" name="jeefusemdaannotationssiteprofileuml" nsURI="http:///schemas/jeefusemdaannotationssiteprofileuml/_Xgxn4gAoEeOS2e6PSOUXJw/0" nsPrefix="jeefusemdaannotationssiteprofileuml">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Xgxn5QAoEeOS2e6PSOUXJw" name="netjeefusemdaannotationssiteViewDetail">
+        <eAnnotations xmi:id="_Xgxn5gAoEeOS2e6PSOUXJw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XcJmgQAoEeOS2e6PSOUXJw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn5wAoEeOS2e6PSOUXJw" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn6QAoEeOS2e6PSOUXJw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn6wAoEeOS2e6PSOUXJw" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Xgxn7QAoEeOS2e6PSOUXJw" name="netjeefusemdaannotationssiteViewList">
+        <eAnnotations xmi:id="_Xgxn7gAoEeOS2e6PSOUXJw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Xgxn2AAoEeOS2e6PSOUXJw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn7wAoEeOS2e6PSOUXJw" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn8QAoEeOS2e6PSOUXJw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Xgxn8wAoEeOS2e6PSOUXJw" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_Xgn20AAoEeOS2e6PSOUXJw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_Xgxn0AAoEeOS2e6PSOUXJw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_Xgxn1AAoEeOS2e6PSOUXJw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_XcJmgQAoEeOS2e6PSOUXJw" name="net.jeefuse.mda.annotations.site.ViewDetail">
+    <ownedAttribute xmi:id="_Xgn20wAoEeOS2e6PSOUXJw" name="base_Property" association="_Xgn20QAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Xgxn0wAoEeOS2e6PSOUXJw" name="base_Class" association="_Xgxn0QAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Xgxn1wAoEeOS2e6PSOUXJw" name="base_Interface" association="_Xgxn1QAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgn20QAoEeOS2e6PSOUXJw" name="Property_net.jeefuse.mda.annotations.site.ViewDetail" memberEnd="_Xgn20gAoEeOS2e6PSOUXJw _Xgn20wAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgn20gAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewDetail" type="_XcJmgQAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgn20QAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgxn0QAoEeOS2e6PSOUXJw" name="Class_net.jeefuse.mda.annotations.site.ViewDetail" memberEnd="_Xgxn0gAoEeOS2e6PSOUXJw _Xgxn0wAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgxn0gAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewDetail" type="_XcJmgQAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgxn0QAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgxn1QAoEeOS2e6PSOUXJw" name="Interface_net.jeefuse.mda.annotations.site.ViewDetail" memberEnd="_Xgxn1gAoEeOS2e6PSOUXJw _Xgxn1wAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgxn1gAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewDetail" type="_XcJmgQAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgxn1QAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_Xgxn2AAoEeOS2e6PSOUXJw" name="net.jeefuse.mda.annotations.site.ViewList">
+    <ownedAttribute xmi:id="_Xgxn2wAoEeOS2e6PSOUXJw" name="base_Property" association="_Xgxn2QAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Xgxn3gAoEeOS2e6PSOUXJw" name="base_Class" association="_Xgxn3AAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Xgxn4QAoEeOS2e6PSOUXJw" name="base_Interface" association="_Xgxn3wAoEeOS2e6PSOUXJw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgxn2QAoEeOS2e6PSOUXJw" name="Property_net.jeefuse.mda.annotations.site.ViewList" memberEnd="_Xgxn2gAoEeOS2e6PSOUXJw _Xgxn2wAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgxn2gAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewList" type="_Xgxn2AAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgxn2QAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgxn3AAoEeOS2e6PSOUXJw" name="Class_net.jeefuse.mda.annotations.site.ViewList" memberEnd="_Xgxn3QAoEeOS2e6PSOUXJw _Xgxn3gAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgxn3QAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewList" type="_Xgxn2AAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgxn3AAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Xgxn3wAoEeOS2e6PSOUXJw" name="Interface_net.jeefuse.mda.annotations.site.ViewList" memberEnd="_Xgxn4AAoEeOS2e6PSOUXJw _Xgxn4QAoEeOS2e6PSOUXJw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Xgxn4AAoEeOS2e6PSOUXJw" name="extension_net.jeefuse.mda.annotations.site.ViewList" type="_Xgxn2AAoEeOS2e6PSOUXJw" aggregation="composite" association="_Xgxn3wAoEeOS2e6PSOUXJw"/>
+  </packagedElement>
+</uml:Profile>

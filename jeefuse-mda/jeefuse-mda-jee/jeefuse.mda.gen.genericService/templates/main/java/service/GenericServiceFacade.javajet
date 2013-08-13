@@ -1,0 +1,154 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.service" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.* java.util.List java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="GenericServiceFacade"%>
+<%Package uml2Package = (Package) argument;%>
+<%
+String packageName=NameHelper.getQualifiedName(uml2Package);
+String modelCommentName=TypeHelper.getDocumentation(uml2Package);
+if(Config.defaultDocumentComments.equals(modelCommentName)){
+	modelCommentName=MdaHelper.getBriefClassName(packageName);
+}
+//packageServiceFacade define
+String packageServiceFacadePackageName=MdaHelper.getPackageQualifiedName(uml2Package,PKGSuffix.serviceFacade);
+String packageServiceFacadeClassName=MdaHelper.getPackageClassName(uml2Package,ModelNameSuffix.serviceFacade);
+//String packageServiceFacadeQualifiedName=packageServiceFactoryPackageName+"."+packageServiceFactoryClassName;
+
+
+%>
+<%@ include file="../../../Header.jetinc"%>
+package <%=packageServiceFacadePackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%
+// add imports
+//importManager.addImport("java.util.Collection");
+//add springContextUtils 
+String springContextUtilsClassName=MdaHelper.getBriefClassName(Config.base_SpringContextUtils);
+
+//packageServiceFacotry define
+String packageServiceFactoryPackageName=MdaHelper.getPackageQualifiedName(uml2Package,PKGSuffix.serviceFactory);
+String packageServiceFactoryClassName=MdaHelper.getPackageClassName(uml2Package,ModelNameSuffix.serviceFactory);
+//String packageServiceFactoryQualifiedName=packageServiceFactoryPackageName+"."+packageServiceFactoryClassName;
+
+
+%>
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%>服务Facade.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=packageServiceFacadeClassName%>{
+
+<%List<org.eclipse.uml2.uml.Class> uml2ClassList=PackageHelper.getJoinServiceFactoryClass(uml2Package);%>
+<%for(org.eclipse.uml2.uml.Class uml2Class:uml2ClassList){%>
+<%
+String uml2ClassCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+String modelServiceGenericClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.serviceGeneric);
+//String modelServiceGenericImplClassName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.serviceGenericImpl);
+//String modelServiceGenericImplUncapClassName=NameHelper.uncapName(modelServiceGenericImplClassName);
+//model entity
+String modelEntityQualifiedName=MdaHelper.getEntityQualifiedName(uml2Class);
+String modelEntityName=MdaHelper.getModelClassName(uml2Class,ModelNameSuffix.Entity);
+%>
+
+	/*****************************************************************
+	 * <%=uml2ClassCommentName%> service
+	 *****************************************************************/
+<%if(!ModelStereoTypeHelper.isApplyModel_M2mWithId(uml2Class)){%>
+<%importManager.addImport(modelEntityQualifiedName);%>
+
+	/**
+	 * 按主键id获取<%=modelEntityName%>对象.
+	 * @generated
+	 */
+	static public <%=modelEntityName%> get<%=modelEntityName%>(<%=EntityHelper.getIDPropertyImportType(uml2Class)%> id){
+		return <%=packageServiceFactoryClassName%>.get<%=modelServiceGenericClassName%>().get(id);
+	}
+<%}%>	 
+<%if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class)){%>
+<%		importManager.addImport("java.util.List");%>
+<%		importManager.addImport("com.jeefuse.base.modules.tree.renders.treeview.TreeViewItem");%>
+
+	/**
+	 * 获取所有<%=uml2ClassCommentName%>用于构造tree,只获取id,parentId,displayName属性.
+	 * @generated
+	 */
+	static public List<TreeViewItem> getAll<%=modelEntityName%>ForTreeview() {
+		return <%=packageServiceFactoryClassName%>.get<%=modelServiceGenericClassName%>().getAllForTreeview(null);
+	}
+<%}%>
+<%if(ModelStereoTypeHelper.isApplyModel_M2mWithId(uml2Class)){%>
+<%		/********rel first entity********/%>
+<%		List<Property> propertyList=EntityHelper.getAllOneToManyProperties(uml2Class,false);%>
+<%		Property firstProperty=propertyList.get(0);%>
+<%		Class firstPropertyClass=(Class)firstProperty.getType();%>
+<%		String firstPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);%>
+<%		String firstPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);%>
+<%		String firstPropertyModelCommentName=TypeHelper.getDocumentationOrName(firstPropertyClass);%>
+<%		//importManager.addImport(firstPropertyEntityQualifiedName);%>
+<%		/********rel second entity********/%>
+<%		Property secondProperty=propertyList.get(1);%>
+<%		Class  secondPropertyClass=(Class)secondProperty.getType();%>
+<%		String secondPropertyModelCapName=NameHelper.getCapName(firstPropertyClass);%>
+<%		String secondPropertyModelUncapName=NameHelper.getUncapName(firstPropertyClass);%>
+<%		String secondPropertyModelCommentName=TypeHelper.getDocumentationOrName(secondPropertyClass);%>
+<%		//importManager.addImport(secondPropertyEntityQualifiedName);%>
+<%		//ower%>
+<%		String owerClassCapName=firstPropertyModelCapName;%>
+<%		String owerClassUncapName=firstPropertyModelUncapName;%>
+<%		String owerClassCommentName=firstPropertyModelCommentName;%>
+<%		String owerClassId=owerClassCapName+"Id";%>
+<%		//rel%>
+<%		String relClassCapName=secondPropertyModelCapName;%>
+<%		String relClassUncapName=secondPropertyModelUncapName;%>
+<%		String relClassIds=secondPropertyModelCapName+"Ids";%>
+<%		String relClassId=relClassCapName+"Id";%>
+<%		String relClassCommentName=secondPropertyModelCommentName;%>
+
+	/**
+	 * 获取<%=firstPropertyModelCommentName%>关联的<%=secondPropertyModelCommentName%>Id例表.
+ 	 * @generated
+	 */
+	static public List<String> getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(String <%=owerClassId%>){
+		return <%=packageServiceFactoryClassName%>.get<%=modelServiceGenericClassName%>().getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(<%=owerClassId%>);
+	}
+<%		//ower%>
+<%		owerClassCapName=secondPropertyModelCapName;%>
+<%		owerClassUncapName=secondPropertyModelUncapName;%>
+<%		owerClassCommentName=secondPropertyModelCommentName;%>
+<%		owerClassId=owerClassCapName+"Id";%>
+<%		//rel%>
+<%		relClassCapName=firstPropertyModelCapName;%>
+<%		relClassUncapName=firstPropertyModelUncapName;%>
+<%		relClassCommentName=firstPropertyModelCommentName;%>
+<%		relClassId=relClassCapName+"Id";%>
+<%		relClassIds=firstPropertyModelCapName+"Ids";%>
+
+	/**
+	 * 获取<%=firstPropertyModelCommentName%>关联的<%=secondPropertyModelCommentName%>Id例表.
+ 	 * @generated
+	 */
+	static public List<String> getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(String <%=owerClassId%>){
+		return <%=packageServiceFactoryClassName%>.get<%=modelServiceGenericClassName%>().getRel<%=relClassCapName%>IdsBy<%=owerClassCapName%>Id(<%=owerClassId%>);
+	}
+<%}%>
+<%	if(KeyLabelStereotypeHelper.isApply(uml2Class)){%>
+<%		UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);%>
+<%		importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+<%		String classGetAllForKeyLabel=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.getAllForKeyLabel);%>			
+
+	/**
+	 * 获取所有<%=uml2ClassCommentName%>对象用于构造keyLabel,只获取key,label属性.
+	 * @generated
+	 */
+	static public  List<KeyLabel> <%=classGetAllForKeyLabel%>() {
+		return <%=packageServiceFactoryClassName%>.get<%=modelServiceGenericClassName%>().getAllForKeyLabel();
+	}
+<%	}%>
+<%}%>
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ 
+   <extension  
+         point="net.taylor.mda.generator.templates">
+      <!-- GenericService -->   
+      <template 
+             id="GoolovGenericService"
+             path="/main/java/service/GenericService-Proxy.javajet"
+             outputPattern="/src/main/java/{0}/service/{1}Service.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.genericService"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+      <!-- GenericService impl-->   
+      <template 
+             id="GoolovGenericServiceImpl"
+             path="/main/java/service/impl/GenericServiceImpl-Proxy.javajet"
+             outputPattern="/src/main/java/{0}/service/impl/{1}ServiceImpl.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.genericService"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+
+	<!-- GenericServiceFactory-->   
+      <template 
+             id="GoolovGenericServiceFactory"
+             path="/main/java/service/GenericServiceFactory.javajet"
+             outputPattern="/src/main/java/{0}/service/{11}ServiceFactory.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.genericService"
+             hasStereotype="net.jeefuse.mda.annotations.service.JoinServiceFactory"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PackageImpl">
+      </template> 
+
+	<!-- GenericServiceFacade-->   
+      <template 
+             id="GoolovGenericServiceFacade"
+             path="/main/java/service/GenericServiceFacade.javajet"
+             outputPattern="/src/main/java/{0}/service/{11}ServiceFacade.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.genericService"
+             hasStereotype="net.jeefuse.mda.annotations.service.JoinServiceFactory"
+             modelElement="org.eclipse.uml2.uml.internal.impl.PackageImpl">
+      </template> 
+
+   </extension>
+
+</plugin>

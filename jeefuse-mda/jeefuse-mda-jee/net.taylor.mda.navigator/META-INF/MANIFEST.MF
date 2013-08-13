@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Taylor MDA Navigator
+Bundle-SymbolicName: net.taylor.mda.navigator; singleton:=true
+Bundle-Version: 1.3.0
+Bundle-Activator: net.taylor.mda.navigator.Activator
+Bundle-Vendor: taylor.sourceforge.net
+Bundle-Localization: plugin
+Export-Package: net.taylor.mda.navigator,
+ net.taylor.mda.navigator.provider,
+ net.taylor.mda.util
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.navigator.resources,
+ org.eclipse.emf.common.ui,
+ org.eclipse.emf.edit,
+ net.taylor.uml2.uml.edit,
+ org.eclipse.uml2.uml,
+ org.eclipse.gmf.runtime.emf.commands.core,
+ org.eclipse.gmf.runtime.diagram.ui.properties,
+ org.eclipse.gmf.runtime.common.ui.services.properties,
+ org.eclipse.core.resources,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.views,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.emf.transaction,
+ org.eclipse.jdt.core,
+ org.eclipse.emf.codegen.ecore.ui,
+ net.taylor.mda.properties
+Eclipse-LazyStart: true

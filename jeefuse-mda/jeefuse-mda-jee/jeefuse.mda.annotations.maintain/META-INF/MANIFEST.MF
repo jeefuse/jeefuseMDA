@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: mda.annotations.maintain
+Bundle-SymbolicName: jeefuse.mda.annotations.maintain;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Version: 1.3.0
+Bundle-Vendor: jeefuse
+Export-Package: 
+ net.jeefuse.mda.annotations.maintain
+

@@ -1,0 +1,148 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.imports" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.*  java.util.ArrayList net.taylor.mda.generator.parse.* java.util.Iterator java.util.List net.taylor.mda.generator.parse.entity.* org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityImportFactory" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+
+//model importFactory
+ClassNameDefineCommon importFactoryDefine=clazzWrap.getNameDefineImportFactory();
+String modelImportFactoryPackageName=importFactoryDefine.getPackageQualifiedName();
+String modelImportFactoryClassName=importFactoryDefine.getClassCapName();
+
+%>
+<%@ include file="../../../../Header.jetinc"%>
+package <%=modelImportFactoryPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+
+<%
+//add imports
+importManager.addImport("java.util.List");
+importManager.addImport("java.io.InputStream");
+importManager.addImport("java.io.File");
+importManager.addImport("java.io.FileInputStream");
+importManager.addImport("java.io.FileOutputStream");
+importManager.addImport("java.io.IOException");
+importManager.addImport("java.io.OutputStream");
+importManager.addImport("com.jeefuse.base.modules.imports.ModelImportFactory");
+
+//model excelImport
+ClassNameDefineCommon imprtExcelDefine=clazzWrap.getNameDefineImportExcel();
+String modelExcelImportQualifiedName=imprtExcelDefine.getClassQualifiedName();
+String modelExcelImportClassName=imprtExcelDefine.getClassCapName();
+importManager.addImport(modelExcelImportQualifiedName);
+
+//model entity define
+ClassNameDefineCommon entityDefine=clazzWrap.getNameDefineEntity();
+String modelEntityQualifiedName=entityDefine.getClassQualifiedName();
+String modelEntityName=entityDefine.getClassCapName();
+String modelEntityUncapName=entityDefine.getClassUncapName();
+importManager.addImport(modelEntityQualifiedName);
+
+//model field 
+ClassNameDefineCommon entityFieldDefine=clazzWrap.getNameDefineEntityField();
+String modelFieldQualifiedName=entityFieldDefine.getClassQualifiedName();
+String modelFieldClassName=entityFieldDefine.getClassName();
+importManager.addImport(modelFieldQualifiedName);
+
+
+%>
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> 数据导入工厂.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=modelImportFactoryClassName%> {
+<%	String modelExcelImportTemplateFileName=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.ExcelImportTemplateFileName);%>
+<%	//String modelExcelImportTemplateFileNameValue=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.ExcelImportTemplateFileNameValue);%>
+<%	String modelExcelImportTemplateFileNameValue=modelCommentName+"导入Excel模板文件.xml";%>
+<%	String modelExcelImportTemplateDir=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.ExcelImportTemplateDir);%>
+<%	String modelExcelImportTemplateFilePath=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.ExcelImportTemplateFilePath);%>
+<%	String modelExcelImportTemplateCaption=clazzWrap.getNamedRuleProperty(PropertyNamedRuleKind.ExcelImportTemplateCaption);%>
+<%	String modelExcelImportTemplateCaptionValue=modelCommentName+"数据Excel导入";%>
+	public static final String <%=modelExcelImportTemplateFileName%> = "<%=modelExcelImportTemplateFileNameValue%>";
+	public static final String <%=modelExcelImportTemplateDir%> =  <%=modelImportFactoryClassName%>.class.getResource("").getPath();
+	public static final String <%=modelExcelImportTemplateFilePath%> = <%=modelExcelImportTemplateDir%>+ <%=modelExcelImportTemplateFileName%>;
+	public static final String <%=modelExcelImportTemplateCaption%> = "<%=modelExcelImportTemplateCaptionValue%>";
+	
+	/**
+	 * excel文件流转化为 <%=modelEntityName%> List.
+	 * 
+	 * @generated
+	 */
+	public static List<<%=modelEntityName%>> excelToModel(InputStream is) throws IOException {
+		<%=modelExcelImportClassName%> excelImport = new <%=modelExcelImportClassName%>(is);
+		List<<%=modelEntityName%>> importList = excelImport.importToModel();
+		return importList;
+	}
+	
+	/**
+	 * excel文件导入.
+	 * @generated
+	 */
+	public static List<<%=modelEntityName%>> excelToModel(File file) throws IOException {
+		InputStream fis = new FileInputStream(file);
+		return excelToModel(fis);
+	}
+
+	/**
+	 * 创建Excel导入文件模板.
+	 * @generated
+	 */
+	private static synchronized File createExcelImportTemplateFile(String filePath,boolean isRecreate) {
+		File file = new File(filePath);
+		if (!file.exists() || isRecreate) {
+			OutputStream fileOS = null;
+			try {
+				fileOS = new FileOutputStream(file);
+				ModelImportFactory.outExcelImportTemplateStream(fileOS, <%=modelFieldClassName%>.values(),
+						<%=modelExcelImportTemplateCaption%>);
+				fileOS.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (null != fileOS) {
+						fileOS.close();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return file;
+	}
+
+
+	/**
+	 * 获取Excel导入文件模板.
+	 * @generated
+	 */
+	public static File getExcelImportTemplateFile() {
+		File file = new File(<%=modelExcelImportTemplateFilePath%>);
+		return file;
+	}
+
+	/**
+	 * 测试创建Excel导入文件模板.
+	 * @generated
+	 */
+	public static void main(String[] args) throws IOException {
+		// create excel import file template
+		File file = createExcelImportTemplateFile(<%=modelExcelImportTemplateFilePath%>, false);
+		System.out.println("file is exists:" + file.exists() + " filePath:" + file.getAbsolutePath());
+
+		// excute import excel File to model
+		List<<%=modelEntityName%>> <%=modelEntityUncapName%>List = excelToModel(file);
+		System.out.println("imports <%=modelEntityName%> size:" + <%=modelEntityUncapName%>List.size());
+	}
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

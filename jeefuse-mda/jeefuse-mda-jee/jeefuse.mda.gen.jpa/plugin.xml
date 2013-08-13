@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ 
+  
+   <extension  
+         point="net.taylor.mda.generator.templates">
+         
+      <template 
+             id="goolovMDAEnum"
+             path="/main/java/model/Enumeration.javajet"
+             outputPattern="/src/main/java/{0}/model/enumeration/{1}.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.jpa.entity"
+             hasStereotype="!javax.xml.bind.annotation.XmlEnum"
+             modelElement="org.eclipse.uml2.uml.internal.impl.EnumerationImpl">
+      </template> 
+      <template 
+             id="goolovMDAEntity"
+             path="/main/java/model/EntityClass.javajet"
+             outputPattern="/src/main/java/{0}/model/{1}.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.jpa"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      <template
+             id="goolovMDAEntityField"
+             path="/main/java/model/parse/EntityField.javajet"
+             outputPattern="/src/main/java/{0}/model/parse/{1}Field.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.jpa"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template> 
+      <!--
+      <template 
+             id="goolovMDAEntityPropertyValueGet"
+             path="/main/java/model/parse/EntityPropertyValueGet.javajet"
+             outputPattern="/src/main/java/{0}/model/parse/{1}ValueGet.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.jpa"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      -->
+      <template 
+             id="goolovMDAEntityValidate"
+             path="/main/java/model/validate/EntityValidate.javajet"
+             outputPattern="/src/main/java/{0}/model/validate/{1}Validate.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.jpa"
+             hasStereotype="javax.persistence.Entity"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>  
+      
+      <!-- EntityRTO--> 
+      <template 
+             id="EntityRTO"
+             path="/main/java/model/rto/EntityRTO.javajet"
+             outputPattern="/src/main/java/{0}/model/rto/{1}RTO.java"
+             ifExists="merge"
+             projectSuffix="jeefuse.struts2.model"
+             hasStereotype="javax.persistence.Entity,!net.jeefuse.mda.annotations.model.M2mWithId"
+             modelElement="org.eclipse.uml2.uml.internal.impl.ClassImpl">
+      </template>
+      
+   </extension>
+
+</plugin>

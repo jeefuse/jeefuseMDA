@@ -1,0 +1,706 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.js" imports=" net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityManagerJSForTree" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelUncapName=NameHelper.getUncapName(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+%>
+$(function(){
+	$('#header').height($('#header').outerHeight(true)+2);
+	$('#container').layout({});
+	var w = $("#firstContent").outerWidth(true);
+	var gridpm = 58; //GridHead，toolbar,footer,gridmargin
+	var h=$("#center").height()-gridpm;
+    var option = {
+        height: h, 
+        width: w,
+        url: ctx+'<%=clazzWrap.getUrl(WebUrlName.listOutJson)%>',
+        colModel: [
+<%
+Property idProperty=EntityHelper.getIDProperty(uml2Class);
+Iterator<Property> simplePropertyList=ViewListHelper.getViewListPropertiesFromSimple(uml2Class).iterator();
+Iterator<Property> m2oPropertyList=ViewListHelper.getViewListPropertiesFromM2o(uml2Class).iterator();
+Iterator<Property> o2oPropertyList=ViewListHelper.getViewListPropertiesFromO2o(uml2Class).iterator();
+boolean firstLine=true;
+%>
+<%for (;simplePropertyList.hasNext();){//process simpleProperty%>
+<%		Property property=simplePropertyList.next();%>
+<% 		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//process apply enumeration%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%			//String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			//String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyCommentName%>',name: '<%=propertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'left',process:format<%=modelEnumName%>}
+<%		}else{%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyCommentName%>',name: '<%=propertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'left'}
+<%		}%>
+<%}%>
+<%for (;m2oPropertyList.hasNext();){//process m2oPropertyList%>
+<%		Property property=m2oPropertyList.next();%>
+<%		Class propertyType = (Class) property.getType();%>
+<% 		String propertyTypeCommentName=TypeHelper.getDocumentationOrName(propertyType);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyTypeCommentName%><%=listLabelPropertyComment%>',name: '<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'left'}
+<%}%>
+<%for (;o2oPropertyList.hasNext();){//process o2oPropertyList%>
+<%		Property property=o2oPropertyList.next();%>
+<%		Class propertyType = (Class) property.getType();%>
+<% 		String propertyTypeCommentName=TypeHelper.getDocumentationOrName(propertyType);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyTypeCommentName%><%=listLabelPropertyComment%>',name: '<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'left'}
+<%}%>
+		],      
+		indexId:'<%=NameHelper.uncapSafeName(idProperty)%>',
+		sortname: "<%=OrderByHelper.getOrderField(uml2Class)%>",
+		sortorder: "<%=OrderByHelper.getOrderMode(uml2Class)%>",
+		autoload: true,
+		showcheckbox: true,
+		usepager: true,
+		showseq:true,
+		rowbinddata: false,
+        rowhandler: gridContextmenu,
+		searchparam:searchparamsCall,
+		onRowDblclick:onRowDblclick
+    };
+    
+	//format
+	<%//code kind define%>
+<%List<Property> codeKindPropertiesList=EnumKindHelper.getPropertiesAppliedEnumKind(uml2Class);%>
+<%if(null!=codeKindPropertiesList&&codeKindPropertiesList.size()>0){%>
+<%	for(Property property:codeKindPropertiesList){%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%//			String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+	function format<%=modelEnumName%>(value, pid) {
+		return <%=modelEnumJsoncapName%>[value];
+	}
+<%		}%>
+<%	}%>
+<%}%>
+
+    //search params
+    function searchparamsCall(){
+		var params=$("#firstSearchForm").serializeArray();
+     	return params;
+	}
+	
+	//grid
+    grid = $("#dataGrid").flexigrid(option);
+    
+    //validate
+<%List<Property> validatePropertyList=new ArrayList<Property>();%>    
+<%List<Property> searchPropertyList=ViewSearchHelper.getSearchTextFieldPropertiesFromSimple(uml2Class); %>
+<%for(Iterator<Property> iter=searchPropertyList.iterator();iter.hasNext();){
+	Property property=iter.next();
+	if (TypeHelper.isDecimal(property) || TypeHelper.isDouble(property.getType())) {
+		validatePropertyList.add(property);
+	}
+	if (TypeHelper.isInteger(property) || TypeHelper.isLong(property.getType())) {
+		validatePropertyList.add(property);
+	}
+	if (TypeHelper.isDate(property)) {
+		validatePropertyList.add(property);
+	}
+}%>
+<%if((null!=searchPropertyList&&searchPropertyList.size()>0)){%>
+	searchFormValidator=$("#firstSearchForm").validate({
+		rules : {
+<%	int count=0;%>
+<%	for (int i=0;i<validatePropertyList.size();i++){%>
+<%		Property property=validatePropertyList.get(i);%>
+<%		String jqueryValidate=PageHelper.getJqueryValidateForSearch(property);%>
+<%		if(null!=jqueryValidate){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%  		if(ViewInputHelper.isViewInputDatePicker(property)){//process datePicker%>
+<% 			//String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%			String dateSearchStartName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchStartName);%>
+<% 			String dateSearchStartUncapSafeName=NameHelper.uncapName(dateSearchStartName);%>
+<%			String dateSearchEndName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchEndName);%>
+<% 			String dateSearchEndNameUncapSafeName=NameHelper.uncapName(dateSearchEndName);%>
+				<%if(i!=0){%>,<%}%><%=dateSearchStartUncapSafeName%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+				,<%=dateSearchEndNameUncapSafeName%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+<%		}%>
+<%		else if(!ClassHelper.isSimple(property)&&null!=jqueryValidate&&!jqueryValidate.trim().equals("")){%>
+<% 				//String propertySelectListKey=ViewInputHelper.getRelForListKey(property);%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				//String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+				<%if(i!=0){%>,<%}%>"<%=NameHelper.getUncapName(property)%>.<%=propertyTypeIdPropertyUncapSafeName%>":{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>						
+<%			}else{%>
+				<%if(i!=0){%>,<%}%><%=NameHelper.getUncapName(property)%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+<%			}%>
+<%		}%>	
+<%	}%>
+    	},
+    	errorType: "bftip"
+	});
+<%}%>	
+<%for (int i=0;i<searchPropertyList.size();i++){%>	
+<%	Property property=searchPropertyList.get(i);%>
+<%  if(ViewInputHelper.isViewInputDatePicker(property)){//process datePicker%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		String dateSearchStartName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchStartName);%>
+<% 		String dateSearchStartUncapSafeName=NameHelper.uncapName(dateSearchStartName);%>
+<%		String dateSearchEndName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchEndName);%>
+<% 		String dateSearchEndNameUncapSafeName=NameHelper.uncapName(dateSearchEndName);%>
+
+	//process <%=propertyUncapSafeName%> render
+	$("#<%=dateSearchStartUncapSafeName%>,#<%=dateSearchEndNameUncapSafeName%>").datepickerRange({startEl:'<%=dateSearchStartUncapSafeName%>',endEl:'<%=dateSearchEndNameUncapSafeName%>'});
+<%	}%>	
+<%}%>	
+    //variate
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+    config.inputUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.systempage_input)%>';
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>    
+    config.editUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.systempage_edit)%>';
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>    
+    config.deleteOutJsonUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.deleteOutJson)%>';
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteAllOutJson(uml2Class)){%>   
+    config.deleteOutJsonAllUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.deleteAllOutJson)%>';
+     config.deleteDescendantOutJsonUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.deleteDescendantOutJson)%>';
+<%}%>
+    //load category tree
+    loadCategoryTree();
+});
+var grid;
+var searchFormValidator;
+var config={
+	baseTitle:"<%=modelCommentName%>管理",
+	inputUrl:null,
+	editUrl:null,
+	deleteOutJsonUrl:null,
+	deleteOutJsonAllUrl:null,
+	deleteDescendantOutJsonUrl:null
+};
+/******grid contenxt menu process*****/
+function gridContextmenu(row) {
+	$(row).contextmenu(menu);
+} 
+/******context menu*****/
+var imgPath=ctx+"/resources/style/default/contextmenu/images/";
+var menu = {
+		width : 150
+		,items : [
+				{text : "刷新",icon : imgPath+"table_refresh.png",alias : "refresh",action : contextMenuClick
+				,{type: "splitLine" }
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+				,{text : "新增",icon :imgPath+"view.png",alias : "add",action :contextMenuClick}
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+				,{text : "编辑",icon : imgPath+"edit.png",alias : "edit",action : contextMenuClick}
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+				,{type: "splitLine" }
+				,{text : "删除该项记录",icon : imgPath+"rowdelete.png",alias : "deleteCurrent",action : contextMenuClick}
+				,{text : "删除该项记录及子节点",icon : imgPath+"rowdelete.png",alias : "deleteCurrentAndDescendant",action : contextMenuClick}
+				,{text : "删除所选记录",icon : imgPath+"rowdelete.png",alias : "deleteSels",action : contextMenuClick}
+				,{text : "删除所选记录及子节点",icon : imgPath+"rowdelete.png",alias : "deleteDescendant",action : contextMenuClick}
+<%}%>
+				}]
+};
+function contextMenuClick(target,cmd) {
+	var domId=$(target).attr("id");
+	var id = domId.substr(3);
+	var rowIdx = $(target).attr("seq");
+	switch(cmd){
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+		case 'add':
+			var title=config.baseTitle+'->新增';
+			newWinOpen();
+			break;
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+		case 'edit':
+			var title = config.baseTitle+'->编辑 (序号:' + rowIdx + ')';
+			var url=goolov.addUrlParams(config.editUrl,"id="+id);
+			editWinOpen( {title:title,url:url});
+			break;
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+		case 'deleteCurrent':
+			deleteOutJson(new Array(id));
+			break;
+		case 'deleteCurrentAndDescendant':
+			deleteDescendantOutJson(new Array(id));
+			break;
+		case 'deleteSels':
+			var ids=grid.getCheckedRows();
+			deleteOutJson(ids);
+			break;
+		case 'deleteDecendant':
+			var ids=grid.getCheckedRows();
+			deleteDescendantOutJson(ids);
+			break;
+<%}%>
+		default:
+			grid.flexReload();
+	}
+};
+/******category tree ***************/
+function loadCategoryTree(){
+    var url=ctx+'<%=MdaHelper.getModelUrl(uml2Class,WebUrlName.listTreeOutJson)%>';
+    var options = { url:url,onnodeclick:treeNodeClick,rowhandler:treeRowHandler,showcheck: false,iconspath:ctx+"/resources/style/"+theme+"/tree/images/"/*,theme: "bbit-tree-lines"*/ };
+    $('#firstTree').ajaxTree(options);
+}
+function treeNodeClick(item) {
+    if(!item.id||'root'==item.id){
+    	$("#parentId").val('');
+    }else{
+    	$("#parentId").val(item.id);
+    }
+	grid.flexReload({newp:1});
+}
+/******category tree contextmenu process************/
+var treeRowDomIdPrefix="firstTree_";
+function treeRowHandler(row) {
+	var domId = $(row).attr("id");
+	if (!domId || domId.indexOf(treeRowDomIdPrefix) == -1)
+		return;
+	$(row).contextmenu(menu);
+}
+function treeContextmenuClick(target,cmd) {
+	var domId=$(target).attr("id");
+	var id = domId.substring(treeRowDomIdPrefix.length);
+	var tpath=$(target).attr("tpath");
+	var item=$('#firstTree').getTreeViewItem(tpath);
+	switch(cmd){
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+		case 'add':
+			var title = config.baseTitle+'->新增';
+			var url=goolov.addUrlParams(config.inputUrl,"parentId="+id);
+			newWinOpen({title : title,url:url});
+			break;
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+		case 'edit':
+			if (!id || id == '') {
+				goolov.growl.info('请您选择需要编辑的记录!');
+			}
+			var title = config.baseTitle+'->编辑'+(item?"("+item.text+")":"");
+			var url=goolov.addUrlParams(config.editUrl,"id="+id);
+			editWinOpen( {title:title,url:url});
+			break;
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+		case 'deleteCurrent':
+			deleteOutJson(new Array(id));
+			break;
+		case 'deleteCurrentAndDescendant':
+			deleteDescendantOutJson(new Array(id));
+<%}%>
+		default:
+			loadCategoryTree();
+	}
+};
+/******context menu*****/
+var imgPath=ctx+"/resources/style/default/contextmenu/images/";
+var menu = {
+		width : 150
+		,items : [
+				{text : "刷新",icon : imgPath+"table_refresh.png",alias : "refresh",action : contextMenuClick
+				,{type: "splitLine" }
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+				,{text : "新增",icon :imgPath+"view.png",alias : "add",action :contextMenuClick}
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+				,{text : "编辑",icon : imgPath+"edit.png",alias : "edit",action : contextMenuClick}
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+				,{type: "splitLine" }
+				,{text : "删除该项记录",icon : imgPath+"rowdelete.png",alias : "deleteCurrent",action : contextMenuClick}
+				,{text : "删除该项及子节点",icon : imgPath+"rowdelete.png",alias : "deleteCurrentAndDescendant",action : contextMenuClick}
+				,{text : "删除所选记录",icon : imgPath+"rowdelete.png",alias : "deleteSels",action : contextMenuClick}
+				,{text : "删除所选及子节点",icon : imgPath+"rowdelete.png",alias : "deleteDescendant",action : contextMenuClick}
+<%}%>
+				}]
+		, onShow: menuApplyRule
+};
+function contextMenuClick(target){
+	var domId=$(target).attr("id");
+	var cmd = this.data.alias;
+	if(domId.indexOf('row')!=-1){//process for grid
+		gridContextmenuClick(target,cmd);
+	}else if(domId.indexOf(treeRowDomIdPrefix)!=-1){//process for tree
+		treeContextmenuClick(target,cmd);
+	}
+}
+function menuApplyRule(menu) {
+	var domId=this.id;
+	if(domId.indexOf("firstTree_")!=-1){//process for tree
+ 		var id = this.id.substring(treeRowDomIdPrefix.length);
+		if(!id||id==''){
+			menu.applyrule({
+						disable : true,
+						items : ["edit", "deleteCurrent", "deleteCurrentAndDescendant","deleteSels","deleteDescendant"]
+			});
+		}else{
+			 menu.applyrule({ 
+				 disable: true,
+				 items: ["deleteSels","deleteDescendant"]
+			}); 
+		}
+	}else if(domId.indexOf('row')!=-1){//process for grid
+		menu.applyrule({ 
+				 disable: true,
+				 items: []
+		}); 
+	}else{//process for default
+		menu.applyrule({ 
+				 disable: true,
+				 items: ["edit", "deleteCurrent", "deleteCurrentAndDescendant","deleteSels","deleteDescendant"]
+		}); 
+	}
+}
+/******refresh grid data*******/
+function reloadGrid(){
+	searchFormValidator.form();
+	if(!searchFormValidator.valid()){
+ 		var invalideNum=searchFormValidator.numberOfInvalids();
+	    if(invalideNum>0){
+	    	goolov.growl.success('有<font color=red> '+invalideNum+'</font> 个查询选项未填写正确!');
+		    return false;
+	    }
+	}
+	grid.flexReload();
+}
+
+/******refresh  *******/
+function refresh(){
+	reloadGrid();
+	loadCategoryTree();
+}
+/******reset clear  *******/
+function clear(){
+	document.getElementById('firstSearchForm').reset();
+	grid.flexReload({newp:1});
+}
+/******search*******/
+function firstSearch(){
+	reloadGrid();
+}
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+/******add data**********/
+var newWin;
+function newWinInit(){
+	if(!newWin){
+		var title=config.baseTitle+'->新增';
+		var url=config.inputUrl;
+		newWin=new goolov.winbox({
+			width:goolov.winWidth(<%=PageHelper.getWinWidth(uml2Class)%>),
+			height:goolov.winHeight(<%=PageHelper.getWinHeight(uml2Class)%>),
+			title:title,
+			url:url
+		});
+	}
+}
+function newWinOpen(settings){
+	newWinInit();
+	newWin.open(settings);
+}
+function newWinClose(){
+	newWin.close();
+}
+function newData(){
+	newWinOpen();
+}
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>
+/******edit data window**********/
+var editWin;
+function editWinInit(){
+	if(!editWin){
+		editWin=new goolov.winbox({
+			width:goolov.winWidth(<%=PageHelper.getWinWidth(uml2Class)%>),
+			height:goolov.winHeight(<%=PageHelper.getWinHeight(uml2Class)%>)
+		});
+	}
+}
+function editWinOpen(settings){
+	editWinInit();
+	editWin.open(settings);
+}
+function editWinClose(){
+	editWin.close();
+}
+function onRowDblclick(target){
+	var id = $(target).attr("id").substr(3);
+	var rowIdx=$(target).attr("seq");
+	var title=config.baseTitle+'->编辑 (序号:'+rowIdx+')';
+	var url=goolov.addUrlParams(config.editUrl,"id="+id);
+	editWinOpen({title:title,url:url});
+}
+function editData(){
+	var ids=grid.getCheckedRows();
+	var selCount=ids.length;
+	if (selCount== 0) {
+		goolov.growl.info('请先选择需要修改的记录,或双击需要编辑的行.');
+		return;
+	}
+	if(selCount>1){
+		goolov.growl.info('一次只能选择修改一项记录.');
+		return;
+	}
+	var id=ids[0];
+	var rowtr=grid.getRowDom(id);//获取该ID的行元素.
+	var rowIdx=$(rowtr).attr("seq");
+	var title=config.baseTitle+'->编辑 (序号:'+rowIdx+')';
+	var url=goolov.addUrlParams(config.editUrl,"id="+ids[0]);
+	var opts={title:title,url:url};
+	editWinOpen(opts);
+}
+<%}%>
+/**********add row data**************/
+function addRowData(row){
+	var indexId=grid.getIndexId();
+	var rowTr=grid.getRowDom(row[indexId]);////获取该ID的行元素.;
+	if (rowtr.length==0) {
+		grid.flexAddRowData(row);
+	}else{
+		grid.flexEditRowData(rowtr[0],row);
+	}
+	loadCategoryTree();
+}
+<%if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%> 
+/******del data**********/
+function delData(){
+	var ids=grid.getCheckedRows();
+	deleteOutJson(ids);
+}
+/******del data process**********/
+function deleteOutJson(idsArray){
+	if (!idsArray||idsArray.length==0) {
+		goolov.growl.info('请选择需要删除的记录.');
+		return;
+	}
+	var selCount=idsArray.length;
+	var idsStr=idsArray.join(',');
+	goolov.msgbox.confirm('删除确认','您确认删除这<span class="highlight">'+selCount+'</span>项记录吗?删除后将不可恢复!',function(r){
+			if(r){
+				$.ajax({
+					type : 'post',
+					url : config.deleteOutJsonUrl,
+					data : {id:idsStr},
+					dataType:'json',
+					beforeSend :function() {
+						goolov.growl.waiting('正在删除中!请稍后...');
+					},
+					success : function(result) {
+						goolov.growl.unwaiting();
+						if (result&&result.success) {
+							goolov.growl.success(result.message);
+							refresh();
+						}else if(result&&result.message){
+							goolov.msgbox.error(result.message);
+						}else{
+							goolov.msgbox.error();
+						}
+					},
+					error:function(request,status,errorThrown) {
+						goolov.growl.unwaiting();
+						goolov.msgbox.error();
+					}
+				});
+			}
+	});
+}
+/*******del deleteDescendant***/
+function delDescendantData(){
+	var ids=grid.getCheckedRows();
+	deleteDescendantOutJson(ids);
+}
+/*******del deleteDescendant process***/
+function deleteDescendantOutJson(idsArray){
+	if (!idsArray||idsArray.length==0) {
+		goolov.msgbox.alert('请选择需要删除的记录.');
+		return;
+	}
+	var selCount=idsArray.length;
+	var idsStr=idsArray.join(',');
+	goolov.msgbox.confirm('删除确认','您确认删除这<span class="highlight">'+selCount+'</span>项记录吗?删除后将不可恢复!',function(r){
+		if(r){
+			$.ajax({
+				type : 'post',
+				url : config.deleteDescendantOutJsonUrl,
+				data : {id:idsStr},
+				dataType:'json',
+				beforeSend :function() {
+					goolov.growl.waiting('正在删除中!请稍后...');
+				},
+				success : function(result) {
+					goolov.growl.unwaiting();
+					if (result&&result.success) {
+						goolov.growl.success(result.message);
+						refresh();
+					}else if(result&&result.message){
+						goolov.msgbox.error(result.message);
+					}else{
+						goolov.msgbox.error();
+					}
+				},
+				error:function(request,status,errorThrown) {
+					goolov.growl.unwaiting();
+					goolov.msgbox.error();
+				}
+			});
+		}
+	});
+}
+<%}%>
+<%	if(FunctionStereotypeUtil.isApplied_deleteAllOutJson(uml2Class)){%>
+/******del all data   *******/
+function delAllData(){
+		goolov.msgbox.confirm('删除确认','您确认这删除所有记录吗?删除后将不可恢复!',function(r){
+		if(r){
+			$.ajax({
+					type : 'get',
+					url : config.deleteOutJsonAllUrl,
+					dataType:'json',
+					beforeSend :function() {
+						goolov.growl.waiting('正在删除中!请稍后...');
+					},
+					success : function(result) {
+						goolov.growl.unwaiting();
+						if (result&&result.success) {
+							goolov.growl.success(result.message);
+							refresh();
+						}else if(result&&result.message){
+							goolov.msgbox.error(result.message);
+						}else{
+							goolov.msgbox.error();
+						}
+					},
+					error:function(request,status,errorThrown) {
+						goolov.growl.unwaiting();
+						goolov.msgbox.error();
+					}
+				});
+		}
+	});
+}
+<%}%>
+<%	if(ServiceStereotypeUtil.isApplied_expExcel(uml2Class)){%>
+/******export excel*******/
+function exportExcel(){
+	var paramSerialize=grid.getParamsString();
+	var exportExcelFileUrl=ctx+'<%=MdaHelper.getModelUrl(uml2Class,WebUrlName.exportExcelFile)%>';
+	location.href=goolov.addUrlParams(exportExcelFileUrl,paramSerialize);
+}
+<%	}%>
+<%if(ServiceStereotypeUtil.isApplied_impExcel(uml2Class)){//applied importExcelFile%>
+/******import importExcel**********/
+var importExcelFormValidator;
+var importExcelWin;
+$(document).ready(function() {
+	importExcelWin=$('#importExcelWin').window({
+		title: config.baseTitle+'->导入Excel文件数据',
+		width: 450,
+		height: 300,
+		modal: true,
+		shadow: true,
+		closed: true,
+		collapsible:false,
+		minimizable:false,
+		maximizable:false
+	});
+	//表单验证
+	importExcelFormValidator=$("#importExcelForm").validate({
+		rules : {
+		}
+	});	
+});
+//打开导入Excel文件窗口
+function importExcel(){
+	importExcelWin.window('open');
+}
+//关闭导入Excel文件窗口
+function importExcelWinClose(){
+	importExcelWin.window('close');
+	refresh();
+}
+/**
+ * 导入excel文件提交处理.
+ */
+function importExcelSubmit(){
+	$("#importExcelForm").ajaxSubmit({
+		 type : 'post',
+		 dataType:'html', 
+		 url:ctx+'<%=clazzWrap.getUrl(WebUrlName.importExcelFileProcess)%>',
+		 beforeSubmit:function(formData, jqForm, options) {
+			    if(importExcelFormValidator.numberOfInvalids()>0){
+				    return false;
+			    }
+			    goolov.growl.waiting('导入数据中...');
+		 },
+	     success:function(result, statusText, xhr, $form) {
+	    	 	goolov.growl.unwaiting();
+				goolov.msgbox.info('友情提示',result?result:"请求出现错误,请查看网络是否连接!");
+		 },
+		 error:function(request,status,errorThrown) {
+			 goolov.growl.unwaiting();
+			 goolov.msgbox.error();
+		}
+	}); 
+}
+<%}//applied importExcelFile end%>
+<%
+/*****************************************************************
+ * rel O2MManagerPage
+/*****************************************************************/
+
+%>
+<%List<Property> O2MManagerPageList=ViewInputHelper.getApplyO2MManagerPage(uml2Class);%>
+<%if(null!=O2MManagerPageList&&!O2MManagerPageList.isEmpty()){%>
+<%	for(Iterator<Property> iter=O2MManagerPageList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=(Class)propertyType;%>
+<%		//String relTargetClassCapName=NameHelper.getCapName(relTargetClass);%>
+<%		//String relTargetClassUncapName=NameHelper.getUncapName(relTargetClass);%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		String relO2MManager=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relO2MManager);%>
+/*******rel GsysCodevalue manager**********/
+var <%=relO2MManager%>Win;
+function <%=relO2MManager%>WinInit(){
+	if(!<%=relO2MManager%>Win){
+		<%=relO2MManager%>Win=new goolov.winbox({
+			width:goolov.winWidth(750),
+			height:goolov.winHeight(450),
+			modal:true
+		});
+	}
+}
+function <%=relO2MManager%>WinOpen(settings){
+	<%=relO2MManager%>WinInit();
+	<%=relO2MManager%>Win.open(settings);
+}
+function <%=relO2MManager%>WinClose(){
+	<%=relO2MManager%>Win.close();
+}
+function <%=relO2MManager%>(id,name){
+	var title=config.baseTitle+'('+name+')-><%=relTargetClassCommentName%>管理';
+	var url=ctx+'<%=MdaHelper.getModelUrlByRel(uml2Class,relTargetClass,WebUrlName.relO2MManage)%>?<%=modelUncapName%>.<%=NameHelper.getUncapName(idProperty)%>='+id;
+	<%=relO2MManager%>WinOpen({title:title,url:url});
+}
+<%	}%>
+<%}%>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+  <extension-point id="profiles" name="net.taylor.mda.profiles" schema="schema/profiles.exsd"/>
+  
+  <extension point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://JEEFUSE_PROFILES/"
+       target="platform:/plugin/jeefuse.mda.profiles/profiles/">
+    </mapping>
+  </extension>
+
+  <extension point="net.taylor.mda.profiles.profiles">
+    <profile 
+       id="pathmap://JEEFUSE_PROFILES/jeefuse.mda.annotations.profile.uml"/> 
+    <profile 
+       id="pathmap://JEEFUSE_PROFILES/jeefuse.mda.annotations.site.profile.uml"/>
+    <profile 
+       id="pathmap://JEEFUSE_PROFILES/jeefuse.mda.annotations.maintain.profile.uml"/> 
+    <!--
+    <profile 
+       id="pathmap://JEEFUSE_PROFILES/jpa.validate.profile.uml"/>-->
+  </extension>
+
+</plugin>

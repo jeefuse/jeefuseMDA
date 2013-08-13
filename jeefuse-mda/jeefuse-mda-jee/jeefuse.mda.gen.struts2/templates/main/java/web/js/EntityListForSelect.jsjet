@@ -1,0 +1,319 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.js" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityListForSelect" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelUncapName=NameHelper.getUncapName(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+%>
+<% Property idProperty=EntityHelper.getIDProperty(uml2Class);%>
+<% String idPropertyUncapSafeName=NameHelper.uncapSafeName(idProperty);%>
+<%Property listKeyProperty=KeyLabelStereotypeHelper.getProperty_liskKey(uml2Class);%>			
+<%String listKeyPropertyName=NameHelper.uncapSafeName(listKeyProperty);%>
+<%Property listLabelProperty=KeyLabelStereotypeHelper.getProperty_listLabel(uml2Class);%>	
+<%String listLabelPropertyName=NameHelper.uncapSafeName(listLabelProperty);%>		
+$(function(){
+	var mainheight = document.documentElement.clientHeight;
+	//var mainheight=$("#first-box").height();
+	var w = $("#first-content").width() -2;
+	var gridpm = 25+30+2+20; //GridHead，toolbar，footer,gridmargin
+	var h = mainheight - gridpm-$("#first-toolbar").height()-$("#first-search").height();
+    var option = {
+        height: h, 
+        width: w,
+        url: ctx+'<%=clazzWrap.getUrl(WebUrlName.listOutJson)%>',
+        colModel: [
+             { display: '操作',name: '<%=idPropertyUncapSafeName%>',width: 50, sortable: true, align: 'center',process:formatOperator}
+<%
+Iterator<Property> simplePropertyList=ViewListHelper.getViewListPropertiesFromSimple(uml2Class).iterator();
+Iterator<Property> m2oPropertyList=ViewListHelper.getViewListPropertiesFromM2o(uml2Class).iterator();
+Iterator<Property> o2oPropertyList=ViewListHelper.getViewListPropertiesFromO2o(uml2Class).iterator();
+boolean firstLine=true;
+%>
+<%for (;simplePropertyList.hasNext();){//process simpleProperty%>
+<%		Property property=simplePropertyList.next();%>
+<% 		String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//process apply enumeration%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%			//String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			//String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyCommentName%>',name: '<%=propertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'center',process:format<%=modelEnumName%>}
+<%		}else{%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyCommentName%>',name: '<%=propertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'center'}
+<%		}%>
+<%}%>
+<%for (;m2oPropertyList.hasNext();){//process m2oPropertyList%>
+<%		Property property=m2oPropertyList.next();%>
+<%		Class propertyType = (Class) property.getType();%>
+<% 		String propertyTypeCommentName=TypeHelper.getDocumentationOrName(propertyType);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyTypeCommentName%><%=listLabelPropertyComment%>',name: '<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'center'}
+<%}%>
+<%for (;o2oPropertyList.hasNext();){//process o2oPropertyList%>
+<%		Property property=o2oPropertyList.next();%>
+<%		Class propertyType = (Class) property.getType();%>
+<% 		String propertyTypeCommentName=TypeHelper.getDocumentationOrName(propertyType);%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 		int width=ViewListHelper.getViewListWidth(property);%>
+<% 		boolean sortable=ViewListHelper.isSortable(property);%>
+<%		//rel list label%>
+<% 		String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 		String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+		   <%if(firstLine){firstLine=false;}else{%>,<%}%>{ display: '<%=propertyTypeCommentName%><%=listLabelPropertyComment%>',name: '<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>',width: <%=width%>, sortable: <%=sortable%>, align: 'center'}
+<%}%>
+		],      
+		indexId:'<%=NameHelper.uncapSafeName(idProperty)%>',
+		sortname: "<%=OrderByHelper.getOrderField(uml2Class)%>",
+		sortorder: "<%=OrderByHelper.getOrderMode(uml2Class)%>",
+		searchparam:searchparamsCall,
+		autoload: true,
+		resizable: false, 
+		showcheckbox: true,
+		usepager: true,
+		showseq:true,
+        rowhandler: gridContextmenu,
+		rowbinddata: false,
+		onRowDblclick:onRowDblclick
+    };
+    
+	//format
+	function formatOperator(id,row){
+		return 	'<a href="javascript:select(\''+id+'\',\''+row['<%=listLabelPropertyName%>']+'\')" >'+'选择'+'</a>';
+	}
+	
+	<%//code kind define%>
+<%List<Property> codeKindPropertiesList=EnumKindHelper.getPropertiesAppliedEnumKind(uml2Class);%>
+<%if(null!=codeKindPropertiesList&&codeKindPropertiesList.size()>0){%>
+<%	for(Property property:codeKindPropertiesList){%>
+<%		Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%		if(null!=enumeration){%>
+<%//			String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%			String modelEnumJsoncapName=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.elementJsonNamed);%>
+	function format<%=modelEnumName%>(value, pid) {
+		return <%=modelEnumJsoncapName%>[value];
+	}
+<%		}%>
+<%	}%>
+<%}%>
+
+    //search params
+    function searchparamsCall(){
+		var params=$("#firstSearchForm").serializeArray();
+     	return params;
+	}
+	
+	//grid
+    grid = $("#dataGrid").flexigrid(option);
+    
+    //validate
+<%List<Property> validatePropertyList=new ArrayList<Property>();%>    
+<%List<Property> searchPropertyList=ViewSearchHelper.getSearchTextFieldPropertiesFromSimple(uml2Class); %>
+<%for(Iterator<Property> iter=searchPropertyList.iterator();iter.hasNext();){
+	Property property=iter.next();
+	if (TypeHelper.isDecimal(property) || TypeHelper.isDouble(property.getType())) {
+		validatePropertyList.add(property);
+	}
+	if (TypeHelper.isInteger(property) || TypeHelper.isLong(property.getType())) {
+		validatePropertyList.add(property);
+	}
+	if (TypeHelper.isDate(property)) {
+		validatePropertyList.add(property);
+	}
+}%>
+<%if((null!=searchPropertyList&&searchPropertyList.size()>0)){%>
+	searchFormValidator=$("#firstSearchForm").validate({
+		rules : {
+<%	int count=0;%>
+<%	for (int i=0;i<validatePropertyList.size();i++){%>
+<%		Property property=validatePropertyList.get(i);%>
+<%		String jqueryValidate=PageHelper.getJqueryValidateForSearch(property);%>
+<%		if(null!=jqueryValidate){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<%  		if(ViewInputHelper.isViewInputDatePicker(property)){//process datePicker%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%			String dateSearchStartName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchStartName);%>
+<% 			String dateSearchStartUncapSafeName=NameHelper.uncapName(dateSearchStartName);%>
+<%			String dateSearchEndName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchEndName);%>
+<% 			String dateSearchEndNameUncapSafeName=NameHelper.uncapName(dateSearchEndName);%>
+				<%if(i!=0){%>,<%}%><%=dateSearchStartUncapSafeName%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+				,<%=dateSearchEndNameUncapSafeName%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+<%		}%>
+<%		else if(!ClassHelper.isSimple(property)&&null!=jqueryValidate&&!jqueryValidate.trim().equals("")){%>
+<% 				//String propertySelectListKey=ViewInputHelper.getRelForListKey(property);%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				//String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+				<%if(i!=0){%>,<%}%>"<%=NameHelper.getUncapName(property)%>.<%=propertyTypeIdPropertyUncapSafeName%>":{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>						
+<%			}else{%>
+				<%if(i!=0){%>,<%}%><%=NameHelper.getUncapName(property)%>:{<%=jqueryValidate%>}//<%=++count%> <%=propertyCommentName%>
+<%			}%>
+<%		}%>	
+<%	}%>
+    	},
+    	errorType: "bftip"
+	});
+<%}%>	
+<%for (int i=0;i<searchPropertyList.size();i++){%>	
+<%	Property property=searchPropertyList.get(i);%>
+<%  if(ViewInputHelper.isViewInputDatePicker(property)){//process datePicker%>
+<% 		String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<%		String dateSearchStartName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchStartName);%>
+<% 		String dateSearchStartUncapSafeName=NameHelper.uncapName(dateSearchStartName);%>
+<%		String dateSearchEndName=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.dateSearchEndName);%>
+<% 		String dateSearchEndNameUncapSafeName=NameHelper.uncapName(dateSearchEndName);%>
+
+		//process <%=propertyUncapSafeName%> render
+	$("#<%=dateSearchStartUncapSafeName%>,#<%=dateSearchEndNameUncapSafeName%>").datepicker({
+			  picker: '<img class="picker" src="'+ctx+'/resources/style/default/tree/images/s.gif" alt="" align="middle">'
+			  ,applyrule: <%=propertyUncapSafeName%>Rule
+	});
+	 function <%=propertyUncapSafeName%>Rule(id) {
+         if (id == '<%=dateSearchStartUncapSafeName%>') {
+             var v = $("#<%=dateSearchEndNameUncapSafeName%>").val();
+             if (v == "") {
+                 return null;
+             }else {
+                 var d = v.match(/^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})$/);
+                 if (d != null) {
+                     var nd = new Date(parseInt(d[1], 10), parseInt(d[3], 10) - 1, parseInt(d[4], 10));
+                     return { enddate: nd };
+                 }else {
+                     return null;
+                 }
+             }
+         } else {
+             var v = $("#<%=dateSearchStartUncapSafeName%>").val();
+             if (v == "") {
+                 return null;
+             }else {
+                 var d = v.match(/^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})$/);
+                 if (d != null) {
+                     var nd = new Date(parseInt(d[1], 10), parseInt(d[3], 10) - 1, parseInt(d[4], 10));
+                     return { startdate: nd };
+                 } else {
+                     return null;
+                 }
+             }
+         }
+     }
+<%	}%>	
+<%}%>	
+    //variate
+    config.inputUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.systempage_input)%>';
+    config.editUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.systempage_edit)%>';
+    config.deleteOutJsonUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.deleteOutJson)%>';
+    config.deleteOutJsonAllUrl=ctx+'<%=clazzWrap.getUrl(WebUrlName.deleteAllOutJson)%>';
+});
+var grid;
+var searchFormValidator;
+var baseTitle="<%=modelCommentName%>管理";
+var inputUrl;
+var editUrl;
+var deleteOutJsonUrl;
+var deleteOutJsonAllUrl;
+/******contenxtmenu*****/
+var menu = {
+		width : 150,
+		items : [ {
+			text : "新增",
+			icon : ctx+"/resources/style/default/contextmenu/images/view.png",
+			alias : "add",
+			action : contextmenuClick
+		}, {
+			text : "编辑",
+			icon : ctx+"/resources/style/default/contextmenu/images/edit.png",
+			alias : "edit",
+			action : contextmenuClick
+		},  {
+			text : "删除所选记录",
+			icon : ctx+"/resources/style/default/contextmenu/images/rowdelete.png",
+			alias : "deleteSels",
+			action : contextmenuClick
+		},  {
+			text : "删除所有记录",
+			icon : ctx+"/resources/style/default/contextmenu/images/rowdelete.png",
+			alias : "deleteAll",
+			action : contextmenuClick
+		},{
+			text : "刷新",
+			icon : ctx+"/resources/style/default/contextmenu/images/table_refresh.png",
+			alias : "refresh",
+			action : contextmenuClick
+		}]
+	};
+function contextmenuClick(target) {
+	var id = $(target).attr("id").substr(3);
+	var rowIdx = $(target).attr("seq");
+	var cmd = this.data.alias;
+	switch(cmd){
+		case 'add':
+			var title=baseTitle+'->新增';
+			newWinOpen({title:title});
+			break;
+		case 'edit':
+			var title = baseTitle+'->编辑 (序号:' + rowIdx + ')';
+			var url=goolov.addUrlParams(editUrl,"id="+id);
+			editWinOpen( {title:title,url:url});
+			break;
+		case 'deleteSels':
+			delData();
+			break;
+		case 'deleteAll':
+			delAllData();
+			break;
+		case 'refresh':
+			refresh();
+			break;
+	}
+};
+function gridContextmenu(row) {
+	$(row).contextmenu(menu);
+} 
+/******searchForm validate check******/
+function searchFormValidCheck(){
+	searchFormValidator.form();
+	if(!searchFormValidator.valid()){
+ 		var invalideNum=searchFormValidator.numberOfInvalids();
+	    if(invalideNum>0){
+	    	goolov.growl.success('有<font color=red> '+invalideNum+'</font> 个查询选项未填写正确!');
+		    return false;
+	    }
+	}
+	return true;
+}
+/******refresh grid *******/
+function reloadGrid(setting){
+	if(searchFormValidCheck()){
+		grid.flexReload(setting?setting:{});
+	}
+}
+/******refresh  *******/
+function refresh(){
+	reloadGrid();
+}
+/******reset clear *******/
+function clear(){
+	document.getElementById('firstSearchForm').reset();
+	searchFormValidator.resetForm();
+	reloadGrid({newp:1});
+}
+/******search*******/
+function firstSearch(){
+	reloadGrid({newp:1});
+}
+/******select*******/
+function select(id,name){
+<%		String relM2OAndO2OSelectPage=NamedUtil.getPropertyNamedUncap(uml2Class,PropertyNamedRuleKind.relM2OAndO2OSelectPage);%>
+	window.parent.<%=relM2OAndO2OSelectPage%>Process(id,name);
+}

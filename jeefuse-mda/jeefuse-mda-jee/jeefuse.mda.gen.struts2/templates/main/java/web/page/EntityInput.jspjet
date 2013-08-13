@@ -1,0 +1,820 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.jsp" imports="net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.*  net.taylor.mda.generator.parse.stereotype.* java.util.ArrayList net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* java.util.Iterator java.util.List org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.page.* org.eclipse.emf.codegen.util.*" class="EntityInputJSP" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=TypeHelper.getDocumentationOrName(uml2Class);
+/*******input content*********/
+List<Property> contentPropertyList=ViewInputHelper.getViewInputContent(uml2Class);
+List<Property> contentTabPropertyList=ViewInputHelper.getViewInputContentTab(uml2Class);
+boolean needFck=false;
+if(!contentPropertyList.isEmpty()||!contentTabPropertyList.isEmpty()){
+	needFck=true;
+}
+List<Property> m2oAndO2OProperty=ViewInputHelper.getApplyM2OAndO2OSelect(uml2Class);
+boolean needm2oAndO2OComboGrid=false;
+if(!m2oAndO2OProperty.isEmpty()||!m2oAndO2OProperty.isEmpty()){
+	needm2oAndO2OComboGrid=true;
+}
+List<Property> m2oAndO2OSelectTreeList=ViewInputHelper.getApplyM2OSelectTree(uml2Class);
+boolean m2oAndO2OSelectTree=false;
+if(null!=m2oAndO2OSelectTreeList&&!m2oAndO2OSelectTreeList.isEmpty()){
+	m2oAndO2OSelectTree=true;
+}
+//model input js Path
+String modelInputJsPath=clazzWrap.getWebPath(NameRuledWebPathKind.js_input);;
+String jspScriptStart="<%@";
+String jspScriptEnd="%"+">";
+%>
+<%=jspScriptStart%> page contentType="text/html;charset=UTF-8" <%=jspScriptEnd%>
+<%=jspScriptStart%> include file="/common/taglibs.jsp" <%=jspScriptEnd%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=modelCommentName%> Input</title>
+<%=jspScriptStart%> include file="/common/meta.jsp" <%=jspScriptEnd%>
+<script src="<%=Config.web_resources_js_include%>" type="text/javascript"></script>
+<script>
+	var ctx = '${ctx}';
+	var theme = '${theme}';
+	importCssFile('sys|ui<%if(needm2oAndO2OComboGrid){%>|flexiGrid<%}%><%if(m2oAndO2OSelectTree){%>|treeview<%}%>', ctx, theme);
+	importJsFile('jquery|ui|common|blockUI|form|validate<%if(needFck){%>|fckeditor<%}%><%if(needm2oAndO2OComboGrid){%>|flexiGrid|comboGrid<%}%><%if(m2oAndO2OSelectTree){%>|treeview|combotree<%}%>', ctx);
+	importJsFile('<%=modelInputJsPath%>', ctx);
+</script>
+</head>
+<body class="easyui-layout v-container">
+ 	<div region="center" border="false"><!-- center start -->
+<%List<Property> tabsList=ViewInputHelper.getTabsProperty(uml2Class);%>
+<%if(!tabsList.isEmpty()||!contentTabPropertyList.isEmpty()){%>
+		<div id="firstTabs" class="v-tabs"><!-- firstTabs start -->
+		  <div title="基本信息"  class="v-tab"><!-- tab one  start -->
+<%}%>
+ 			<form id="inputForm" method="post" class="v-form">
+<%Property idProperty=EntityHelper.getIDProperty(uml2Class);%>
+<%String idPropertyUncapSafeName=NameHelper.uncapSafeName(idProperty);%>
+<%if(EntityHelper.isIDAuto(idProperty)||EntityHelper.isIDUUID(idProperty)){%>
+<%	//if(!ViewInputHelper.isViewInput(idProperty)){%>
+ 				<input type="hidden" name="<%=idPropertyUncapSafeName%>" value="${mo.<%=idPropertyUncapSafeName%>}"/>
+<%	//}%>
+<%}%>
+ 				<!--<div id="inputInfo" class="v-state-info"></div>-->
+		      	<table>
+<%
+boolean needDoubleCols=ViewInputHelper.isNeedTableDoubleCols(uml2Class);//needDoubleTDCols
+int trIncludeTd=needDoubleCols?4:2;
+int tdCount=0;
+int needTd=2;
+//simple Input Property
+//List<Property> simpleInputProperty=ViewInputHelper.getSimpleInputProperty(uml2Class);
+%>
+<%
+	/*****************************************************************
+	 * proccess id property
+	/*****************************************************************/
+	if(EntityHelper.isIDAuto(idProperty)||EntityHelper.isIDUUID(idProperty)){
+		if(ViewInputHelper.isViewInput(idProperty)){
+ 			String propertyCommentName=TypeHelper.getDocumentationOrName(idProperty);
+ 			//String propertyUncapSafeName=NameHelper.uncapSafeName(idProperty);
+ 			//String propertyStyleClass=ViewInputHelper.getStyleClass(idProperty);
+			needTd=2>trIncludeTd?trIncludeTd:2;
+%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%			if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%			}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				${mo.<%=NameHelper.uncapSafeName(idProperty)%>}
+		      			</td>
+<%			tdCount+=needTd;%>	
+<%			if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%			}%>						
+<%		}%>
+<%	}else if(EntityHelper.isIDAssign(idProperty)){
+ 		String propertyCommentName=TypeHelper.getDocumentationOrName(idProperty);
+ 		String propertyUncapSafeName=NameHelper.uncapSafeName(idProperty);
+ 		String propertyStyleClass=ViewInputHelper.getStyleClass(idProperty);
+%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				<c:choose>
+						  	 	<c:when test="${null==model.id}">
+									<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>"/>
+						 	    </c:when>
+						   	    <c:otherwise>
+									<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%> readonly" readonly='readonly' />
+									<input type="hidden" id="oldId" name="oldId" value="${mo.<%=propertyUncapSafeName%>}"/>
+							    </c:otherwise>
+							</c:choose> 
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%	}%>
+<%
+	/*****************************************************************
+	 * property simple input start
+	/*****************************************************************/
+	List<Property> simpleInputProperty=ViewInputHelper.getSimpleInputProperty(uml2Class);
+	for(Iterator<Property> iter=simpleInputProperty.iterator();iter.hasNext();){
+			Property property=iter.next();
+			String propertyCommentName=TypeHelper.getDocumentationOrName(property);
+ 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);
+ 			String propertyStyleClass=ViewInputHelper.getStyleClass(property);
+%>
+<%			if(tdCount%trIncludeTd==0){%>
+					<tr>
+<%			}%>	
+<%	/********process parentId Property start********/%>
+<%			if (TreeStereotypeHelper.isParentIdProperty(property)) {// text%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+							 <select name="<%=propertyUncapSafeName%>" id="<%=propertyUncapSafeName%>" class="text <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly<%}%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>>
+							     <option value="" >无</option>
+							     <s:property value="htmlSelectTree" escape="false"/>
+							  </select>
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>
+<%	/********process parentId Property end********/%>
+<%	/********process text********/%>
+<%			if (ViewInputHelper.isViewInputText(property)) {// text%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%				if(	ViewInputHelper.isViewInput_readonly(property)){%>
+		      				${mo.<%=propertyUncapSafeName%>}
+<%				}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" />
+<%				}%>
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>
+<%	/********process title********/%>
+<%			if (ViewInputHelper.isViewInputTitle(property)) {// title%>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%if(						ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>}
+<%							}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>/>
+<%							}%>							
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>
+<%	/********process select********/%>
+<%			if (ViewInputHelper.isViewInputSelect(property)) {// select%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+<%				Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%				if(null!=enumeration){%>
+<%					//String modelEnumQualifiedName=MdaHelper.getModelQualifiedName(enumeration,PKGSuffix.enumeration,ModelNameSuffix.enumeration);%>
+<%					//String modelEnumName=MdaHelper.getModelClassName(enumeration,ModelNameSuffix.enumeration);%>
+<%					String modelEnumSelectHtml=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.selectHtml);%>
+						<td class="field" colspan="<%=needTd-1%>">
+							 <select  id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" class="<%=propertyStyleClass%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly<%}%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>>
+							     <s:property value="<%=modelEnumSelectHtml%>" escape="false"/>
+							 </select>
+						</td>
+<%				}else{%>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%if(						ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>}
+<%							}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>/>
+<%							}%>	
+		      			</td>
+<%				}%>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>	
+<%	/********process radio********/%>	
+<%			if (ViewInputHelper.isViewInputRadio(property)) {// radio%>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+<%				Enumeration enumeration=EnumKindHelper.getAppliedEnumKindEnumeration(property);%>
+<%				if(null!=enumeration){%>
+<%						String propertyRadioGroup=NamedUtil.getPropertyNamed(enumeration,PropertyNamedRuleKind.inputRadioGroup);%>
+						<td class="field" colspan="<%=needTd-1%>">
+							 ${<%=propertyRadioGroup%>}
+						</td>
+<%				}else{%>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%if(						ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>}
+<%							}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>/>
+<%							}%>	
+		      			</td>
+<%				}%>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>
+<%	/********process datePicker********/%>
+<%			if (ViewInputHelper.isViewInputDatePicker(property)) {// datePicker%>
+<%				//String propertyToDateTimeCapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleCapNamed(property);%>
+<%				String propertyToDateTimeUncapName=PropertyNamedRuleKind.dateToDateTimeStr.getRuleUnCapNamed(property);%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%				if(ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyToDateTimeUncapName%>}
+<%							}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" <%if(ViewInputHelper.isViewInput_readonly(property)){%>readonly="readonly"<%}%>/>
+<%							}%>	
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%				}%>
+<%	/********process texttarea********/%>
+<%			if (ViewInputHelper.isViewInputTextarea(property)) {// texttarea %>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%if(						ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>}
+<%							}else{%>
+		      				<textarea id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>"  class="<%=propertyStyleClass%>" >${mo.<%=propertyUncapSafeName%>}</textarea>
+<%							}%>	
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}	%>		
+<%	/********process checkbox********/%>
+<%			if (ViewInputHelper.isViewInputCheckbox(property)) {// checkbox%>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+<%if(						ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>}
+<%							}else{%>
+		      				<input type="text" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>}" class="<%=propertyStyleClass%>" />
+<%							}%>			      		
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>		
+<%	/********process file********/%>			
+<%			if (FileStereotypeHelper.isProperty_File(property)) {// file%>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				<input type="file" id="<%=propertyUncapSafeName%>_file" name="<%=propertyUncapSafeName%>_file"  onchange="<%=propertyUncapSafeName%>Browse(this);" size="50" />
+<!--		      				<a href="javascript:<%=propertyUncapSafeName%>Reset();" class="easyui-linkbutton" >重置</a>-->
+			                <br/>				
+		      				<div class="fileWrap" style="width:160px;height: 155px;">
+			                	<!-- uploaded image -->
+								<div id="<%=propertyUncapSafeName%>_file_uploaded" class="item">
+									<c:if test="${null!=mo.<%=propertyUncapSafeName%>}">
+			   								${mo.<%=propertyUncapSafeName%>}<span class="label">已上传</span>
+			   								<a href="javascript:<%=propertyUncapSafeName%>Del('${mo.<%=idPropertyUncapSafeName%>}');" class="remove" >删除</a> 
+			   						</c:if>
+			   					</div>
+	   							<div style="clear: both"></div>
+	   						</div>  		
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}		%>
+<%	/********process image********/%>		
+<%			if (FileStereotypeHelper.isProperty_Image(property)) {// image%>
+<%				needTd=4>trIncludeTd?trIncludeTd:4;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%						tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" colspan="<%=needTd-1%>">
+		      				<input type="file" id="<%=propertyUncapSafeName%>_image" name="<%=propertyUncapSafeName%>_image"  onchange="<%=propertyUncapSafeName%>Browse(this);" size="50" />
+<!--		      				<a href="javascript:<%=propertyUncapSafeName%>Reset();" class="easyui-linkbutton" >重置</a>-->
+		      				<br/>
+			 	         	<font color="green">支持JPG,JPEG,GIF,BMP图片格式(宽:150px,高:140px) </font>
+			                <br/>				
+		      				<div class="imageWrap" style="width:160px;height: 155px;">
+			                	<!-- uploaded image -->
+								<div id="<%=propertyUncapSafeName%>_image_uploaded" class="imageItem">
+			                    	<c:choose>
+			                    		<c:when test="${null==mo.<%=propertyUncapSafeName%>}">
+											<img id="<%=propertyUncapSafeName%>_image_item_uploaded_preview" src="${ctx}/resources/style/default/images/diningDefaultNoPicture.jpg"  width="150px" height="140px" />
+						        		</c:when>
+			   							<c:otherwise>
+			   								<img id="<%=propertyUncapSafeName%>_image_item_uploaded_preview" src="${ctx}/${mo.<%=propertyUncapSafeName%>}"  width="150px" height="140px" /><br/>
+			   								<span class="label">已上传</span>
+			   								<!-- <a href="javascript:<%=propertyUncapSafeName%>Del('${mo.<%=idPropertyUncapSafeName%>}');" class="remove" >删除</a> -->
+			   							</c:otherwise>
+									</c:choose> 
+			   					</div>
+			   					<div id="<%=propertyUncapSafeName%>_image_browse" class="imageItem" style="display: none">
+						        	<div id="<%=propertyUncapSafeName%>_image_browse_preview"></div>
+						        	<div class="bottom">
+						        		<a class="remove" href="javascript:void(0);" onclick="<%=propertyUncapSafeName%>PreviewRemove();">删除</a>
+						        	</div>
+						      	</div>
+	   							<div style="clear: both"></div>
+	   						</div>  		
+		      			</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>
+<%	/********process content********/%>	
+<%//			if (ViewInputHelper.isViewInputContent(property)) {// content%>
+<%//			}%>
+<%
+/*****************************************************************
+ * process rel 
+/*****************************************************************/
+%>
+<%/********process M2OSelect********/%>		
+<%			if (ViewInputHelper.isApplyM2OSelect(property)) {//M2OSelect%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<% 				String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+<%				//String m2oSelectHtml=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.selectHtml);%>
+		      			<td class="label">
+		      				<label><%=propertyTypeComment%>:</label>
+		      			</td>
+						<td class="field" colspan="<%=needTd-1%>">
+							 <input type="hidden" id="<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>}" class="text" />
+							 <input type="text" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>}" class="text" />
+						</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}	%>	
+<%	/********process M2OSelectPage********/%>
+<%			if (ViewInputHelper.isApplyM2OSelectPage(property)) {//M2OSelectPage%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<%				//rel list label%>
+<% 				String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 				String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+<%				String relM2OAndO2OSelectPage=NamedUtil.getPropertyNamedUncap(propertyType,PropertyNamedRuleKind.relM2OAndO2OSelectPage);%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyTypeComment%><%=listLabelPropertyComment%>:</label>
+		      			</td>
+						<td class="field" colspan="<%=needTd-1%>">
+<%							if(ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>}
+<%							}else{%>
+							 <input type="hidden" id="<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>}"/>
+							 <input type="text" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>}"  class="text select" onclick="<%=relM2OAndO2OSelectPage%>();"/>
+							 <img class="clear" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>_clear" src="${ctx}/resources/style/default/tree/images/s.gif" alt="清空" onclick="javascript:relGlDiningSiteListForSelectClear();" align="middle"/>		
+<%							}%>		
+						</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>	
+<%	/********process O2OSelect********/%>
+<%			if (ViewInputHelper.isApplyO2OSelect(property)) {//O2OSelect%>	
+<%				Class propertyType = (Class) property.getType();%>
+<%				String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<% 				String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+<%				String O2OSelectHtml=NamedUtil.getPropertyNamed(property,PropertyNamedRuleKind.selectHtml);%>
+		      			<td class="label">
+		      				<label><%=propertyTypeComment%>:</label>
+		      			</td>
+						<td class="field" colspan="<%=needTd-1%>">
+							 <input type="hidden" id="<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>}" class="text" />
+							 <input type="text" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>}" class="text" />
+						</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}	%>	
+<%	/********process O2OSelectPage********/%>
+<%			if (ViewInputHelper.isApplyO2OSelectPage(property)) {//O2OSelectPage%>
+<%				Class propertyType = (Class) property.getType();%>
+<%				String propertyTypeComment = TypeHelper.getDocumentationOrName(propertyType);%>
+<% 				Property propertyTypeIdProperty=EntityHelper.getIDProperty(propertyType);%>
+<% 				String propertyTypeIdPropertyUncapSafeName=NameHelper.uncapSafeName(propertyTypeIdProperty);%>
+<% 				String listLabelPropertyUncapSafeName=ViewListHelper.getViewListLabelRelPropertyName(property);%>
+<% 				String listLabelPropertyComment=ViewListHelper.getViewListLabelRelPropertyComment(property);%>
+<%				String relM2OAndO2OSelectPage=NamedUtil.getPropertyNamedUncap(propertyType,PropertyNamedRuleKind.relM2OAndO2OSelectPage);%>
+<%				needTd=2>trIncludeTd?trIncludeTd:2;%>
+<%				if(tdCount%trIncludeTd+needTd>trIncludeTd){%>
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+					<tr>
+<%					tdCount+=trIncludeTd-(tdCount%trIncludeTd);%>
+<%				}%>
+		      			<td class="label">
+		      				<label><%=propertyTypeComment%><%=listLabelPropertyComment%>:</label>
+		      			</td>
+						<td class="field" colspan="<%=needTd-1%>">
+<%							if(ViewInputHelper.isViewInput_readonly(property)){%>
+		      					${mo.<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>}
+<%							}else{%>
+							 <input type="hidden" id="<%=propertyUncapSafeName%>_<%=propertyTypeIdPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=propertyTypeIdPropertyUncapSafeName%>}" />
+							 <input type="text" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>" name="<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>" value="${mo.<%=propertyUncapSafeName%>.<%=listLabelPropertyUncapSafeName%>}"  class="text select" readonly="readonly" onclick="<%=relM2OAndO2OSelectPage%>();"/>
+							 <img class="clear" id="<%=propertyUncapSafeName%>_<%=listLabelPropertyUncapSafeName%>_clear" src="${ctx}/resources/style/default/tree/images/s.gif" alt="清空" onclick="javascript:relGlDiningSiteListForSelectClear();" align="middle"/>		
+<%							}%>	
+						</td>
+<%				tdCount+=needTd;%>
+<%				if (tdCount%trIncludeTd==0){%>
+					</tr>
+<%				}%>						
+<%				continue;%>
+<%			}%>	
+<%	}%>
+<%	if (tdCount%trIncludeTd!=0){%>	
+						<td colspan="<%=trIncludeTd-(tdCount%trIncludeTd)%>"></td>
+					</tr>
+<%	}%>
+<%
+	/*****************************************************************
+	 * property simple input end
+	/*****************************************************************/
+%>	
+<%
+/*****************************************************************
+ * rel property
+/*****************************************************************/
+//List<Property> M2OSelectList=ViewInputHelper.getApplyM2OSelect(uml2Class);
+//List<Property> O2OSelectList=ViewInputHelper.getApplyO2OSelect(uml2Class);
+
+//List<Property> M2OSelectPageList=ViewInputHelper.getApplyM2OSelectPage(uml2Class);
+//List<Property> O2OSelectPageList=ViewInputHelper.getApplyO2OSelectPage(uml2Class);
+
+//List<Property> O2MManagerPageList=ViewInputHelper.getApplyO2MManagerPage(uml2Class);
+
+List<Property> M2MCheckboxsList=ViewInputHelper.getApplyM2MCheckboxs(uml2Class);
+//List<Property> M2MCheckboxsTabList=ViewInputHelper.getApplyM2MCheckboxsTab(uml2Class);
+
+List<Property> M2MCheckboxsTreeList=ViewInputHelper.getApplyM2MCheckboxsTree(uml2Class);
+//List<Property> M2MCheckboxsTreeTabList=ViewInputHelper.getApplyM2MCheckboxsTreeTab(uml2Class);
+
+/*****************************************************************
+ * rel M2MCheckboxs M2MCheckboxsTree properties
+/*****************************************************************/
+%>
+<%/********process M2MCheckboxs properties********/%>
+<%if(null!=M2MCheckboxsList&&M2MCheckboxsList.size()>0){%>
+<%	for(Property property:M2MCheckboxsList){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			//String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			//String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+<%			Type propertyType=property.getType();%>
+<%			Class relTargetClass=(Class)propertyType;%>
+<%			String relPropertyCheckboxs=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxs);%>
+					<tr>
+		      			<td colspan="<%=trIncludeTd%>">
+		      				<div class="v-fieldset-wrap">
+			      				<fieldset>
+					              <legend>
+					                 	<%=propertyCommentName%>:
+					              </legend>
+					              <div class="v-fieldset-content">
+					                	${<%=relPropertyCheckboxs%>}
+							      </div>
+					            </fieldset>
+		      				</div>
+		      			</td>
+		      		</tr>
+<%		}%>
+<%}%>
+<%/********process M2MCheckboxsTree properties********/%>
+<%if(null!=M2MCheckboxsTreeList&&M2MCheckboxsTreeList.size()>0){%>
+<%	for(Property property:M2MCheckboxsTreeList){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+<%			Type propertyType=property.getType();%>
+<%			Class relTargetClass=(Class)propertyType;%>
+<%			String relPropertyCheckTreeDomId=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckTreeDomId);%>
+					<tr>
+		      			<td colspan="<%=trIncludeTd%>">
+		      				<div class="v-tree-wrap">
+								<div class="v-title"><%=propertyCommentName%>：</div>
+								<div class="v-content" id="<%=relPropertyCheckTreeDomId%>" style="height:270px; width:350px; overflow: auto;">
+								</div>
+							</div>
+		      			</td>
+		      		</tr>
+<%		}%>
+<%}%>
+<%
+/*****************************************************************
+ * process image file content properties
+/*****************************************************************/
+%>
+<%/********process image properties********/%>
+<%/*List<Property> imagePropertyList=ViewInputHelper.getViewInputImage(uml2Class);%>
+<%if(null!=imagePropertyList&&imagePropertyList.size()>0){%>
+<%	for(Property property:imagePropertyList){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			//String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+					<tr>
+		      			<td class="label">
+		      				<label><%=propertyCommentName%>:</label>
+		      			</td>
+		      			<td class="field" <%if(trIncludeTd-1>1){%>colspan="<%=trIncludeTd-1%>"<%}%>>
+			 	         	 <input type="file" id="uploadImage_<%=propertyUncapSafeName%>" name="uploadImage_<%=propertyUncapSafeName%>" size="35"/><br/>
+			 	         	 <div id="previewImageWrap_<%=propertyUncapSafeName%>">
+			 	         	 	<img id="previewImage_<%=propertyUncapSafeName%>" src=""/>
+			 	         	 </div>
+		      			</td>
+		      		</tr>
+<%		}%>
+<%}*/%>
+<%/********process file properties********/%>
+<%List<Property> filePropertyList=ViewInputHelper.getViewInputFile(uml2Class);%>
+<%if(null!=filePropertyList&&filePropertyList.size()>0){%>
+<%	for(Property property:filePropertyList){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			//String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+					<tr>
+				       <td class="label">
+				       		<label><%=propertyCommentName%>:</label>
+				       </td>
+				       <td class="field" <%if(trIncludeTd-1>1){%>colspan="<%=trIncludeTd-1%>"<%}%>>
+					   		<input type="file" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>" size="35" onchange="goolov.validete.file(this);"/>
+				   	   </td>
+				   	</tr>
+<%	}%>
+<%}%>
+<%/********process content properties********/%>
+<%if(null!=contentPropertyList&&contentPropertyList.size()>0){%>
+<%for(Property property:contentPropertyList){%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			//String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+					<tr>
+					  <td colspan="<%=trIncludeTd%>">
+					  	<div class="v-section-wrap">
+					  		<div class="v-title"><%=propertyCommentName%>:</div>
+					  		<div class="v-content" style="margin: 0px auto;width:95%">
+					  			<input type="hidden" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>"/>
+					  			<textarea style="width:100%;"  id="fck_<%=NameHelper.getUncapName(property)%>">
+					      		  ${mo.<%=propertyUncapSafeName%>}
+					   			</textarea>
+							  	<script type="text/javascript">
+						             var oFCKeditor = new FCKeditor('fck_<%=propertyUncapSafeName%>') ; 
+					                 oFCKeditor.BasePath	= '${ctx}/resources/fckeditor/' ;
+					                 oFCKeditor.Config["CustomConfigurationsPath"]="${ctx}/resources/fckeditor/customConfig.js";
+						             oFCKeditor.ToolbarSet='goolovEdit';
+						             oFCKeditor.Config["TabSpaces"]=2;
+						             oFCKeditor.Config["LinkUpload"] = false;
+						             oFCKeditor.Config["ImageUpload"] = true;
+						             oFCKeditor.Config["FlashUpload"] = false;
+						             oFCKeditor.Height	= 350;
+					                 oFCKeditor.ReplaceTextarea(); 
+					            </script>
+					          </div>
+					  	 </div>
+					  </td>
+				   </tr>	      
+<%}}%>
+				</table>
+			  </form>
+<%if(!tabsList.isEmpty()||!contentTabPropertyList.isEmpty()){%>
+			</div><!-- tab one end -->
+<%	for(Iterator<Property> iter=contentTabPropertyList.iterator();iter.hasNext();){%>
+<%			Property property=iter.next();%>
+<% 			String propertyCommentName=TypeHelper.getDocumentationOrName(property);%>
+<% 			String propertyUncapSafeName=NameHelper.uncapSafeName(property);%>
+<% 			//String propertyStyleClass=ViewInputHelper.getStyleClass(property);%>
+<%			String propertyCapConmentName=TypeHelper.getDocumentationOrName(property);%>
+	  		<div title="<%=propertyCommentName%>"><!--<%=propertyCapConmentName%> tab start-->
+		  		<div class="v-fckeditor">
+		  			<input type="hidden" id="<%=propertyUncapSafeName%>" name="<%=propertyUncapSafeName%>"/>
+		  			<textarea style="width: 90%;"  id="fck_<%=NameHelper.getUncapName(property)%>">
+		      		  ${mo.<%=propertyUncapSafeName%>}
+		   			</textarea>
+				  	<script type="text/javascript">
+			             var oFCKeditor = new FCKeditor('fck_<%=propertyUncapSafeName%>') ; 
+		                 oFCKeditor.BasePath	= '${ctx}/resources/fckeditor/' ;
+		                 oFCKeditor.Config["CustomConfigurationsPath"]="${ctx}/resources/fckeditor/customConfig.js";
+			             oFCKeditor.ToolbarSet='goolovEditTab';
+			             oFCKeditor.Config["TabSpaces"]=2;
+			             oFCKeditor.Config["LinkUpload"] = false;
+			             oFCKeditor.Config["ImageUpload"] = true;
+			             oFCKeditor.Config["FlashUpload"] = false;
+			             oFCKeditor.Height	= <%=PageHelper.getWinHeight(uml2Class)%>-130;
+		                 oFCKeditor.ReplaceTextarea(); 
+		            </script>
+		          </div>
+			</div><!--<%=propertyCapConmentName%> tab end-->
+<%	}%>			
+<%	for(Iterator<Property> iter=tabsList.iterator();iter.hasNext();){%>
+<%		Property property=iter.next();%>
+<%		if(ClassHelper.isSimple(property))continue;%>
+<%		//String propertyCapName=NameHelper.getCapName(property);%>
+<%		String propertyCapConmentName=TypeHelper.getDocumentationOrName(property);%>
+<%		//String propertyName=NameHelper.uncapSafeName(property);%>
+<%		Type propertyType=property.getType();%>
+<%		Class relTargetClass=null;%>
+<%		if(ModelStereoTypeHelper.isApplyModel_M2M(propertyType)||ModelStereoTypeHelper.isApplyModel_M2mWithId(propertyType)){%>
+<%			Class relUml2Class=(Class)propertyType;%>
+<%			relTargetClass=ModelHelper.getRelTargetClass(relUml2Class,uml2Class);%>
+<%		}%>
+<%		String relTargetClassCommentName=TypeHelper.getDocumentationOrName(relTargetClass);%>
+<%		String relPropertyCheckboxs=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relCheckboxs);%>
+<%		if (ViewInputHelper.isApplyM2MCheckboxsTab(property)) {//M2OSelect%>
+			<div title="<%=propertyCapConmentName%>"  class="v-tab"><!--<%=propertyCapConmentName%> tab start-->
+				<div class="v-section-wrap">
+					<div class='v-title'>选择<%=relTargetClassCommentName%>：</div>
+					<div class="v-content">
+						${<%=relPropertyCheckboxs%>}
+					</div>
+				</div>
+			</div><!--<%=propertyCapConmentName%> tab end-->
+<%		}%>
+<%		if (ViewInputHelper.isApplyM2MCheckboxsTreeTab(property)) {//M2OSelectPage%>
+<%			String relPropertyShowCheckTreeJson=NamedUtil.getPropertyNamed(relTargetClass,PropertyNamedRuleKind.relShowCheckTreeJson);%>
+			<div title="<%=propertyCapConmentName%>"   class="v-tab"><!--<%=propertyCapConmentName%> tab start-->
+					<div class="v-tree-wrap">
+						<div class="v-title">选择<%=relTargetClassCommentName%>：</div>
+						<div class="v-content" id="<%=relPropertyShowCheckTreeJson%>" style="height:270px; width:350px; overflow: auto;">
+						</div>
+					</div>
+			</div><!--<%=propertyCapConmentName%> tab end-->
+<%		}%>
+<%	}%>						
+		  </div><!-- firstTabs end -->
+<%}%>
+		</div><!-- center end -->
+		<div region="south" border="false" style="height:50px;"><!-- south start-->
+			<div class="v-buttons"><!-- v-buttons start -->
+		  	 	<c:choose>
+			  		<c:when test="${null==model.id}">
+			   			<a href="javascript:newWinSaveData();" class="easyui-linkbutton">新增</a>
+			   			<a href="javascript:resetData();" class="easyui-linkbutton" >重置</a>
+			   			<a href="javascript:newWinClose();" class="easyui-linkbutton" >关闭</a>
+			 		</c:when>
+			   		<c:otherwise>
+		   				<a href="javascript:editWinUpdateData();" class="easyui-linkbutton" >更新</a>
+						<a href="javascript:resetData();" class="easyui-linkbutton" >重置</a>
+						<a href="javascript:editWinClose();" class="easyui-linkbutton" >关闭</a>
+					</c:otherwise>
+			   </c:choose> 
+			</div><!-- v-buttons end-->
+		</div><!--	south end -->
+</body>
+</html>

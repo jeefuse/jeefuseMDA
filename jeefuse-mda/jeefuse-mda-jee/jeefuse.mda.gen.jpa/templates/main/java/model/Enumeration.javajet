@@ -1,0 +1,193 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.entity" imports="net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.entity.* net.taylor.mda.generator.parse.* org.eclipse.uml2.uml.Enumeration org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* java.util.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EnumerationGen" %>
+<%Enumeration uml2Enumeration = (Enumeration) argument;Package uml2Package = uml2Enumeration.getPackage();%>
+<%
+String packageName=NameHelper.getQualifiedName(uml2Package);
+String modelEnumPackageName=MdaHelper.getPackageQualifiedName(uml2Enumeration,PKGSuffix.enumeration);
+String modelEnumName=MdaHelper.getModelClassName(uml2Enumeration,ModelNameSuffix.enumeration);
+
+%>
+<%@ include file="../../../Header.jetinc"%>
+<%ImportManager importManager=null;%>
+<%if (packageName != null) {%>
+<%importManager = ImportHelper.makeImportManager(modelEnumPackageName);%>
+package <%=modelEnumPackageName%>;
+<%}else {%>
+<%importManager = ImportHelper.makeImportManager("");%>
+<%}%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=TypeHelper.getDocumentation(uml2Enumeration)%>
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+<%importManager.addImport("com.jeefuse.base.modules.keyLabel.KeyLabel");%>
+public enum <%=modelEnumName%>  implements KeyLabel{
+<%for (Iterator<EnumerationLiteral> l=uml2Enumeration.getOwnedLiterals().iterator(); l.hasNext();) { %>
+<%	EnumerationLiteral enumLiteral = (EnumerationLiteral)l.next();%>
+<%	String enumLiteralName=EnumerationHelper.getEnumLiteralID(enumLiteral);%>
+<%	String enumLiteralComment=TypeHelper.getDocumentation(enumLiteral);%>
+<%	String enumLiteralValue=EnumKindLiteralStereotypeUtil.getLiteralValue(enumLiteral);%>
+<%	String enumLiteralLable=EnumKindLiteralStereotypeUtil.getLiteralLable(enumLiteral);%>
+<%	//String enumLiteralColor=EnumKindLiteralStereotypeUtil.getLiteralValue(enumLiteral);%>
+	/**
+	 * <%=enumLiteralComment%>
+	 * @generated
+	 */
+	<%=enumLiteralName%>("<%=enumLiteralValue%>","<%=enumLiteralLable%>")<%if (l.hasNext()) {%>,<%}%>
+<%}%>
+	;
+
+	/** @generated */
+	private <%=modelEnumName%>(String key, String label) {
+		this.key = key;
+		this.label = label;
+	}
+
+	/** @generated */
+	private final String key;
+	/** @generated */
+	private final String label;
+
+	/** @generated */
+	public String getKey() {
+		return key;
+	}
+
+	/** @generated */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * 根据key查找对象,若没有找到则返回null.
+	 * @generated
+	 */
+	public static <%=modelEnumName%> valueOfKey(String key) {
+		if (null == key)
+			return null;
+		for (<%=modelEnumName%> item : values()) {
+			if (item.getKey().equals(key))
+				return item;
+		}
+		return null;
+	}
+	
+	/**
+	 * 根据label查找对象,若没有找到则返回null.
+	 * @generated
+	 */
+	static public <%=modelEnumName%> valueOfLabel(String label) {
+		if (null == label)
+			return null;
+		for (<%=modelEnumName%> item : values()) {
+			if (item.getLabel().equals(label))
+				return item;
+		}
+		return null;
+	}
+<%importManager.addImport("java.util.Map");%>	
+<%importManager.addImport("java.util.HashMap");%>
+<%importManager.addImport("com.jeefuse.base.modules.json.JsonUtil");%>
+
+	/**
+	 * 转化为以key为键,label为值的Map对象.
+	 * @generated
+	 */
+	static public Map<String, String> toMap;
+	/** @generated */
+	static {
+		toMap = new HashMap<String, String>();
+		for (<%=modelEnumName%> item : values()) {
+			toMap.put(item.getKey(), item.getLabel());
+		}
+	}
+	
+	/**
+	 * 转化为以key为键,label为值并渲染为Html的Map对象.
+	 * 
+	 * @generated
+	 */
+	static public Map<String, String> toHtmlMap;
+	/** @generated */
+	static {
+		toHtmlMap = new HashMap<String, String>();
+		for (<%=modelEnumName%> item : values()) {
+			toHtmlMap.put(item.getKey(), item.renderHtml());
+		}
+	}
+
+	/**
+	 * 以key为键,label为值的Map对象转化为json字符串.
+	 * 
+	 * @generated
+	 */
+	static public String toHtmlJSON;
+	/** @generated */
+	static {
+		try {
+			toHtmlJSON = JsonUtil.mapper.writeValueAsString(toHtmlMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 转化为以key为键,label为值并渲染为Html Select标签.
+	 * 
+	 * @param checkKey
+	 *            已选择的键值
+	 * @generated
+	 */
+	static public String toHtmlSelect(String checkKey) {
+		StringBuilder sb = new StringBuilder();
+		for (<%=modelEnumName%> item : values()) {
+			sb.append(" <option value=\"" + item.getKey() + "\"");
+			if (null != checkKey && item.getKey().equals(checkKey)) {
+				sb.append(" selected=\"selected\" ");
+			}
+			sb.append(renderStyle(item));
+			sb.append(">");
+			sb.append(item.getLabel());
+			sb.append("</option>");
+		}
+		return sb.toString();
+	}
+	
+<%importManager.addImport("com.jeefuse.base.web.component.font.HtmlFont");%>
+	
+		/** @generated */
+	public String renderHtml() {
+		return getRenderFont(this).renderHtml(this.getLabel());
+	}
+
+	/** @generated */
+	static public String renderStyle(<%=modelEnumName%> item) {
+		return getRenderFont(item).renderStyle();
+	}
+
+	/** @generated */
+	static private HtmlFont getRenderFont(<%=modelEnumName%> item) {
+		switch (item) {
+<%for (Iterator<EnumerationLiteral> l=uml2Enumeration.getOwnedLiterals().iterator(); l.hasNext();) {%>
+<%	EnumerationLiteral enumLiteral = (EnumerationLiteral)l.next();%>
+<%	String enumLiteralName=EnumerationHelper.getEnumLiteralID(enumLiteral);%>
+<%	//String enumLiteralComment=TypeHelper.getDocumentation(enumLiteral);%>
+<%	//String enumLiteralValue=EnumKindLiteralStereotypeUtil.getLiteralValue(enumLiteral);%>
+<%	//String enumLiteralLable=EnumKindLiteralStereotypeUtil.getLiteralLable(enumLiteral);%>
+<%	String enumLiteralColor=EnumKindLiteralStereotypeUtil.getLiteralColor(enumLiteral);%>
+			case <%=enumLiteralName%>:
+				return HtmlFont.<%=enumLiteralColor%>;
+<%}%>
+		}
+		return HtmlFont.black;
+	}
+	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

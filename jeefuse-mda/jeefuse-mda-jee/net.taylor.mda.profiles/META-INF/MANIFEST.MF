@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Taylor MDA Profiles
+Bundle-SymbolicName: net.taylor.mda.profiles; singleton:=true
+Bundle-Version: 1.3.0
+Bundle-Vendor: taylor.sourceforge.net
+Bundle-Localization: plugin

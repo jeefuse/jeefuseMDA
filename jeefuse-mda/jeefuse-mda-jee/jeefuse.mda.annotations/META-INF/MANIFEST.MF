@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Annotations
+Bundle-SymbolicName: jeefuse.mda.annotations;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Version: 1.3.0
+Bundle-Vendor: jeefuse
+Export-Package: net.jeefuse.mda.annotations,
+ net.jeefuse.mda.annotations.condition,
+ net.jeefuse.mda.annotations.hibernate,
+ net.jeefuse.mda.annotations.jpa,
+ net.jeefuse.mda.annotations.model,
+ net.jeefuse.mda.annotations.page,
+ net.jeefuse.mda.annotations.property,
+ net.jeefuse.mda.annotations.service,
+ net.jeefuse.mda.annotations.view,
+ net.jeefuse.mda.commons.kind

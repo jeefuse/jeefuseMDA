@@ -1,0 +1,94 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.action" imports=" net.taylor.mda.generator.parse.NameRuled.nameRuled.* net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* net.taylor.mda.generator.parse.stereotype.* net.taylor.mda.generator.parse.* java.util.Iterator org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.parse.entity.* org.eclipse.emf.codegen.util.*" class="EntityStrutsXml" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelUrlNamespace=clazzWrap.getNamespace();
+String modelUncapName=clazzWrap.getUncapName();
+String modelCommentName=clazzWrap.getCommentName();
+//action define
+ClassNameDefineCommon actionDefine=clazzWrap.getNameDefineAction();
+String modelActionQualifiedName=actionDefine.getClassQualifiedName();
+%>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    
+	<!-- <%=modelCommentName%> action manager-->
+	<package name="<%=modelUncapName%>" extends="system"  namespace="<%=modelUrlNamespace%>">
+        <default-class-ref class="<%=modelActionQualifiedName%>"/>
+        
+<%if(FunctionStereotypeUtil.isApplied_manage(uml2Class)){%>        
+        <action name="manage" method="manage">
+            <result name="success"><%=clazzWrap.getWebPath(NameRuledWebPathKind.jsp_manager)%></result>
+        </action>
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_input(uml2Class)){%>
+        <action name="input" method="edit">
+        	<result name="success"><%=clazzWrap.getWebPath(NameRuledWebPathKind.jsp_input)%></result>
+        </action>
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_edit(uml2Class)){%>     
+        <action name="edit" method="edit">
+        	<result name="success"><%=clazzWrap.getWebPath(NameRuledWebPathKind.jsp_input)%></result>
+        </action>
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_getOutJson(uml2Class)){%>
+        <action name="getOutJson" method="getOutJson"/>
+<%}%>
+<%if(FunctionStereotypeUtil.isApplied_listOutJson(uml2Class)){%>
+        <action name="listOutJson" method="listOutJson"/>
+<%}%>  
+<%/********is apply tree********/%>
+<%if(ModelStereoTypeHelper.isApplyModel_Tree(uml2Class)){%>
+		<action name="listTreeOutJson" method="listTreeOutJson"/>
+<%	if(FunctionStereotypeUtil.isApplied_saveOutJson(uml2Class)){%>
+		<action name="saveOutJson" method="saveOutJson"/>
+<%	}%>
+<%	if(FunctionStereotypeUtil.isApplied_saveOutJson(uml2Class)){%>
+		<action name="updateOutJson" method="saveOutJson"/>
+<%	}%>
+<%	if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+        <action name="deleteOutJson" method="deleteOutJson"/>
+        <action name="deleteDescendantOutJson" method="deleteDescendantOutJson"/>
+<%	}%>
+<%	if(FunctionStereotypeUtil.isApplied_deleteAllOutJson(uml2Class)){%>
+        <action name="deleteAllOutJson" method="deleteAllOutJson"/>
+<%	}%>
+<%}else{%>
+<%	if(FunctionStereotypeUtil.isApplied_saveOutJson(uml2Class)){%>		
+        <action name="saveOutJson" method="saveOutJson"/>
+        <action name="updateOutJson" method="updateOutJson"/>
+<%	}%>
+<%	if(FunctionStereotypeUtil.isApplied_deleteOutJson(uml2Class)){%>
+        <action name="deleteOutJson" method="deleteOutJson"/>
+<%	}%>
+<%	if(FunctionStereotypeUtil.isApplied_deleteAllOutJson(uml2Class)){%>
+        <action name="deleteAllOutJson" method="deleteAllOutJson"/>
+<%	}%>
+<%}%>
+<%	if(ServiceStereotypeUtil.isApplied_expExcel(uml2Class)){%>
+		<!-- export excel file  -->
+        <action name="exportExcelFile" method="exportExcelFile"/>
+<%	}%>        
+<%	if(ServiceStereotypeUtil.isApplied_impExcel(uml2Class)){%>
+		<!-- import excel file data -->
+        <action name="importExcelFileProcess" method="<%=WebUrlName.importExcelFileProcess.getValue()%>"/>
+<%	}%>
+<%/********is apply listForSelect********/%>
+<%if(ModelStereoTypeHelper.isApplyModel_ListForSelect(uml2Class)){%>
+		<action name="listForSelect" method="listForSelect">
+        	<result name="success"><%=clazzWrap.getWebPath(NameRuledWebPathKind.jsp_listForSelect)%></result>
+        </action>
+        <action name="listForSelectOutJson" method="listOutJson"/>
+<%}%>
+<%/********is apply image********/%>
+<%if(FileStereotypeHelper.isClass_Image(uml2Class)){%>
+		<!--photo Gallery-->
+        <action name="gallaryView" method="gallaryView">
+        	<result name="success"><%=clazzWrap.getWebPath(NameRuledWebPathKind.jsp_galleryAD)%></result>
+        </action>
+<%}%>
+	</package>
+	
+</struts>

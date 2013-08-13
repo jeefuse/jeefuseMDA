@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="_U3X78DagEduvZYRMfIkrDw" name="JaxWS" metaclassReference="_VUsxIDagEduvZYRMfIkrDw _VVXfgDagEduvZYRMfIkrDw _VW_QIDagEduvZYRMfIkrDw _lgMIUDagEduvZYRMfIkrDw _lmEpsTanEduMwIsW97suog">
+  <eAnnotations xmi:id="_VYg6IDagEduvZYRMfIkrDw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_TBISYDaoEduMwIsW97suog" name="JaxWS" nsURI="http:///schemas/JaxWS/0" nsPrefix="JaxWS">
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_TBISYTaoEduMwIsW97suog" name="javaxxmlwsService$Mode">
+        <eAnnotations xmi:id="_TBISYjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_U9GwgDagEduvZYRMfIkrDw"/>
+        <eLiterals xmi:id="_TBISYzaoEduMwIsW97suog" name="MESSAGE"/>
+        <eLiterals xmi:id="_TBISZDaoEduMwIsW97suog" name="PAYLOAD" value="1"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_TBISZTaoEduMwIsW97suog" name="javaxxmlwshandlerMessageContext$Scope">
+        <eAnnotations xmi:id="_TBISZjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_U9xe4DagEduvZYRMfIkrDw"/>
+        <eLiterals xmi:id="_TBISZzaoEduMwIsW97suog" name="APPLICATION"/>
+        <eLiterals xmi:id="_TBISaDaoEduMwIsW97suog" name="HANDLER" value="1"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISaTaoEduMwIsW97suog" name="javaxxmlwsBindingType">
+        <eAnnotations xmi:id="_TBISajaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_U-cNQDagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISazaoEduMwIsW97suog" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISbDaoEduMwIsW97suog" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISbTaoEduMwIsW97suog" name="javaxxmlwsRequestWrapper">
+        <eAnnotations xmi:id="_TBISbjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VVFLojagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISbzaoEduMwIsW97suog" name="className" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBIScDaoEduMwIsW97suog" name="localName" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBIScTaoEduMwIsW97suog" name="targetNamespace" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBIScjaoEduMwIsW97suog" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISczaoEduMwIsW97suog" name="javaxxmlwsResponseWrapper">
+        <eAnnotations xmi:id="_TBISdDaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VVXfhDagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISdTaoEduMwIsW97suog" name="className" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISdjaoEduMwIsW97suog" name="localName" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISdzaoEduMwIsW97suog" name="targetNamespace" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISeDaoEduMwIsW97suog" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISeTaoEduMwIsW97suog" name="javaxxmlwsServiceMode">
+        <eAnnotations xmi:id="_TBISejaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VVjswDagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISezaoEduMwIsW97suog" name="value" ordered="false" eType="_TBISYTaoEduMwIsW97suog"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISfDaoEduMwIsW97suog" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISfTaoEduMwIsW97suog" name="javaxxmlwsWebEndpoint">
+        <eAnnotations xmi:id="_TBISfjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VV2AoDagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISfzaoEduMwIsW97suog" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISgDaoEduMwIsW97suog" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISgTaoEduMwIsW97suog" name="javaxxmlwsWebFault">
+        <eAnnotations xmi:id="_TBISgjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VWCN4DagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISgzaoEduMwIsW97suog" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBIShDaoEduMwIsW97suog" name="targetNamespace" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBIShTaoEduMwIsW97suog" name="faultBean" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBIShjaoEduMwIsW97suog" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBIShzaoEduMwIsW97suog" name="javaxxmlwsWebServiceClient">
+        <eAnnotations xmi:id="_TBISiDaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VWIUgzagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISiTaoEduMwIsW97suog" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISijaoEduMwIsW97suog" name="targetNamespace" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISizaoEduMwIsW97suog" name="wsdlLocation" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISjDaoEduMwIsW97suog" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISjTaoEduMwIsW97suog" name="javaxxmlwsWebServiceProvider">
+        <eAnnotations xmi:id="_TBISjjaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VWm1ozagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISjzaoEduMwIsW97suog" name="serviceName" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISkDaoEduMwIsW97suog" name="targetNamespace" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISkTaoEduMwIsW97suog" name="portName" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISkjaoEduMwIsW97suog" name="wsdlLocation" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISkzaoEduMwIsW97suog" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_TBISlDaoEduMwIsW97suog" name="javaxxmlwsWebServiceRef">
+        <eAnnotations xmi:id="_TBISlTaoEduMwIsW97suog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VWzC4DagEduvZYRMfIkrDw"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISljaoEduMwIsW97suog" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISlzaoEduMwIsW97suog" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISmDaoEduMwIsW97suog" name="type" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISmTaoEduMwIsW97suog" name="mappedName" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_TBISmjaoEduMwIsW97suog" name="wsdlLocation" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_TBISmzaoEduMwIsW97suog" name="base_Dependency" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Dependency"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_VFgekDagEduvZYRMfIkrDw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_VUsxIDagEduvZYRMfIkrDw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_VVXfgDagEduvZYRMfIkrDw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+  </elementImport>
+  <elementImport xmi:id="_VW_QIDagEduvZYRMfIkrDw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_lgMIUDagEduvZYRMfIkrDw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+  </elementImport>
+  <elementImport xmi:id="_lmEpsTanEduMwIsW97suog">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_U9GwgDagEduvZYRMfIkrDw" name="javax.xml.ws.Service$Mode">
+    <ownedLiteral xmi:id="_U9S9wDagEduvZYRMfIkrDw" name="MESSAGE"/>
+    <ownedLiteral xmi:id="_U9S9wTagEduvZYRMfIkrDw" name="PAYLOAD"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_U9xe4DagEduvZYRMfIkrDw" name="javax.xml.ws.handler.MessageContext$Scope">
+    <ownedLiteral xmi:id="_U9xe4TagEduvZYRMfIkrDw" name="APPLICATION"/>
+    <ownedLiteral xmi:id="_U9xe4jagEduvZYRMfIkrDw" name="HANDLER"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_U-cNQDagEduvZYRMfIkrDw" name="javax.xml.ws.BindingType">
+    <ownedAttribute xmi:id="_VFsr0DagEduvZYRMfIkrDw" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VFsr0jagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VFsr0TagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_0MI7MjanEduMwIsW97suog" name="base_Interface" association="_0MI7MDanEduMwIsW97suog">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_0MI7MDanEduMwIsW97suog" name="Interface_javax.xml.ws.BindingType" memberEnd="_0MI7MTanEduMwIsW97suog _0MI7MjanEduMwIsW97suog">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_0MI7MTanEduMwIsW97suog" name="extension_javax.xml.ws.BindingType" type="_U-cNQDagEduvZYRMfIkrDw" aggregation="composite" association="_0MI7MDanEduMwIsW97suog"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VVFLojagEduvZYRMfIkrDw" name="javax.xml.ws.RequestWrapper">
+    <ownedAttribute xmi:id="_VVLSQDagEduvZYRMfIkrDw" name="className">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVLSQjagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVLSQTagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVRY4DagEduvZYRMfIkrDw" name="localName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVRY4jagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVRY4TagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVRY4zagEduvZYRMfIkrDw" name="targetNamespace">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVRY5TagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVRY5DagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVXfgzagEduvZYRMfIkrDw" name="base_Operation" association="_VVXfgTagEduvZYRMfIkrDw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VVXfgTagEduvZYRMfIkrDw" name="Operation_javax.xml.ws.RequestWrapper" memberEnd="_VVXfgjagEduvZYRMfIkrDw _VVXfgzagEduvZYRMfIkrDw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VVXfgjagEduvZYRMfIkrDw" name="extension_javax.xml.ws.RequestWrapper" type="_VVFLojagEduvZYRMfIkrDw" aggregation="composite" association="_VVXfgTagEduvZYRMfIkrDw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VVXfhDagEduvZYRMfIkrDw" name="javax.xml.ws.ResponseWrapper">
+    <ownedAttribute xmi:id="_VVXfhTagEduvZYRMfIkrDw" name="className">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVXfhzagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVXfhjagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVdmIDagEduvZYRMfIkrDw" name="localName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVdmIjagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVdmITagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVdmIzagEduvZYRMfIkrDw" name="targetNamespace">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVdmJTagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVdmJDagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VVdmKDagEduvZYRMfIkrDw" name="base_Operation" association="_VVdmJjagEduvZYRMfIkrDw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VVdmJjagEduvZYRMfIkrDw" name="Operation_javax.xml.ws.ResponseWrapper" memberEnd="_VVdmJzagEduvZYRMfIkrDw _VVdmKDagEduvZYRMfIkrDw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VVdmJzagEduvZYRMfIkrDw" name="extension_javax.xml.ws.ResponseWrapper" type="_VVXfhDagEduvZYRMfIkrDw" aggregation="composite" association="_VVdmJjagEduvZYRMfIkrDw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VVjswDagEduvZYRMfIkrDw" name="javax.xml.ws.ServiceMode">
+    <ownedAttribute xmi:id="_VVjswTagEduvZYRMfIkrDw" name="value" type="_U9GwgDagEduvZYRMfIkrDw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VVjswzagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VVjswjagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ArcUgjaoEduMwIsW97suog" name="base_Interface" association="_ArcUgDaoEduMwIsW97suog">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ArcUgDaoEduMwIsW97suog" name="Interface_javax.xml.ws.ServiceMode" memberEnd="_ArcUgTaoEduMwIsW97suog _ArcUgjaoEduMwIsW97suog">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ArcUgTaoEduMwIsW97suog" name="extension_javax.xml.ws.ServiceMode" type="_VVjswDagEduvZYRMfIkrDw" aggregation="composite" association="_ArcUgDaoEduMwIsW97suog"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VV2AoDagEduvZYRMfIkrDw" name="javax.xml.ws.WebEndpoint">
+    <ownedAttribute xmi:id="_VV2AoTagEduvZYRMfIkrDw" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VV2AozagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VV2AojagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VV8HQjagEduvZYRMfIkrDw" name="base_Operation" association="_VV8HQDagEduvZYRMfIkrDw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VV8HQDagEduvZYRMfIkrDw" name="Operation_javax.xml.ws.WebEndpoint" memberEnd="_VV8HQTagEduvZYRMfIkrDw _VV8HQjagEduvZYRMfIkrDw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VV8HQTagEduvZYRMfIkrDw" name="extension_javax.xml.ws.WebEndpoint" type="_VV2AoDagEduvZYRMfIkrDw" aggregation="composite" association="_VV8HQDagEduvZYRMfIkrDw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VWCN4DagEduvZYRMfIkrDw" name="javax.xml.ws.WebFault">
+    <ownedAttribute xmi:id="_VWCN4TagEduvZYRMfIkrDw" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWCN4zagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWCN4jagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWCN5DagEduvZYRMfIkrDw" name="targetNamespace">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWCN5jagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWCN5TagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWCN5zagEduvZYRMfIkrDw" name="faultBean">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWCN6TagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWCN6DagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_HifE0jaoEduMwIsW97suog" name="base_Interface" association="_HifE0DaoEduMwIsW97suog">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_HifE0DaoEduMwIsW97suog" name="Interface_javax.xml.ws.WebFault" memberEnd="_HifE0TaoEduMwIsW97suog _HifE0jaoEduMwIsW97suog">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HifE0TaoEduMwIsW97suog" name="extension_javax.xml.ws.WebFault" type="_VWCN4DagEduvZYRMfIkrDw" aggregation="composite" association="_HifE0DaoEduMwIsW97suog"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VWIUgzagEduvZYRMfIkrDw" name="javax.xml.ws.WebServiceClient">
+    <ownedAttribute xmi:id="_VWIUhDagEduvZYRMfIkrDw" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWUhwDagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWObIDagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWUhwTagEduvZYRMfIkrDw" name="targetNamespace">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWUhwzagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWUhwjagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWUhxDagEduvZYRMfIkrDw" name="wsdlLocation">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWUhxjagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWUhxTagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_mxt9cjanEduMwIsW97suog" name="base_Interface" association="_mxt9cDanEduMwIsW97suog">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_mxt9cDanEduMwIsW97suog" name="Interface_javax.xml.ws.WebServiceClient" memberEnd="_mxt9cTanEduMwIsW97suog _mxt9cjanEduMwIsW97suog">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mxt9cTanEduMwIsW97suog" name="extension_javax.xml.ws.WebServiceClient" type="_VWIUgzagEduvZYRMfIkrDw" aggregation="composite" association="_mxt9cDanEduMwIsW97suog"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VWm1ozagEduvZYRMfIkrDw" name="javax.xml.ws.WebServiceProvider">
+    <ownedAttribute xmi:id="_VWm1pDagEduvZYRMfIkrDw" name="serviceName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWm1pjagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWm1pTagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWm1pzagEduvZYRMfIkrDw" name="targetNamespace">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWs8QTagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWs8QDagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWs8QjagEduvZYRMfIkrDw" name="portName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWs8RDagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWs8QzagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWs8RTagEduvZYRMfIkrDw" name="wsdlLocation">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWs8RzagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWs8RjagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Mmo7MjaoEduMwIsW97suog" name="base_Interface" association="_Mmo7MDaoEduMwIsW97suog">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Mmo7MDaoEduMwIsW97suog" name="Interface_javax.xml.ws.WebServiceProvider" memberEnd="_Mmo7MTaoEduMwIsW97suog _Mmo7MjaoEduMwIsW97suog">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Mmo7MTaoEduMwIsW97suog" name="extension_javax.xml.ws.WebServiceProvider" type="_VWm1ozagEduvZYRMfIkrDw" aggregation="composite" association="_Mmo7MDaoEduMwIsW97suog"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VWzC4DagEduvZYRMfIkrDw" name="javax.xml.ws.WebServiceRef">
+    <ownedAttribute xmi:id="_VWzC4TagEduvZYRMfIkrDw" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWzC4zagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWzC4jagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWzC5DagEduvZYRMfIkrDw" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWzC5jagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWzC5TagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VWzC5zagEduvZYRMfIkrDw" name="type">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VWzC6TagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VWzC6DagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VW5JgDagEduvZYRMfIkrDw" name="mappedName">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VW5JgjagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VW5JgTagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_VW5JgzagEduvZYRMfIkrDw" name="wsdlLocation">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VW5JhTagEduvZYRMfIkrDw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VW5JhDagEduvZYRMfIkrDw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_nltqYDagEduvZYRMfIkrDw" name="base_Dependency" association="_nlnjwDagEduvZYRMfIkrDw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_nlnjwDagEduvZYRMfIkrDw" name="Dependency_javax.xml.ws.WebServiceRef" memberEnd="_nlnjwTagEduvZYRMfIkrDw _nltqYDagEduvZYRMfIkrDw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_nlnjwTagEduvZYRMfIkrDw" name="extension_javax.xml.ws.WebServiceRef" type="_VWzC4DagEduvZYRMfIkrDw" aggregation="composite" association="_nlnjwDagEduvZYRMfIkrDw"/>
+  </packagedElement>
+</uml:Profile>

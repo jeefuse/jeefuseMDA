@@ -1,0 +1,83 @@
+<%@ jet package="com.jeefuse.mda.gen.template.main.java.file" imports="net.taylor.mda.generator.parse.NameRuled.className.* net.taylor.mda.generator.parse.NameRuled.* java.util.ArrayList net.taylor.mda.generator.parse.* java.util.Iterator java.util.List net.taylor.mda.generator.parse.entity.* org.eclipse.uml2.uml.Class org.eclipse.uml2.uml.Package org.eclipse.uml2.uml.* net.taylor.mda.generator.util.* org.eclipse.emf.codegen.util.*" class="EntityUploadFileRule" %>
+<%Class uml2Class = (Class) argument;Package uml2Package = uml2Class.getPackage();%>
+<%
+/*******clazz wrap********/	
+UmlClassWrap clazzWrap=new UmlClassWrap(uml2Class);
+String modelCommentName=clazzWrap.getCommentName();
+//String modelCapName=clazzWrap.getCapName();
+
+//model exportFileUpload
+ClassNameDefineCommon exportFileUploadDefine=clazzWrap.getNameDefineFileUpload();
+String modelFileUploadPackageName=exportFileUploadDefine.getPackageQualifiedName();
+String modelFileUploadClassName=exportFileUploadDefine.getClassCapName();
+%>
+<%@ include file="../../../../Header.jetinc"%>
+package <%=modelFileUploadPackageName%>;
+<%ImportManager importManager = ImportHelper.makeImportManager("");%>
+<%importManager.addImport("java.util.Collection");%>
+<%importManager.addImport("javax.servlet.http.HttpServletRequest");%>
+<%importManager.addImport("javax.servlet.http.HttpServletResponse");%>
+<%importManager.addImport("javax.servlet.http.HttpServletRequest");%>
+<%importManager.addImport("com.jeefuse.base.config.Constants");%>
+<%importManager.addImport("com.jeefuse.base.web.uploadFile.UploadFile");%>
+<%importManager.addImport("com.jeefuse.base.web.uploadFile.UploadFileFactory");%>
+<%importManager.addImport("com.jeefuse.base.web.uploadFile.UploadFileRule");%>
+<%importManager.addImport("com.jeefuse.base.web.uploadFile.UploadFileType");%>
+<%importManager.addImport("com.jeefuse.base.web.uploadFile.StrutsWebFileUtil");%>
+<%importManager.addImport("com.jeefuse.system.security.service.spring.SecurityHolder");%>
+<%importManager.addImport("org.springframework.util.Assert");%>
+
+<%
+// add imports
+importManager.addImport(Config.base_ModelExportFactory);
+%>
+
+<%
+StringBuffer importStringBuffer = stringBuffer;
+int importInsertionPoint = stringBuffer.length();
+importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * <%=modelCommentName%> 上传规则.
+ *
+ * @author <%=System.getProperty("user.name")%>
+ * @generated
+ */
+public class <%=modelFileUploadClassName%> {
+	/**
+	 * 获取 <%=modelCommentName%>上传文件规则.
+	 */
+	public static UploadFileRule getUploadFileRule(HttpServletRequest request, String userId) {
+		UploadFileRule uploadFileRule = UploadFileFactory.getUploadFileRule(request,userId, UploadFileType.image);
+		String[] exts = { "jpg", "gif", "jpeg", "png", "bmp" };
+		uploadFileRule.setAcceptExtentionType(exts);
+		uploadFileRule.setAcceptFileSize(Constants.DEFAULT_UPLOAD_IMAGE_SIZE);
+		return uploadFileRule;
+	}
+
+	/**
+	 * 上传<%=modelCommentName%>文件.
+	 */
+	public static List<UploadFile> uploadFiles(HttpServletRequest request, String userId) {
+		UploadFileRule fileRule = getUploadFileRule(request,userId);
+		return StrutsWebFileUtil.uploadFile(fileRule, request, true);
+	}
+
+	/**
+	 * 删除<%=modelCommentName%>文件.
+	 */
+	public static void deleteFile(String relativeSavePath, HttpServletRequest request, String userId) {
+		UploadFileRule fileRule = getUploadFileRule(request,userId);
+		StrutsWebFileUtil.deleteFile(fileRule, relativeSavePath);
+	}
+
+	/**
+	 * 删除<%=modelCommentName%>文件.
+	 */
+	public static void deleteFile(String savePath) {
+		StrutsWebFileUtil.deleteFile(savePath);
+	}
+	
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Taylor MDA Reverse Engineering
+Bundle-SymbolicName: net.taylor.mda.reverse; singleton:=true
+Bundle-Version: 1.3.0
+Bundle-Activator: net.taylor.mda.reverse.Activator
+Bundle-Vendor: taylor.sourceforge.net
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.uml2.uml,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.console,
+ org.eclipse.emf.transaction,
+ org.eclipse.ui.navigator,
+ net.taylor.uml2.uml.edit,
+ net.taylor.mda.navigator,
+ net.taylor.mda.generator;bundle-version="1.3.0",
+ jeefuse.mda.annotations;bundle-version="1.0.0"
+Eclipse-LazyStart: true
+Bundle-ClassPath: lib/wsdl4j.jar,
+ lib/XmlSchema-1.0.1.jar,
+ lib/jbossws-client.jar,
+ .,
+ lib/dom4j-1.6.1.jar,
+ lib/jaxen-1.1.1.jar,
+ lib/mysql-connector-java-5.1.11-bin.jar,
+ lib/ojdbc14-10.2.0.3.0.jar

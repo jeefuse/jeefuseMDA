@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            name="Taylor"
+            id="net.taylor.mda.reverse">
+      </category>
+      <!--
+      <wizard
+            name="Import DB Schema to UML Model"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.db.ImportWizard"
+            id="net.taylor.mda.reverse.db.ImportWizard">
+         <description>
+            Import database schema as a UML entity model.
+         </description>
+      </wizard>-->
+      <wizard
+            name="Import DB Schema to UML Model with Config"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.db2model.ImportWizard"
+            id="net.taylor.mda.reverse.db2model.ImportWizard">
+         <description>
+            Import database schema as a UML entity model with config.
+         </description>
+      </wizard>
+      <wizard
+            name="Import DB Schema to Exist UML Model with Config"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.db2modelMerge.ImportWizard"
+            id="net.taylor.mda.reverse.db2modelMerge.ImportWizard">
+         <description>
+            Import database schema as a UML entity model to exist model.
+         </description>
+      </wizard>
+      <wizard
+            name="Import Java Annotations to UML Profile"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.annotations.ImportWizard"
+            id="net.taylor.mda.reverse.annotations.ImportWizard">
+         <description>
+            Import Java annotations as a UML profile.
+         </description>
+      </wizard>
+      <wizard
+            name="Import WSDL to UML Model"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.wsdl.ImportWizard"
+            id="net.taylor.mda.reverse.wsdl.ImportWizard">
+         <description>
+            Import WSDL as a UML service model.
+         </description>
+      </wizard>
+      <!--
+      <wizard
+            name="Import Java/EJB to UML Model"
+            icon="icons/sample.gif"
+            category="net.taylor.mda.reverse"
+            class="net.taylor.mda.reverse.java.ImportWizard"
+            id="net.taylor.mda.reverse.java.ImportWizard">
+         <description>
+            Import Java classes and interfaces as a UML model.
+         </description>
+      </wizard>
+      -->
+   </extension>
+	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<actionProvider
+			id="net.taylor.mda.actions.ToggleTaylorNatureActionExtension"
+			class="net.taylor.mda.actions.ToggleTaylorNatureActionExtension">
+			<enablement>
+				<adapt type="org.eclipse.core.resources.IProject" />
+			</enablement>
+		</actionProvider>
+	</extension>
+	<extension id="taylornature" name="Taylor Nature"
+		point="org.eclipse.core.resources.natures">
+		<builder id="net.taylor.mda.reverse.modelsynchronizer" />
+		<runtime>
+			<run class="net.taylor.mda.nature.TaylorNature" />
+		</runtime>
+		<requires-nature id="org.eclipse.jdt.core.javanature" />
+	</extension>
+	<extension
+		id="modelsynchronizer"
+		name="Taylor Model Synchronizer"
+		point="org.eclipse.core.resources.builders">
+    	<builder hasNature="true">
+			<run class="net.taylor.mda.builder.ModelSynchronizer"/>
+    	</builder>
+	</extension>
+</plugin>

@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_YqypkIzNEd2uadpzLmkXlQ" name="HibernateSearch">
+  <eAnnotations xmi:id="_Y-UCgIzNEd2uadpzLmkXlQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_wd2w8SuQEd6qdqhMzRpC8g" name="HibernateSearch" nsURI="http:///schemas/HibernateSearch/_wd2w8CuQEd6qdqhMzRpC8g/0" nsPrefix="HibernateSearch">
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2w8iuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFilterCacheModeType">
+        <eAnnotations xmi:id="_wd2w8yuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lXGEcCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2w9CuQEd6qdqhMzRpC8g" name="NONE"/>
+        <eLiterals xmi:id="_wd2w9SuQEd6qdqhMzRpC8g" name="INSTANCE_ONLY" value="1"/>
+        <eLiterals xmi:id="_wd2w9iuQEd6qdqhMzRpC8g" name="INSTANCE_AND_DOCIDSETRESULTS" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2w9yuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsIndex">
+        <eAnnotations xmi:id="_wd2w-CuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lXGEdCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2w-SuQEd6qdqhMzRpC8g" name="NO"/>
+        <eLiterals xmi:id="_wd2w-iuQEd6qdqhMzRpC8g" name="TOKENIZED" value="1"/>
+        <eLiterals xmi:id="_wd2w-yuQEd6qdqhMzRpC8g" name="UN_TOKENIZED" value="2"/>
+        <eLiterals xmi:id="_wd2w_CuQEd6qdqhMzRpC8g" name="NO_NORMS" value="3"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2w_SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsResolution">
+        <eAnnotations xmi:id="_wd2w_iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lXP1cCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2w_yuQEd6qdqhMzRpC8g" name="YEAR"/>
+        <eLiterals xmi:id="_wd2xACuQEd6qdqhMzRpC8g" name="MONTH" value="1"/>
+        <eLiterals xmi:id="_wd2xASuQEd6qdqhMzRpC8g" name="DAY" value="2"/>
+        <eLiterals xmi:id="_wd2xAiuQEd6qdqhMzRpC8g" name="HOUR" value="3"/>
+        <eLiterals xmi:id="_wd2xAyuQEd6qdqhMzRpC8g" name="MINUTE" value="4"/>
+        <eLiterals xmi:id="_wd2xBCuQEd6qdqhMzRpC8g" name="SECOND" value="5"/>
+        <eLiterals xmi:id="_wd2xBSuQEd6qdqhMzRpC8g" name="MILLISECOND" value="6"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xBiuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsStore">
+        <eAnnotations xmi:id="_wd2xByuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lXP1eCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xCCuQEd6qdqhMzRpC8g" name="NO"/>
+        <eLiterals xmi:id="_wd2xCSuQEd6qdqhMzRpC8g" name="YES" value="1"/>
+        <eLiterals xmi:id="_wd2xCiuQEd6qdqhMzRpC8g" name="COMPRESS" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xCyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsTermVector">
+        <eAnnotations xmi:id="_wd2xDCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lXP1fCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xDSuQEd6qdqhMzRpC8g" name="NO"/>
+        <eLiterals xmi:id="_wd2xDiuQEd6qdqhMzRpC8g" name="YES" value="1"/>
+        <eLiterals xmi:id="_wd2xDyuQEd6qdqhMzRpC8g" name="WITH_OFFSETS" value="2"/>
+        <eLiterals xmi:id="_wd2xECuQEd6qdqhMzRpC8g" name="WITH_POSITIONS" value="3"/>
+        <eLiterals xmi:id="_wd2xESuQEd6qdqhMzRpC8g" name="WITH_POSITION_OFFSETS" value="4"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xEiuQEd6qdqhMzRpC8g" name="orghibernatesearchbackendWorkType">
+        <eAnnotations xmi:id="_wd2xEyuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lX1rUCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xFCuQEd6qdqhMzRpC8g" name="ADD"/>
+        <eLiterals xmi:id="_wd2xFSuQEd6qdqhMzRpC8g" name="UPDATE" value="1"/>
+        <eLiterals xmi:id="_wd2xFiuQEd6qdqhMzRpC8g" name="DELETE" value="2"/>
+        <eLiterals xmi:id="_wd2xFyuQEd6qdqhMzRpC8g" name="COLLECTION" value="3"/>
+        <eLiterals xmi:id="_wd2xGCuQEd6qdqhMzRpC8g" name="PURGE" value="4"/>
+        <eLiterals xmi:id="_wd2xGSuQEd6qdqhMzRpC8g" name="PURGE_ALL" value="5"/>
+        <eLiterals xmi:id="_wd2xGiuQEd6qdqhMzRpC8g" name="INDEX" value="6"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xGyuQEd6qdqhMzRpC8g" name="orghibernatesearchbackendconfigurationIndexWriterSetting">
+        <eAnnotations xmi:id="_wd2xHCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lX1rWCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xHSuQEd6qdqhMzRpC8g" name="MAX_BUFFERED_DELETE_TERMS"/>
+        <eLiterals xmi:id="_wd2xHiuQEd6qdqhMzRpC8g" name="MAX_BUFFERED_DOCS" value="1"/>
+        <eLiterals xmi:id="_wd2xHyuQEd6qdqhMzRpC8g" name="MAX_FIELD_LENGTH" value="2"/>
+        <eLiterals xmi:id="_wd2xICuQEd6qdqhMzRpC8g" name="MAX_MERGE_DOCS" value="3"/>
+        <eLiterals xmi:id="_wd2xISuQEd6qdqhMzRpC8g" name="MERGE_FACTOR" value="4"/>
+        <eLiterals xmi:id="_wd2xIiuQEd6qdqhMzRpC8g" name="RAM_BUFFER_SIZE" value="5"/>
+        <eLiterals xmi:id="_wd2xIyuQEd6qdqhMzRpC8g" name="TERM_INDEX_INTERVAL" value="6"/>
+        <eLiterals xmi:id="_wd2xJCuQEd6qdqhMzRpC8g" name="USE_COMPOUND_FILE" value="7"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xJSuQEd6qdqhMzRpC8g" name="orghibernatesearchbackendimplBatchedQueueingProcessor$Layer">
+        <eAnnotations xmi:id="_wd2xJiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lX_cUCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xJyuQEd6qdqhMzRpC8g" name="FIRST"/>
+        <eLiterals xmi:id="_wd2xKCuQEd6qdqhMzRpC8g" name="SECOND" value="1"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xKSuQEd6qdqhMzRpC8g" name="orghibernatesearchbackendimplluceneIndexInteractionType">
+        <eAnnotations xmi:id="_wd2xKiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lX_cUyt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xKyuQEd6qdqhMzRpC8g" name="NEEDS_INDEXWRITER"/>
+        <eLiterals xmi:id="_wd2xLCuQEd6qdqhMzRpC8g" name="PREFER_INDEXWRITER" value="1"/>
+        <eLiterals xmi:id="_wd2xLSuQEd6qdqhMzRpC8g" name="PREFER_INDEXREADER" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xLiuQEd6qdqhMzRpC8g" name="orghibernatesearchengineDocumentBuilderContainedEntity$PropertiesMetadata$Container">
+        <eAnnotations xmi:id="_wd2xLyuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lYSXQCt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xMCuQEd6qdqhMzRpC8g" name="OBJECT"/>
+        <eLiterals xmi:id="_wd2xMSuQEd6qdqhMzRpC8g" name="COLLECTION" value="1"/>
+        <eLiterals xmi:id="_wd2xMiuQEd6qdqhMzRpC8g" name="MAP" value="2"/>
+        <eLiterals xmi:id="_wd2xMyuQEd6qdqhMzRpC8g" name="ARRAY" value="3"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wd2xNCuQEd6qdqhMzRpC8g" name="orghibernatesearchengineEntityState">
+        <eAnnotations xmi:id="_wd2xNSuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lYSXRSt7Ed6YG6KUPFWlEg"/>
+        <eLiterals xmi:id="_wd2xNiuQEd6qdqhMzRpC8g" name="INDEXED"/>
+        <eLiterals xmi:id="_wd2xNyuQEd6qdqhMzRpC8g" name="CONTAINED_IN_ONLY" value="1"/>
+        <eLiterals xmi:id="_wd2xOCuQEd6qdqhMzRpC8g" name="NON_INDEXABLE" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xOSuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsAnalyzer">
+        <eAnnotations xmi:id="_wd2xOiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lZB-ICt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xOyuQEd6qdqhMzRpC8g" name="definition" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xPSuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xPyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xQSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xQyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xRSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xRyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsAnalyzerDef">
+        <eAnnotations xmi:id="_wd2xSCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lgoa_Ct7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xSSuQEd6qdqhMzRpC8g" name="tokenizer" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xSyuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xTSuQEd6qdqhMzRpC8g" name="filters" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xTyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xUSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xUyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xVSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xVyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsAnalyzerDefs">
+        <eAnnotations xmi:id="_wd2xWCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lgyL_Ct7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xWSuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xWyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xXSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xXyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xYSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xYyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsAnalyzerDiscriminator">
+        <eAnnotations xmi:id="_wd2xZCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lgyMDCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xZSuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xZyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xaSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xayuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xbSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xbyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsBoost">
+        <eAnnotations xmi:id="_wd2xcCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lgyMHCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xcSuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xcyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xdSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xdyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xeSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xeyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsClassBridge">
+        <eAnnotations xmi:id="_wd2xfCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lgyMLCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xfSuQEd6qdqhMzRpC8g" name="analyzer" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xfyuQEd6qdqhMzRpC8g" name="termVector" ordered="false" eType="_wd2xCyuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xgSuQEd6qdqhMzRpC8g" name="boost" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xgyuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xhSuQEd6qdqhMzRpC8g" name="store" ordered="false" eType="_wd2xBiuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xhyuQEd6qdqhMzRpC8g" name="index" ordered="false" eType="_wd2w9yuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xiSuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xiyuQEd6qdqhMzRpC8g" name="params" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xjSuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xjyuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xkSuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsClassBridges">
+        <eAnnotations xmi:id="_wd2xkiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7V_it7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xkyuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xlSuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xlyuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xmSuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsContainedIn">
+        <eAnnotations xmi:id="_wd2xmiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7WCCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xmyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xnSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xnyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsDateBridge">
+        <eAnnotations xmi:id="_wd2xoCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7WDyt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xoSuQEd6qdqhMzRpC8g" name="resolution" ordered="false" eType="_wd2w_SuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xoyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xpSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xpyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsDocumentId">
+        <eAnnotations xmi:id="_wd2xqCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7WGSt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xqSuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xqyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xrSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xryuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFactory">
+        <eAnnotations xmi:id="_wd2xsCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7WIyt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xsSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xsyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsField">
+        <eAnnotations xmi:id="_wd2xtCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lg7WJyt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xtSuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xtyuQEd6qdqhMzRpC8g" name="store" ordered="false" eType="_wd2xBiuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xuSuQEd6qdqhMzRpC8g" name="index" ordered="false" eType="_wd2w9yuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xuyuQEd6qdqhMzRpC8g" name="bridge" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xvSuQEd6qdqhMzRpC8g" name="analyzer" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xvyuQEd6qdqhMzRpC8g" name="termVector" ordered="false" eType="_wd2xCyuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xwSuQEd6qdqhMzRpC8g" name="boost" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xwyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xxSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2xxyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFieldBridge">
+        <eAnnotations xmi:id="_wd2xyCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhFG-yt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xySuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2xyyuQEd6qdqhMzRpC8g" name="params" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xzSuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2xzyuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x0SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFields">
+        <eAnnotations xmi:id="_wd2x0iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhFHCCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x0yuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x1SuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x1yuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x2SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFullTextFilterDef">
+        <eAnnotations xmi:id="_wd2x2iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO35Ct7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x2yuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x3SuQEd6qdqhMzRpC8g" name="cache" ordered="false" eType="_wd2w8iuQEd6qdqhMzRpC8g"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x3yuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x4SuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x4yuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x5SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsFullTextFilterDefs">
+        <eAnnotations xmi:id="_wd2x5iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO39Ct7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x5yuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x6SuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x6yuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x7SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsIndexed">
+        <eAnnotations xmi:id="_wd2x7iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO3_it7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x7yuQEd6qdqhMzRpC8g" name="index" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x8SuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x8yuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x9SuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsIndexedEmbedded">
+        <eAnnotations xmi:id="_wd2x9iuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO4CCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x9yuQEd6qdqhMzRpC8g" name="targetElement" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2x-SuQEd6qdqhMzRpC8g" name="prefix" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x-yuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsKey">
+        <eAnnotations xmi:id="_wd2x_CuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO4ECt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2x_SuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2x_yuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsParameter">
+        <eAnnotations xmi:id="_wd2yACuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO4FCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yASuQEd6qdqhMzRpC8g" name="value" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yAyuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2yBSuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsProvidedId">
+        <eAnnotations xmi:id="_wd2yBiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO4Gyt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yByuQEd6qdqhMzRpC8g" name="bridge" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yCSuQEd6qdqhMzRpC8g" name="name" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yCyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yDSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2yDyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsSimilarity">
+        <eAnnotations xmi:id="_wd2yECuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhO4KCt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yESuQEd6qdqhMzRpC8g" name="impl" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yEyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yFSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2yFyuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsTokenFilterDef">
+        <eAnnotations xmi:id="_wd2yGCuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhYB0Ct7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yGSuQEd6qdqhMzRpC8g" name="factory" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yGyuQEd6qdqhMzRpC8g" name="params" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yHSuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yHyuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yISuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yIyuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wd2yJSuQEd6qdqhMzRpC8g" name="orghibernatesearchannotationsTokenizerDef">
+        <eAnnotations xmi:id="_wd2yJiuQEd6qdqhMzRpC8g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lhYB4yt7Ed6YG6KUPFWlEg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yJyuQEd6qdqhMzRpC8g" name="factory" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wd2yKSuQEd6qdqhMzRpC8g" name="params" ordered="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yKyuQEd6qdqhMzRpC8g" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yLSuQEd6qdqhMzRpC8g" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yLyuQEd6qdqhMzRpC8g" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_wd2yMSuQEd6qdqhMzRpC8g" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_la94FCt7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_lgfRACt7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_lgoa8Ct7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+  </elementImport>
+  <elementImport xmi:id="_lgoa9Ct7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_lgoa-Ct7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <elementImport xmi:id="_lhO4Dyt7Ed6YG6KUPFWlEg">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lXGEcCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.FilterCacheModeType">
+    <ownedLiteral xmi:id="_lXGEcSt7Ed6YG6KUPFWlEg" name="NONE"/>
+    <ownedLiteral xmi:id="_lXGEcit7Ed6YG6KUPFWlEg" name="INSTANCE_ONLY"/>
+    <ownedLiteral xmi:id="_lXGEcyt7Ed6YG6KUPFWlEg" name="INSTANCE_AND_DOCIDSETRESULTS"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lXGEdCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Index">
+    <ownedLiteral xmi:id="_lXGEdSt7Ed6YG6KUPFWlEg" name="NO"/>
+    <ownedLiteral xmi:id="_lXGEdit7Ed6YG6KUPFWlEg" name="TOKENIZED"/>
+    <ownedLiteral xmi:id="_lXGEdyt7Ed6YG6KUPFWlEg" name="UN_TOKENIZED"/>
+    <ownedLiteral xmi:id="_lXGEeCt7Ed6YG6KUPFWlEg" name="NO_NORMS"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lXP1cCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Resolution">
+    <ownedLiteral xmi:id="_lXP1cSt7Ed6YG6KUPFWlEg" name="YEAR"/>
+    <ownedLiteral xmi:id="_lXP1cit7Ed6YG6KUPFWlEg" name="MONTH"/>
+    <ownedLiteral xmi:id="_lXP1cyt7Ed6YG6KUPFWlEg" name="DAY"/>
+    <ownedLiteral xmi:id="_lXP1dCt7Ed6YG6KUPFWlEg" name="HOUR"/>
+    <ownedLiteral xmi:id="_lXP1dSt7Ed6YG6KUPFWlEg" name="MINUTE"/>
+    <ownedLiteral xmi:id="_lXP1dit7Ed6YG6KUPFWlEg" name="SECOND"/>
+    <ownedLiteral xmi:id="_lXP1dyt7Ed6YG6KUPFWlEg" name="MILLISECOND"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lXP1eCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Store">
+    <ownedLiteral xmi:id="_lXP1eSt7Ed6YG6KUPFWlEg" name="NO"/>
+    <ownedLiteral xmi:id="_lXP1eit7Ed6YG6KUPFWlEg" name="YES"/>
+    <ownedLiteral xmi:id="_lXP1eyt7Ed6YG6KUPFWlEg" name="COMPRESS"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lXP1fCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.TermVector">
+    <ownedLiteral xmi:id="_lXP1fit7Ed6YG6KUPFWlEg" name="NO"/>
+    <ownedLiteral xmi:id="_lXP1fSt7Ed6YG6KUPFWlEg" name="YES"/>
+    <ownedLiteral xmi:id="_lXP1fyt7Ed6YG6KUPFWlEg" name="WITH_OFFSETS"/>
+    <ownedLiteral xmi:id="_lXP1gCt7Ed6YG6KUPFWlEg" name="WITH_POSITIONS"/>
+    <ownedLiteral xmi:id="_lXP1gSt7Ed6YG6KUPFWlEg" name="WITH_POSITION_OFFSETS"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lX1rUCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.backend.WorkType">
+    <ownedLiteral xmi:id="_lX1rUSt7Ed6YG6KUPFWlEg" name="ADD"/>
+    <ownedLiteral xmi:id="_lX1rUit7Ed6YG6KUPFWlEg" name="UPDATE"/>
+    <ownedLiteral xmi:id="_lX1rUyt7Ed6YG6KUPFWlEg" name="DELETE"/>
+    <ownedLiteral xmi:id="_lX1rVCt7Ed6YG6KUPFWlEg" name="COLLECTION"/>
+    <ownedLiteral xmi:id="_lX1rVSt7Ed6YG6KUPFWlEg" name="PURGE"/>
+    <ownedLiteral xmi:id="_lX1rVit7Ed6YG6KUPFWlEg" name="PURGE_ALL"/>
+    <ownedLiteral xmi:id="_lX1rVyt7Ed6YG6KUPFWlEg" name="INDEX"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lX1rWCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.backend.configuration.IndexWriterSetting">
+    <ownedLiteral xmi:id="_lX1rWSt7Ed6YG6KUPFWlEg" name="MAX_BUFFERED_DELETE_TERMS"/>
+    <ownedLiteral xmi:id="_lX1rWit7Ed6YG6KUPFWlEg" name="MAX_BUFFERED_DOCS"/>
+    <ownedLiteral xmi:id="_lX1rWyt7Ed6YG6KUPFWlEg" name="MAX_FIELD_LENGTH"/>
+    <ownedLiteral xmi:id="_lX1rXCt7Ed6YG6KUPFWlEg" name="MAX_MERGE_DOCS"/>
+    <ownedLiteral xmi:id="_lX1rXSt7Ed6YG6KUPFWlEg" name="MERGE_FACTOR"/>
+    <ownedLiteral xmi:id="_lX1rXit7Ed6YG6KUPFWlEg" name="RAM_BUFFER_SIZE"/>
+    <ownedLiteral xmi:id="_lX1rXyt7Ed6YG6KUPFWlEg" name="TERM_INDEX_INTERVAL"/>
+    <ownedLiteral xmi:id="_lX1rYCt7Ed6YG6KUPFWlEg" name="USE_COMPOUND_FILE"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lX_cUCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.backend.impl.BatchedQueueingProcessor$Layer">
+    <ownedLiteral xmi:id="_lX_cUSt7Ed6YG6KUPFWlEg" name="FIRST"/>
+    <ownedLiteral xmi:id="_lX_cUit7Ed6YG6KUPFWlEg" name="SECOND"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lX_cUyt7Ed6YG6KUPFWlEg" name="org.hibernate.search.backend.impl.lucene.IndexInteractionType">
+    <ownedLiteral xmi:id="_lX_cVCt7Ed6YG6KUPFWlEg" name="NEEDS_INDEXWRITER"/>
+    <ownedLiteral xmi:id="_lX_cVSt7Ed6YG6KUPFWlEg" name="PREFER_INDEXWRITER"/>
+    <ownedLiteral xmi:id="_lX_cVit7Ed6YG6KUPFWlEg" name="PREFER_INDEXREADER"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lYSXQCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.engine.DocumentBuilderContainedEntity$PropertiesMetadata$Container">
+    <ownedLiteral xmi:id="_lYSXQSt7Ed6YG6KUPFWlEg" name="OBJECT"/>
+    <ownedLiteral xmi:id="_lYSXQit7Ed6YG6KUPFWlEg" name="COLLECTION"/>
+    <ownedLiteral xmi:id="_lYSXQyt7Ed6YG6KUPFWlEg" name="MAP"/>
+    <ownedLiteral xmi:id="_lYSXRCt7Ed6YG6KUPFWlEg" name="ARRAY"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_lYSXRSt7Ed6YG6KUPFWlEg" name="org.hibernate.search.engine.EntityState">
+    <ownedLiteral xmi:id="_lYSXRit7Ed6YG6KUPFWlEg" name="INDEXED"/>
+    <ownedLiteral xmi:id="_lYSXRyt7Ed6YG6KUPFWlEg" name="CONTAINED_IN_ONLY"/>
+    <ownedLiteral xmi:id="_lYSXSCt7Ed6YG6KUPFWlEg" name="NON_INDEXABLE"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lZB-ICt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Analyzer">
+    <ownedAttribute xmi:id="_lbHo0Ct7Ed6YG6KUPFWlEg" name="definition">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lbHo0it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lbHo0St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lbHo0yt7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lbHo1St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lbHo1Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgfRAyt7Ed6YG6KUPFWlEg" name="base_Property" association="_lgfRASt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgoa8yt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lgoa8St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgoa9yt7Ed6YG6KUPFWlEg" name="base_Class" association="_lgoa9St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgoa-yt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lgoa-St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgfRASt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.Analyzer" memberEnd="_lgfRAit7Ed6YG6KUPFWlEg _lgfRAyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgfRAit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Analyzer" type="_lZB-ICt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgfRASt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgoa8St7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Analyzer" memberEnd="_lgoa8it7Ed6YG6KUPFWlEg _lgoa8yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgoa8it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Analyzer" type="_lZB-ICt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgoa8St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgoa9St7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.Analyzer" memberEnd="_lgoa9it7Ed6YG6KUPFWlEg _lgoa9yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgoa9it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Analyzer" type="_lZB-ICt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgoa9St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgoa-St7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.Analyzer" memberEnd="_lgoa-it7Ed6YG6KUPFWlEg _lgoa-yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgoa-it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Analyzer" type="_lZB-ICt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgoa-St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lgoa_Ct7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.AnalyzerDef">
+    <ownedAttribute xmi:id="_lgoa_St7Ed6YG6KUPFWlEg" name="tokenizer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgoa_yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgoa_it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgobACt7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgobAit7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgobASt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgobAyt7Ed6YG6KUPFWlEg" name="filters">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgobBSt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgobBCt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyL8it7Ed6YG6KUPFWlEg" name="base_Property" association="_lgyL8Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyL9St7Ed6YG6KUPFWlEg" name="base_Operation" association="_lgyL8yt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyL-Ct7Ed6YG6KUPFWlEg" name="base_Class" association="_lgyL9it7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyL-yt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lgyL-St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyL8Ct7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.AnalyzerDef" memberEnd="_lgyL8St7Ed6YG6KUPFWlEg _lgyL8it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyL8St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDef" type="_lgoa_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyL8Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyL8yt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.AnalyzerDef" memberEnd="_lgyL9Ct7Ed6YG6KUPFWlEg _lgyL9St7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyL9Ct7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDef" type="_lgoa_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyL8yt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyL9it7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.AnalyzerDef" memberEnd="_lgyL9yt7Ed6YG6KUPFWlEg _lgyL-Ct7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyL9yt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDef" type="_lgoa_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyL9it7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyL-St7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.AnalyzerDef" memberEnd="_lgyL-it7Ed6YG6KUPFWlEg _lgyL-yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyL-it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDef" type="_lgoa_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyL-St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lgyL_Ct7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.AnalyzerDefs">
+    <ownedAttribute xmi:id="_lgyL_St7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgyL_yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgyL_it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMAit7Ed6YG6KUPFWlEg" name="base_Property" association="_lgyMACt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMBSt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lgyMAyt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMCCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lgyMBit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMCyt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lgyMCSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMACt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.AnalyzerDefs" memberEnd="_lgyMASt7Ed6YG6KUPFWlEg _lgyMAit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMASt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDefs" type="_lgyL_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMACt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMAyt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.AnalyzerDefs" memberEnd="_lgyMBCt7Ed6YG6KUPFWlEg _lgyMBSt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMBCt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDefs" type="_lgyL_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMAyt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMBit7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.AnalyzerDefs" memberEnd="_lgyMByt7Ed6YG6KUPFWlEg _lgyMCCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMByt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDefs" type="_lgyL_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMBit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMCSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.AnalyzerDefs" memberEnd="_lgyMCit7Ed6YG6KUPFWlEg _lgyMCyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMCit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDefs" type="_lgyL_Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMCSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lgyMDCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.AnalyzerDiscriminator">
+    <ownedAttribute xmi:id="_lgyMDSt7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgyMDyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgyMDit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMEit7Ed6YG6KUPFWlEg" name="base_Property" association="_lgyMECt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMFSt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lgyMEyt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMGCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lgyMFit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMGyt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lgyMGSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMECt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.AnalyzerDiscriminator" memberEnd="_lgyMESt7Ed6YG6KUPFWlEg _lgyMEit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMESt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDiscriminator" type="_lgyMDCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMECt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMEyt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.AnalyzerDiscriminator" memberEnd="_lgyMFCt7Ed6YG6KUPFWlEg _lgyMFSt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMFCt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDiscriminator" type="_lgyMDCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMEyt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMFit7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.AnalyzerDiscriminator" memberEnd="_lgyMFyt7Ed6YG6KUPFWlEg _lgyMGCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMFyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDiscriminator" type="_lgyMDCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMFit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMGSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.AnalyzerDiscriminator" memberEnd="_lgyMGit7Ed6YG6KUPFWlEg _lgyMGyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMGit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.AnalyzerDiscriminator" type="_lgyMDCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMGSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lgyMHCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Boost">
+    <ownedAttribute xmi:id="_lgyMHSt7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lgyMHyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lgyMHit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMIit7Ed6YG6KUPFWlEg" name="base_Property" association="_lgyMICt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMJSt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lgyMIyt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMKCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lgyMJit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lgyMKyt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lgyMKSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMICt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.Boost" memberEnd="_lgyMISt7Ed6YG6KUPFWlEg _lgyMIit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMISt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Boost" type="_lgyMHCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMICt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMIyt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Boost" memberEnd="_lgyMJCt7Ed6YG6KUPFWlEg _lgyMJSt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMJCt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Boost" type="_lgyMHCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMIyt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMJit7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.Boost" memberEnd="_lgyMJyt7Ed6YG6KUPFWlEg _lgyMKCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMJyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Boost" type="_lgyMHCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMJit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lgyMKSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.Boost" memberEnd="_lgyMKit7Ed6YG6KUPFWlEg _lgyMKyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lgyMKit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Boost" type="_lgyMHCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lgyMKSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lgyMLCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.ClassBridge">
+    <ownedAttribute xmi:id="_lg7V4Ct7Ed6YG6KUPFWlEg" name="analyzer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V4it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V4St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V4yt7Ed6YG6KUPFWlEg" name="termVector" type="_lXP1fCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V5St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V5Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V5it7Ed6YG6KUPFWlEg" name="boost">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V6Ct7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V5yt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V6St7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V6yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V6it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V7Ct7Ed6YG6KUPFWlEg" name="store" type="_lXP1eCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V7it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V7St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V7yt7Ed6YG6KUPFWlEg" name="index" type="_lXGEdCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V8St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V8Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V8it7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V9Ct7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V8yt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V9St7Ed6YG6KUPFWlEg" name="params">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7V9yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7V9it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V-it7Ed6YG6KUPFWlEg" name="base_Class" association="_lg7V-Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7V_St7Ed6YG6KUPFWlEg" name="base_Interface" association="_lg7V-yt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7V-Ct7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.ClassBridge" memberEnd="_lg7V-St7Ed6YG6KUPFWlEg _lg7V-it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7V-St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ClassBridge" type="_lgyMLCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7V-Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7V-yt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.ClassBridge" memberEnd="_lg7V_Ct7Ed6YG6KUPFWlEg _lg7V_St7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7V_Ct7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ClassBridge" type="_lgyMLCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7V-yt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7V_it7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.ClassBridges">
+    <ownedAttribute xmi:id="_lg7V_yt7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7WASt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7WACt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WBCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lg7WAit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WByt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lg7WBSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WAit7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.ClassBridges" memberEnd="_lg7WAyt7Ed6YG6KUPFWlEg _lg7WBCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WAyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ClassBridges" type="_lg7V_it7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WAit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WBSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.ClassBridges" memberEnd="_lg7WBit7Ed6YG6KUPFWlEg _lg7WByt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WBit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ClassBridges" type="_lg7V_it7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WBSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7WCCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.ContainedIn">
+    <ownedAttribute xmi:id="_lg7WCyt7Ed6YG6KUPFWlEg" name="base_Property" association="_lg7WCSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WDit7Ed6YG6KUPFWlEg" name="base_Operation" association="_lg7WDCt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WCSt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.ContainedIn" memberEnd="_lg7WCit7Ed6YG6KUPFWlEg _lg7WCyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WCit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ContainedIn" type="_lg7WCCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WCSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WDCt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.ContainedIn" memberEnd="_lg7WDSt7Ed6YG6KUPFWlEg _lg7WDit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WDSt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ContainedIn" type="_lg7WCCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WDCt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7WDyt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.DateBridge">
+    <ownedAttribute xmi:id="_lg7WECt7Ed6YG6KUPFWlEg" name="resolution" type="_lXP1cCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7WEit7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7WESt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WFSt7Ed6YG6KUPFWlEg" name="base_Property" association="_lg7WEyt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WGCt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lg7WFit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WEyt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.DateBridge" memberEnd="_lg7WFCt7Ed6YG6KUPFWlEg _lg7WFSt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WFCt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.DateBridge" type="_lg7WDyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WEyt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WFit7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.DateBridge" memberEnd="_lg7WFyt7Ed6YG6KUPFWlEg _lg7WGCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WFyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.DateBridge" type="_lg7WDyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WFit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7WGSt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.DocumentId">
+    <ownedAttribute xmi:id="_lg7WGit7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lg7WHCt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lg7WGyt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WHyt7Ed6YG6KUPFWlEg" name="base_Property" association="_lg7WHSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lg7WIit7Ed6YG6KUPFWlEg" name="base_Operation" association="_lg7WICt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WHSt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.DocumentId" memberEnd="_lg7WHit7Ed6YG6KUPFWlEg _lg7WHyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WHit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.DocumentId" type="_lg7WGSt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WHSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WICt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.DocumentId" memberEnd="_lg7WISt7Ed6YG6KUPFWlEg _lg7WIit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WISt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.DocumentId" type="_lg7WGSt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WICt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7WIyt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Factory">
+    <ownedAttribute xmi:id="_lg7WJit7Ed6YG6KUPFWlEg" name="base_Operation" association="_lg7WJCt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lg7WJCt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Factory" memberEnd="_lg7WJSt7Ed6YG6KUPFWlEg _lg7WJit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lg7WJSt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Factory" type="_lg7WIyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lg7WJCt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lg7WJyt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Field">
+    <ownedAttribute xmi:id="_lhFG7Ct7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG7it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG7St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG7yt7Ed6YG6KUPFWlEg" name="store" type="_lXP1eCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG8St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG8Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG8it7Ed6YG6KUPFWlEg" name="index" type="_lXGEdCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG9Ct7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG8yt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG4Ct7Ed6YG6KUPFWlEg" name="bridge">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG4it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG4St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG4yt7Ed6YG6KUPFWlEg" name="analyzer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG5St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG5Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG5it7Ed6YG6KUPFWlEg" name="termVector" type="_lXP1fCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG6Ct7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG5yt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG6St7Ed6YG6KUPFWlEg" name="boost">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG6yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG6it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG9yt7Ed6YG6KUPFWlEg" name="base_Property" association="_lhFG9St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG-it7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhFG-Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhFG9St7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.Field" memberEnd="_lhFG9it7Ed6YG6KUPFWlEg _lhFG9yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhFG9it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Field" type="_lg7WJyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhFG9St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhFG-Ct7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Field" memberEnd="_lhFG-St7Ed6YG6KUPFWlEg _lhFG-it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhFG-St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Field" type="_lg7WJyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhFG-Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhFG-yt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.FieldBridge">
+    <ownedAttribute xmi:id="_lhFG_Ct7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFG_it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFG_St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFG_yt7Ed6YG6KUPFWlEg" name="params">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFHASt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFHACt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFHBCt7Ed6YG6KUPFWlEg" name="base_Property" association="_lhFHAit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhFHByt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhFHBSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhFHAit7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.FieldBridge" memberEnd="_lhFHAyt7Ed6YG6KUPFWlEg _lhFHBCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhFHAyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FieldBridge" type="_lhFG-yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhFHAit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhFHBSt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.FieldBridge" memberEnd="_lhFHBit7Ed6YG6KUPFWlEg _lhFHByt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhFHBit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FieldBridge" type="_lhFG-yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhFHBSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhFHCCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Fields">
+    <ownedAttribute xmi:id="_lhFHCSt7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhFHCyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhFHCit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO34Ct7Ed6YG6KUPFWlEg" name="base_Property" association="_lhFHDCt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO34yt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhO34St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhFHDCt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.Fields" memberEnd="_lhFHDSt7Ed6YG6KUPFWlEg _lhO34Ct7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhFHDSt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Fields" type="_lhFHCCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhFHDCt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO34St7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Fields" memberEnd="_lhO34it7Ed6YG6KUPFWlEg _lhO34yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO34it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Fields" type="_lhFHCCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO34St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO35Ct7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.FullTextFilterDef">
+    <ownedAttribute xmi:id="_lhO35St7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO35yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO35it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO36Ct7Ed6YG6KUPFWlEg" name="cache" type="_lXGEcCt7Ed6YG6KUPFWlEg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO36it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO36St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO36yt7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO37St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO37Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO38Ct7Ed6YG6KUPFWlEg" name="base_Class" association="_lhO37it7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO38yt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhO38St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO37it7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.FullTextFilterDef" memberEnd="_lhO37yt7Ed6YG6KUPFWlEg _lhO38Ct7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO37yt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FullTextFilterDef" type="_lhO35Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO37it7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO38St7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.FullTextFilterDef" memberEnd="_lhO38it7Ed6YG6KUPFWlEg _lhO38yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO38it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FullTextFilterDef" type="_lhO35Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO38St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO39Ct7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.FullTextFilterDefs">
+    <ownedAttribute xmi:id="_lhO39St7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO39yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO39it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO3-it7Ed6YG6KUPFWlEg" name="base_Class" association="_lhO3-Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO3_St7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhO3-yt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO3-Ct7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.FullTextFilterDefs" memberEnd="_lhO3-St7Ed6YG6KUPFWlEg _lhO3-it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO3-St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FullTextFilterDefs" type="_lhO39Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO3-Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO3-yt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.FullTextFilterDefs" memberEnd="_lhO3_Ct7Ed6YG6KUPFWlEg _lhO3_St7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO3_Ct7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.FullTextFilterDefs" type="_lhO39Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO3-yt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO3_it7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Indexed">
+    <ownedAttribute xmi:id="_lhO3_yt7Ed6YG6KUPFWlEg" name="index">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4ASt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4ACt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4BCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lhO4Ait7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4Byt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhO4BSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4Ait7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.Indexed" memberEnd="_lhO4Ayt7Ed6YG6KUPFWlEg _lhO4BCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4Ayt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Indexed" type="_lhO3_it7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4Ait7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4BSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.Indexed" memberEnd="_lhO4Bit7Ed6YG6KUPFWlEg _lhO4Byt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4Bit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Indexed" type="_lhO3_it7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4BSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO4CCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.IndexedEmbedded">
+    <ownedAttribute xmi:id="_lhO4CSt7Ed6YG6KUPFWlEg" name="targetElement">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Cyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4Cit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4DCt7Ed6YG6KUPFWlEg" name="prefix">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Dit7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4DSt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO4ECt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Key">
+    <ownedAttribute xmi:id="_lhO4Eyt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhO4ESt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4ESt7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.Key" memberEnd="_lhO4Eit7Ed6YG6KUPFWlEg _lhO4Eyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4Eit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Key" type="_lhO4ECt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4ESt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO4FCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Parameter">
+    <ownedAttribute xmi:id="_lhO4FSt7Ed6YG6KUPFWlEg" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Fyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4Fit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4GCt7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Git7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4GSt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO4Gyt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.ProvidedId">
+    <ownedAttribute xmi:id="_lhO4HCt7Ed6YG6KUPFWlEg" name="bridge">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Hit7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4HSt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4Hyt7Ed6YG6KUPFWlEg" name="name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4ISt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4ICt7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4JCt7Ed6YG6KUPFWlEg" name="base_Class" association="_lhO4Iit7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4Jyt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhO4JSt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4Iit7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.ProvidedId" memberEnd="_lhO4Iyt7Ed6YG6KUPFWlEg _lhO4JCt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4Iyt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ProvidedId" type="_lhO4Gyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4Iit7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4JSt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.ProvidedId" memberEnd="_lhO4Jit7Ed6YG6KUPFWlEg _lhO4Jyt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4Jit7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.ProvidedId" type="_lhO4Gyt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4JSt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhO4KCt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.Similarity">
+    <ownedAttribute xmi:id="_lhO4KSt7Ed6YG6KUPFWlEg" name="impl">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhO4Kyt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhO4Kit7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4Lit7Ed6YG6KUPFWlEg" name="base_Class" association="_lhO4LCt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhO4MSt7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhO4Lyt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4LCt7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.Similarity" memberEnd="_lhO4LSt7Ed6YG6KUPFWlEg _lhO4Lit7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4LSt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Similarity" type="_lhO4KCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4LCt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhO4Lyt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.Similarity" memberEnd="_lhO4MCt7Ed6YG6KUPFWlEg _lhO4MSt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhO4MCt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.Similarity" type="_lhO4KCt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhO4Lyt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhYB0Ct7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.TokenFilterDef">
+    <ownedAttribute xmi:id="_lhYB0St7Ed6YG6KUPFWlEg" name="factory">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhYB0yt7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhYB0it7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB1Ct7Ed6YG6KUPFWlEg" name="params">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhYB1it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhYB1St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB2St7Ed6YG6KUPFWlEg" name="base_Property" association="_lhYB1yt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB3Ct7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhYB2it7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB3yt7Ed6YG6KUPFWlEg" name="base_Class" association="_lhYB3St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB4it7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhYB4Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB1yt7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.TokenFilterDef" memberEnd="_lhYB2Ct7Ed6YG6KUPFWlEg _lhYB2St7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB2Ct7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenFilterDef" type="_lhYB0Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB1yt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB2it7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.TokenFilterDef" memberEnd="_lhYB2yt7Ed6YG6KUPFWlEg _lhYB3Ct7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB2yt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenFilterDef" type="_lhYB0Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB2it7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB3St7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.TokenFilterDef" memberEnd="_lhYB3it7Ed6YG6KUPFWlEg _lhYB3yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB3it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenFilterDef" type="_lhYB0Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB3St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB4Ct7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.TokenFilterDef" memberEnd="_lhYB4St7Ed6YG6KUPFWlEg _lhYB4it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB4St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenFilterDef" type="_lhYB0Ct7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB4Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_lhYB4yt7Ed6YG6KUPFWlEg" name="org.hibernate.search.annotations.TokenizerDef">
+    <ownedAttribute xmi:id="_lhYB5Ct7Ed6YG6KUPFWlEg" name="factory">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhYB5it7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhYB5St7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB5yt7Ed6YG6KUPFWlEg" name="params">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lhYB6St7Ed6YG6KUPFWlEg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lhYB6Ct7Ed6YG6KUPFWlEg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB7Ct7Ed6YG6KUPFWlEg" name="base_Property" association="_lhYB6it7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB7yt7Ed6YG6KUPFWlEg" name="base_Operation" association="_lhYB7St7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB8it7Ed6YG6KUPFWlEg" name="base_Class" association="_lhYB8Ct7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_lhYB9St7Ed6YG6KUPFWlEg" name="base_Interface" association="_lhYB8yt7Ed6YG6KUPFWlEg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB6it7Ed6YG6KUPFWlEg" name="Property_org.hibernate.search.annotations.TokenizerDef" memberEnd="_lhYB6yt7Ed6YG6KUPFWlEg _lhYB7Ct7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB6yt7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenizerDef" type="_lhYB4yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB6it7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB7St7Ed6YG6KUPFWlEg" name="Operation_org.hibernate.search.annotations.TokenizerDef" memberEnd="_lhYB7it7Ed6YG6KUPFWlEg _lhYB7yt7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB7it7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenizerDef" type="_lhYB4yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB7St7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB8Ct7Ed6YG6KUPFWlEg" name="Class_org.hibernate.search.annotations.TokenizerDef" memberEnd="_lhYB8St7Ed6YG6KUPFWlEg _lhYB8it7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB8St7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenizerDef" type="_lhYB4yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB8Ct7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_lhYB8yt7Ed6YG6KUPFWlEg" name="Interface_org.hibernate.search.annotations.TokenizerDef" memberEnd="_lhYB9Ct7Ed6YG6KUPFWlEg _lhYB9St7Ed6YG6KUPFWlEg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lhYB9Ct7Ed6YG6KUPFWlEg" name="extension_org.hibernate.search.annotations.TokenizerDef" type="_lhYB4yt7Ed6YG6KUPFWlEg" aggregation="composite" association="_lhYB8yt7Ed6YG6KUPFWlEg"/>
+  </packagedElement>
+</uml:Profile>

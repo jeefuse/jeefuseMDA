@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+
+ $Id: plugin.xml,v 1.6 2007/01/26 21:26:24 jgilbert01 Exp $
+-->
+
+<plugin>
+   <extension-point id="profiles" name="net.taylor.mda.profiles" schema="schema/profiles.exsd"/>
+
+  <extension
+     point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+       source="pathmap://TAYLOR_PROFILES/"
+       target="platform:/plugin/net.taylor.mda.profiles/profiles/">
+    </mapping>
+  </extension>
+
+  <extension 
+     point="net.taylor.mda.profiles.profiles">
+    <profile
+       id="pathmap://TAYLOR_PROFILES/types.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Ejb.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Persistence.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Jws.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/JaxWS.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/JaxRS.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/JaxB.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Jmx.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Bpm.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Hibernate.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/HibernateSearch.profile.uml"/>
+    <profile
+       id="pathmap://TAYLOR_PROFILES/JBoss.profile.uml"/>
+<!--    <profile
+       id="pathmap://TAYLOR_PROFILES/Seam.profile.uml"/>
+-->
+    <profile
+       id="pathmap://TAYLOR_PROFILES/Taylor.profile.uml"/>
+
+<!--
+    <stereotype-default 
+       stereotype="javax.persistence.Entity" 
+       element="org.eclipse.uml2.uml.ClassImpl"/>
+    <stereotype-default 
+       stereotype="javax.ejb.Stateless" 
+       element="org.eclipse.uml2.uml.InterfaceImpl"/>
+-->       
+  </extension>
+
+</plugin>
