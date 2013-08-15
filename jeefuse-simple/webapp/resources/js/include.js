@@ -41,8 +41,8 @@ function importJsFile(names, contextPath) {
 		case 'ui':
 			importFile('/resources/js/easyui/jquery.ui.pack.js', basePath);
 			// importFile('/resources/js/easyui/custom/jquery.tabs.js',basePath);
-			//importFile('/resources/js/easyui/plugins/jquery.layout.js',basePath);
-			//importFile('/resources/js/easyui/plugins/jquery.resizable.js',basePath);
+			// importFile('/resources/js/easyui/plugins/jquery.layout.js',basePath);
+			// importFile('/resources/js/easyui/plugins/jquery.resizable.js',basePath);
 			// importFile('/resources/js/easyui/plugins/jquery.panel.js',basePath);
 			// importFile('/resources/js/easyui/plugins/jquery.linkbutton.js',basePath);
 			// importFile('/resources/js/easyui/custom/jquery.parser.js',basePath);
@@ -140,6 +140,9 @@ function importCssFile(names, contextPath, theme) {
 		if (!name || name == "")
 			continue;
 		switch (name) {
+		case 'init':
+			importFile('/resources/style/base/init-3.css', basePath);
+			break;
 		case 'sys':
 			importFile('/resources/style/base/init-3.css', basePath);
 			importFile('/resources/style/' + style + '/system/sys.css', basePath);
