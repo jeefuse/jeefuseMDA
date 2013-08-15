@@ -9,9 +9,10 @@
 <script>
 	var ctx = '${ctx}';
 	var theme = '${theme}';
-	importCssFile('sys', ctx, theme);
-	importJsFile('jquery|common', ctx);
+	importCssFile('init', ctx, theme);
 </script>
+<link href="${ctx}/resources/style/default/system/index.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body  class="container">
 	  <div id="header">
@@ -21,8 +22,8 @@
 				</a>
 			</div>
 		</div>	
-		<div id="bd">
-			<div style="padding:50px 20px 200px;">
+		<div id="bd" style="">
+			<div style="margin-top: 50px;margin-bottom: 200px">
 			   <h1>欢迎您使用jeefuse快速开发平台</h1>
    			 	<a href="${ctx}/config-browser/index.vhtml">查看ACTION例表</a>
 			</div>
