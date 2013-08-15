@@ -15,5 +15,5 @@ It has 3 major project:
  
       创建或通过其它元数据(如table schema)导入UML模型，从uml Model	生成平台框架特定的代码,对UML模型应用特定的定型stereotype（如需要的功能、数据验证条件、展示方式等），您也可以开发自已特定业务领域的	uml  stereotype.从而控制需要生成的代码。基于模型驱动开发将会极大提高项目开发效率.更重要的是可以复用模型.当您的业务模型变更时,直接重新生成代码。
   3. jeefuse-simple-- 开发web应用的骨架.
- 
-  		搭建的开发web应用的骨架，您只需要轻松导入到eclipse等IDE中就可着手应用程序的开发.
+  
+      搭建的开发web应用的骨架，您只需要轻松导入到eclipse等IDE中就可着手应用程序的开发.
