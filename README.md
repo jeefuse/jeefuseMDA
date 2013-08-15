@@ -6,7 +6,7 @@
 
   它整合一些流行的开源框架如Ibatis、 Hibernate、 Spring Framework、Spring Security、struts2、ehcache、lucene、solr等，构建为稳定通用的基础开发框架。定义或导入uml模型,并可从UML模型生成平台特定的代码,生成的代码完全透明，当模型变更时,可重新生成代码，并与原有代码合并,且不影响自定义修改的代码。它将会极大提高项目开发效率,使企业级软件项目开发更加快速、简单、轻松。
   
-It has 3 major project:
+主要包括三个项目:
   
   1. jeefuse-core-- 核心应用开发框架.
   
