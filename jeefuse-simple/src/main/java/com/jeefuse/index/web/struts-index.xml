@@ -3,7 +3,7 @@
         "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
     
-	<package name="system_index" extends="system"  namespace="/system">
+	<package name="system_index" extends="system" >
        <default-class-ref class="com.jeefuse.index.web.action.IndexAction"/>
         
        <!--首页-->
