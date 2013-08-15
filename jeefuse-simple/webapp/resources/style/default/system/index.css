@@ -1,0 +1,38 @@
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;background-color: #fff}
+h1{margin:1em 0;font-size:148.5%;font-weight:bold;color:#333;}
+h2{margin:0.5em 0;font-size:123.1%;font-weight:bold;color:#E76300;}
+h3{margin:0.3em 0;font-size:108%;font-weight:bold;color:#E76300;}
+h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold; }
+optgroup {font-weight:normal;}
+abbr,acronym {border-bottom: 1px dotted #000;cursor: help;}
+em {font-style: italic;/* Bringing italics back to the em element. */}
+del {text-decoration: line-through;/* Striking deleted phrases. */}
+caption {margin-bottom: .5em;text-align: center;}
+sup {vertical-align: super;}
+sub {vertical-align: sub;}
+p,fieldsetpre {margin-bottom: 1em;}
+a{outline: none;}
+a:link{COLOR:blue;TEXT-DECORATION: none;outline: none;}
+a:active {COLOR:#0061ce;TEXT-DECORATION:underline;outline: none; }
+a:visited {COLOR:blue;TEXT-DECORATION: none;outline: none;}
+a:hover {COLOR:red;TEXT-DECORATION:underline;outline: none;}
+a.button{height:22px;}
+a.button:link, a.button:visited {color: blue;cursor:pointer;display:inline-block;font-size:12px;height:24px;}
+a.button span.l-btn-left {line-height:18px;padding:4px 0 4px 18px;}
+a.button  span span.l-btn-text {display:inline-block;height:16px;line-height: 16px;}
+a.button:hover{color: red}
+#bd{margin: 0 auto;width: 960px;}
+#header{background:#fff url("images/header-bg.png");color: rgb(0, 153, 255);height:65px;margin: 0px auto;width: 960px;}
+#header .v-title{font-size:16px;font-weight:bold;width:400px;padding:15px 0 0 10px;}
+#logo{float: left;padding-left: 5px;overflow: hidden;}
+#logo a.logo{float: left;}
+#logo .sub-logo {color: #555;font-size: 25px;line-height: 50px;padding-left:5px;float: left;font-weight: bold;font-family: sans-serif;}
+#footer{text-align: center;margin: 20px auto 10px;padding: 10px;color: #505050;border-top: 1px solid #eaeaea;clear: both;}
+#footer .nav{margin: 8px auto;}
+#footer a:link{COLOR:#0061ce;TEXT-DECORATION: none}
+#footer a:active {COLOR:#0061ce; }
+#footer a:visited {COLOR:#0061ce;TEXT-DECORATION: none}
+#footer a:hover {COLOR:red;TEXT-DECORATION:underline;}
+#footer a.goolovLink:link{COLOR:#666;}
+#footer a.goolovLink:visited {COLOR:#666;TEXT-DECORATION: none}
+#footer a.goolovLink:HOVER{COLOR:#333;TEXT-DECORATION:underline;}
