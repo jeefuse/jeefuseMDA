@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ====================================================================== 
-     jeefuse开发平台企业应用版ANT构建脚本
+     jeefuse开发简单web应用版ANT构建脚本
 	 author:yonclv  2012-03-10
      ====================================================================== -->
-<project name="jeefuse-web" default="war">
+<project name="jeefuse-simple" default="war">
     <description>
-        jeefuse开发平台企业应用版
+    	  jeefuse开发简单web应用版ANT构建脚本
     </description>
 
 	<property file="build.properties" />
@@ -198,7 +198,7 @@
 	 <echo message=" javadoc 生成目录 ${build.javadocs}"/> 
    </target>
    
-	<!--清理jeefuse MDA生成的文件-->
+	<!--清理jeefuse MDA生成的备份文件-->
 	 <target name="mda.bak.clean" description="删除MDA生成的bak文件">  
 	        <echo>删除jeefuse MDA 产生的bak文件...</echo>  
 	        <delete >
