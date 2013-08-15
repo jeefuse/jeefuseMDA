@@ -7,4 +7,4 @@ It has 3 major project:
   
   1. jeefuse-core-- 核心应用开发框架.
   2. jeefuse-mda -- 一个UML建模工具的Eclipse插件，从UML模型生成平台框架特定的代码.
-  3. jeefuse-simple-- 一个web应用框架.
+  3. jeefuse-simple-- 开发web应用的骨架.
