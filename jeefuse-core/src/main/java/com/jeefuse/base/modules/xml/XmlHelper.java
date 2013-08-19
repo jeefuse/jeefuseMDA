@@ -11,9 +11,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.xml.sax.SAXException;
 
-import com.sun.org.apache.xerces.internal.impl.Constants;
 
 /**
  * 基于dom4j的xml基本操作工具类.
@@ -130,20 +128,4 @@ public class XmlHelper {
 		return document;
 	}
 
-	/**
-	 * 载入一个xml文档.
-	 * 
-	 * @param file
-	 *            文件
-	 * @return 成功返回Document对象
-	 * @throws DocumentException
-	 * @throws SAXException
-	 */
-	public static Document read(File file) throws DocumentException, SAXException {
-		Document document = null;
-		SAXReader saxReader = new SAXReader();
-		saxReader.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.LOAD_EXTERNAL_DTD_FEATURE, false);
-		document = saxReader.read(file);
-		return document;
-	}
 }
