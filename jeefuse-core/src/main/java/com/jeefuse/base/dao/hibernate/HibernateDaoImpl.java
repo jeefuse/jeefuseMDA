@@ -175,7 +175,7 @@ public class HibernateDaoImpl implements HibernateDao {
 	}
 
 	public<T> List<T> find(final String sql, final int start, final int limit, final Object... values) {
-		return createQuery(sql, start, limit, values).list();
+		return createQueryWithLimit(sql, start, limit, values).list();
 	}
 
 	public<T> List<T> find(final String sql, final List<ParamValuedPair> paramValued) {
@@ -209,7 +209,7 @@ public class HibernateDaoImpl implements HibernateDao {
 				sbSql.append(orders[i].toSql());
 			}
 		}
-		return createQuery(sbSql.toString(), start, limit, value).list();
+		return createQueryWithLimit(sbSql.toString(), start, limit, value).list();
 	}
 
 	public <T> Page<T> findByProperty(Class<T> entityClass, Page<T> page, final String propertyName, final Object value) {
@@ -375,7 +375,7 @@ public class HibernateDaoImpl implements HibernateDao {
 	 *            数量可变的参数
 	 * @return
 	 */
-	protected Query createQuery(final String queryString, final int start, final int limit, final Object... values) {
+	protected Query createQueryWithLimit(final String queryString, final int start, final int limit, final Object... values) {
 		Query query = createQuery(queryString, values);
 		if (start > 0) {
 			query.setFirstResult(start);
