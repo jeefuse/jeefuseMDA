@@ -440,7 +440,7 @@ public interface HibernateDao {
 	 *            可变的参数值
 	 * @return
 	 */
-	public<T> List<T> find(String hql, int start, int limit, Object... values);
+	public<T> List<T> findWithLimit(String hql, int start, int limit, Object... values);
 
 	/**
 	 * 根据命名参数查据所有记录, 返回对象类型不能确定时,可用此方法灵活查询.

@@ -174,7 +174,7 @@ public class HibernateDaoImpl implements HibernateDao {
 		return createQuery(sql, values).list();
 	}
 
-	public<T> List<T> find(final String sql, final int start, final int limit, final Object... values) {
+	public<T> List<T> findWithLimit(final String sql, final int start, final int limit, final Object... values) {
 		return createQueryWithLimit(sql, start, limit, values).list();
 	}
 
