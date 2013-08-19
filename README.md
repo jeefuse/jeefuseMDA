@@ -26,7 +26,5 @@
    
     <hr>
     Offical Site: www.jeefuse.com<br>
-    
     Document:https://github.com/jeefuse/jeefuseMDA/wiki<br>
-    
     source: https://github.com/jeefuse/jeefuseMDA<br>
