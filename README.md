@@ -2,7 +2,7 @@
 
   It incorporates some of the popular open source frameworks such as Ibatis, Hibernate, Spring Framework, Spring Security, struts2, ehcache, lucene, solr, etc., to build a common foundation for the stable development framework. defined or imported uml model, and from the UML model generate platform-specific code, the generated code is completely transparent, when the model changes, you can re-generate the code, and merged with the original code, and does not affect custom modifications code. It will greatly improve the efficiency of project development, the enterprise-class software development projects more quickly, simple and easy.
 
-<b>jeefuseMDA 是一个基于MDA的javaEE企业应用快速开发平台。</b>
+<b>jeefuseMDA 是一个基于MDA的javaEE web应用快速开发平台。</b>
 
   它整合一些流行的开源框架如Ibatis、 Hibernate、 Spring Framework、Spring Security、struts2、ehcache、lucene、solr等，构建为稳定通用的基础开发框架。定义或导入uml模型,并可从UML模型生成平台特定的代码,生成的代码完全透明，当模型变更时,可重新生成代码，并与原有代码合并,且不影响自定义修改的代码。它将会极大提高项目开发效率,使企业级软件项目开发更加快速、简单、轻松。
   
@@ -23,10 +23,7 @@
 
 
 
-
-
-    Offical Site: www.jeefuse.com
-    
-    Document:https://github.com/jeefuse/jeefuseMDA/wiki
-    
-    source: https://github.com/jeefuse/jeefuseMDA
+   
+    <hr>
+    Document:https://github.com/jeefuse/jeefuseMDA/wiki<br>
+    source: https://github.com/jeefuse/jeefuseMDA<br>
