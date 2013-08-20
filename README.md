@@ -27,3 +27,4 @@
     <hr>
     Document:https://github.com/jeefuse/jeefuseMDA/wiki<br>
     source: https://github.com/jeefuse/jeefuseMDA<br>
+    download:https://github.com/jeefuse/jeefuseMDA/releases<br>
